@@ -8,9 +8,12 @@ Standard library only. Every request is saved under app/uploads/<time>/
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+import argparse
 import base64
 import json
 import socket
+import ssl
+import subprocess
 import time
 import traceback
 import urllib.parse
@@ -82,12 +85,43 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
+def self_signed_cert(ip):
+    """iPhone Safari upgrades http:// to https://, so serve TLS with a local self-signed certificate.
+
+    One certificate per LAN IP, kept in app/certs/ (git-ignored). Safari warns once
+    ("This connection is not private"); that is expected for a certificate we made ourselves.
+    """
+    certs = HERE / "certs"
+    certs.mkdir(exist_ok=True)
+    cert, key = certs / f"{ip}.pem", certs / f"{ip}.key"
+    if not cert.exists():
+        subprocess.run(["openssl", "req", "-x509", "-newkey", "rsa:2048", "-nodes", "-days", "365",
+                        "-keyout", str(key), "-out", str(cert), "-subj", "/CN=baykus-optik-local",
+                        "-addext", f"subjectAltName=IP:{ip},IP:127.0.0.1,DNS:localhost"],
+                       check=True, capture_output=True)
+    return cert, key
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--http", action="store_true", help="plain HTTP (no certificate), e.g. for a desktop browser")
+    args = parser.parse_args()
     pipeline.reference()                       # load reference + template once, before the first photo
     ip = local_ip()
-    print(f"Hazır. iPhone'da (aynı Wi-Fi) Safari ile açın:  http://{ip}:{PORT}", flush=True)
-    print(f"Bu bilgisayarda: http://127.0.0.1:{PORT}    Durdurmak için Ctrl+C", flush=True)
-    ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
+    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
+    scheme = "http"
+    if not args.http:
+        cert, key = self_signed_cert(ip)
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ctx.load_cert_chain(cert, key)
+        server.socket = ctx.wrap_socket(server.socket, server_side=True)
+        scheme = "https"
+    print(f"Hazır. iPhone'da (aynı Wi-Fi) Safari ile açın:  {scheme}://{ip}:{PORT}", flush=True)
+    if scheme == "https":
+        print("İlk açılışta 'Bu bağlantı gizli değil' uyarısı çıkar: Ayrıntıları Göster -> "
+              "bu web sitesini ziyaret et -> Web Sitesini Ziyaret Et.", flush=True)
+    print(f"Bu bilgisayarda: {scheme}://127.0.0.1:{PORT}    Durdurmak için Ctrl+C", flush=True)
+    server.serve_forever()
 
 
 if __name__ == "__main__":

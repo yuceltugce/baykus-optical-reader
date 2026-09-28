@@ -12,8 +12,13 @@ Proje kökünden:
 .venv/bin/python app/server.py
 ```
 
-Ekranda `http://192.168.x.x:8000` gibi bir adres çıkar. iPhone'da (aynı Wi-Fi) Safari ile açın.
+Ekranda `https://192.168.x.x:8000` gibi bir adres çıkar. iPhone'da (aynı Wi-Fi) Safari ile açın.
 macOS "gelen bağlantılara izin ver" diye sorarsa izin verin. Durdurmak: Ctrl+C.
+
+iPhone Safari düz `http://` adresini güvenli bağlantıya çevirmeye çalıştığı için sunucu `https` ile çalışır.
+Sertifikayı sunucu ilk açılışta kendisi üretir (`app/certs/`, git'e girmez). Kendi ürettiğimiz sertifika olduğu
+için Safari bir kez uyarır: **Ayrıntıları Göster → bu web sitesini ziyaret et → Web Sitesini Ziyaret Et**.
+Masaüstü tarayıcıda uyarısız denemek için: `.venv/bin/python app/server.py --http`.
 Ek kütüphane gerekmez (yalnız `.venv`'deki OpenCV, NumPy, SciPy, PyMuPDF).
 
 ## iPhone'dan gönderme
