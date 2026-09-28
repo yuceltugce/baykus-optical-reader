@@ -1,0 +1,4896 @@
+{
+  "aggregation": "median over images of per-image held-out median distance (px)",
+  "aggregate": {
+    "H_ransac": {
+      "by_subject": {
+        "turkce": 1.156122093203758,
+        "sosyal": 1.370118449477439,
+        "matematik": 1.578325712965851,
+        "fen": 1.6344505776170921
+      },
+      "by_band": {
+        "üst": 1.2565074975238855,
+        "orta": 1.447328244367203,
+        "alt": 1.9319545653725767
+      }
+    },
+    "H_local_contours": {
+      "by_subject": {
+        "turkce": 0.29590665630811047,
+        "sosyal": 0.289453942961002,
+        "matematik": 0.2976397013984779,
+        "fen": 0.36049144805705746
+      },
+      "by_band": {
+        "üst": 0.31042578378303454,
+        "orta": 0.28156405481842106,
+        "alt": 0.31292771822131477
+      }
+    }
+  },
+  "review_required": [
+    {
+      "image": "dataset/curved_angled/006.png",
+      "low_coverage": [
+        "matematik",
+        "fen"
+      ],
+      "fallback": [
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.94,
+        "sosyal": 0.92,
+        "matematik": 0.77,
+        "fen": 0.26
+      }
+    },
+    {
+      "image": "dataset/curved_angled/008.png",
+      "low_coverage": [
+        "sosyal",
+        "fen"
+      ],
+      "fallback": [],
+      "coverage": {
+        "turkce": 0.88,
+        "sosyal": 0.78,
+        "matematik": 0.85,
+        "fen": 0.78
+      }
+    },
+    {
+      "image": "dataset/curved_angled/010.png",
+      "low_coverage": [
+        "fen"
+      ],
+      "fallback": [],
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.93,
+        "matematik": 0.89,
+        "fen": 0.56
+      }
+    },
+    {
+      "image": "dataset/curved_front/006.png",
+      "low_coverage": [
+        "turkce",
+        "sosyal",
+        "matematik",
+        "fen"
+      ],
+      "fallback": [
+        "fen",
+        "matematik",
+        "sosyal"
+      ],
+      "coverage": {
+        "turkce": 0.61,
+        "sosyal": 0.08,
+        "matematik": 0.11,
+        "fen": 0.06
+      }
+    },
+    {
+      "image": "dataset/curved_front/010.png",
+      "low_coverage": [
+        "fen"
+      ],
+      "fallback": [],
+      "coverage": {
+        "turkce": 0.96,
+        "sosyal": 0.86,
+        "matematik": 0.91,
+        "fen": 0.63
+      }
+    },
+    {
+      "image": "dataset/flat_angled/009.png",
+      "low_coverage": [
+        "fen"
+      ],
+      "fallback": [],
+      "coverage": {
+        "turkce": 0.99,
+        "sosyal": 0.81,
+        "matematik": 0.85,
+        "fen": 0.51
+      }
+    },
+    {
+      "image": "dataset/flat_front/009.png",
+      "low_coverage": [
+        "sosyal",
+        "matematik",
+        "fen"
+      ],
+      "fallback": [
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.91,
+        "sosyal": 0.39,
+        "matematik": 0.49,
+        "fen": 0.2
+      }
+    }
+  ],
+  "per_image": {
+    "dataset/curved_angled/001.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9664804469273743,
+        "matematik": 0.99375,
+        "fen": 0.9625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 45,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.885862527137623,
+              "p95_px": 1.7291742903586746
+            },
+            "sosyal": {
+              "n": 173,
+              "median_px": 1.7715027275517363,
+              "p95_px": 2.706113551577283
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 2.2311180231638708,
+              "p95_px": 3.321938509772852
+            },
+            "fen": {
+              "n": 154,
+              "median_px": 1.5519703708207162,
+              "p95_px": 2.4953140389161583
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.5124936663991948,
+              "p95_px": 2.4342543373191297
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 2.049702752101857,
+              "p95_px": 3.242628378518789
+            },
+            "alt": {
+              "n": 226,
+              "median_px": 1.033967824322813,
+              "p95_px": 2.7948835990762646
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3078672798069987,
+              "p95_px": 0.7019417931348838
+            },
+            "sosyal": {
+              "n": 173,
+              "median_px": 0.33884132196340433,
+              "p95_px": 0.7191301812001692
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 0.29629983742994326,
+              "p95_px": 0.6550600663374857
+            },
+            "fen": {
+              "n": 154,
+              "median_px": 0.332560587356204,
+              "p95_px": 0.7009489802895825
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.35699528400347585,
+              "p95_px": 0.698715025336952
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2860043399511085,
+              "p95_px": 0.5775474351251282
+            },
+            "alt": {
+              "n": 226,
+              "median_px": 0.33198495654643256,
+              "p95_px": 0.7573846831245458
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/002.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9888268156424581,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 46,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.318883854086809,
+              "p95_px": 4.57762536389779
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 2.6887094458700243,
+              "p95_px": 5.477398854202777
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 4.156335822479188,
+              "p95_px": 5.7573555135918655
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 5.280976981734756,
+              "p95_px": 6.552267802002997
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.8407448221729845,
+              "p95_px": 3.907302134617447
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 3.6604327098828757,
+              "p95_px": 5.804308508762968
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 5.107633305238271,
+              "p95_px": 6.331310492491699
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2889116001754103,
+              "p95_px": 1.0318735569919129
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.2836321510528595,
+              "p95_px": 0.6305020431871936
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.29897956536701253,
+              "p95_px": 0.9413913675364364
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.3482102641766538,
+              "p95_px": 0.9067093590074277
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.311900297524184,
+              "p95_px": 0.6414686190119112
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.28668053064651133,
+              "p95_px": 0.5546445555331532
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.31394050080736424,
+              "p95_px": 1.2922280908078723
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/003.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9888268156424581,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 47,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.8417892778325967,
+              "p95_px": 1.8143826547221524
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 1.7726901062043805,
+              "p95_px": 2.631879060168795
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 2.789774385771472,
+              "p95_px": 4.5436893246640295
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 4.158183437747623,
+              "p95_px": 5.8165741774708435
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.6857232642861961,
+              "p95_px": 3.505330657530397
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 2.3978349303868614,
+              "p95_px": 4.867811812886621
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 2.8210012147263375,
+              "p95_px": 5.678142767432721
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.31964715181614833,
+              "p95_px": 0.6496318809892365
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.29820997483951617,
+              "p95_px": 0.6592551274136536
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.3064651990937691,
+              "p95_px": 0.6786422912677493
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.3940951526112526,
+              "p95_px": 0.8519153557959842
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.3558061008012853,
+              "p95_px": 0.7590694050471608
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.3062494144235002,
+              "p95_px": 0.6616879189998808
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.3078395077479176,
+              "p95_px": 0.7582054076209161
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/004.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.8770949720670391,
+        "matematik": 0.96875,
+        "fen": 0.9
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 41,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 37,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.1421509875605138,
+              "p95_px": 3.487796816590033
+            },
+            "sosyal": {
+              "n": 157,
+              "median_px": 1.119868234747134,
+              "p95_px": 3.3241612711337356
+            },
+            "matematik": {
+              "n": 155,
+              "median_px": 1.0561682483506902,
+              "p95_px": 3.3806674154936456
+            },
+            "fen": {
+              "n": 144,
+              "median_px": 0.6591047843024564,
+              "p95_px": 4.712258159684407
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.0492478085983488,
+              "p95_px": 1.5819841767016507
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.8532069998717579,
+              "p95_px": 1.2670688109559154
+            },
+            "alt": {
+              "n": 196,
+              "median_px": 1.6965658343034447,
+              "p95_px": 4.550555415524192
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3062300096044154,
+              "p95_px": 0.7562847163845388
+            },
+            "sosyal": {
+              "n": 157,
+              "median_px": 0.29665448924268145,
+              "p95_px": 0.61233341096915
+            },
+            "matematik": {
+              "n": 155,
+              "median_px": 0.27799729597208284,
+              "p95_px": 0.5386093626658486
+            },
+            "fen": {
+              "n": 144,
+              "median_px": 0.30305384927836065,
+              "p95_px": 0.5910850888416541
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.30439053977329456,
+              "p95_px": 0.6142199762182656
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.26945534263726956,
+              "p95_px": 0.5434161476844399
+            },
+            "alt": {
+              "n": 196,
+              "median_px": 0.3107797238053012,
+              "p95_px": 0.8020763989369581
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/005.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 1.0,
+        "matematik": 0.9875,
+        "fen": 0.9
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 33,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.6689648736145803,
+              "p95_px": 1.383018745491812
+            },
+            "sosyal": {
+              "n": 179,
+              "median_px": 0.4911257818901177,
+              "p95_px": 1.710615916252634
+            },
+            "matematik": {
+              "n": 158,
+              "median_px": 0.8888582848402968,
+              "p95_px": 2.1659997708261405
+            },
+            "fen": {
+              "n": 144,
+              "median_px": 1.3559399106415597,
+              "p95_px": 2.158354322919344
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 205,
+              "median_px": 1.0303419826094027,
+              "p95_px": 2.168972903695345
+            },
+            "orta": {
+              "n": 206,
+              "median_px": 0.7502233156507535,
+              "p95_px": 1.78528156644572
+            },
+            "alt": {
+              "n": 230,
+              "median_px": 0.6831308882699836,
+              "p95_px": 1.8071080439372431
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3302792091444243,
+              "p95_px": 0.7646213984900254
+            },
+            "sosyal": {
+              "n": 179,
+              "median_px": 0.32448136354869306,
+              "p95_px": 0.7069524009158447
+            },
+            "matematik": {
+              "n": 158,
+              "median_px": 0.4223638765056689,
+              "p95_px": 0.9305809994146672
+            },
+            "fen": {
+              "n": 144,
+              "median_px": 0.4150726118541513,
+              "p95_px": 0.891019948288319
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 205,
+              "median_px": 0.38096348608285585,
+              "p95_px": 0.7941721968349158
+            },
+            "orta": {
+              "n": 206,
+              "median_px": 0.34768044046883273,
+              "p95_px": 0.7802951411674639
+            },
+            "alt": {
+              "n": 230,
+              "median_px": 0.37048175159446006,
+              "p95_px": 0.88735580531208
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/006.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 0.9375,
+        "sosyal": 0.9217877094972067,
+        "matematik": 0.76875,
+        "fen": 0.25625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 37,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 47,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 32,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fallback_to_H",
+            "reason": "8 anchors"
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 150,
+              "median_px": 1.3054328412912906,
+              "p95_px": 2.155568469086984
+            },
+            "sosyal": {
+              "n": 165,
+              "median_px": 1.6097019726729695,
+              "p95_px": 2.8711489227944833
+            },
+            "matematik": {
+              "n": 123,
+              "median_px": 1.4592374489637943,
+              "p95_px": 3.2849887461724134
+            },
+            "fen": {
+              "n": 41,
+              "median_px": 1.12608593789169,
+              "p95_px": 3.5541176946188515
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 167,
+              "median_px": 1.2227062085549512,
+              "p95_px": 2.6370400335271627
+            },
+            "orta": {
+              "n": 148,
+              "median_px": 1.6340442208881854,
+              "p95_px": 2.492079912838216
+            },
+            "alt": {
+              "n": 164,
+              "median_px": 1.4396072529441453,
+              "p95_px": 3.471740431822457
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 150,
+              "median_px": 0.41034126072701704,
+              "p95_px": 1.61426400334425
+            },
+            "sosyal": {
+              "n": 165,
+              "median_px": 0.40838585510838116,
+              "p95_px": 0.8637709592168574
+            },
+            "matematik": {
+              "n": 123,
+              "median_px": 0.5749049836797813,
+              "p95_px": 1.6008826279988568
+            },
+            "fen": {
+              "n": 41,
+              "median_px": 1.12608593789169,
+              "p95_px": 3.5541176946188515
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 167,
+              "median_px": 0.4618661919438292,
+              "p95_px": 1.2037903704325885
+            },
+            "orta": {
+              "n": 148,
+              "median_px": 0.4279983937597117,
+              "p95_px": 1.2717049589138965
+            },
+            "alt": {
+              "n": 164,
+              "median_px": 0.5532614691514909,
+              "p95_px": 2.229193078651534
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/007.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 1.0,
+        "matematik": 0.99375,
+        "fen": 0.91875
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 36,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.7928715347053985,
+              "p95_px": 1.5023608784332552
+            },
+            "sosyal": {
+              "n": 179,
+              "median_px": 0.791809162004257,
+              "p95_px": 1.7849685138311733
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 1.3221003446786617,
+              "p95_px": 1.9183306501444448
+            },
+            "fen": {
+              "n": 147,
+              "median_px": 1.3717639761025464,
+              "p95_px": 2.0546058972360797
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 207,
+              "median_px": 1.438521910323373,
+              "p95_px": 2.0546058972360797
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.0681242189892046,
+              "p95_px": 1.7560386247358897
+            },
+            "alt": {
+              "n": 228,
+              "median_px": 0.8488087783734984,
+              "p95_px": 1.4350123784883404
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.43230431228394123,
+              "p95_px": 1.077715509065207
+            },
+            "sosyal": {
+              "n": 179,
+              "median_px": 0.35522789548703326,
+              "p95_px": 0.826927062457359
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 0.40863160549509114,
+              "p95_px": 0.8704059322282413
+            },
+            "fen": {
+              "n": 147,
+              "median_px": 0.3727726319374611,
+              "p95_px": 0.7946422790117997
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 207,
+              "median_px": 0.4149442630695056,
+              "p95_px": 0.835852270961103
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.33914668195445413,
+              "p95_px": 0.7707456658774973
+            },
+            "alt": {
+              "n": 228,
+              "median_px": 0.4077134251725428,
+              "p95_px": 1.023578553851877
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/008.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 6,
+      "coverage": {
+        "turkce": 0.875,
+        "sosyal": 0.7821229050279329,
+        "matematik": 0.85,
+        "fen": 0.775
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 35,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 35,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 34,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 30,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 140,
+              "median_px": 1.2282554440500166,
+              "p95_px": 6.575701268809079
+            },
+            "sosyal": {
+              "n": 140,
+              "median_px": 1.1076494414757105,
+              "p95_px": 6.180024562713717
+            },
+            "matematik": {
+              "n": 136,
+              "median_px": 2.074435089310799,
+              "p95_px": 7.533694655347418
+            },
+            "fen": {
+              "n": 124,
+              "median_px": 3.727769256777859,
+              "p95_px": 6.35977719055396
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.675117523676167,
+              "p95_px": 4.445878192624657
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 1.374762777941946,
+              "p95_px": 4.404771803961794
+            },
+            "alt": {
+              "n": 121,
+              "median_px": 4.613202287385136,
+              "p95_px": 8.759980759698951
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 140,
+              "median_px": 0.3023217767523306,
+              "p95_px": 1.700812056621864
+            },
+            "sosyal": {
+              "n": 140,
+              "median_px": 0.40009950189350385,
+              "p95_px": 1.6014011723851687
+            },
+            "matematik": {
+              "n": 136,
+              "median_px": 0.4009896674302006,
+              "p95_px": 1.5146833755437683
+            },
+            "fen": {
+              "n": 124,
+              "median_px": 0.457269740799025,
+              "p95_px": 3.7357736924180625
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.4058210143899717,
+              "p95_px": 0.8675653969032646
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 0.2941725138506462,
+              "p95_px": 0.6787713081730067
+            },
+            "alt": {
+              "n": 121,
+              "median_px": 0.7735452186088294,
+              "p95_px": 4.652137731162807
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/009.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.847526017085893,
+              "p95_px": 6.786572228114662
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 2.686867900896865,
+              "p95_px": 7.208778381188267
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 3.82388652695733,
+              "p95_px": 6.807277736568533
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 4.371118719896971,
+              "p95_px": 6.420131185526052
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.891227530990171,
+              "p95_px": 3.0300754015663336
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 3.88514431835521,
+              "p95_px": 6.278351953084661
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 5.838743904261975,
+              "p95_px": 7.1605448675126295
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3585716927945668,
+              "p95_px": 1.7081072560466923
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.25809823912592655,
+              "p95_px": 0.562132150214605
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.3176937982049306,
+              "p95_px": 1.5596650707152708
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.38776081424594006,
+              "p95_px": 1.2309769419979257
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.3467264454380272,
+              "p95_px": 0.7011170811997427
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2725655524743578,
+              "p95_px": 0.5745630045243015
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.3651137400420792,
+              "p95_px": 1.984800391077082
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/010.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9273743016759777,
+        "matematik": 0.8875,
+        "fen": 0.55625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 22,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.0928199757021897,
+              "p95_px": 6.120018340675403
+            },
+            "sosyal": {
+              "n": 166,
+              "median_px": 1.2468082133116458,
+              "p95_px": 7.917957140457391
+            },
+            "matematik": {
+              "n": 142,
+              "median_px": 1.3271688630237595,
+              "p95_px": 5.109220415915873
+            },
+            "fen": {
+              "n": 89,
+              "median_px": 1.864132557521559,
+              "p95_px": 2.8423539804922893
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 204,
+              "median_px": 1.2779430587096696,
+              "p95_px": 2.4490798010086237
+            },
+            "orta": {
+              "n": 190,
+              "median_px": 1.38354368701813,
+              "p95_px": 2.4219838098624145
+            },
+            "alt": {
+              "n": 163,
+              "median_px": 3.174586066551747,
+              "p95_px": 7.918911667209556
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.37576987784441224,
+              "p95_px": 1.0817911810393328
+            },
+            "sosyal": {
+              "n": 166,
+              "median_px": 0.4216080071763467,
+              "p95_px": 1.4696031316468199
+            },
+            "matematik": {
+              "n": 142,
+              "median_px": 0.38150529517510723,
+              "p95_px": 0.8729541303566791
+            },
+            "fen": {
+              "n": 89,
+              "median_px": 0.44426598590159405,
+              "p95_px": 0.9392201670074553
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 204,
+              "median_px": 0.4985765568669005,
+              "p95_px": 1.0035973881263278
+            },
+            "orta": {
+              "n": 190,
+              "median_px": 0.3360678431696475,
+              "p95_px": 0.8054114472623806
+            },
+            "alt": {
+              "n": 163,
+              "median_px": 0.40542816325243486,
+              "p95_px": 1.5211736671388925
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_angled/011.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.8603351955307262,
+        "matematik": 0.95625,
+        "fen": 0.825
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 38,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 35,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 34,
+            "rejected_predictions": 1
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.766055762748282,
+              "p95_px": 7.257920814490861
+            },
+            "sosyal": {
+              "n": 154,
+              "median_px": 1.254571924800084,
+              "p95_px": 7.482099414865013
+            },
+            "matematik": {
+              "n": 153,
+              "median_px": 2.4020801541562866,
+              "p95_px": 8.813037777456247
+            },
+            "fen": {
+              "n": 132,
+              "median_px": 3.924250273893784,
+              "p95_px": 9.01829832361625
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.69607793179131,
+              "p95_px": 3.118207478381781
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 2.023866242034366,
+              "p95_px": 5.372207970977337
+            },
+            "alt": {
+              "n": 179,
+              "median_px": 6.166640298061417,
+              "p95_px": 9.456995962227307
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3004400995616671,
+              "p95_px": 1.1051285652510503
+            },
+            "sosyal": {
+              "n": 154,
+              "median_px": 0.30175134910384704,
+              "p95_px": 0.720220235422123
+            },
+            "matematik": {
+              "n": 153,
+              "median_px": 0.30809462471431365,
+              "p95_px": 2.1811787150724142
+            },
+            "fen": {
+              "n": 132,
+              "median_px": 0.3364212360693204,
+              "p95_px": 0.7026156493339871
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.30190732603757964,
+              "p95_px": 0.6743292952996427
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2759298019702951,
+              "p95_px": 0.5672051021724777
+            },
+            "alt": {
+              "n": 179,
+              "median_px": 0.4152604004837238,
+              "p95_px": 1.898129477915163
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/001.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9888268156424581,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 49,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.8312985077852872,
+              "p95_px": 1.315248818032812
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.9718249926329737,
+              "p95_px": 1.6675166436515612
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.1426719850057314,
+              "p95_px": 1.8658397508019269
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.6444317754893456,
+              "p95_px": 2.950641368529187
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.271794992020402,
+              "p95_px": 1.7417735000091104
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.9015108740218643,
+              "p95_px": 1.7042986718889526
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 1.134030298424749,
+              "p95_px": 2.686126127640792
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.29915066892196507,
+              "p95_px": 0.7068950219385524
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.283432280551886,
+              "p95_px": 0.5190798761786768
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.26718794351365693,
+              "p95_px": 0.48614646421456753
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.27343992102294823,
+              "p95_px": 0.6153739582738262
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.285595283207288,
+              "p95_px": 0.5015610665402367
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2706235290832433,
+              "p95_px": 0.5011040049126114
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.2827066832540101,
+              "p95_px": 0.6994669285168441
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/002.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9888268156424581,
+        "matematik": 1.0,
+        "fen": 0.99375
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.2863072844040984,
+              "p95_px": 2.0777777399136355
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 1.3648423117234267,
+              "p95_px": 2.170346812766337
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.3682363956860362,
+              "p95_px": 1.979176639480196
+            },
+            "fen": {
+              "n": 159,
+              "median_px": 1.0897521995658144,
+              "p95_px": 1.7899809602666097
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.7028533701539885,
+              "p95_px": 2.1909203786635434
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.1885581410952684,
+              "p95_px": 1.6773690392977345
+            },
+            "alt": {
+              "n": 236,
+              "median_px": 0.9440775475799161,
+              "p95_px": 1.9926095712361807
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2809548370037335,
+              "p95_px": 0.7985001218345852
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.30602197056615116,
+              "p95_px": 0.5461615703293591
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.25470839765237885,
+              "p95_px": 0.510335162735351
+            },
+            "fen": {
+              "n": 159,
+              "median_px": 0.2784762536832597,
+              "p95_px": 0.6267428729085116
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.2751467473905822,
+              "p95_px": 0.5185251477436239
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.262552412165629,
+              "p95_px": 0.5108335804218124
+            },
+            "alt": {
+              "n": 236,
+              "median_px": 0.29859043601762203,
+              "p95_px": 0.7341497058741973
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/003.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.1700931988470022,
+              "p95_px": 2.9605636432401883
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.4020826548455636,
+              "p95_px": 3.0011120661003594
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.5811572260410363,
+              "p95_px": 2.9975285372816587
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.6294124148186437,
+              "p95_px": 2.5949765398402738
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.2184412495604595,
+              "p95_px": 1.606926956670171
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.3996857335472797,
+              "p95_px": 2.5787029440921696
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.2644464977647436,
+              "p95_px": 3.1430221826317664
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2808552200378723,
+              "p95_px": 1.0126361107656476
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.28823855804776877,
+              "p95_px": 0.5225180681993634
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.26694028007755466,
+              "p95_px": 0.7885618166735544
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.29910679702085596,
+              "p95_px": 0.8089727164057279
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.2742520825168996,
+              "p95_px": 0.5269318799535162
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.25788169903891833,
+              "p95_px": 0.48828662230010833
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.3369032274520918,
+              "p95_px": 1.099173388374237
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/004.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9720670391061452,
+        "matematik": 0.9625,
+        "fen": 0.8625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 49,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 36,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.258267820590845,
+              "p95_px": 1.7842549176821538
+            },
+            "sosyal": {
+              "n": 174,
+              "median_px": 1.0440021492887628,
+              "p95_px": 1.48144006848251
+            },
+            "matematik": {
+              "n": 154,
+              "median_px": 1.1727323215597498,
+              "p95_px": 1.8538621893155174
+            },
+            "fen": {
+              "n": 138,
+              "median_px": 0.884849672237048,
+              "p95_px": 2.088163659162691
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 209,
+              "median_px": 1.1333041664215442,
+              "p95_px": 1.6199860657864642
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 1.1723351629646677,
+              "p95_px": 1.9107717284041124
+            },
+            "alt": {
+              "n": 208,
+              "median_px": 0.972023097055827,
+              "p95_px": 1.7417989681699098
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3348729849687444,
+              "p95_px": 1.1776897158754867
+            },
+            "sosyal": {
+              "n": 174,
+              "median_px": 0.33713729012221805,
+              "p95_px": 0.6346292523259955
+            },
+            "matematik": {
+              "n": 154,
+              "median_px": 0.3001588591533481,
+              "p95_px": 0.7428347043823438
+            },
+            "fen": {
+              "n": 138,
+              "median_px": 0.37383185637698857,
+              "p95_px": 0.9250145542953537
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 209,
+              "median_px": 0.333316662071557,
+              "p95_px": 0.6334100579157089
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 0.32159958508102726,
+              "p95_px": 0.7227992783440137
+            },
+            "alt": {
+              "n": 208,
+              "median_px": 0.374502381809757,
+              "p95_px": 1.2978934241791513
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/005.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9497206703910615,
+        "matematik": 0.95625,
+        "fen": 0.8375
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 34,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.203317856386577,
+              "p95_px": 1.6489670125138685
+            },
+            "sosyal": {
+              "n": 170,
+              "median_px": 1.10638362189809,
+              "p95_px": 1.6899529852634385
+            },
+            "matematik": {
+              "n": 153,
+              "median_px": 1.1966203036092258,
+              "p95_px": 1.8855151424455179
+            },
+            "fen": {
+              "n": 134,
+              "median_px": 1.3513392771686177,
+              "p95_px": 2.3691036562252163
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 208,
+              "median_px": 1.435901089639727,
+              "p95_px": 1.8787627415271968
+            },
+            "orta": {
+              "n": 205,
+              "median_px": 1.2217351514749752,
+              "p95_px": 1.807108287918593
+            },
+            "alt": {
+              "n": 204,
+              "median_px": 0.9094396601611978,
+              "p95_px": 1.9784383411964388
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.3338833590651043,
+              "p95_px": 1.347110144636049
+            },
+            "sosyal": {
+              "n": 170,
+              "median_px": 0.3187642314629222,
+              "p95_px": 0.671324471036753
+            },
+            "matematik": {
+              "n": 153,
+              "median_px": 0.3476911244438459,
+              "p95_px": 0.7397188573405967
+            },
+            "fen": {
+              "n": 134,
+              "median_px": 0.4229835373364246,
+              "p95_px": 0.99405645622294
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 208,
+              "median_px": 0.33046383096692905,
+              "p95_px": 0.6278627157180512
+            },
+            "orta": {
+              "n": 205,
+              "median_px": 0.32369168338160675,
+              "p95_px": 0.7338828788095263
+            },
+            "alt": {
+              "n": 204,
+              "median_px": 0.38792242112762454,
+              "p95_px": 1.4892766980843066
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/006.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 0.60625,
+        "sosyal": 0.0782122905027933,
+        "matematik": 0.10625,
+        "fen": 0.0625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 25,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fallback_to_H",
+            "reason": "3 anchors"
+          },
+          "matematik": {
+            "status": "fallback_to_H",
+            "reason": "4 anchors"
+          },
+          "fen": {
+            "status": "fallback_to_H",
+            "reason": "3 anchors"
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 97,
+              "median_px": 0.4402634058281862,
+              "p95_px": 0.8221524587290849
+            },
+            "sosyal": {
+              "n": 14,
+              "median_px": 0.8037657108222278,
+              "p95_px": 1.5795932852558443
+            },
+            "matematik": {
+              "n": 17,
+              "median_px": 1.2206278148947678,
+              "p95_px": 1.5806004636246207
+            },
+            "fen": {
+              "n": 10,
+              "median_px": 1.2288228671380965,
+              "p95_px": 1.7320472316682662
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 73,
+              "median_px": 0.624936955686269,
+              "p95_px": 1.5910489196421767
+            },
+            "orta": {
+              "n": 40,
+              "median_px": 0.5209556648881477,
+              "p95_px": 1.231551488336665
+            },
+            "alt": {
+              "n": 25,
+              "median_px": 0.4171392786338969,
+              "p95_px": 0.9088719160949261
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 97,
+              "median_px": 0.2821346635553191,
+              "p95_px": 0.618972421751377
+            },
+            "sosyal": {
+              "n": 14,
+              "median_px": 0.8037657108222278,
+              "p95_px": 1.5795932852558443
+            },
+            "matematik": {
+              "n": 17,
+              "median_px": 1.2206278148947678,
+              "p95_px": 1.5806004636246207
+            },
+            "fen": {
+              "n": 10,
+              "median_px": 1.2288228671380965,
+              "p95_px": 1.7320472316682662
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 73,
+              "median_px": 0.6122904431479579,
+              "p95_px": 1.5910489196421767
+            },
+            "orta": {
+              "n": 40,
+              "median_px": 0.28203555897650123,
+              "p95_px": 1.231551488336665
+            },
+            "alt": {
+              "n": 25,
+              "median_px": 0.27624714548585655,
+              "p95_px": 0.6443256428130052
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/007.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.0539686846943932,
+              "p95_px": 2.8912796438943804
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.375394587231451,
+              "p95_px": 3.389132739778087
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 2.0486489833264736,
+              "p95_px": 3.515079016779328
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 2.335748346285547,
+              "p95_px": 3.430778410873437
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.6960219545565476,
+              "p95_px": 1.3484453214934091
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.6626885138350311,
+              "p95_px": 3.1929433697044622
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.8233007788241915,
+              "p95_px": 3.574965393030028
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.30070473151054433,
+              "p95_px": 0.9254067021939048
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.2910251234635043,
+              "p95_px": 0.5653058033308834
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2708378223857736,
+              "p95_px": 0.5817871877100417
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.2974921131108642,
+              "p95_px": 0.6206127654999264
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.28152690210807835,
+              "p95_px": 0.5245037108654206
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2592444453580564,
+              "p95_px": 0.5119016227095139
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.32125136267408705,
+              "p95_px": 0.8424358358998293
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/008.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 49,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.2341927375018766,
+              "p95_px": 2.45907610772433
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.4426424849084774,
+              "p95_px": 2.8757758252296646
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.5754941998906657,
+              "p95_px": 2.929894276915678
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.4568970464365993,
+              "p95_px": 2.618334460071439
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.2522949023961347,
+              "p95_px": 1.7395215196603744
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.5874914211005693,
+              "p95_px": 2.7782396313431508
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 1.8336448295341188,
+              "p95_px": 2.9344468846026075
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.28485112477512586,
+              "p95_px": 0.8027021771904457
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.29319214599931764,
+              "p95_px": 0.5624748078767559
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2896097568628946,
+              "p95_px": 0.6440181506136491
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.3081245915565426,
+              "p95_px": 0.6719591805072762
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.27297637829136634,
+              "p95_px": 0.5315147945543238
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2733242236371485,
+              "p95_px": 0.5110794880268525
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.32293343307070677,
+              "p95_px": 0.9351766233952666
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/009.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9385474860335196,
+        "matematik": 0.9625,
+        "fen": 0.875
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 49,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 35,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.9672114628996464,
+              "p95_px": 3.6974486736988
+            },
+            "sosyal": {
+              "n": 168,
+              "median_px": 1.7557671308940122,
+              "p95_px": 2.894922204288627
+            },
+            "matematik": {
+              "n": 154,
+              "median_px": 2.736396885799544,
+              "p95_px": 3.694022504480637
+            },
+            "fen": {
+              "n": 140,
+              "median_px": 4.25815138876661,
+              "p95_px": 5.8871582761051915
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 206,
+              "median_px": 1.7952268781473972,
+              "p95_px": 4.523533339364599
+            },
+            "orta": {
+              "n": 207,
+              "median_px": 2.557944621457394,
+              "p95_px": 5.499602884856062
+            },
+            "alt": {
+              "n": 209,
+              "median_px": 2.6169424059172646,
+              "p95_px": 4.6257478612779375
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.33484140416202335,
+              "p95_px": 2.012310559624235
+            },
+            "sosyal": {
+              "n": 168,
+              "median_px": 0.3149036324010108,
+              "p95_px": 0.6441286461324104
+            },
+            "matematik": {
+              "n": 154,
+              "median_px": 0.30438057732603596,
+              "p95_px": 0.7093582965376931
+            },
+            "fen": {
+              "n": 140,
+              "median_px": 0.40705454343672864,
+              "p95_px": 0.8172975632511302
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 206,
+              "median_px": 0.33283519935432726,
+              "p95_px": 0.6962750556581547
+            },
+            "orta": {
+              "n": 207,
+              "median_px": 0.28558791862057353,
+              "p95_px": 0.6579060459387486
+            },
+            "alt": {
+              "n": 209,
+              "median_px": 0.3838035031600225,
+              "p95_px": 1.4894431969961395
+            }
+          }
+        }
+      }
+    },
+    "dataset/curved_front/010.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 0.9625,
+        "sosyal": 0.8603351955307262,
+        "matematik": 0.90625,
+        "fen": 0.63125
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 44,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 37,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 24,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 154,
+              "median_px": 1.295493721325904,
+              "p95_px": 4.3923216544947925
+            },
+            "sosyal": {
+              "n": 154,
+              "median_px": 2.084854937594672,
+              "p95_px": 3.427736625246899
+            },
+            "matematik": {
+              "n": 145,
+              "median_px": 3.1876419499770265,
+              "p95_px": 4.279050980422996
+            },
+            "fen": {
+              "n": 101,
+              "median_px": 4.6103047148646,
+              "p95_px": 6.6292496966942736
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 201,
+              "median_px": 1.9749332052725421,
+              "p95_px": 4.6969481088222045
+            },
+            "orta": {
+              "n": 191,
+              "median_px": 3.037069425860829,
+              "p95_px": 6.02888046544703
+            },
+            "alt": {
+              "n": 162,
+              "median_px": 3.1356677793651624,
+              "p95_px": 4.816231777220366
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 154,
+              "median_px": 0.341240729037587,
+              "p95_px": 2.1285670390019695
+            },
+            "sosyal": {
+              "n": 154,
+              "median_px": 0.3179183626646511,
+              "p95_px": 0.7475162036218922
+            },
+            "matematik": {
+              "n": 145,
+              "median_px": 0.3345305443198968,
+              "p95_px": 0.9149245088523186
+            },
+            "fen": {
+              "n": 101,
+              "median_px": 0.3874407434908546,
+              "p95_px": 0.9337485499199721
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 201,
+              "median_px": 0.33374362983274114,
+              "p95_px": 0.7250660465034938
+            },
+            "orta": {
+              "n": 191,
+              "median_px": 0.28109255066034083,
+              "p95_px": 0.7149157924077311
+            },
+            "alt": {
+              "n": 162,
+              "median_px": 0.47696677947897315,
+              "p95_px": 1.9923291411103647
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/001.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 0.99375
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.7516452839493903,
+              "p95_px": 1.2044895248630088
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.6217654418136378,
+              "p95_px": 1.0207511036027659
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.4391025177316268,
+              "p95_px": 0.8894346470198037
+            },
+            "fen": {
+              "n": 159,
+              "median_px": 0.6264766980423605,
+              "p95_px": 1.3474262169173403
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.5721173919926494,
+              "p95_px": 0.9215622863785133
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.5885002155516407,
+              "p95_px": 1.1432377227916615
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.7097523529283307,
+              "p95_px": 1.2990485091364155
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.251671519862358,
+              "p95_px": 0.5424676487332081
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.2770708036859087,
+              "p95_px": 0.5524285557794906
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2729860121490988,
+              "p95_px": 0.5207827664318248
+            },
+            "fen": {
+              "n": 159,
+              "median_px": 0.28588659671866773,
+              "p95_px": 0.6454691067793547
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.2764647978905084,
+              "p95_px": 0.5432245218315529
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2588251211839761,
+              "p95_px": 0.5444783973845795
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.28944019889259076,
+              "p95_px": 0.6497524324478879
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/002.png": {
+      "status": "ok",
+      "matched_markers": 9,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 1.5196876071971521,
+              "p95_px": 2.6984842902280435
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.7451919272388101,
+              "p95_px": 3.0714513090011555
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.6042748558134583,
+              "p95_px": 2.2820310970179745
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.3977690888787522,
+              "p95_px": 2.278704538983647
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.3187237563345264,
+              "p95_px": 1.7434149417619422
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.5709259595909142,
+              "p95_px": 2.191816898962794
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.187105821837699,
+              "p95_px": 3.050591987114607
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2797546838782341,
+              "p95_px": 0.5909585397486102
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.2776788129670249,
+              "p95_px": 0.5025458793999126
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2802512843520414,
+              "p95_px": 0.5986893782752528
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.3251992795506093,
+              "p95_px": 0.6843597136287536
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.29727971504765,
+              "p95_px": 0.5496345288475946
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.29358393918183856,
+              "p95_px": 0.5625288294857979
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.28321625438225073,
+              "p95_px": 0.6665824642435509
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/003.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9832402234636871,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 37,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 3.3848735364980334,
+              "p95_px": 6.298502045715707
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 4.246753689258099,
+              "p95_px": 6.627909453089521
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 4.254366449970636,
+              "p95_px": 5.722730169065102
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 4.458818206356988,
+              "p95_px": 5.487861807268102
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 209,
+              "median_px": 1.9635331544596843,
+              "p95_px": 3.0462852078193254
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 4.128792216283816,
+              "p95_px": 5.436193617390369
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 5.399379610421378,
+              "p95_px": 6.612650249757023
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2789228073886951,
+              "p95_px": 0.9666943509628777
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 0.25334981612098656,
+              "p95_px": 0.5508100882677126
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.30545663880071533,
+              "p95_px": 0.6853500459366291
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.39774151243766365,
+              "p95_px": 0.8434466504725003
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 209,
+              "median_px": 0.3089512700418851,
+              "p95_px": 0.5976522237661177
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2933606598506918,
+              "p95_px": 0.6210197820422193
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.30081030354032495,
+              "p95_px": 0.9892616029220119
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/004.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9553072625698324,
+        "matematik": 1.0,
+        "fen": 0.88125
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 45,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 29,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.002585038104418,
+              "p95_px": 2.67020716253153
+            },
+            "sosyal": {
+              "n": 171,
+              "median_px": 1.8819556004479132,
+              "p95_px": 2.7146133198356446
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.5532032953223587,
+              "p95_px": 2.2060216968975017
+            },
+            "fen": {
+              "n": 141,
+              "median_px": 1.4420933873142994,
+              "p95_px": 2.7225293725382906
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 206,
+              "median_px": 0.8856664594290309,
+              "p95_px": 1.6945783055742971
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 1.946165561436824,
+              "p95_px": 2.627498713870542
+            },
+            "alt": {
+              "n": 217,
+              "median_px": 2.0302643012110346,
+              "p95_px": 2.76400240009994
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.28682164397867527,
+              "p95_px": 0.7476733031536827
+            },
+            "sosyal": {
+              "n": 171,
+              "median_px": 0.28874426030126055,
+              "p95_px": 0.5843683866372673
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.3009284923832063,
+              "p95_px": 0.6157061550934108
+            },
+            "fen": {
+              "n": 141,
+              "median_px": 0.48404057624854435,
+              "p95_px": 0.8632153840089665
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 206,
+              "median_px": 0.3297720143657724,
+              "p95_px": 0.7376892336143714
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 0.3126567554956737,
+              "p95_px": 0.7209619158421753
+            },
+            "alt": {
+              "n": 217,
+              "median_px": 0.3119149356352653,
+              "p95_px": 0.792544337121764
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/005.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9832402234636871,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.166727912816688,
+              "p95_px": 4.415987532084249
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 2.503673914149661,
+              "p95_px": 4.9324371185647395
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 2.179134495602496,
+              "p95_px": 3.7111595475834194
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 2.1154538005102284,
+              "p95_px": 3.397945771987423
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.2607200926516362,
+              "p95_px": 1.8021706437836797
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 2.1878605091587335,
+              "p95_px": 3.310426587148347
+            },
+            "alt": {
+              "n": 236,
+              "median_px": 3.469367970547847,
+              "p95_px": 4.855168209293195
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.29504372025677816,
+              "p95_px": 0.622892624966351
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 0.28055457534220896,
+              "p95_px": 0.5485295970176447
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.27897206991533685,
+              "p95_px": 0.6448348456707426
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.39670692136325747,
+              "p95_px": 0.7603786266897551
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.3235439446220326,
+              "p95_px": 0.648454268150316
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.3069112914977542,
+              "p95_px": 0.5816549376641982
+            },
+            "alt": {
+              "n": 236,
+              "median_px": 0.30502636853940224,
+              "p95_px": 0.7315962732242391
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/006.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9553072625698324,
+        "matematik": 0.99375,
+        "fen": 0.925
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 34,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 33,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 3.988351453914552,
+              "p95_px": 7.272462982263872
+            },
+            "sosyal": {
+              "n": 171,
+              "median_px": 5.23311782411716,
+              "p95_px": 8.640304466020378
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 6.710940943726019,
+              "p95_px": 8.711041480638333
+            },
+            "fen": {
+              "n": 148,
+              "median_px": 8.020404565913454,
+              "p95_px": 9.40748801263335
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 204,
+              "median_px": 2.5831450763889663,
+              "p95_px": 5.590867885771464
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 6.167626940346507,
+              "p95_px": 8.644092386193272
+            },
+            "alt": {
+              "n": 225,
+              "median_px": 7.912116201442313,
+              "p95_px": 9.223866178003233
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2968451013498642,
+              "p95_px": 1.4469853817606526
+            },
+            "sosyal": {
+              "n": 171,
+              "median_px": 0.30379705204437574,
+              "p95_px": 0.6072994980958977
+            },
+            "matematik": {
+              "n": 159,
+              "median_px": 0.39017163456888876,
+              "p95_px": 1.1409415026564738
+            },
+            "fen": {
+              "n": 148,
+              "median_px": 0.46571874456614815,
+              "p95_px": 1.2237127594905437
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 204,
+              "median_px": 0.38419573774374405,
+              "p95_px": 0.89831832655619
+            },
+            "orta": {
+              "n": 209,
+              "median_px": 0.32216088825151423,
+              "p95_px": 0.7629969102773468
+            },
+            "alt": {
+              "n": 225,
+              "median_px": 0.3858735327828752,
+              "p95_px": 1.6788869881285222
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/007.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9497206703910615,
+        "matematik": 1.0,
+        "fen": 0.90625
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 44,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 35,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 34,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 2.8692858593683566,
+              "p95_px": 5.532591853926583
+            },
+            "sosyal": {
+              "n": 170,
+              "median_px": 4.169978800477282,
+              "p95_px": 7.673766282505325
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 5.98203309414853,
+              "p95_px": 8.084382132329644
+            },
+            "fen": {
+              "n": 145,
+              "median_px": 8.098558366253929,
+              "p95_px": 9.671401288591595
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 202,
+              "median_px": 2.257156864175865,
+              "p95_px": 6.108968569805001
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 5.3093290781466,
+              "p95_px": 8.95839499230563
+            },
+            "alt": {
+              "n": 223,
+              "median_px": 7.111393528728506,
+              "p95_px": 9.392591070582418
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.33668667517013345,
+              "p95_px": 1.327105217560489
+            },
+            "sosyal": {
+              "n": 170,
+              "median_px": 0.3452337300398113,
+              "p95_px": 1.0158203510842552
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.4463115013388868,
+              "p95_px": 1.4608426456762016
+            },
+            "fen": {
+              "n": 145,
+              "median_px": 0.5781119674133408,
+              "p95_px": 1.3435966354626137
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 202,
+              "median_px": 0.43728803034851105,
+              "p95_px": 1.2611493320207088
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.37335388643354717,
+              "p95_px": 0.8359093347021475
+            },
+            "alt": {
+              "n": 223,
+              "median_px": 0.43167135788531225,
+              "p95_px": 1.7765626405548904
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/008.png": {
+      "status": "ok",
+      "matched_markers": 9,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 3.6012040883801113,
+              "p95_px": 8.244365675500338
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 4.27404611572647,
+              "p95_px": 8.55172522799619
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 4.079063942668418,
+              "p95_px": 7.2596531561475635
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 4.248917648895221,
+              "p95_px": 5.9982694961394545
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.6425918562834751,
+              "p95_px": 2.6052118407057243
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 3.960981994516524,
+              "p95_px": 5.920464974829539
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 6.632903311719747,
+              "p95_px": 8.49818874450645
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2988629180280321,
+              "p95_px": 0.7197880852760453
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.28378979695964396,
+              "p95_px": 0.5259047759511937
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.31875775145319085,
+              "p95_px": 0.7586178033906786
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.43035217790465563,
+              "p95_px": 0.874803506307935
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.30210339466150193,
+              "p95_px": 0.6611664958871982
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.31567032902895004,
+              "p95_px": 0.6081182136588749
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.34584334315255494,
+              "p95_px": 0.9294255754439104
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/009.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 0.9875,
+        "sosyal": 0.8100558659217877,
+        "matematik": 0.85,
+        "fen": 0.5125
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 28,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 23,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 158,
+              "median_px": 1.5857298040506578,
+              "p95_px": 2.2065246162497414
+            },
+            "sosyal": {
+              "n": 145,
+              "median_px": 1.6655418554049743,
+              "p95_px": 2.432777727174693
+            },
+            "matematik": {
+              "n": 136,
+              "median_px": 1.5689157409163392,
+              "p95_px": 2.32952017785546
+            },
+            "fen": {
+              "n": 82,
+              "median_px": 1.1354580951124524,
+              "p95_px": 3.112737252591805
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 148,
+              "median_px": 1.8349696684558046,
+              "p95_px": 2.450623982815023
+            },
+            "orta": {
+              "n": 173,
+              "median_px": 1.5182134859242964,
+              "p95_px": 2.2880838527777296
+            },
+            "alt": {
+              "n": 200,
+              "median_px": 1.283517409589435,
+              "p95_px": 2.5861400090614
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 158,
+              "median_px": 0.2967695923594428,
+              "p95_px": 0.7264684738616367
+            },
+            "sosyal": {
+              "n": 145,
+              "median_px": 0.29016362562074344,
+              "p95_px": 0.6267794656339761
+            },
+            "matematik": {
+              "n": 136,
+              "median_px": 0.3140011745473382,
+              "p95_px": 0.6193980191526837
+            },
+            "fen": {
+              "n": 82,
+              "median_px": 0.5086494562048686,
+              "p95_px": 0.9161593069707881
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 148,
+              "median_px": 0.33828647424997715,
+              "p95_px": 0.7414557334432434
+            },
+            "orta": {
+              "n": 173,
+              "median_px": 0.29115497222863645,
+              "p95_px": 0.6306854336529528
+            },
+            "alt": {
+              "n": 200,
+              "median_px": 0.33907108744398395,
+              "p95_px": 0.8799712739768579
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_angled/010.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9832402234636871,
+        "matematik": 1.0,
+        "fen": 0.98125
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 47,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.7441524237607866,
+              "p95_px": 1.5602145368313154
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 0.8103949459930055,
+              "p95_px": 1.6528788375528363
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.9077464834445698,
+              "p95_px": 1.6821851741169735
+            },
+            "fen": {
+              "n": 157,
+              "median_px": 0.8762230993439446,
+              "p95_px": 2.2978607752830613
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.1165297330623747,
+              "p95_px": 1.7113537812975734
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.6408037023281153,
+              "p95_px": 1.1214550250551896
+            },
+            "alt": {
+              "n": 233,
+              "median_px": 0.895733634866246,
+              "p95_px": 2.168140421098519
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2661725225883129,
+              "p95_px": 0.5938838570452516
+            },
+            "sosyal": {
+              "n": 176,
+              "median_px": 0.27692515454585054,
+              "p95_px": 0.5733434535471648
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2809453352976641,
+              "p95_px": 0.46754576092918304
+            },
+            "fen": {
+              "n": 157,
+              "median_px": 0.3047880400533036,
+              "p95_px": 0.7269576261314399
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.29456328488476524,
+              "p95_px": 0.5374833578111625
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2717988132312098,
+              "p95_px": 0.5266990178462554
+            },
+            "alt": {
+              "n": 233,
+              "median_px": 0.27776950427216135,
+              "p95_px": 0.6922927303916327
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/001.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.818348123195624,
+              "p95_px": 2.1246448940561757
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.3993127832090553,
+              "p95_px": 2.628886087079677
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.9592934612218589,
+              "p95_px": 3.1715044515990423
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 2.1697484231778787,
+              "p95_px": 3.3880295851304365
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.9619584783134607,
+              "p95_px": 1.503571313987682
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.6316000327071785,
+              "p95_px": 2.7624271720274005
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.5237980728597087,
+              "p95_px": 3.3550329894205535
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25109804957334897,
+              "p95_px": 0.5354835517589188
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.2704098814036883,
+              "p95_px": 0.47768039216650904
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2796355907104676,
+              "p95_px": 0.5348282334869336
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.3009765962593175,
+              "p95_px": 0.6901588864389226
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.286959973302304,
+              "p95_px": 0.5067609057320088
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.24533237662576113,
+              "p95_px": 0.47355307808309743
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.2920396493788,
+              "p95_px": 0.7150478287497383
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/002.png": {
+      "status": "ok",
+      "matched_markers": 9,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.624470185898276,
+              "p95_px": 1.0903954879752915
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.6994307387051959,
+              "p95_px": 1.5296491341175944
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.139044927431402,
+              "p95_px": 1.8629926487085897
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.8448936123791637,
+              "p95_px": 4.72529656264857
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.1926336117228669,
+              "p95_px": 1.9788966659979372
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.951824662957793,
+              "p95_px": 1.9665029177560873
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.7870319970552087,
+              "p95_px": 3.8465918610936343
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25804658003922354,
+              "p95_px": 0.6224646658982733
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.26335242701475703,
+              "p95_px": 0.4833623309596177
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.26508690306980276,
+              "p95_px": 0.5993905026599465
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.29485739568399577,
+              "p95_px": 0.6913223206160766
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.26556258700575375,
+              "p95_px": 0.5046179536426922
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.24683390534328242,
+              "p95_px": 0.5020610352786886
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.2921054154449301,
+              "p95_px": 0.7848474851766737
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/003.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.5556040838482487,
+              "p95_px": 1.0808814526499722
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.541892953832736,
+              "p95_px": 0.9746878449522998
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.6290401043829459,
+              "p95_px": 1.0104094456563155
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.6859519291941463,
+              "p95_px": 1.0683916283318806
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.6631672959422609,
+              "p95_px": 1.084213363511416
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.4833171461672135,
+              "p95_px": 0.9459097610392002
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.6791908309831802,
+              "p95_px": 1.0338175359014943
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25511003017019007,
+              "p95_px": 0.5231485119832656
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.2648690883323318,
+              "p95_px": 0.5059515756596777
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.25668655231393195,
+              "p95_px": 0.497995541672554
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.273618299433188,
+              "p95_px": 0.5989424172327744
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.2807076840313312,
+              "p95_px": 0.49246152422894723
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.25141339654703865,
+              "p95_px": 0.5017859568681341
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.25297712255287674,
+              "p95_px": 0.5992980840150458
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/005.png": {
+      "status": "ok",
+      "matched_markers": 9,
+      "marker_inliers": 8,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.5389224090846159,
+              "p95_px": 1.145798923957514
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.0529192551110138,
+              "p95_px": 2.4298990827825278
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.7940149058026578,
+              "p95_px": 3.733717142341678
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 3.4515918472273697,
+              "p95_px": 5.656215710176367
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.0305978339673323,
+              "p95_px": 2.8894389415921897
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.2224833700966014,
+              "p95_px": 3.8645965378913303
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.4113501889957702,
+              "p95_px": 5.521719156624012
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.2613264245091661,
+              "p95_px": 0.5126148263756946
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.275429859512656,
+              "p95_px": 0.4963090110265417
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2666462195093674,
+              "p95_px": 0.50414394036896
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.27688498219817725,
+              "p95_px": 0.6364971878457862
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.28283411765229316,
+              "p95_px": 0.49937058370307147
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.25324334385589853,
+              "p95_px": 0.48192678662691285
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.27623624682377634,
+              "p95_px": 0.6383637050695291
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/006.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 9,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.5392531671441168,
+              "p95_px": 1.0754331411088232
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 1.1753841396216522,
+              "p95_px": 2.435318300396628
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 1.7137333772496302,
+              "p95_px": 3.244743627566844
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 2.8559515052595517,
+              "p95_px": 5.436847671424784
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.9242419577148228,
+              "p95_px": 2.2843020711296482
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 1.3772818053630633,
+              "p95_px": 3.210049626022596
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 2.289094616375219,
+              "p95_px": 5.036202727611483
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.23403362846535353,
+              "p95_px": 0.4889809678636418
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.27171802191598454,
+              "p95_px": 0.5227088090068652
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2659496850123434,
+              "p95_px": 0.4974285919057518
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.2713341571254454,
+              "p95_px": 0.6133026843817908
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.26465312402624364,
+              "p95_px": 0.49624843793844564
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.26088188332824813,
+              "p95_px": 0.4641437528298012
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.26110282705532495,
+              "p95_px": 0.5806578621803187
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/007.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9888268156424581,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.4544662208321728,
+              "p95_px": 0.825896171351401
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.5666868520233805,
+              "p95_px": 1.0226162414755204
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.6801543718018156,
+              "p95_px": 1.045628109961678
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.503038124589508,
+              "p95_px": 0.9641104995663836
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.7539529177825798,
+              "p95_px": 1.0940804127869033
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.5612659742355622,
+              "p95_px": 0.9502004075230782
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.39680791759986433,
+              "p95_px": 0.7788288546608289
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25310293179462395,
+              "p95_px": 0.575997806810559
+            },
+            "sosyal": {
+              "n": 177,
+              "median_px": 0.26890812795138386,
+              "p95_px": 0.5405340996209149
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2657962179320583,
+              "p95_px": 0.49552174048040626
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.2669640915537106,
+              "p95_px": 0.6097298440334138
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.26661604255872123,
+              "p95_px": 0.5142033194140915
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2580371316485183,
+              "p95_px": 0.4918403059031615
+            },
+            "alt": {
+              "n": 237,
+              "median_px": 0.26634801941994596,
+              "p95_px": 0.6807619222078459
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/008.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.7080847928076759,
+              "p95_px": 1.2050455466103516
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.8522807545880253,
+              "p95_px": 1.3981444012744968
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.9704886443430161,
+              "p95_px": 1.4497937423449299
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.7390220240031246,
+              "p95_px": 1.3084976433489643
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 1.0590272804544192,
+              "p95_px": 1.4703567227288599
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.7766535374233321,
+              "p95_px": 1.2833757519581326
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.6824854959135069,
+              "p95_px": 1.1452434960465818
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25914633695515255,
+              "p95_px": 0.5540975615743666
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.26102963949543856,
+              "p95_px": 0.5000298447937822
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.2737268959046467,
+              "p95_px": 0.5086549071464842
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.30065352385398925,
+              "p95_px": 0.590520143674843
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.28372276074285807,
+              "p95_px": 0.5341599753284509
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2584611095206386,
+              "p95_px": 0.48959873783732455
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.2737400885431096,
+              "p95_px": 0.5924954971404089
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/009.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 0.9125,
+        "sosyal": 0.39106145251396646,
+        "matematik": 0.4875,
+        "fen": 0.2
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 39,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 18,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 17,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fallback_to_H",
+            "reason": "7 anchors"
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 146,
+              "median_px": 1.2397353348571118,
+              "p95_px": 1.7553538940275584
+            },
+            "sosyal": {
+              "n": 70,
+              "median_px": 1.731455886836542,
+              "p95_px": 2.1527437180633835
+            },
+            "matematik": {
+              "n": 78,
+              "median_px": 1.6074271722099143,
+              "p95_px": 2.0580716229010303
+            },
+            "fen": {
+              "n": 32,
+              "median_px": 1.6394887404155403,
+              "p95_px": 2.187690844665942
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 141,
+              "median_px": 1.6301263840349238,
+              "p95_px": 2.127485848118135
+            },
+            "orta": {
+              "n": 112,
+              "median_px": 1.4949707551871263,
+              "p95_px": 1.9320649690260028
+            },
+            "alt": {
+              "n": 73,
+              "median_px": 0.9879808778768263,
+              "p95_px": 1.3618100204684984
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 146,
+              "median_px": 0.28065555124579056,
+              "p95_px": 0.584128526782046
+            },
+            "sosyal": {
+              "n": 70,
+              "median_px": 0.2816395373468601,
+              "p95_px": 0.6055848602423193
+            },
+            "matematik": {
+              "n": 78,
+              "median_px": 0.2732743690160605,
+              "p95_px": 0.5999645030602755
+            },
+            "fen": {
+              "n": 32,
+              "median_px": 1.6394887404155403,
+              "p95_px": 2.187690844665942
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 141,
+              "median_px": 0.3376583103629925,
+              "p95_px": 1.930105952257685
+            },
+            "orta": {
+              "n": 112,
+              "median_px": 0.27083834250708383,
+              "p95_px": 0.7413588798584906
+            },
+            "alt": {
+              "n": 73,
+              "median_px": 0.2845272461110812,
+              "p95_px": 0.7104293469263847
+            }
+          }
+        }
+      }
+    },
+    "dataset/flat_front/010.png": {
+      "status": "ok",
+      "matched_markers": 10,
+      "marker_inliers": 10,
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.994413407821229,
+        "matematik": 1.0,
+        "fen": 1.0
+      },
+      "fits": {
+        "H_local_contours": {
+          "turkce": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "sosyal": {
+            "status": "fitted",
+            "anchors": 50,
+            "rejected_predictions": 0
+          },
+          "matematik": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          },
+          "fen": {
+            "status": "fitted",
+            "anchors": 40,
+            "rejected_predictions": 0
+          }
+        }
+      },
+      "metrics": {
+        "H_ransac": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.5107316906311113,
+              "p95_px": 1.0833600158749843
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.7433968568568619,
+              "p95_px": 1.2681017264298375
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.8976969466702129,
+              "p95_px": 1.4805014223793374
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 1.1140116712986567,
+              "p95_px": 1.8776319648257729
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.9209512462406118,
+              "p95_px": 1.3413327558627421
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.6220717028001641,
+              "p95_px": 1.2546189189975452
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.9004973428448866,
+              "p95_px": 1.766863939927701
+            }
+          }
+        },
+        "H_local_contours": {
+          "by_subject": {
+            "turkce": {
+              "n": 160,
+              "median_px": 0.25341650448215813,
+              "p95_px": 0.5365219581465916
+            },
+            "sosyal": {
+              "n": 178,
+              "median_px": 0.24783221383667478,
+              "p95_px": 0.5209220302849557
+            },
+            "matematik": {
+              "n": 160,
+              "median_px": 0.26683534268691367,
+              "p95_px": 0.5546816811975035
+            },
+            "fen": {
+              "n": 160,
+              "median_px": 0.2868257624685416,
+              "p95_px": 0.6257414818982959
+            }
+          },
+          "by_band": {
+            "üst": {
+              "n": 210,
+              "median_px": 0.27107008262747345,
+              "p95_px": 0.5272541686043988
+            },
+            "orta": {
+              "n": 210,
+              "median_px": 0.2585178972993115,
+              "p95_px": 0.5165255411726557
+            },
+            "alt": {
+              "n": 238,
+              "median_px": 0.26319479878876606,
+              "p95_px": 0.6280066891263434
+            }
+          }
+        }
+      }
+    }
+  }
+}

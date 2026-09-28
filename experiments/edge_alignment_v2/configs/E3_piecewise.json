@@ -1,0 +1,13 @@
+{
+  "id": "E3",
+  "name": "E3 — Piece-wise warp",
+  "question": "Her ders bloğuna ayrı bir homography vermek (global H + düzeltme yerine) daha iyi veya daha sade mi?",
+  "methods": ["H_ransac", "H_local_contours", "piecewise_H"],
+  "baseline": "H_ransac",
+  "changed": "Blok içinde global H atılır; referans balon merkezleri -> tespit edilen konturlar arasında ders başına 3x3 homography (RANSAC 2 px).",
+  "not_used": "Blok içi eğrilik (her blok düzlem kabul edilir), insan etiketli ground truth.",
+  "look_at": "metrics.json -> aggregate.by_band (üst/orta/alt) ve by_subject; piecewise_H ile H_local_contours farkı.",
+  "good_if": "piecewise_H, H_local_contours'a yakın veya daha iyi ve bantlar arasında (üst/orta/alt) fark küçükse: blok başına düzlem varsayımı yeterli, daha sade model seçilebilir.",
+  "bad_if": "Alt/üst bantlarda H_local_contours'tan belirgin kötüyse blok içinde de eğrilik vardır; TPS düzeltmesi gerekir.",
+  "next_decision": "Hangi yöntem seçilirse seçilsin taranmış düz referansla gerçek ground truth doğrulaması (E4)."
+}

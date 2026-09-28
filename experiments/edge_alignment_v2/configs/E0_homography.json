@@ -1,0 +1,13 @@
+{
+  "id": "E0",
+  "name": "E0 — Global homography",
+  "question": "Tek bir global perspektif dönüşümü (4+ köşe markerından homography) bütün balonları hizalamaya yeter mi?",
+  "methods": ["H_all", "H_ransac"],
+  "baseline": "H_ransac",
+  "changed": "Hiçbir düzeltme yok; başlangıç noktası. H_all tüm eşleşen markerları, H_ransac 3 px RANSAC inlier'larını kullanır.",
+  "not_used": "TPS, balon konturları, ders bazlı bölme.",
+  "look_at": "comparison.jpg: kırmızı artılar (tahmin) yeşil halkaların (tespit edilen balon) ortasında mı? Özellikle alt satırlar ve sağ bloklar (Matematik/Fen).",
+  "good_if": "Tüm derslerde medyan hata < 0.5 px ve kırmızı artılar halkaların içinde kalıyorsa global model yeterlidir; sonraki deneylere gerek yok.",
+  "bad_if": "Hata 1 px'in üzerinde ve bloktan bloğa/üstten alta artıyorsa kağıt düzlem değildir; global model yetmez.",
+  "next_decision": "Global model yetmiyorsa daha esnek bir warp dene (E1 — marker TPS)."
+}

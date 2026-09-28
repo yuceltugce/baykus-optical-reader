@@ -1,3 +1,5 @@
+> **Arşiv.** Bu klasör eski deney kaydıdır ve değiştirilmez. Güncel, düzenli sürüm: [`../edge_alignment_v2/`](../edge_alignment_v2/README.md). Git etiketi: `archive/old-notebook-experiments`.
+
 # E0 — Kenar hizalama başlangıç deneyi
 
 Referans: `dataset/flat_front/004.png`. Bu tarama fiziksel ground truth değildir.

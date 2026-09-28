@@ -1,0 +1,13 @@
+{
+  "id": "E2",
+  "name": "E2 — Local contour correction",
+  "question": "Her ders bloğunun kendi basılı balon konturlarını yerel kontrol noktası yapmak hatayı azaltır mı?",
+  "methods": ["H_ransac", "H_local_contours"],
+  "baseline": "H_ransac",
+  "changed": "Global H'nin üstüne, her derste eğitim satırlarından (1, 6, 11, ... sorular) kurulan yumuşak TPS düzeltme alanı. Ölçüm yalnız diğer satırlarda.",
+  "not_used": "Ders başına bağımsız perspektif (E3), insan etiketli ground truth (E4).",
+  "look_at": "REPORT.md 'Başarısız olduğu durum' listesi (fallback olan dersler) ve metrics.json -> aggregate.by_subject.",
+  "good_if": "Held-out satırlarda hata tüm derslerde belirgin düşer ve fallback az görülür.",
+  "bad_if": "Kontur tespiti düşük kapsama verirse (bulanık/düşük kontrast görüntüler) düzeltme kurulamaz ve H'ye geri düşer.",
+  "next_decision": "Fikir işe yarıyorsa tam piece-wise warp olarak yaz (E3); düşük kapsamalı görüntüleri ayrı incele."
+}

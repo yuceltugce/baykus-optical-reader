@@ -1,0 +1,13 @@
+{
+  "id": "E1",
+  "name": "E1 — Marker TPS",
+  "question": "Aynı markerlarla esnek bir Thin-Plate Spline warp, global homography'nin kenar hatalarını azaltır mı?",
+  "methods": ["H_ransac", "TPS_markers", "H_TPS_all", "H_TPS_inliers"],
+  "baseline": "H_ransac",
+  "changed": "Homography yerine (veya üstüne) markerlardan TPS. Kontrol noktaları hâlâ yalnız kenardaki markerlar.",
+  "not_used": "Balon konturları, ders bazlı bölme.",
+  "look_at": "metrics.json -> aggregate.by_subject; comparison.jpg'de TPS_markers sütununda Matematik/Fen alt satırları.",
+  "good_if": "TPS varyantları her derste H_ransac'tan düşük hata verir ve hiçbir derste bozulmazsa esnek marker warp yeterlidir.",
+  "bad_if": "Bir derste iyileşip başka derste (özellikle markerlardan uzak Matematik/Fen) belirgin kötüleşirse, marker desteği iç bölgeler için yetersizdir.",
+  "next_decision": "Marker'lar içeriyi temsil etmiyorsa kontrol noktasını içeriden al: her dersin kendi basılı balonları (E2)."
+}
