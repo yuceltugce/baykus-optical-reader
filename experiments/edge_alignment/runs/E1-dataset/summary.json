@@ -1,0 +1,171 @@
+{
+  "aggregation": "median of per-image held-out automatic-match median distances, not ground truth",
+  "image_count": 40,
+  "working_height": 2000,
+  "expected_held_out_by_subject": {
+    "turkce": 160,
+    "sosyal": 180,
+    "matematik": 160,
+    "fen": 160
+  },
+  "median_px": {
+    "H_all": {
+      "turkce": 1.1943190360719562,
+      "sosyal": 1.4209776340587663,
+      "matematik": 1.4231446644471613,
+      "fen": 1.5143418121636787
+    },
+    "H_ransac": {
+      "turkce": 1.156122093203758,
+      "sosyal": 1.370118449477439,
+      "matematik": 1.578325712965851,
+      "fen": 1.6344505776170921
+    },
+    "TPS_markers": {
+      "turkce": 1.0993294513370115,
+      "sosyal": 1.5219390577359644,
+      "matematik": 2.188332810249457,
+      "fen": 3.460807918133895
+    },
+    "H_TPS_all": {
+      "turkce": 1.0895472492001401,
+      "sosyal": 1.5219294808892592,
+      "matematik": 1.6674119257944688,
+      "fen": 1.747845645230392
+    },
+    "H_TPS_inliers": {
+      "turkce": 1.0757115171359786,
+      "sosyal": 1.4585707654910733,
+      "matematik": 1.9182221644709223,
+      "fen": 1.8473032094728148
+    },
+    "H_local_contours": {
+      "turkce": 0.29590665630811047,
+      "sosyal": 0.289453942961002,
+      "matematik": 0.2976397013984779,
+      "fen": 0.36049144805705746
+    }
+  },
+  "coverage_review_policy": "<80% of nominal held-out bubbles or no local fit in any subject; diagnostic threshold, not calibrated quality guarantee",
+  "review_required": [
+    {
+      "image": "dataset/curved_angled/006.png",
+      "review_subjects": [
+        "matematik",
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.9375,
+        "sosyal": 0.9166666666666666,
+        "matematik": 0.76875,
+        "fen": 0.25625
+      },
+      "local_fallback_subjects": [
+        "fen"
+      ]
+    },
+    {
+      "image": "dataset/curved_angled/008.png",
+      "review_subjects": [
+        "sosyal",
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.875,
+        "sosyal": 0.7777777777777778,
+        "matematik": 0.85,
+        "fen": 0.775
+      },
+      "local_fallback_subjects": []
+    },
+    {
+      "image": "dataset/curved_angled/010.png",
+      "review_subjects": [
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 1.0,
+        "sosyal": 0.9222222222222223,
+        "matematik": 0.8875,
+        "fen": 0.55625
+      },
+      "local_fallback_subjects": []
+    },
+    {
+      "image": "dataset/curved_front/006.png",
+      "review_subjects": [
+        "turkce",
+        "sosyal",
+        "matematik",
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.60625,
+        "sosyal": 0.07777777777777778,
+        "matematik": 0.10625,
+        "fen": 0.0625
+      },
+      "local_fallback_subjects": [
+        "sosyal",
+        "matematik",
+        "fen"
+      ]
+    },
+    {
+      "image": "dataset/curved_front/010.png",
+      "review_subjects": [
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.9625,
+        "sosyal": 0.8555555555555555,
+        "matematik": 0.90625,
+        "fen": 0.63125
+      },
+      "local_fallback_subjects": []
+    },
+    {
+      "image": "dataset/flat_angled/009.png",
+      "review_subjects": [
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.9875,
+        "sosyal": 0.8055555555555556,
+        "matematik": 0.85,
+        "fen": 0.5125
+      },
+      "local_fallback_subjects": []
+    },
+    {
+      "image": "dataset/flat_front/009.png",
+      "review_subjects": [
+        "sosyal",
+        "matematik",
+        "fen"
+      ],
+      "coverage": {
+        "turkce": 0.9125,
+        "sosyal": 0.3888888888888889,
+        "matematik": 0.4875,
+        "fen": 0.2
+      },
+      "local_fallback_subjects": [
+        "fen"
+      ]
+    }
+  ],
+  "unresolved_reference": [
+    {
+      "index": 419,
+      "subject": "sosyal",
+      "question": 44,
+      "option": "E",
+      "old": [
+        1016.0592592592593,
+        1833.8962962962962
+      ],
+      "new": null
+    }
+  ]
+}

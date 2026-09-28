@@ -1,0 +1,7761 @@
+{
+  "status": "provisional_ellipse_refined_not_ground_truth",
+  "reference": "dataset/flat_front/004.png",
+  "working_height": 2000,
+  "original_size": [
+    6717,
+    9463
+  ],
+  "bubbles": [
+    {
+      "subject": "turkce",
+      "question": 1,
+      "option": "A",
+      "x": 737.5029907226562,
+      "y": 617.1571044921875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "turkce",
+      "question": 1,
+      "option": "B",
+      "x": 765.0,
+      "y": 617.0,
+      "contour_refined": true,
+      "seed_shift": 1.4142135623730951
+    },
+    {
+      "subject": "turkce",
+      "question": 1,
+      "option": "C",
+      "x": 793.0,
+      "y": 617.0,
+      "contour_refined": true,
+      "seed_shift": 1.4142135623730951
+    },
+    {
+      "subject": "turkce",
+      "question": 1,
+      "option": "D",
+      "x": 821.0,
+      "y": 616.0,
+      "contour_refined": true,
+      "seed_shift": 1.0
+    },
+    {
+      "subject": "turkce",
+      "question": 1,
+      "option": "E",
+      "x": 849.0,
+      "y": 616.0,
+      "contour_refined": true,
+      "seed_shift": 1.0
+    },
+    {
+      "subject": "turkce",
+      "question": 2,
+      "option": "A",
+      "x": 737.5,
+      "y": 645.0,
+      "contour_refined": true,
+      "seed_shift": 1.732435622824382
+    },
+    {
+      "subject": "turkce",
+      "question": 2,
+      "option": "B",
+      "x": 765.5,
+      "y": 645.0,
+      "contour_refined": true,
+      "seed_shift": 1.7166353358602524
+    },
+    {
+      "subject": "turkce",
+      "question": 2,
+      "option": "C",
+      "x": 793.0,
+      "y": 645.0,
+      "contour_refined": true,
+      "seed_shift": 1.254810307529495
+    },
+    {
+      "subject": "turkce",
+      "question": 2,
+      "option": "D",
+      "x": 821.0,
+      "y": 644.0,
+      "contour_refined": true,
+      "seed_shift": 1.1054755173733612
+    },
+    {
+      "subject": "turkce",
+      "question": 2,
+      "option": "E",
+      "x": 849.0,
+      "y": 644.0,
+      "contour_refined": true,
+      "seed_shift": 1.0892323251822176
+    },
+    {
+      "subject": "turkce",
+      "question": 3,
+      "option": "A",
+      "x": 737.0,
+      "y": 673.0,
+      "contour_refined": true,
+      "seed_shift": 1.2459298920609485
+    },
+    {
+      "subject": "turkce",
+      "question": 3,
+      "option": "B",
+      "x": 765.0,
+      "y": 673.0,
+      "contour_refined": true,
+      "seed_shift": 1.2128924886637629
+    },
+    {
+      "subject": "turkce",
+      "question": 3,
+      "option": "C",
+      "x": 793.0,
+      "y": 673.0,
+      "contour_refined": true,
+      "seed_shift": 1.1799206437494958
+    },
+    {
+      "subject": "turkce",
+      "question": 3,
+      "option": "D",
+      "x": 821.0,
+      "y": 672.0,
+      "contour_refined": true,
+      "seed_shift": 1.2973728349707343
+    },
+    {
+      "subject": "turkce",
+      "question": 3,
+      "option": "E",
+      "x": 849.0,
+      "y": 672.0,
+      "contour_refined": true,
+      "seed_shift": 1.2684463315945071
+    },
+    {
+      "subject": "turkce",
+      "question": 4,
+      "option": "A",
+      "x": 737.0,
+      "y": 701.0,
+      "contour_refined": true,
+      "seed_shift": 1.307943666139122
+    },
+    {
+      "subject": "turkce",
+      "question": 4,
+      "option": "B",
+      "x": 765.0,
+      "y": 701.0,
+      "contour_refined": true,
+      "seed_shift": 1.2566718722914823
+    },
+    {
+      "subject": "turkce",
+      "question": 4,
+      "option": "C",
+      "x": 793.0,
+      "y": 701.0,
+      "contour_refined": true,
+      "seed_shift": 1.2054009511326043
+    },
+    {
+      "subject": "turkce",
+      "question": 4,
+      "option": "D",
+      "x": 821.0,
+      "y": 700.0,
+      "contour_refined": true,
+      "seed_shift": 1.5437941767682384
+    },
+    {
+      "subject": "turkce",
+      "question": 4,
+      "option": "E",
+      "x": 849.0,
+      "y": 700.0,
+      "contour_refined": true,
+      "seed_shift": 1.5058509600027141
+    },
+    {
+      "subject": "turkce",
+      "question": 5,
+      "option": "A",
+      "x": 737.0,
+      "y": 729.0,
+      "contour_refined": true,
+      "seed_shift": 1.4573589462633785
+    },
+    {
+      "subject": "turkce",
+      "question": 5,
+      "option": "B",
+      "x": 765.0,
+      "y": 729.0,
+      "contour_refined": true,
+      "seed_shift": 1.3912996828540387
+    },
+    {
+      "subject": "turkce",
+      "question": 5,
+      "option": "C",
+      "x": 793.0,
+      "y": 729.0,
+      "contour_refined": true,
+      "seed_shift": 1.3254754204504955
+    },
+    {
+      "subject": "turkce",
+      "question": 5,
+      "option": "D",
+      "x": 821.0,
+      "y": 728.0,
+      "contour_refined": true,
+      "seed_shift": 1.8227585362364804
+    },
+    {
+      "subject": "turkce",
+      "question": 5,
+      "option": "E",
+      "x": 849.0,
+      "y": 728.0,
+      "contour_refined": true,
+      "seed_shift": 1.778291345937981
+    },
+    {
+      "subject": "turkce",
+      "question": 6,
+      "option": "A",
+      "x": 737.0,
+      "y": 757.5,
+      "contour_refined": true,
+      "seed_shift": 1.5272442436987486
+    },
+    {
+      "subject": "turkce",
+      "question": 6,
+      "option": "B",
+      "x": 765.0,
+      "y": 757.0,
+      "contour_refined": true,
+      "seed_shift": 1.5939197055558219
+    },
+    {
+      "subject": "turkce",
+      "question": 6,
+      "option": "C",
+      "x": 793.0,
+      "y": 757.0,
+      "contour_refined": true,
+      "seed_shift": 1.5178582401617464
+    },
+    {
+      "subject": "turkce",
+      "question": 6,
+      "option": "D",
+      "x": 821.0,
+      "y": 756.5,
+      "contour_refined": true,
+      "seed_shift": 1.743909179721297
+    },
+    {
+      "subject": "turkce",
+      "question": 6,
+      "option": "E",
+      "x": 849.0,
+      "y": 756.0,
+      "contour_refined": true,
+      "seed_shift": 2.0719930231606964
+    },
+    {
+      "subject": "turkce",
+      "question": 7,
+      "option": "A",
+      "x": 737.0,
+      "y": 785.0,
+      "contour_refined": true,
+      "seed_shift": 1.9273456895349752
+    },
+    {
+      "subject": "turkce",
+      "question": 7,
+      "option": "B",
+      "x": 765.0,
+      "y": 785.0,
+      "contour_refined": true,
+      "seed_shift": 1.842232302224208
+    },
+    {
+      "subject": "turkce",
+      "question": 7,
+      "option": "C",
+      "x": 793.0,
+      "y": 785.0,
+      "contour_refined": true,
+      "seed_shift": 1.7589818344760684
+    },
+    {
+      "subject": "turkce",
+      "question": 7,
+      "option": "D",
+      "x": 821.0,
+      "y": 784.5,
+      "contour_refined": true,
+      "seed_shift": 2.0289246349304024
+    },
+    {
+      "subject": "turkce",
+      "question": 7,
+      "option": "E",
+      "x": 849.0,
+      "y": 784.0,
+      "contour_refined": true,
+      "seed_shift": 2.379094795233493
+    },
+    {
+      "subject": "turkce",
+      "question": 8,
+      "option": "A",
+      "x": 737.0,
+      "y": 813.5,
+      "contour_refined": true,
+      "seed_shift": 1.9362558865142776
+    },
+    {
+      "subject": "turkce",
+      "question": 8,
+      "option": "B",
+      "x": 764.5,
+      "y": 813.0,
+      "contour_refined": true,
+      "seed_shift": 1.774019078819472
+    },
+    {
+      "subject": "turkce",
+      "question": 8,
+      "option": "C",
+      "x": 793.0,
+      "y": 813.0,
+      "contour_refined": true,
+      "seed_shift": 2.0315647812927202
+    },
+    {
+      "subject": "turkce",
+      "question": 8,
+      "option": "D",
+      "x": 821.0,
+      "y": 812.5,
+      "contour_refined": true,
+      "seed_shift": 2.330423814509714
+    },
+    {
+      "subject": "turkce",
+      "question": 8,
+      "option": "E",
+      "x": 848.5,
+      "y": 812.5,
+      "contour_refined": true,
+      "seed_shift": 2.0324006368334024
+    },
+    {
+      "subject": "turkce",
+      "question": 9,
+      "option": "A",
+      "x": 736.5,
+      "y": 841.5,
+      "contour_refined": true,
+      "seed_shift": 1.8080610240034025
+    },
+    {
+      "subject": "turkce",
+      "question": 9,
+      "option": "B",
+      "x": 764.5,
+      "y": 841.0,
+      "contour_refined": true,
+      "seed_shift": 2.1003958314665265
+    },
+    {
+      "subject": "turkce",
+      "question": 9,
+      "option": "C",
+      "x": 792.5,
+      "y": 841.0,
+      "contour_refined": true,
+      "seed_shift": 2.026474818479984
+    },
+    {
+      "subject": "turkce",
+      "question": 9,
+      "option": "D",
+      "x": 820.5,
+      "y": 841.0,
+      "contour_refined": true,
+      "seed_shift": 1.9593213174049122
+    },
+    {
+      "subject": "turkce",
+      "question": 9,
+      "option": "E",
+      "x": 848.0,
+      "y": 840.0,
+      "contour_refined": true,
+      "seed_shift": 2.7486839305629687
+    },
+    {
+      "subject": "turkce",
+      "question": 10,
+      "option": "A",
+      "x": 736.5,
+      "y": 869.5,
+      "contour_refined": true,
+      "seed_shift": 2.1241078879207045
+    },
+    {
+      "subject": "turkce",
+      "question": 10,
+      "option": "B",
+      "x": 764.5,
+      "y": 869.0,
+      "contour_refined": true,
+      "seed_shift": 2.434041128045699
+    },
+    {
+      "subject": "turkce",
+      "question": 10,
+      "option": "C",
+      "x": 792.5,
+      "y": 869.0,
+      "contour_refined": true,
+      "seed_shift": 2.3574758339572517
+    },
+    {
+      "subject": "turkce",
+      "question": 10,
+      "option": "D",
+      "x": 820.5,
+      "y": 869.0,
+      "contour_refined": true,
+      "seed_shift": 2.2887039302788046
+    },
+    {
+      "subject": "turkce",
+      "question": 10,
+      "option": "E",
+      "x": 848.5,
+      "y": 868.0,
+      "contour_refined": true,
+      "seed_shift": 3.181166843346529
+    },
+    {
+      "subject": "turkce",
+      "question": 11,
+      "option": "A",
+      "x": 736.5,
+      "y": 897.5,
+      "contour_refined": true,
+      "seed_shift": 2.451405127499466
+    },
+    {
+      "subject": "turkce",
+      "question": 11,
+      "option": "B",
+      "x": 764.0,
+      "y": 897.0,
+      "contour_refined": true,
+      "seed_shift": 2.5653700570953233
+    },
+    {
+      "subject": "turkce",
+      "question": 11,
+      "option": "C",
+      "x": 792.0,
+      "y": 897.0,
+      "contour_refined": true,
+      "seed_shift": 2.513590788388541
+    },
+    {
+      "subject": "turkce",
+      "question": 11,
+      "option": "D",
+      "x": 820.0,
+      "y": 897.0,
+      "contour_refined": true,
+      "seed_shift": 2.4725684737099414
+    },
+    {
+      "subject": "turkce",
+      "question": 11,
+      "option": "E",
+      "x": 848.0,
+      "y": 896.0,
+      "contour_refined": true,
+      "seed_shift": 3.4358549132036575
+    },
+    {
+      "subject": "turkce",
+      "question": 12,
+      "option": "A",
+      "x": 736.0,
+      "y": 925.5,
+      "contour_refined": true,
+      "seed_shift": 2.5265664204860796
+    },
+    {
+      "subject": "turkce",
+      "question": 12,
+      "option": "B",
+      "x": 764.0,
+      "y": 925.0,
+      "contour_refined": true,
+      "seed_shift": 2.9163841007736386
+    },
+    {
+      "subject": "turkce",
+      "question": 12,
+      "option": "C",
+      "x": 792.0,
+      "y": 925.0,
+      "contour_refined": true,
+      "seed_shift": 2.8613081834046126
+    },
+    {
+      "subject": "turkce",
+      "question": 12,
+      "option": "D",
+      "x": 820.0,
+      "y": 924.5,
+      "contour_refined": true,
+      "seed_shift": 3.309119261981097
+    },
+    {
+      "subject": "turkce",
+      "question": 12,
+      "option": "E",
+      "x": 848.0,
+      "y": 924.0,
+      "contour_refined": true,
+      "seed_shift": 3.7794404045241654
+    },
+    {
+      "subject": "turkce",
+      "question": 13,
+      "option": "A",
+      "x": 736.0,
+      "y": 953.5,
+      "contour_refined": true,
+      "seed_shift": 2.8789117401135016
+    },
+    {
+      "subject": "turkce",
+      "question": 13,
+      "option": "B",
+      "x": 764.0,
+      "y": 953.0,
+      "contour_refined": true,
+      "seed_shift": 3.2676969755467606
+    },
+    {
+      "subject": "turkce",
+      "question": 13,
+      "option": "C",
+      "x": 792.0,
+      "y": 953.0,
+      "contour_refined": true,
+      "seed_shift": 3.2092281469452106
+    },
+    {
+      "subject": "turkce",
+      "question": 13,
+      "option": "D",
+      "x": 820.0,
+      "y": 952.5,
+      "contour_refined": true,
+      "seed_shift": 3.654745728219064
+    },
+    {
+      "subject": "turkce",
+      "question": 13,
+      "option": "E",
+      "x": 848.0,
+      "y": 952.0,
+      "contour_refined": true,
+      "seed_shift": 4.123025895844448
+    },
+    {
+      "subject": "turkce",
+      "question": 14,
+      "option": "A",
+      "x": 736.0,
+      "y": 981.5,
+      "contour_refined": true,
+      "seed_shift": 3.232264046175178
+    },
+    {
+      "subject": "turkce",
+      "question": 14,
+      "option": "B",
+      "x": 764.0,
+      "y": 981.0,
+      "contour_refined": true,
+      "seed_shift": 3.619221661089303
+    },
+    {
+      "subject": "turkce",
+      "question": 14,
+      "option": "C",
+      "x": 792.0,
+      "y": 980.5,
+      "contour_refined": true,
+      "seed_shift": 4.043360660650718
+    },
+    {
+      "subject": "turkce",
+      "question": 14,
+      "option": "D",
+      "x": 820.0,
+      "y": 980.5,
+      "contour_refined": true,
+      "seed_shift": 4.000385783865381
+    },
+    {
+      "subject": "turkce",
+      "question": 14,
+      "option": "E",
+      "x": 848.0,
+      "y": 980.5,
+      "contour_refined": true,
+      "seed_shift": 3.969404595087957
+    },
+    {
+      "subject": "turkce",
+      "question": 15,
+      "option": "A",
+      "x": 736.0,
+      "y": 1009.5,
+      "contour_refined": true,
+      "seed_shift": 3.5863257029485016
+    },
+    {
+      "subject": "turkce",
+      "question": 15,
+      "option": "B",
+      "x": 764.0,
+      "y": 1009.0,
+      "contour_refined": true,
+      "seed_shift": 3.97090190605973
+    },
+    {
+      "subject": "turkce",
+      "question": 15,
+      "option": "C",
+      "x": 792.0,
+      "y": 1009.0,
+      "contour_refined": true,
+      "seed_shift": 3.9054592029548436
+    },
+    {
+      "subject": "turkce",
+      "question": 15,
+      "option": "D",
+      "x": 820.0,
+      "y": 1009.0,
+      "contour_refined": true,
+      "seed_shift": 3.8537910878952824
+    },
+    {
+      "subject": "turkce",
+      "question": 15,
+      "option": "E",
+      "x": 848.0,
+      "y": 1008.0,
+      "contour_refined": true,
+      "seed_shift": 4.810196878485147
+    },
+    {
+      "subject": "turkce",
+      "question": 16,
+      "option": "A",
+      "x": 736.0,
+      "y": 1037.5,
+      "contour_refined": true,
+      "seed_shift": 3.940905525086687
+    },
+    {
+      "subject": "turkce",
+      "question": 16,
+      "option": "B",
+      "x": 764.0,
+      "y": 1037.0,
+      "contour_refined": true,
+      "seed_shift": 4.322699743256295
+    },
+    {
+      "subject": "turkce",
+      "question": 16,
+      "option": "C",
+      "x": 792.0,
+      "y": 1037.0,
+      "contour_refined": true,
+      "seed_shift": 4.253706277355859
+    },
+    {
+      "subject": "turkce",
+      "question": 16,
+      "option": "D",
+      "x": 820.0,
+      "y": 1036.5,
+      "contour_refined": true,
+      "seed_shift": 4.691694649598916
+    },
+    {
+      "subject": "turkce",
+      "question": 16,
+      "option": "E",
+      "x": 848.0,
+      "y": 1036.0,
+      "contour_refined": true,
+      "seed_shift": 5.153782369805531
+    },
+    {
+      "subject": "turkce",
+      "question": 17,
+      "option": "A",
+      "x": 736.0,
+      "y": 1065.5,
+      "contour_refined": true,
+      "seed_shift": 4.295875207019777
+    },
+    {
+      "subject": "turkce",
+      "question": 17,
+      "option": "B",
+      "x": 764.0,
+      "y": 1065.0,
+      "contour_refined": true,
+      "seed_shift": 4.674588623664821
+    },
+    {
+      "subject": "turkce",
+      "question": 17,
+      "option": "C",
+      "x": 792.0,
+      "y": 1065.0,
+      "contour_refined": true,
+      "seed_shift": 4.602014505830101
+    },
+    {
+      "subject": "turkce",
+      "question": 17,
+      "option": "D",
+      "x": 820.0,
+      "y": 1065.0,
+      "contour_refined": true,
+      "seed_shift": 4.544766814534599
+    },
+    {
+      "subject": "turkce",
+      "question": 17,
+      "option": "E",
+      "x": 848.0,
+      "y": 1064.5,
+      "contour_refined": true,
+      "seed_shift": 5.000096792108621
+    },
+    {
+      "subject": "turkce",
+      "question": 18,
+      "option": "A",
+      "x": 736.0,
+      "y": 1093.5,
+      "contour_refined": true,
+      "seed_shift": 4.651145488749339
+    },
+    {
+      "subject": "turkce",
+      "question": 18,
+      "option": "B",
+      "x": 764.0,
+      "y": 1093.0,
+      "contour_refined": true,
+      "seed_shift": 5.026549426594161
+    },
+    {
+      "subject": "turkce",
+      "question": 18,
+      "option": "C",
+      "x": 791.5,
+      "y": 1093.0,
+      "contour_refined": true,
+      "seed_shift": 4.8573428618034695
+    },
+    {
+      "subject": "turkce",
+      "question": 18,
+      "option": "D",
+      "x": 819.5,
+      "y": 1093.0,
+      "contour_refined": true,
+      "seed_shift": 4.826307740107428
+    },
+    {
+      "subject": "turkce",
+      "question": 18,
+      "option": "E",
+      "x": 847.5,
+      "y": 1092.5,
+      "contour_refined": true,
+      "seed_shift": 5.312586344925765
+    },
+    {
+      "subject": "turkce",
+      "question": 19,
+      "option": "A",
+      "x": 736.0,
+      "y": 1121.5,
+      "contour_refined": true,
+      "seed_shift": 5.0066523793186875
+    },
+    {
+      "subject": "turkce",
+      "question": 19,
+      "option": "B",
+      "x": 763.5,
+      "y": 1121.5,
+      "contour_refined": true,
+      "seed_shift": 4.768300157344637
+    },
+    {
+      "subject": "turkce",
+      "question": 19,
+      "option": "C",
+      "x": 791.5,
+      "y": 1121.0,
+      "contour_refined": true,
+      "seed_shift": 5.205396607959309
+    },
+    {
+      "subject": "turkce",
+      "question": 19,
+      "option": "D",
+      "x": 819.5,
+      "y": 1121.0,
+      "contour_refined": true,
+      "seed_shift": 5.171182095068339
+    },
+    {
+      "subject": "turkce",
+      "question": 19,
+      "option": "E",
+      "x": 848.0,
+      "y": 1120.5,
+      "contour_refined": true,
+      "seed_shift": 5.6872378670329455
+    },
+    {
+      "subject": "turkce",
+      "question": 20,
+      "option": "A",
+      "x": 735.5,
+      "y": 1150.0,
+      "contour_refined": true,
+      "seed_shift": 4.723382307130503
+    },
+    {
+      "subject": "turkce",
+      "question": 20,
+      "option": "B",
+      "x": 763.5,
+      "y": 1149.5,
+      "contour_refined": true,
+      "seed_shift": 5.120596207022742
+    },
+    {
+      "subject": "turkce",
+      "question": 20,
+      "option": "C",
+      "x": 791.5,
+      "y": 1149.0,
+      "contour_refined": true,
+      "seed_shift": 5.553525270040154
+    },
+    {
+      "subject": "turkce",
+      "question": 20,
+      "option": "D",
+      "x": 819.5,
+      "y": 1149.0,
+      "contour_refined": true,
+      "seed_shift": 5.516160453828672
+    },
+    {
+      "subject": "turkce",
+      "question": 20,
+      "option": "E",
+      "x": 847.5,
+      "y": 1149.0,
+      "contour_refined": true,
+      "seed_shift": 5.497761516592787
+    },
+    {
+      "subject": "turkce",
+      "question": 21,
+      "option": "A",
+      "x": 735.5,
+      "y": 1178.0,
+      "contour_refined": true,
+      "seed_shift": 5.080247623678273
+    },
+    {
+      "subject": "turkce",
+      "question": 21,
+      "option": "B",
+      "x": 763.0,
+      "y": 1177.5,
+      "contour_refined": true,
+      "seed_shift": 5.384542463215226
+    },
+    {
+      "subject": "turkce",
+      "question": 21,
+      "option": "C",
+      "x": 791.5,
+      "y": 1177.0,
+      "contour_refined": true,
+      "seed_shift": 5.901715590705708
+    },
+    {
+      "subject": "turkce",
+      "question": 21,
+      "option": "D",
+      "x": 819.5,
+      "y": 1177.0,
+      "contour_refined": true,
+      "seed_shift": 5.8612244521353665
+    },
+    {
+      "subject": "turkce",
+      "question": 21,
+      "option": "E",
+      "x": 847.5,
+      "y": 1177.0,
+      "contour_refined": true,
+      "seed_shift": 5.840498401623676
+    },
+    {
+      "subject": "turkce",
+      "question": 22,
+      "option": "A",
+      "x": 735.0,
+      "y": 1206.0,
+      "contour_refined": true,
+      "seed_shift": 5.306453466225493
+    },
+    {
+      "subject": "turkce",
+      "question": 22,
+      "option": "B",
+      "x": 763.5,
+      "y": 1205.5,
+      "contour_refined": true,
+      "seed_shift": 5.825226827095453
+    },
+    {
+      "subject": "turkce",
+      "question": 22,
+      "option": "C",
+      "x": 791.5,
+      "y": 1205.5,
+      "contour_refined": true,
+      "seed_shift": 5.756081882016397
+    },
+    {
+      "subject": "turkce",
+      "question": 22,
+      "option": "D",
+      "x": 819.0,
+      "y": 1205.0,
+      "contour_refined": true,
+      "seed_shift": 6.179965935278961
+    },
+    {
+      "subject": "turkce",
+      "question": 22,
+      "option": "E",
+      "x": 847.0,
+      "y": 1205.0,
+      "contour_refined": true,
+      "seed_shift": 6.185920685488282
+    },
+    {
+      "subject": "turkce",
+      "question": 23,
+      "option": "A",
+      "x": 735.5,
+      "y": 1235.0,
+      "contour_refined": true,
+      "seed_shift": 4.850540305172151
+    },
+    {
+      "subject": "turkce",
+      "question": 23,
+      "option": "B",
+      "x": 763.0,
+      "y": 1234.0,
+      "contour_refined": true,
+      "seed_shift": 5.5911091146833245
+    },
+    {
+      "subject": "turkce",
+      "question": 23,
+      "option": "C",
+      "x": 791.0,
+      "y": 1234.0,
+      "contour_refined": true,
+      "seed_shift": 5.544347668853707
+    },
+    {
+      "subject": "turkce",
+      "question": 23,
+      "option": "D",
+      "x": 819.0,
+      "y": 1233.5,
+      "contour_refined": true,
+      "seed_shift": 6.022732219041182
+    },
+    {
+      "subject": "turkce",
+      "question": 23,
+      "option": "E",
+      "x": 847.0,
+      "y": 1233.0,
+      "contour_refined": true,
+      "seed_shift": 6.526076197715394
+    },
+    {
+      "subject": "turkce",
+      "question": 24,
+      "option": "A",
+      "x": 735.0,
+      "y": 1263.0,
+      "contour_refined": true,
+      "seed_shift": 5.049553553308861
+    },
+    {
+      "subject": "turkce",
+      "question": 24,
+      "option": "B",
+      "x": 763.0,
+      "y": 1262.5,
+      "contour_refined": true,
+      "seed_shift": 5.449515611128922
+    },
+    {
+      "subject": "turkce",
+      "question": 24,
+      "option": "C",
+      "x": 791.0,
+      "y": 1262.0,
+      "contour_refined": true,
+      "seed_shift": 5.891146156643527
+    },
+    {
+      "subject": "turkce",
+      "question": 24,
+      "option": "D",
+      "x": 819.0,
+      "y": 1261.5,
+      "contour_refined": true,
+      "seed_shift": 6.36577874393448
+    },
+    {
+      "subject": "turkce",
+      "question": 24,
+      "option": "E",
+      "x": 847.0,
+      "y": 1261.5,
+      "contour_refined": true,
+      "seed_shift": 6.366834414845965
+    },
+    {
+      "subject": "turkce",
+      "question": 25,
+      "option": "A",
+      "x": 735.0,
+      "y": 1291.0,
+      "contour_refined": true,
+      "seed_shift": 5.406427129479972
+    },
+    {
+      "subject": "turkce",
+      "question": 25,
+      "option": "B",
+      "x": 763.0,
+      "y": 1291.0,
+      "contour_refined": true,
+      "seed_shift": 5.310231029170837
+    },
+    {
+      "subject": "turkce",
+      "question": 25,
+      "option": "C",
+      "x": 791.0,
+      "y": 1290.5,
+      "contour_refined": true,
+      "seed_shift": 5.741027931424944
+    },
+    {
+      "subject": "turkce",
+      "question": 25,
+      "option": "D",
+      "x": 819.0,
+      "y": 1290.0,
+      "contour_refined": true,
+      "seed_shift": 6.209417885756045
+    },
+    {
+      "subject": "turkce",
+      "question": 25,
+      "option": "E",
+      "x": 847.0,
+      "y": 1290.0,
+      "contour_refined": true,
+      "seed_shift": 6.207723551325191
+    },
+    {
+      "subject": "turkce",
+      "question": 26,
+      "option": "A",
+      "x": 735.0,
+      "y": 1319.5,
+      "contour_refined": true,
+      "seed_shift": 5.28381605514513
+    },
+    {
+      "subject": "turkce",
+      "question": 26,
+      "option": "B",
+      "x": 763.0,
+      "y": 1319.0,
+      "contour_refined": true,
+      "seed_shift": 5.662288339619992
+    },
+    {
+      "subject": "turkce",
+      "question": 26,
+      "option": "C",
+      "x": 791.0,
+      "y": 1319.0,
+      "contour_refined": true,
+      "seed_shift": 5.5921869251561995
+    },
+    {
+      "subject": "turkce",
+      "question": 26,
+      "option": "D",
+      "x": 819.0,
+      "y": 1318.5,
+      "contour_refined": true,
+      "seed_shift": 6.053582847644951
+    },
+    {
+      "subject": "turkce",
+      "question": 26,
+      "option": "E",
+      "x": 847.0,
+      "y": 1318.0,
+      "contour_refined": true,
+      "seed_shift": 6.548620675854388
+    },
+    {
+      "subject": "turkce",
+      "question": 27,
+      "option": "A",
+      "x": 735.0,
+      "y": 1348.0,
+      "contour_refined": true,
+      "seed_shift": 5.1651730218528895
+    },
+    {
+      "subject": "turkce",
+      "question": 27,
+      "option": "B",
+      "x": 762.5,
+      "y": 1347.5,
+      "contour_refined": true,
+      "seed_shift": 5.437069835403944
+    },
+    {
+      "subject": "turkce",
+      "question": 27,
+      "option": "C",
+      "x": 791.0,
+      "y": 1347.0,
+      "contour_refined": true,
+      "seed_shift": 5.940029513165877
+    },
+    {
+      "subject": "turkce",
+      "question": 27,
+      "option": "D",
+      "x": 819.0,
+      "y": 1347.0,
+      "contour_refined": true,
+      "seed_shift": 5.898315306660688
+    },
+    {
+      "subject": "turkce",
+      "question": 27,
+      "option": "E",
+      "x": 847.0,
+      "y": 1346.5,
+      "contour_refined": true,
+      "seed_shift": 6.389854999417253
+    },
+    {
+      "subject": "turkce",
+      "question": 28,
+      "option": "A",
+      "x": 734.5,
+      "y": 1376.0,
+      "contour_refined": true,
+      "seed_shift": 5.3825545506870895
+    },
+    {
+      "subject": "turkce",
+      "question": 28,
+      "option": "B",
+      "x": 763.0,
+      "y": 1376.0,
+      "contour_refined": true,
+      "seed_shift": 5.391753510422942
+    },
+    {
+      "subject": "turkce",
+      "question": 28,
+      "option": "C",
+      "x": 791.0,
+      "y": 1376.0,
+      "contour_refined": true,
+      "seed_shift": 5.298766184398155
+    },
+    {
+      "subject": "turkce",
+      "question": 28,
+      "option": "D",
+      "x": 819.0,
+      "y": 1375.5,
+      "contour_refined": true,
+      "seed_shift": 5.743661286184298
+    },
+    {
+      "subject": "turkce",
+      "question": 28,
+      "option": "E",
+      "x": 847.0,
+      "y": 1375.0,
+      "contour_refined": true,
+      "seed_shift": 6.231244046485559
+    },
+    {
+      "subject": "turkce",
+      "question": 29,
+      "option": "A",
+      "x": 734.5,
+      "y": 1404.5,
+      "contour_refined": true,
+      "seed_shift": 5.254863923755356
+    },
+    {
+      "subject": "turkce",
+      "question": 29,
+      "option": "B",
+      "x": 762.5,
+      "y": 1404.5,
+      "contour_refined": true,
+      "seed_shift": 5.150680804268734
+    },
+    {
+      "subject": "turkce",
+      "question": 29,
+      "option": "C",
+      "x": 791.0,
+      "y": 1404.0,
+      "contour_refined": true,
+      "seed_shift": 5.647192950849354
+    },
+    {
+      "subject": "turkce",
+      "question": 29,
+      "option": "D",
+      "x": 819.0,
+      "y": 1404.0,
+      "contour_refined": true,
+      "seed_shift": 5.589671710769276
+    },
+    {
+      "subject": "turkce",
+      "question": 29,
+      "option": "E",
+      "x": 847.0,
+      "y": 1403.5,
+      "contour_refined": true,
+      "seed_shift": 6.072799940396486
+    },
+    {
+      "subject": "turkce",
+      "question": 30,
+      "option": "A",
+      "x": 734.5,
+      "y": 1433.0,
+      "contour_refined": true,
+      "seed_shift": 5.1309198654903065
+    },
+    {
+      "subject": "turkce",
+      "question": 30,
+      "option": "B",
+      "x": 763.0,
+      "y": 1433.0,
+      "contour_refined": true,
+      "seed_shift": 5.132149480254565
+    },
+    {
+      "subject": "turkce",
+      "question": 30,
+      "option": "C",
+      "x": 791.0,
+      "y": 1432.5,
+      "contour_refined": true,
+      "seed_shift": 5.5030208400998175
+    },
+    {
+      "subject": "turkce",
+      "question": 30,
+      "option": "D",
+      "x": 819.0,
+      "y": 1432.5,
+      "contour_refined": true,
+      "seed_shift": 5.436403043195833
+    },
+    {
+      "subject": "turkce",
+      "question": 30,
+      "option": "E",
+      "x": 847.0,
+      "y": 1432.0,
+      "contour_refined": true,
+      "seed_shift": 5.914536090111008
+    },
+    {
+      "subject": "turkce",
+      "question": 31,
+      "option": "A",
+      "x": 734.5,
+      "y": 1461.5,
+      "contour_refined": true,
+      "seed_shift": 5.011000390921812
+    },
+    {
+      "subject": "turkce",
+      "question": 31,
+      "option": "B",
+      "x": 762.0,
+      "y": 1461.0,
+      "contour_refined": true,
+      "seed_shift": 5.286592521324443
+    },
+    {
+      "subject": "turkce",
+      "question": 31,
+      "option": "C",
+      "x": 791.0,
+      "y": 1461.0,
+      "contour_refined": true,
+      "seed_shift": 5.360507693777171
+    },
+    {
+      "subject": "turkce",
+      "question": 31,
+      "option": "D",
+      "x": 819.0,
+      "y": 1461.0,
+      "contour_refined": true,
+      "seed_shift": 5.283918017162901
+    },
+    {
+      "subject": "turkce",
+      "question": 31,
+      "option": "E",
+      "x": 847.0,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 5.756467363088465
+    },
+    {
+      "subject": "turkce",
+      "question": 32,
+      "option": "A",
+      "x": 734.0,
+      "y": 1490.0,
+      "contour_refined": true,
+      "seed_shift": 4.747153508461858
+    },
+    {
+      "subject": "turkce",
+      "question": 32,
+      "option": "B",
+      "x": 762.0,
+      "y": 1490.0,
+      "contour_refined": true,
+      "seed_shift": 4.643944557528659
+    },
+    {
+      "subject": "turkce",
+      "question": 32,
+      "option": "C",
+      "x": 790.5,
+      "y": 1489.5,
+      "contour_refined": true,
+      "seed_shift": 5.13580988840864
+    },
+    {
+      "subject": "turkce",
+      "question": 32,
+      "option": "D",
+      "x": 819.0,
+      "y": 1489.5,
+      "contour_refined": true,
+      "seed_shift": 5.1322864813123354
+    },
+    {
+      "subject": "turkce",
+      "question": 32,
+      "option": "E",
+      "x": 847.0,
+      "y": 1489.0,
+      "contour_refined": true,
+      "seed_shift": 5.598610286428963
+    },
+    {
+      "subject": "turkce",
+      "question": 33,
+      "option": "A",
+      "x": 734.0,
+      "y": 1518.5,
+      "contour_refined": true,
+      "seed_shift": 4.62155530830774
+    },
+    {
+      "subject": "turkce",
+      "question": 33,
+      "option": "B",
+      "x": 762.5,
+      "y": 1518.5,
+      "contour_refined": true,
+      "seed_shift": 4.608736110401631
+    },
+    {
+      "subject": "turkce",
+      "question": 33,
+      "option": "C",
+      "x": 790.5,
+      "y": 1518.0,
+      "contour_refined": true,
+      "seed_shift": 4.987853241827897
+    },
+    {
+      "subject": "turkce",
+      "question": 33,
+      "option": "D",
+      "x": 819.0,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 5.477807383500471
+    },
+    {
+      "subject": "turkce",
+      "question": 33,
+      "option": "E",
+      "x": 847.0,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 5.440983281746726
+    },
+    {
+      "subject": "turkce",
+      "question": 34,
+      "option": "A",
+      "x": 734.0,
+      "y": 1547.5,
+      "contour_refined": true,
+      "seed_shift": 4.027539157274262
+    },
+    {
+      "subject": "turkce",
+      "question": 34,
+      "option": "B",
+      "x": 762.0,
+      "y": 1547.0,
+      "contour_refined": true,
+      "seed_shift": 4.359954640904063
+    },
+    {
+      "subject": "turkce",
+      "question": 34,
+      "option": "C",
+      "x": 790.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 4.841505028415116
+    },
+    {
+      "subject": "turkce",
+      "question": 34,
+      "option": "D",
+      "x": 818.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 4.785916496627026
+    },
+    {
+      "subject": "turkce",
+      "question": 34,
+      "option": "E",
+      "x": 847.0,
+      "y": 1546.0,
+      "contour_refined": true,
+      "seed_shift": 5.283606940444678
+    },
+    {
+      "subject": "turkce",
+      "question": 35,
+      "option": "A",
+      "x": 734.0,
+      "y": 1576.0,
+      "contour_refined": true,
+      "seed_shift": 3.917216261839201
+    },
+    {
+      "subject": "turkce",
+      "question": 35,
+      "option": "B",
+      "x": 762.0,
+      "y": 1575.5,
+      "contour_refined": true,
+      "seed_shift": 4.222276289490661
+    },
+    {
+      "subject": "turkce",
+      "question": 35,
+      "option": "C",
+      "x": 790.5,
+      "y": 1575.5,
+      "contour_refined": true,
+      "seed_shift": 4.205601564629749
+    },
+    {
+      "subject": "turkce",
+      "question": 35,
+      "option": "D",
+      "x": 819.0,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 4.683339553092963
+    },
+    {
+      "subject": "turkce",
+      "question": 35,
+      "option": "E",
+      "x": 847.0,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 5.126504347595588
+    },
+    {
+      "subject": "turkce",
+      "question": 36,
+      "option": "A",
+      "x": 733.5,
+      "y": 1604.5,
+      "contour_refined": true,
+      "seed_shift": 3.633096981055074
+    },
+    {
+      "subject": "turkce",
+      "question": 36,
+      "option": "B",
+      "x": 762.0,
+      "y": 1604.5,
+      "contour_refined": true,
+      "seed_shift": 3.604834478394983
+    },
+    {
+      "subject": "turkce",
+      "question": 36,
+      "option": "C",
+      "x": 790.5,
+      "y": 1604.5,
+      "contour_refined": true,
+      "seed_shift": 3.5790489858234453
+    },
+    {
+      "subject": "turkce",
+      "question": 36,
+      "option": "D",
+      "x": 818.5,
+      "y": 1604.0,
+      "contour_refined": true,
+      "seed_shift": 3.976759223738198
+    },
+    {
+      "subject": "turkce",
+      "question": 36,
+      "option": "E",
+      "x": 847.0,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 4.470136539395304
+    },
+    {
+      "subject": "turkce",
+      "question": 37,
+      "option": "A",
+      "x": 734.0,
+      "y": 1633.5,
+      "contour_refined": true,
+      "seed_shift": 3.278268051901432
+    },
+    {
+      "subject": "turkce",
+      "question": 37,
+      "option": "B",
+      "x": 762.0,
+      "y": 1633.5,
+      "contour_refined": true,
+      "seed_shift": 3.0071414014447635
+    },
+    {
+      "subject": "turkce",
+      "question": 37,
+      "option": "C",
+      "x": 790.0,
+      "y": 1633.5,
+      "contour_refined": true,
+      "seed_shift": 2.845374113566255
+    },
+    {
+      "subject": "turkce",
+      "question": 37,
+      "option": "D",
+      "x": 819.0,
+      "y": 1633.0,
+      "contour_refined": true,
+      "seed_shift": 3.4142063109493996
+    },
+    {
+      "subject": "turkce",
+      "question": 37,
+      "option": "E",
+      "x": 847.0,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 3.8146789049575087
+    },
+    {
+      "subject": "turkce",
+      "question": 38,
+      "option": "A",
+      "x": 733.5,
+      "y": 1662.5,
+      "contour_refined": true,
+      "seed_shift": 2.5094532354568395
+    },
+    {
+      "subject": "turkce",
+      "question": 38,
+      "option": "B",
+      "x": 762.0,
+      "y": 1662.5,
+      "contour_refined": true,
+      "seed_shift": 2.4437308443788677
+    },
+    {
+      "subject": "turkce",
+      "question": 38,
+      "option": "C",
+      "x": 790.5,
+      "y": 1662.5,
+      "contour_refined": true,
+      "seed_shift": 2.3835659241396203
+    },
+    {
+      "subject": "turkce",
+      "question": 38,
+      "option": "D",
+      "x": 818.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 3.1745492857263926
+    },
+    {
+      "subject": "turkce",
+      "question": 38,
+      "option": "E",
+      "x": 847.0,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 3.1606977437250943
+    },
+    {
+      "subject": "turkce",
+      "question": 39,
+      "option": "A",
+      "x": 733.5,
+      "y": 1691.5,
+      "contour_refined": true,
+      "seed_shift": 2.04383441431939
+    },
+    {
+      "subject": "turkce",
+      "question": 39,
+      "option": "B",
+      "x": 762.0,
+      "y": 1691.5,
+      "contour_refined": true,
+      "seed_shift": 1.9446322817133477
+    },
+    {
+      "subject": "turkce",
+      "question": 39,
+      "option": "C",
+      "x": 790.0,
+      "y": 1691.5,
+      "contour_refined": true,
+      "seed_shift": 1.6069796718430351
+    },
+    {
+      "subject": "turkce",
+      "question": 39,
+      "option": "D",
+      "x": 818.5,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 2.5315382292434867
+    },
+    {
+      "subject": "turkce",
+      "question": 39,
+      "option": "E",
+      "x": 847.0,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 2.509347707795858
+    },
+    {
+      "subject": "turkce",
+      "question": 40,
+      "option": "A",
+      "x": 733.5,
+      "y": 1720.5,
+      "contour_refined": true,
+      "seed_shift": 1.71593835683113
+    },
+    {
+      "subject": "turkce",
+      "question": 40,
+      "option": "B",
+      "x": 762.0,
+      "y": 1720.0,
+      "contour_refined": true,
+      "seed_shift": 1.8856180831640998
+    },
+    {
+      "subject": "turkce",
+      "question": 40,
+      "option": "C",
+      "x": 790.0,
+      "y": 1720.5,
+      "contour_refined": true,
+      "seed_shift": 1.0671873729054628
+    },
+    {
+      "subject": "turkce",
+      "question": 40,
+      "option": "D",
+      "x": 818.5,
+      "y": 1719.5,
+      "contour_refined": true,
+      "seed_shift": 1.9002923751651568
+    },
+    {
+      "subject": "turkce",
+      "question": 40,
+      "option": "E",
+      "x": 847.0,
+      "y": 1719.5,
+      "contour_refined": true,
+      "seed_shift": 1.863389981249757
+    },
+    {
+      "subject": "sosyal",
+      "question": 1,
+      "option": "A",
+      "x": 905.5,
+      "y": 615.0,
+      "contour_refined": true,
+      "seed_shift": 1.5365907428821561
+    },
+    {
+      "subject": "sosyal",
+      "question": 1,
+      "option": "B",
+      "x": 933.5,
+      "y": 614.5,
+      "contour_refined": true,
+      "seed_shift": 1.1785113019775364
+    },
+    {
+      "subject": "sosyal",
+      "question": 1,
+      "option": "C",
+      "x": 962.0,
+      "y": 614.0,
+      "contour_refined": true,
+      "seed_shift": 1.3333333333332575
+    },
+    {
+      "subject": "sosyal",
+      "question": 1,
+      "option": "D",
+      "x": 990.0,
+      "y": 614.0,
+      "contour_refined": true,
+      "seed_shift": 1.0540925533894718
+    },
+    {
+      "subject": "sosyal",
+      "question": 1,
+      "option": "E",
+      "x": 1018.0,
+      "y": 613.5,
+      "contour_refined": true,
+      "seed_shift": 0.6871842709362308
+    },
+    {
+      "subject": "sosyal",
+      "question": 2,
+      "option": "A",
+      "x": 905.0,
+      "y": 643.0,
+      "contour_refined": true,
+      "seed_shift": 1.0891156226527663
+    },
+    {
+      "subject": "sosyal",
+      "question": 2,
+      "option": "B",
+      "x": 933.5,
+      "y": 643.0,
+      "contour_refined": true,
+      "seed_shift": 1.2773697684605692
+    },
+    {
+      "subject": "sosyal",
+      "question": 2,
+      "option": "C",
+      "x": 961.5,
+      "y": 642.5,
+      "contour_refined": true,
+      "seed_shift": 0.9019564164797775
+    },
+    {
+      "subject": "sosyal",
+      "question": 2,
+      "option": "D",
+      "x": 989.5,
+      "y": 642.0,
+      "contour_refined": true,
+      "seed_shift": 0.5462554912570002
+    },
+    {
+      "subject": "sosyal",
+      "question": 2,
+      "option": "E",
+      "x": 1018.0,
+      "y": 641.5,
+      "contour_refined": true,
+      "seed_shift": 0.7297800183421367
+    },
+    {
+      "subject": "sosyal",
+      "question": 3,
+      "option": "A",
+      "x": 905.0,
+      "y": 671.0,
+      "contour_refined": true,
+      "seed_shift": 1.2368817822288611
+    },
+    {
+      "subject": "sosyal",
+      "question": 3,
+      "option": "B",
+      "x": 933.0,
+      "y": 671.0,
+      "contour_refined": true,
+      "seed_shift": 0.8169668550495838
+    },
+    {
+      "subject": "sosyal",
+      "question": 3,
+      "option": "C",
+      "x": 961.5,
+      "y": 670.5,
+      "contour_refined": true,
+      "seed_shift": 0.9818238396606742
+    },
+    {
+      "subject": "sosyal",
+      "question": 3,
+      "option": "D",
+      "x": 989.5,
+      "y": 670.0,
+      "contour_refined": true,
+      "seed_shift": 0.7246114326968675
+    },
+    {
+      "subject": "sosyal",
+      "question": 3,
+      "option": "E",
+      "x": 1017.5,
+      "y": 669.5,
+      "contour_refined": true,
+      "seed_shift": 0.6445934267979381
+    },
+    {
+      "subject": "sosyal",
+      "question": 4,
+      "option": "A",
+      "x": 905.0,
+      "y": 699.0,
+      "contour_refined": true,
+      "seed_shift": 1.4636332266733378
+    },
+    {
+      "subject": "sosyal",
+      "question": 4,
+      "option": "B",
+      "x": 933.0,
+      "y": 699.0,
+      "contour_refined": true,
+      "seed_shift": 0.984070658910493
+    },
+    {
+      "subject": "sosyal",
+      "question": 4,
+      "option": "C",
+      "x": 961.0,
+      "y": 699.0,
+      "contour_refined": true,
+      "seed_shift": 0.5230489909306305
+    },
+    {
+      "subject": "sosyal",
+      "question": 4,
+      "option": "D",
+      "x": 989.0,
+      "y": 698.0,
+      "contour_refined": true,
+      "seed_shift": 0.8110350040397166
+    },
+    {
+      "subject": "sosyal",
+      "question": 4,
+      "option": "E",
+      "x": 1017.5,
+      "y": 698.0,
+      "contour_refined": true,
+      "seed_shift": 0.5516529594358455
+    },
+    {
+      "subject": "sosyal",
+      "question": 5,
+      "option": "A",
+      "x": 905.0,
+      "y": 727.5,
+      "contour_refined": true,
+      "seed_shift": 1.4779448527108245
+    },
+    {
+      "subject": "sosyal",
+      "question": 5,
+      "option": "B",
+      "x": 933.0,
+      "y": 727.0,
+      "contour_refined": true,
+      "seed_shift": 1.242502894593302
+    },
+    {
+      "subject": "sosyal",
+      "question": 5,
+      "option": "C",
+      "x": 961.0,
+      "y": 727.0,
+      "contour_refined": true,
+      "seed_shift": 0.7464226526613092
+    },
+    {
+      "subject": "sosyal",
+      "question": 5,
+      "option": "D",
+      "x": 989.0,
+      "y": 726.5,
+      "contour_refined": true,
+      "seed_shift": 0.7007051122412589
+    },
+    {
+      "subject": "sosyal",
+      "question": 5,
+      "option": "E",
+      "x": 1017.0,
+      "y": 726.0,
+      "contour_refined": true,
+      "seed_shift": 0.9000838247811256
+    },
+    {
+      "subject": "sosyal",
+      "question": 6,
+      "option": "A",
+      "x": 905.0,
+      "y": 756.0,
+      "contour_refined": true,
+      "seed_shift": 1.5112745009705872
+    },
+    {
+      "subject": "sosyal",
+      "question": 6,
+      "option": "B",
+      "x": 933.0,
+      "y": 755.0,
+      "contour_refined": true,
+      "seed_shift": 1.5471554499412496
+    },
+    {
+      "subject": "sosyal",
+      "question": 6,
+      "option": "C",
+      "x": 961.0,
+      "y": 755.0,
+      "contour_refined": true,
+      "seed_shift": 1.0592851589683905
+    },
+    {
+      "subject": "sosyal",
+      "question": 6,
+      "option": "D",
+      "x": 989.0,
+      "y": 754.0,
+      "contour_refined": true,
+      "seed_shift": 1.5713484026366562
+    },
+    {
+      "subject": "sosyal",
+      "question": 6,
+      "option": "E",
+      "x": 1017.0,
+      "y": 754.0,
+      "contour_refined": true,
+      "seed_shift": 1.2728029835141397
+    },
+    {
+      "subject": "sosyal",
+      "question": 7,
+      "option": "A",
+      "x": 904.5,
+      "y": 783.5,
+      "contour_refined": true,
+      "seed_shift": 1.6606558276107657
+    },
+    {
+      "subject": "sosyal",
+      "question": 7,
+      "option": "B",
+      "x": 933.0,
+      "y": 783.0,
+      "contour_refined": true,
+      "seed_shift": 1.8756398085341883
+    },
+    {
+      "subject": "sosyal",
+      "question": 7,
+      "option": "C",
+      "x": 961.0,
+      "y": 783.0,
+      "contour_refined": true,
+      "seed_shift": 1.4029950326811877
+    },
+    {
+      "subject": "sosyal",
+      "question": 7,
+      "option": "D",
+      "x": 989.0,
+      "y": 783.0,
+      "contour_refined": true,
+      "seed_shift": 0.9706813185707899
+    },
+    {
+      "subject": "sosyal",
+      "question": 7,
+      "option": "E",
+      "x": 1017.0,
+      "y": 782.0,
+      "contour_refined": true,
+      "seed_shift": 1.6517854163689056
+    },
+    {
+      "subject": "sosyal",
+      "question": 8,
+      "option": "A",
+      "x": 904.5,
+      "y": 812.0,
+      "contour_refined": true,
+      "seed_shift": 1.6108045685385939
+    },
+    {
+      "subject": "sosyal",
+      "question": 8,
+      "option": "B",
+      "x": 933.0,
+      "y": 811.5,
+      "contour_refined": true,
+      "seed_shift": 1.8145918230348892
+    },
+    {
+      "subject": "sosyal",
+      "question": 8,
+      "option": "C",
+      "x": 961.0,
+      "y": 811.0,
+      "contour_refined": true,
+      "seed_shift": 1.7595672245067033
+    },
+    {
+      "subject": "sosyal",
+      "question": 8,
+      "option": "D",
+      "x": 989.0,
+      "y": 811.0,
+      "contour_refined": true,
+      "seed_shift": 1.3475171498485161
+    },
+    {
+      "subject": "sosyal",
+      "question": 8,
+      "option": "E",
+      "x": 1017.0,
+      "y": 810.5,
+      "contour_refined": true,
+      "seed_shift": 1.5348042685180665
+    },
+    {
+      "subject": "sosyal",
+      "question": 9,
+      "option": "A",
+      "x": 904.0,
+      "y": 839.5,
+      "contour_refined": true,
+      "seed_shift": 2.1331307774209503
+    },
+    {
+      "subject": "sosyal",
+      "question": 9,
+      "option": "B",
+      "x": 932.5,
+      "y": 839.0,
+      "contour_refined": true,
+      "seed_shift": 2.3623736638911863
+    },
+    {
+      "subject": "sosyal",
+      "question": 9,
+      "option": "C",
+      "x": 960.5,
+      "y": 839.0,
+      "contour_refined": true,
+      "seed_shift": 1.9868877442104234
+    },
+    {
+      "subject": "sosyal",
+      "question": 9,
+      "option": "D",
+      "x": 988.5,
+      "y": 839.0,
+      "contour_refined": true,
+      "seed_shift": 1.6950545349761243
+    },
+    {
+      "subject": "sosyal",
+      "question": 9,
+      "option": "E",
+      "x": 1017.0,
+      "y": 838.0,
+      "contour_refined": true,
+      "seed_shift": 2.41673407029611
+    },
+    {
+      "subject": "sosyal",
+      "question": 10,
+      "option": "A",
+      "x": 904.0,
+      "y": 868.0,
+      "contour_refined": true,
+      "seed_shift": 2.030872828230469
+    },
+    {
+      "subject": "sosyal",
+      "question": 10,
+      "option": "B",
+      "x": 932.5,
+      "y": 867.0,
+      "contour_refined": true,
+      "seed_shift": 2.730282850630137
+    },
+    {
+      "subject": "sosyal",
+      "question": 10,
+      "option": "C",
+      "x": 960.0,
+      "y": 867.0,
+      "contour_refined": true,
+      "seed_shift": 2.337139752394571
+    },
+    {
+      "subject": "sosyal",
+      "question": 10,
+      "option": "D",
+      "x": 988.5,
+      "y": 867.0,
+      "contour_refined": true,
+      "seed_shift": 2.0690846070451867
+    },
+    {
+      "subject": "sosyal",
+      "question": 10,
+      "option": "E",
+      "x": 1017.0,
+      "y": 866.5,
+      "contour_refined": true,
+      "seed_shift": 2.300965980723162
+    },
+    {
+      "subject": "sosyal",
+      "question": 11,
+      "option": "A",
+      "x": 904.0,
+      "y": 896.0,
+      "contour_refined": true,
+      "seed_shift": 2.393406580948631
+    },
+    {
+      "subject": "sosyal",
+      "question": 11,
+      "option": "B",
+      "x": 932.0,
+      "y": 895.0,
+      "contour_refined": true,
+      "seed_shift": 2.9908410715885876
+    },
+    {
+      "subject": "sosyal",
+      "question": 11,
+      "option": "C",
+      "x": 960.0,
+      "y": 895.0,
+      "contour_refined": true,
+      "seed_shift": 2.704718226705144
+    },
+    {
+      "subject": "sosyal",
+      "question": 11,
+      "option": "D",
+      "x": 988.5,
+      "y": 895.0,
+      "contour_refined": true,
+      "seed_shift": 2.445075676073833
+    },
+    {
+      "subject": "sosyal",
+      "question": 11,
+      "option": "E",
+      "x": 1017.0,
+      "y": 894.5,
+      "contour_refined": true,
+      "seed_shift": 2.6854406008792435
+    },
+    {
+      "subject": "sosyal",
+      "question": 12,
+      "option": "A",
+      "x": 904.0,
+      "y": 924.0,
+      "contour_refined": true,
+      "seed_shift": 2.7569888745370337
+    },
+    {
+      "subject": "sosyal",
+      "question": 12,
+      "option": "B",
+      "x": 932.0,
+      "y": 924.0,
+      "contour_refined": true,
+      "seed_shift": 2.375238057522691
+    },
+    {
+      "subject": "sosyal",
+      "question": 12,
+      "option": "C",
+      "x": 960.0,
+      "y": 923.0,
+      "contour_refined": true,
+      "seed_shift": 3.0741097722158095
+    },
+    {
+      "subject": "sosyal",
+      "question": 12,
+      "option": "D",
+      "x": 988.0,
+      "y": 923.0,
+      "contour_refined": true,
+      "seed_shift": 2.8681305478492374
+    },
+    {
+      "subject": "sosyal",
+      "question": 12,
+      "option": "E",
+      "x": 1016.5,
+      "y": 923.0,
+      "contour_refined": true,
+      "seed_shift": 2.6199744498697926
+    },
+    {
+      "subject": "sosyal",
+      "question": 13,
+      "option": "A",
+      "x": 904.0,
+      "y": 952.0,
+      "contour_refined": true,
+      "seed_shift": 3.1212533095252697
+    },
+    {
+      "subject": "sosyal",
+      "question": 13,
+      "option": "B",
+      "x": 932.0,
+      "y": 952.0,
+      "contour_refined": true,
+      "seed_shift": 2.7456812327907127
+    },
+    {
+      "subject": "sosyal",
+      "question": 13,
+      "option": "C",
+      "x": 960.0,
+      "y": 951.0,
+      "contour_refined": true,
+      "seed_shift": 3.444731170861817
+    },
+    {
+      "subject": "sosyal",
+      "question": 13,
+      "option": "D",
+      "x": 988.0,
+      "y": 951.0,
+      "contour_refined": true,
+      "seed_shift": 3.233848756169357
+    },
+    {
+      "subject": "sosyal",
+      "question": 13,
+      "option": "E",
+      "x": 1016.5,
+      "y": 951.0,
+      "contour_refined": true,
+      "seed_shift": 2.9939238879627745
+    },
+    {
+      "subject": "sosyal",
+      "question": 14,
+      "option": "A",
+      "x": 904.0,
+      "y": 980.0,
+      "contour_refined": true,
+      "seed_shift": 3.48598605353369
+    },
+    {
+      "subject": "sosyal",
+      "question": 14,
+      "option": "B",
+      "x": 932.0,
+      "y": 979.0,
+      "contour_refined": true,
+      "seed_shift": 4.100480081632169
+    },
+    {
+      "subject": "sosyal",
+      "question": 14,
+      "option": "C",
+      "x": 960.0,
+      "y": 979.0,
+      "contour_refined": true,
+      "seed_shift": 3.816224119400244
+    },
+    {
+      "subject": "sosyal",
+      "question": 14,
+      "option": "D",
+      "x": 988.0,
+      "y": 979.0,
+      "contour_refined": true,
+      "seed_shift": 3.602605367244376
+    },
+    {
+      "subject": "sosyal",
+      "question": 14,
+      "option": "E",
+      "x": 1016.5,
+      "y": 979.0,
+      "contour_refined": true,
+      "seed_shift": 3.3706654327497207
+    },
+    {
+      "subject": "sosyal",
+      "question": 15,
+      "option": "A",
+      "x": 904.0,
+      "y": 1008.0,
+      "contour_refined": true,
+      "seed_shift": 3.8510540484327316
+    },
+    {
+      "subject": "sosyal",
+      "question": 15,
+      "option": "B",
+      "x": 932.0,
+      "y": 1007.5,
+      "contour_refined": true,
+      "seed_shift": 3.977558791130642
+    },
+    {
+      "subject": "sosyal",
+      "question": 15,
+      "option": "C",
+      "x": 960.0,
+      "y": 1007.0,
+      "contour_refined": true,
+      "seed_shift": 4.188356713747227
+    },
+    {
+      "subject": "sosyal",
+      "question": 15,
+      "option": "D",
+      "x": 988.0,
+      "y": 1007.0,
+      "contour_refined": true,
+      "seed_shift": 3.973554555114202
+    },
+    {
+      "subject": "sosyal",
+      "question": 15,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1007.0,
+      "contour_refined": true,
+      "seed_shift": 3.837473162687842
+    },
+    {
+      "subject": "sosyal",
+      "question": 16,
+      "option": "A",
+      "x": 904.0,
+      "y": 1036.0,
+      "contour_refined": true,
+      "seed_shift": 4.216370213557815
+    },
+    {
+      "subject": "sosyal",
+      "question": 16,
+      "option": "B",
+      "x": 932.0,
+      "y": 1036.0,
+      "contour_refined": true,
+      "seed_shift": 3.857012212824433
+    },
+    {
+      "subject": "sosyal",
+      "question": 16,
+      "option": "C",
+      "x": 960.0,
+      "y": 1035.5,
+      "contour_refined": true,
+      "seed_shift": 4.06163927254104
+    },
+    {
+      "subject": "sosyal",
+      "question": 16,
+      "option": "D",
+      "x": 988.0,
+      "y": 1035.0,
+      "contour_refined": true,
+      "seed_shift": 4.346134936801693
+    },
+    {
+      "subject": "sosyal",
+      "question": 16,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1035.0,
+      "contour_refined": true,
+      "seed_shift": 4.206109606832803
+    },
+    {
+      "subject": "sosyal",
+      "question": 17,
+      "option": "A",
+      "x": 904.0,
+      "y": 1064.0,
+      "contour_refined": true,
+      "seed_shift": 4.581875188928041
+    },
+    {
+      "subject": "sosyal",
+      "question": 17,
+      "option": "B",
+      "x": 932.0,
+      "y": 1064.0,
+      "contour_refined": true,
+      "seed_shift": 4.227456145193417
+    },
+    {
+      "subject": "sosyal",
+      "question": 17,
+      "option": "C",
+      "x": 960.0,
+      "y": 1064.0,
+      "contour_refined": true,
+      "seed_shift": 3.936003836415263
+    },
+    {
+      "subject": "sosyal",
+      "question": 17,
+      "option": "D",
+      "x": 988.0,
+      "y": 1063.5,
+      "contour_refined": true,
+      "seed_shift": 4.221008597509343
+    },
+    {
+      "subject": "sosyal",
+      "question": 17,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1063.0,
+      "contour_refined": true,
+      "seed_shift": 4.577663908448397
+    },
+    {
+      "subject": "sosyal",
+      "question": 18,
+      "option": "A",
+      "x": 903.5,
+      "y": 1092.0,
+      "contour_refined": true,
+      "seed_shift": 4.818393257118572
+    },
+    {
+      "subject": "sosyal",
+      "question": 18,
+      "option": "B",
+      "x": 932.0,
+      "y": 1092.0,
+      "contour_refined": true,
+      "seed_shift": 4.5979001588829504
+    },
+    {
+      "subject": "sosyal",
+      "question": 18,
+      "option": "C",
+      "x": 960.0,
+      "y": 1092.0,
+      "contour_refined": true,
+      "seed_shift": 4.309787247413719
+    },
+    {
+      "subject": "sosyal",
+      "question": 18,
+      "option": "D",
+      "x": 988.0,
+      "y": 1091.5,
+      "contour_refined": true,
+      "seed_shift": 4.595394903703956
+    },
+    {
+      "subject": "sosyal",
+      "question": 18,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1091.0,
+      "contour_refined": true,
+      "seed_shift": 4.95147925133541
+    },
+    {
+      "subject": "sosyal",
+      "question": 19,
+      "option": "A",
+      "x": 904.0,
+      "y": 1120.0,
+      "contour_refined": true,
+      "seed_shift": 5.313295692045623
+    },
+    {
+      "subject": "sosyal",
+      "question": 19,
+      "option": "B",
+      "x": 932.0,
+      "y": 1120.0,
+      "contour_refined": true,
+      "seed_shift": 4.968344235703241
+    },
+    {
+      "subject": "sosyal",
+      "question": 19,
+      "option": "C",
+      "x": 960.0,
+      "y": 1120.0,
+      "contour_refined": true,
+      "seed_shift": 4.683778152066819
+    },
+    {
+      "subject": "sosyal",
+      "question": 19,
+      "option": "D",
+      "x": 988.0,
+      "y": 1120.0,
+      "contour_refined": true,
+      "seed_shift": 4.4711420365619565
+    },
+    {
+      "subject": "sosyal",
+      "question": 19,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1119.0,
+      "contour_refined": true,
+      "seed_shift": 5.3270796669263305
+    },
+    {
+      "subject": "sosyal",
+      "question": 20,
+      "option": "A",
+      "x": 903.5,
+      "y": 1148.0,
+      "contour_refined": true,
+      "seed_shift": 5.551031491289175
+    },
+    {
+      "subject": "sosyal",
+      "question": 20,
+      "option": "B",
+      "x": 932.0,
+      "y": 1148.0,
+      "contour_refined": true,
+      "seed_shift": 5.338788362512515
+    },
+    {
+      "subject": "sosyal",
+      "question": 20,
+      "option": "C",
+      "x": 960.0,
+      "y": 1148.0,
+      "contour_refined": true,
+      "seed_shift": 5.05793052341541
+    },
+    {
+      "subject": "sosyal",
+      "question": 20,
+      "option": "D",
+      "x": 988.0,
+      "y": 1147.5,
+      "contour_refined": true,
+      "seed_shift": 5.346707767460008
+    },
+    {
+      "subject": "sosyal",
+      "question": 20,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1147.5,
+      "contour_refined": true,
+      "seed_shift": 5.2091312146052235
+    },
+    {
+      "subject": "sosyal",
+      "question": 21,
+      "option": "A",
+      "x": 903.5,
+      "y": 1176.0,
+      "contour_refined": true,
+      "seed_shift": 5.917383889757883
+    },
+    {
+      "subject": "sosyal",
+      "question": 21,
+      "option": "B",
+      "x": 931.5,
+      "y": 1176.0,
+      "contour_refined": true,
+      "seed_shift": 5.630025570871722
+    },
+    {
+      "subject": "sosyal",
+      "question": 21,
+      "option": "C",
+      "x": 960.0,
+      "y": 1176.0,
+      "contour_refined": true,
+      "seed_shift": 5.432210997718233
+    },
+    {
+      "subject": "sosyal",
+      "question": 21,
+      "option": "D",
+      "x": 988.0,
+      "y": 1176.0,
+      "contour_refined": true,
+      "seed_shift": 5.223404121574687
+    },
+    {
+      "subject": "sosyal",
+      "question": 21,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1176.0,
+      "contour_refined": true,
+      "seed_shift": 5.091211934056092
+    },
+    {
+      "subject": "sosyal",
+      "question": 22,
+      "option": "A",
+      "x": 903.5,
+      "y": 1205.0,
+      "contour_refined": true,
+      "seed_shift": 5.312145413002892
+    },
+    {
+      "subject": "sosyal",
+      "question": 22,
+      "option": "B",
+      "x": 931.5,
+      "y": 1204.5,
+      "contour_refined": true,
+      "seed_shift": 5.5031528561384
+    },
+    {
+      "subject": "sosyal",
+      "question": 22,
+      "option": "C",
+      "x": 960.0,
+      "y": 1204.0,
+      "contour_refined": true,
+      "seed_shift": 5.806594803314343
+    },
+    {
+      "subject": "sosyal",
+      "question": 22,
+      "option": "D",
+      "x": 988.0,
+      "y": 1204.0,
+      "contour_refined": true,
+      "seed_shift": 5.600396811337874
+    },
+    {
+      "subject": "sosyal",
+      "question": 22,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1204.0,
+      "contour_refined": true,
+      "seed_shift": 5.468653658763381
+    },
+    {
+      "subject": "sosyal",
+      "question": 23,
+      "option": "A",
+      "x": 903.5,
+      "y": 1233.0,
+      "contour_refined": true,
+      "seed_shift": 5.678603984244342
+    },
+    {
+      "subject": "sosyal",
+      "question": 23,
+      "option": "B",
+      "x": 932.0,
+      "y": 1233.0,
+      "contour_refined": true,
+      "seed_shift": 5.474214402050308
+    },
+    {
+      "subject": "sosyal",
+      "question": 23,
+      "option": "C",
+      "x": 959.5,
+      "y": 1232.5,
+      "contour_refined": true,
+      "seed_shift": 5.649810320086028
+    },
+    {
+      "subject": "sosyal",
+      "question": 23,
+      "option": "D",
+      "x": 988.0,
+      "y": 1232.5,
+      "contour_refined": true,
+      "seed_shift": 5.477822853093654
+    },
+    {
+      "subject": "sosyal",
+      "question": 23,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 5.847255578920204
+    },
+    {
+      "subject": "sosyal",
+      "question": 24,
+      "option": "A",
+      "x": 903.5,
+      "y": 1261.0,
+      "contour_refined": true,
+      "seed_shift": 6.0450673698622115
+    },
+    {
+      "subject": "sosyal",
+      "question": 24,
+      "option": "B",
+      "x": 931.5,
+      "y": 1261.0,
+      "contour_refined": true,
+      "seed_shift": 5.747762730492324
+    },
+    {
+      "subject": "sosyal",
+      "question": 24,
+      "option": "C",
+      "x": 960.0,
+      "y": 1261.0,
+      "contour_refined": true,
+      "seed_shift": 5.562272482669946
+    },
+    {
+      "subject": "sosyal",
+      "question": 24,
+      "option": "D",
+      "x": 988.0,
+      "y": 1260.5,
+      "contour_refined": true,
+      "seed_shift": 5.8555977228081515
+    },
+    {
+      "subject": "sosyal",
+      "question": 24,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1260.5,
+      "contour_refined": true,
+      "seed_shift": 5.729792427479548
+    },
+    {
+      "subject": "sosyal",
+      "question": 25,
+      "option": "A",
+      "x": 903.0,
+      "y": 1289.0,
+      "contour_refined": true,
+      "seed_shift": 6.302733093225905
+    },
+    {
+      "subject": "sosyal",
+      "question": 25,
+      "option": "B",
+      "x": 931.5,
+      "y": 1289.0,
+      "contour_refined": true,
+      "seed_shift": 6.117784235376215
+    },
+    {
+      "subject": "sosyal",
+      "question": 25,
+      "option": "C",
+      "x": 960.0,
+      "y": 1289.0,
+      "contour_refined": true,
+      "seed_shift": 5.937160646572573
+    },
+    {
+      "subject": "sosyal",
+      "question": 25,
+      "option": "D",
+      "x": 988.0,
+      "y": 1289.0,
+      "contour_refined": true,
+      "seed_shift": 5.733720917131887
+    },
+    {
+      "subject": "sosyal",
+      "question": 25,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1289.0,
+      "contour_refined": true,
+      "seed_shift": 5.612376095033089
+    },
+    {
+      "subject": "sosyal",
+      "question": 26,
+      "option": "A",
+      "x": 903.0,
+      "y": 1318.0,
+      "contour_refined": true,
+      "seed_shift": 5.688411438297956
+    },
+    {
+      "subject": "sosyal",
+      "question": 26,
+      "option": "B",
+      "x": 932.0,
+      "y": 1317.5,
+      "contour_refined": true,
+      "seed_shift": 6.099455776393108
+    },
+    {
+      "subject": "sosyal",
+      "question": 26,
+      "option": "C",
+      "x": 959.5,
+      "y": 1317.5,
+      "contour_refined": true,
+      "seed_shift": 5.767857104938665
+    },
+    {
+      "subject": "sosyal",
+      "question": 26,
+      "option": "D",
+      "x": 988.0,
+      "y": 1317.5,
+      "contour_refined": true,
+      "seed_shift": 5.6122111132998755
+    },
+    {
+      "subject": "sosyal",
+      "question": 26,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 5.992336212068267
+    },
+    {
+      "subject": "sosyal",
+      "question": 27,
+      "option": "A",
+      "x": 903.0,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 6.054770591325444
+    },
+    {
+      "subject": "sosyal",
+      "question": 27,
+      "option": "B",
+      "x": 931.5,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 5.872898158885077
+    },
+    {
+      "subject": "sosyal",
+      "question": 27,
+      "option": "C",
+      "x": 960.0,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 5.6970812925366925
+    },
+    {
+      "subject": "sosyal",
+      "question": 27,
+      "option": "D",
+      "x": 988.0,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 5.491092674999337
+    },
+    {
+      "subject": "sosyal",
+      "question": 27,
+      "option": "E",
+      "x": 1016.0,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 5.875182044869409
+    },
+    {
+      "subject": "sosyal",
+      "question": 28,
+      "option": "A",
+      "x": 903.5,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 6.071609707849048
+    },
+    {
+      "subject": "sosyal",
+      "question": 28,
+      "option": "B",
+      "x": 932.0,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 5.87471039475337
+    },
+    {
+      "subject": "sosyal",
+      "question": 28,
+      "option": "C",
+      "x": 960.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 6.0721586862590495
+    },
+    {
+      "subject": "sosyal",
+      "question": 28,
+      "option": "D",
+      "x": 988.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 5.870074767648128
+    },
+    {
+      "subject": "sosyal",
+      "question": 28,
+      "option": "E",
+      "x": 1016.5,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 5.733430231739548
+    },
+    {
+      "subject": "sosyal",
+      "question": 29,
+      "option": "A",
+      "x": 903.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 5.816027238545779
+    },
+    {
+      "subject": "sosyal",
+      "question": 29,
+      "option": "B",
+      "x": 931.5,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 5.634599414547109
+    },
+    {
+      "subject": "sosyal",
+      "question": 29,
+      "option": "C",
+      "x": 960.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 5.461329322593778
+    },
+    {
+      "subject": "sosyal",
+      "question": 29,
+      "option": "D",
+      "x": 988.0,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 5.749643037765854
+    },
+    {
+      "subject": "sosyal",
+      "question": 29,
+      "option": "E",
+      "x": 1016.5,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 5.618519739251409
+    },
+    {
+      "subject": "sosyal",
+      "question": 30,
+      "option": "A",
+      "x": 903.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 5.858601358391291
+    },
+    {
+      "subject": "sosyal",
+      "question": 30,
+      "option": "B",
+      "x": 931.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 5.5181879095600745
+    },
+    {
+      "subject": "sosyal",
+      "question": 30,
+      "option": "C",
+      "x": 960.0,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 5.345255450388245
+    },
+    {
+      "subject": "sosyal",
+      "question": 30,
+      "option": "D",
+      "x": 988.0,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 5.130362295584107
+    },
+    {
+      "subject": "sosyal",
+      "question": 30,
+      "option": "E",
+      "x": 1016.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 5.003770868864303
+    },
+    {
+      "subject": "sosyal",
+      "question": 31,
+      "option": "A",
+      "x": 903.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 5.58768487141332
+    },
+    {
+      "subject": "sosyal",
+      "question": 31,
+      "option": "B",
+      "x": 932.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 5.553332888710983
+    },
+    {
+      "subject": "sosyal",
+      "question": 31,
+      "option": "C",
+      "x": 960.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 5.230489909306557
+    },
+    {
+      "subject": "sosyal",
+      "question": 31,
+      "option": "D",
+      "x": 988.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 5.011098792790964
+    },
+    {
+      "subject": "sosyal",
+      "question": 31,
+      "option": "E",
+      "x": 1016.5,
+      "y": 1459.5,
+      "contour_refined": true,
+      "seed_shift": 5.389175250123482
+    },
+    {
+      "subject": "sosyal",
+      "question": 32,
+      "option": "A",
+      "x": 903.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 5.6579235383163216
+    },
+    {
+      "subject": "sosyal",
+      "question": 32,
+      "option": "B",
+      "x": 931.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 5.291442997768168
+    },
+    {
+      "subject": "sosyal",
+      "question": 32,
+      "option": "C",
+      "x": 960.0,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 5.117120728904516
+    },
+    {
+      "subject": "sosyal",
+      "question": 32,
+      "option": "D",
+      "x": 988.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 4.956128516952034
+    },
+    {
+      "subject": "sosyal",
+      "question": 32,
+      "option": "E",
+      "x": 1016.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 4.774834005546396
+    },
+    {
+      "subject": "sosyal",
+      "question": 33,
+      "option": "A",
+      "x": 903.5,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 5.113550142682544
+    },
+    {
+      "subject": "sosyal",
+      "question": 33,
+      "option": "B",
+      "x": 932.0,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 5.351045690917146
+    },
+    {
+      "subject": "sosyal",
+      "question": 33,
+      "option": "C",
+      "x": 960.0,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 5.0052427931502
+    },
+    {
+      "subject": "sosyal",
+      "question": 33,
+      "option": "D",
+      "x": 988.0,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 4.77426227253122
+    },
+    {
+      "subject": "sosyal",
+      "question": 33,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 4.699648295512179
+    },
+    {
+      "subject": "sosyal",
+      "question": 34,
+      "option": "A",
+      "x": 903.5,
+      "y": 1545.5,
+      "contour_refined": true,
+      "seed_shift": 5.470933294339232
+    },
+    {
+      "subject": "sosyal",
+      "question": 34,
+      "option": "B",
+      "x": 932.0,
+      "y": 1546.0,
+      "contour_refined": true,
+      "seed_shift": 4.800257194755562
+    },
+    {
+      "subject": "sosyal",
+      "question": 34,
+      "option": "C",
+      "x": 960.0,
+      "y": 1545.5,
+      "contour_refined": true,
+      "seed_shift": 4.894958353648155
+    },
+    {
+      "subject": "sosyal",
+      "question": 34,
+      "option": "D",
+      "x": 988.0,
+      "y": 1545.5,
+      "contour_refined": true,
+      "seed_shift": 4.656775231375727
+    },
+    {
+      "subject": "sosyal",
+      "question": 34,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1545.5,
+      "contour_refined": true,
+      "seed_shift": 4.589911104870936
+    },
+    {
+      "subject": "sosyal",
+      "question": 35,
+      "option": "A",
+      "x": 903.5,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.946853345783636
+    },
+    {
+      "subject": "sosyal",
+      "question": 35,
+      "option": "B",
+      "x": 932.0,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.711467782911185
+    },
+    {
+      "subject": "sosyal",
+      "question": 35,
+      "option": "C",
+      "x": 960.0,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.308923016056217
+    },
+    {
+      "subject": "sosyal",
+      "question": 35,
+      "option": "D",
+      "x": 988.5,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.136587727184081
+    },
+    {
+      "subject": "sosyal",
+      "question": 35,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 3.987024565186549
+    },
+    {
+      "subject": "sosyal",
+      "question": 36,
+      "option": "A",
+      "x": 903.5,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 4.456234362256922
+    },
+    {
+      "subject": "sosyal",
+      "question": 36,
+      "option": "B",
+      "x": 932.0,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 4.197008863693447
+    },
+    {
+      "subject": "sosyal",
+      "question": 36,
+      "option": "C",
+      "x": 960.0,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 3.738035325311814
+    },
+    {
+      "subject": "sosyal",
+      "question": 36,
+      "option": "D",
+      "x": 988.5,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 3.5494739655476684
+    },
+    {
+      "subject": "sosyal",
+      "question": 36,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 3.3886864946647623
+    },
+    {
+      "subject": "sosyal",
+      "question": 37,
+      "option": "A",
+      "x": 903.5,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 4.011372721539708
+    },
+    {
+      "subject": "sosyal",
+      "question": 37,
+      "option": "B",
+      "x": 932.0,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 4.123644558451263
+    },
+    {
+      "subject": "sosyal",
+      "question": 37,
+      "option": "C",
+      "x": 960.5,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 3.4489934119328334
+    },
+    {
+      "subject": "sosyal",
+      "question": 37,
+      "option": "D",
+      "x": 989.0,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 3.6374594308545314
+    },
+    {
+      "subject": "sosyal",
+      "question": 37,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 3.282952600598971
+    },
+    {
+      "subject": "sosyal",
+      "question": 38,
+      "option": "A",
+      "x": 904.0,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 4.026103100125471
+    },
+    {
+      "subject": "sosyal",
+      "question": 38,
+      "option": "B",
+      "x": 932.0,
+      "y": 1661.0,
+      "contour_refined": true,
+      "seed_shift": 3.6646384214469596
+    },
+    {
+      "subject": "sosyal",
+      "question": 38,
+      "option": "C",
+      "x": 960.0,
+      "y": 1661.0,
+      "contour_refined": true,
+      "seed_shift": 3.104587516697486
+    },
+    {
+      "subject": "sosyal",
+      "question": 38,
+      "option": "D",
+      "x": 988.5,
+      "y": 1661.0,
+      "contour_refined": true,
+      "seed_shift": 2.881464819527113
+    },
+    {
+      "subject": "sosyal",
+      "question": 38,
+      "option": "E",
+      "x": 1017.0,
+      "y": 1661.0,
+      "contour_refined": true,
+      "seed_shift": 2.6954211033816007
+    },
+    {
+      "subject": "sosyal",
+      "question": 39,
+      "option": "A",
+      "x": 903.5,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 3.608922413637305
+    },
+    {
+      "subject": "sosyal",
+      "question": 39,
+      "option": "B",
+      "x": 932.0,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 3.2676155504372177
+    },
+    {
+      "subject": "sosyal",
+      "question": 39,
+      "option": "C",
+      "x": 960.5,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 2.9410509212290585
+    },
+    {
+      "subject": "sosyal",
+      "question": 39,
+      "option": "D",
+      "x": 989.0,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 2.6347159989382676
+    },
+    {
+      "subject": "sosyal",
+      "question": 39,
+      "option": "E",
+      "x": 1017.5,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 2.356513315654885
+    },
+    {
+      "subject": "sosyal",
+      "question": 40,
+      "option": "A",
+      "x": 903.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 3.3394943063618188
+    },
+    {
+      "subject": "sosyal",
+      "question": 40,
+      "option": "B",
+      "x": 932.0,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 2.95764337285415
+    },
+    {
+      "subject": "sosyal",
+      "question": 40,
+      "option": "C",
+      "x": 960.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 2.585548631991995
+    },
+    {
+      "subject": "sosyal",
+      "question": 40,
+      "option": "D",
+      "x": 989.0,
+      "y": 1718.5,
+      "contour_refined": true,
+      "seed_shift": 2.571856225461455
+    },
+    {
+      "subject": "sosyal",
+      "question": 40,
+      "option": "E",
+      "x": 1017.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 1.893621522146518
+    },
+    {
+      "subject": "sosyal",
+      "question": 41,
+      "option": "A",
+      "x": 903.5,
+      "y": 1748.0,
+      "contour_refined": true,
+      "seed_shift": 3.182222998137703
+    },
+    {
+      "subject": "sosyal",
+      "question": 41,
+      "option": "B",
+      "x": 932.0,
+      "y": 1747.5,
+      "contour_refined": true,
+      "seed_shift": 2.956764349484396
+    },
+    {
+      "subject": "sosyal",
+      "question": 41,
+      "option": "C",
+      "x": 960.5,
+      "y": 1748.0,
+      "contour_refined": true,
+      "seed_shift": 2.349517651808352
+    },
+    {
+      "subject": "sosyal",
+      "question": 41,
+      "option": "D",
+      "x": 989.0,
+      "y": 1747.5,
+      "contour_refined": true,
+      "seed_shift": 2.1893400550265185
+    },
+    {
+      "subject": "sosyal",
+      "question": 41,
+      "option": "E",
+      "x": 1017.5,
+      "y": 1747.5,
+      "contour_refined": true,
+      "seed_shift": 1.8349226182838028
+    },
+    {
+      "subject": "sosyal",
+      "question": 42,
+      "option": "A",
+      "x": 904.0,
+      "y": 1777.5,
+      "contour_refined": true,
+      "seed_shift": 3.6533934842303584
+    },
+    {
+      "subject": "sosyal",
+      "question": 42,
+      "option": "B",
+      "x": 932.0,
+      "y": 1777.0,
+      "contour_refined": true,
+      "seed_shift": 2.7122240176808825
+    },
+    {
+      "subject": "sosyal",
+      "question": 42,
+      "option": "C",
+      "x": 960.5,
+      "y": 1776.5,
+      "contour_refined": true,
+      "seed_shift": 2.364419613719103
+    },
+    {
+      "subject": "sosyal",
+      "question": 42,
+      "option": "D",
+      "x": 989.0,
+      "y": 1776.5,
+      "contour_refined": true,
+      "seed_shift": 1.9365554248665744
+    },
+    {
+      "subject": "sosyal",
+      "question": 42,
+      "option": "E",
+      "x": 1017.5,
+      "y": 1777.0,
+      "contour_refined": true,
+      "seed_shift": 1.3872088604448218
+    },
+    {
+      "subject": "sosyal",
+      "question": 43,
+      "option": "A",
+      "x": 903.5,
+      "y": 1806.0,
+      "contour_refined": true,
+      "seed_shift": 3.2579816519502427
+    },
+    {
+      "subject": "sosyal",
+      "question": 43,
+      "option": "B",
+      "x": 932.0,
+      "y": 1806.0,
+      "contour_refined": true,
+      "seed_shift": 2.80968343192858
+    },
+    {
+      "subject": "sosyal",
+      "question": 43,
+      "option": "C",
+      "x": 960.5,
+      "y": 1805.5,
+      "contour_refined": true,
+      "seed_shift": 2.3228866673033544
+    },
+    {
+      "subject": "sosyal",
+      "question": 43,
+      "option": "D",
+      "x": 989.0,
+      "y": 1805.5,
+      "contour_refined": true,
+      "seed_shift": 1.8669642619920666
+    },
+    {
+      "subject": "sosyal",
+      "question": 43,
+      "option": "E",
+      "x": 1017.7811279296875,
+      "y": 1805.8145751953125,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 44,
+      "option": "A",
+      "x": 903.5,
+      "y": 1835.0,
+      "contour_refined": true,
+      "seed_shift": 3.4825313625807692
+    },
+    {
+      "subject": "sosyal",
+      "question": 44,
+      "option": "B",
+      "x": 932.0,
+      "y": 1835.0,
+      "contour_refined": true,
+      "seed_shift": 3.042217803385778
+    },
+    {
+      "subject": "sosyal",
+      "question": 44,
+      "option": "C",
+      "x": 960.5,
+      "y": 1835.0,
+      "contour_refined": true,
+      "seed_shift": 2.612487160396684
+    },
+    {
+      "subject": "sosyal",
+      "question": 44,
+      "option": "D",
+      "x": 989.0,
+      "y": 1835.0,
+      "contour_refined": true,
+      "seed_shift": 2.19955102040356
+    },
+    {
+      "subject": "sosyal",
+      "question": 44,
+      "option": "E",
+      "x": 1016.0592592592593,
+      "y": 1833.8962962962962,
+      "contour_refined": false,
+      "seed_shift": null
+    },
+    {
+      "subject": "sosyal",
+      "question": 45,
+      "option": "A",
+      "x": 903.5,
+      "y": 1864.0,
+      "contour_refined": true,
+      "seed_shift": 3.8063137930755886
+    },
+    {
+      "subject": "sosyal",
+      "question": 45,
+      "option": "B",
+      "x": 932.0,
+      "y": 1864.0,
+      "contour_refined": true,
+      "seed_shift": 3.382079781559552
+    },
+    {
+      "subject": "sosyal",
+      "question": 45,
+      "option": "C",
+      "x": 960.5,
+      "y": 1864.0,
+      "contour_refined": true,
+      "seed_shift": 2.9765452581012637
+    },
+    {
+      "subject": "sosyal",
+      "question": 45,
+      "option": "D",
+      "x": 989.3096313476562,
+      "y": 1863.7850341796875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 45,
+      "option": "E",
+      "x": 1017.7008666992188,
+      "y": 1863.881103515625,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 46,
+      "option": "A",
+      "x": 903.5,
+      "y": 1893.0,
+      "contour_refined": true,
+      "seed_shift": 4.206476488041279
+    },
+    {
+      "subject": "sosyal",
+      "question": 46,
+      "option": "B",
+      "x": 932.405517578125,
+      "y": 1893.054443359375,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 46,
+      "option": "C",
+      "x": 960.88134765625,
+      "y": 1892.83154296875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 46,
+      "option": "D",
+      "x": 989.3126831054688,
+      "y": 1892.73486328125,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "sosyal",
+      "question": 46,
+      "option": "E",
+      "x": 1017.5,
+      "y": 1892.5,
+      "contour_refined": true,
+      "seed_shift": 2.368778400591924
+    },
+    {
+      "subject": "matematik",
+      "question": 1,
+      "option": "A",
+      "x": 1074.5,
+      "y": 612.5,
+      "contour_refined": true,
+      "seed_shift": 1.2692955176440543
+    },
+    {
+      "subject": "matematik",
+      "question": 1,
+      "option": "B",
+      "x": 1103.0,
+      "y": 612.0,
+      "contour_refined": true,
+      "seed_shift": 1.3743685418724891
+    },
+    {
+      "subject": "matematik",
+      "question": 1,
+      "option": "C",
+      "x": 1131.5,
+      "y": 611.5,
+      "contour_refined": true,
+      "seed_shift": 1.5092308563562444
+    },
+    {
+      "subject": "matematik",
+      "question": 1,
+      "option": "D",
+      "x": 1160.0,
+      "y": 611.0,
+      "contour_refined": true,
+      "seed_shift": 1.6666666666667425
+    },
+    {
+      "subject": "matematik",
+      "question": 1,
+      "option": "E",
+      "x": 1188.0,
+      "y": 610.5,
+      "contour_refined": true,
+      "seed_shift": 1.3437096247163451
+    },
+    {
+      "subject": "matematik",
+      "question": 2,
+      "option": "A",
+      "x": 1074.5,
+      "y": 640.5,
+      "contour_refined": true,
+      "seed_shift": 1.2752669496902718
+    },
+    {
+      "subject": "matematik",
+      "question": 2,
+      "option": "B",
+      "x": 1103.0,
+      "y": 640.0,
+      "contour_refined": true,
+      "seed_shift": 1.4111885031606588
+    },
+    {
+      "subject": "matematik",
+      "question": 2,
+      "option": "C",
+      "x": 1131.0,
+      "y": 639.5,
+      "contour_refined": true,
+      "seed_shift": 1.0754042335180007
+    },
+    {
+      "subject": "matematik",
+      "question": 2,
+      "option": "D",
+      "x": 1159.5,
+      "y": 639.0,
+      "contour_refined": true,
+      "seed_shift": 1.2581605925152197
+    },
+    {
+      "subject": "matematik",
+      "question": 2,
+      "option": "E",
+      "x": 1188.0,
+      "y": 639.0,
+      "contour_refined": true,
+      "seed_shift": 1.3355504249338144
+    },
+    {
+      "subject": "matematik",
+      "question": 3,
+      "option": "A",
+      "x": 1074.0,
+      "y": 669.0,
+      "contour_refined": true,
+      "seed_shift": 0.906345678055151
+    },
+    {
+      "subject": "matematik",
+      "question": 3,
+      "option": "B",
+      "x": 1102.5,
+      "y": 668.5,
+      "contour_refined": true,
+      "seed_shift": 0.9892585499415181
+    },
+    {
+      "subject": "matematik",
+      "question": 3,
+      "option": "C",
+      "x": 1131.0,
+      "y": 668.0,
+      "contour_refined": true,
+      "seed_shift": 1.1090381715086657
+    },
+    {
+      "subject": "matematik",
+      "question": 3,
+      "option": "D",
+      "x": 1159.0,
+      "y": 667.5,
+      "contour_refined": true,
+      "seed_shift": 0.7794314157593287
+    },
+    {
+      "subject": "matematik",
+      "question": 3,
+      "option": "E",
+      "x": 1187.5,
+      "y": 667.0,
+      "contour_refined": true,
+      "seed_shift": 0.9652918196963789
+    },
+    {
+      "subject": "matematik",
+      "question": 4,
+      "option": "A",
+      "x": 1074.0,
+      "y": 697.0,
+      "contour_refined": true,
+      "seed_shift": 0.982757328037923
+    },
+    {
+      "subject": "matematik",
+      "question": 4,
+      "option": "B",
+      "x": 1102.0,
+      "y": 696.5,
+      "contour_refined": true,
+      "seed_shift": 0.6487990219938242
+    },
+    {
+      "subject": "matematik",
+      "question": 4,
+      "option": "C",
+      "x": 1130.5,
+      "y": 696.0,
+      "contour_refined": true,
+      "seed_shift": 0.830963098620434
+    },
+    {
+      "subject": "matematik",
+      "question": 4,
+      "option": "D",
+      "x": 1159.0,
+      "y": 696.0,
+      "contour_refined": true,
+      "seed_shift": 0.7713645618712129
+    },
+    {
+      "subject": "matematik",
+      "question": 4,
+      "option": "E",
+      "x": 1187.5,
+      "y": 695.5,
+      "contour_refined": true,
+      "seed_shift": 0.9232549685839805
+    },
+    {
+      "subject": "matematik",
+      "question": 5,
+      "option": "A",
+      "x": 1073.5,
+      "y": 725.0,
+      "contour_refined": true,
+      "seed_shift": 0.7662453939820733
+    },
+    {
+      "subject": "matematik",
+      "question": 5,
+      "option": "B",
+      "x": 1102.0,
+      "y": 725.0,
+      "contour_refined": true,
+      "seed_shift": 0.6730463973541747
+    },
+    {
+      "subject": "matematik",
+      "question": 5,
+      "option": "C",
+      "x": 1130.0,
+      "y": 724.5,
+      "contour_refined": true,
+      "seed_shift": 0.4548622873897497
+    },
+    {
+      "subject": "matematik",
+      "question": 5,
+      "option": "D",
+      "x": 1158.5,
+      "y": 724.0,
+      "contour_refined": true,
+      "seed_shift": 0.6638803266952578
+    },
+    {
+      "subject": "matematik",
+      "question": 5,
+      "option": "E",
+      "x": 1187.0,
+      "y": 724.0,
+      "contour_refined": true,
+      "seed_shift": 0.4536360516141232
+    },
+    {
+      "subject": "matematik",
+      "question": 6,
+      "option": "A",
+      "x": 1074.0,
+      "y": 753.5,
+      "contour_refined": true,
+      "seed_shift": 1.2392941347867832
+    },
+    {
+      "subject": "matematik",
+      "question": 6,
+      "option": "B",
+      "x": 1101.5,
+      "y": 753.0,
+      "contour_refined": true,
+      "seed_shift": 0.6287281966788869
+    },
+    {
+      "subject": "matematik",
+      "question": 6,
+      "option": "C",
+      "x": 1130.0,
+      "y": 753.0,
+      "contour_refined": true,
+      "seed_shift": 0.3939976263799521
+    },
+    {
+      "subject": "matematik",
+      "question": 6,
+      "option": "D",
+      "x": 1158.0,
+      "y": 752.5,
+      "contour_refined": true,
+      "seed_shift": 0.5483590433659387
+    },
+    {
+      "subject": "matematik",
+      "question": 6,
+      "option": "E",
+      "x": 1186.5,
+      "y": 752.0,
+      "contour_refined": true,
+      "seed_shift": 0.7370401206054034
+    },
+    {
+      "subject": "matematik",
+      "question": 7,
+      "option": "A",
+      "x": 1073.0,
+      "y": 781.5,
+      "contour_refined": true,
+      "seed_shift": 0.8072852046886863
+    },
+    {
+      "subject": "matematik",
+      "question": 7,
+      "option": "B",
+      "x": 1101.5,
+      "y": 781.0,
+      "contour_refined": true,
+      "seed_shift": 1.0180003862104594
+    },
+    {
+      "subject": "matematik",
+      "question": 7,
+      "option": "C",
+      "x": 1130.0,
+      "y": 781.0,
+      "contour_refined": true,
+      "seed_shift": 0.7576044462919725
+    },
+    {
+      "subject": "matematik",
+      "question": 7,
+      "option": "D",
+      "x": 1158.0,
+      "y": 780.5,
+      "contour_refined": true,
+      "seed_shift": 0.9277835846861073
+    },
+    {
+      "subject": "matematik",
+      "question": 7,
+      "option": "E",
+      "x": 1186.5,
+      "y": 780.0,
+      "contour_refined": true,
+      "seed_shift": 1.1404492926413026
+    },
+    {
+      "subject": "matematik",
+      "question": 8,
+      "option": "A",
+      "x": 1073.0,
+      "y": 810.0,
+      "contour_refined": true,
+      "seed_shift": 0.7402419973393529
+    },
+    {
+      "subject": "matematik",
+      "question": 8,
+      "option": "B",
+      "x": 1101.0,
+      "y": 809.0,
+      "contour_refined": true,
+      "seed_shift": 1.3650083747903987
+    },
+    {
+      "subject": "matematik",
+      "question": 8,
+      "option": "C",
+      "x": 1129.5,
+      "y": 809.0,
+      "contour_refined": true,
+      "seed_shift": 1.0945928639804363
+    },
+    {
+      "subject": "matematik",
+      "question": 8,
+      "option": "D",
+      "x": 1158.0,
+      "y": 808.5,
+      "contour_refined": true,
+      "seed_shift": 1.3209553099255091
+    },
+    {
+      "subject": "matematik",
+      "question": 8,
+      "option": "E",
+      "x": 1186.5,
+      "y": 808.0,
+      "contour_refined": true,
+      "seed_shift": 1.5474629827892246
+    },
+    {
+      "subject": "matematik",
+      "question": 9,
+      "option": "A",
+      "x": 1073.0,
+      "y": 838.0,
+      "contour_refined": true,
+      "seed_shift": 1.120049517288301
+    },
+    {
+      "subject": "matematik",
+      "question": 9,
+      "option": "B",
+      "x": 1101.0,
+      "y": 837.5,
+      "contour_refined": true,
+      "seed_shift": 1.2446466563427812
+    },
+    {
+      "subject": "matematik",
+      "question": 9,
+      "option": "C",
+      "x": 1129.5,
+      "y": 837.0,
+      "contour_refined": true,
+      "seed_shift": 1.4813534077885717
+    },
+    {
+      "subject": "matematik",
+      "question": 9,
+      "option": "D",
+      "x": 1158.0,
+      "y": 837.0,
+      "contour_refined": true,
+      "seed_shift": 1.2204278262920083
+    },
+    {
+      "subject": "matematik",
+      "question": 9,
+      "option": "E",
+      "x": 1186.5,
+      "y": 836.5,
+      "contour_refined": true,
+      "seed_shift": 1.4582734560827506
+    },
+    {
+      "subject": "matematik",
+      "question": 10,
+      "option": "A",
+      "x": 1073.0,
+      "y": 866.0,
+      "contour_refined": true,
+      "seed_shift": 1.5049774964953002
+    },
+    {
+      "subject": "matematik",
+      "question": 10,
+      "option": "B",
+      "x": 1101.0,
+      "y": 866.0,
+      "contour_refined": true,
+      "seed_shift": 1.1284964658802263
+    },
+    {
+      "subject": "matematik",
+      "question": 10,
+      "option": "C",
+      "x": 1129.5,
+      "y": 865.0,
+      "contour_refined": true,
+      "seed_shift": 1.8721899828858581
+    },
+    {
+      "subject": "matematik",
+      "question": 10,
+      "option": "D",
+      "x": 1158.0,
+      "y": 865.0,
+      "contour_refined": true,
+      "seed_shift": 1.6186373438036614
+    },
+    {
+      "subject": "matematik",
+      "question": 10,
+      "option": "E",
+      "x": 1186.0,
+      "y": 864.5,
+      "contour_refined": true,
+      "seed_shift": 1.9749000257655314
+    },
+    {
+      "subject": "matematik",
+      "question": 11,
+      "option": "A",
+      "x": 1073.0,
+      "y": 894.0,
+      "contour_refined": true,
+      "seed_shift": 1.8919030752034798
+    },
+    {
+      "subject": "matematik",
+      "question": 11,
+      "option": "B",
+      "x": 1101.0,
+      "y": 894.0,
+      "contour_refined": true,
+      "seed_shift": 1.5162932760997776
+    },
+    {
+      "subject": "matematik",
+      "question": 11,
+      "option": "C",
+      "x": 1129.5,
+      "y": 893.0,
+      "contour_refined": true,
+      "seed_shift": 2.264993549136889
+    },
+    {
+      "subject": "matematik",
+      "question": 11,
+      "option": "D",
+      "x": 1158.0,
+      "y": 893.0,
+      "contour_refined": true,
+      "seed_shift": 2.018560237783275
+    },
+    {
+      "subject": "matematik",
+      "question": 11,
+      "option": "E",
+      "x": 1186.0,
+      "y": 893.0,
+      "contour_refined": true,
+      "seed_shift": 1.89066706726416
+    },
+    {
+      "subject": "matematik",
+      "question": 12,
+      "option": "A",
+      "x": 1073.0,
+      "y": 921.5,
+      "contour_refined": true,
+      "seed_shift": 2.7539576977415634
+    },
+    {
+      "subject": "matematik",
+      "question": 12,
+      "option": "B",
+      "x": 1101.0,
+      "y": 922.0,
+      "contour_refined": true,
+      "seed_shift": 1.9059062496562227
+    },
+    {
+      "subject": "matematik",
+      "question": 12,
+      "option": "C",
+      "x": 1129.5,
+      "y": 921.5,
+      "contour_refined": true,
+      "seed_shift": 2.1590714665075152
+    },
+    {
+      "subject": "matematik",
+      "question": 12,
+      "option": "D",
+      "x": 1158.0,
+      "y": 921.0,
+      "contour_refined": true,
+      "seed_shift": 2.4193469837125496
+    },
+    {
+      "subject": "matematik",
+      "question": 12,
+      "option": "E",
+      "x": 1186.0,
+      "y": 921.0,
+      "contour_refined": true,
+      "seed_shift": 2.2791684470423723
+    },
+    {
+      "subject": "matematik",
+      "question": 13,
+      "option": "A",
+      "x": 1073.0,
+      "y": 950.0,
+      "contour_refined": true,
+      "seed_shift": 2.668268749518788
+    },
+    {
+      "subject": "matematik",
+      "question": 13,
+      "option": "B",
+      "x": 1101.0,
+      "y": 950.0,
+      "contour_refined": true,
+      "seed_shift": 2.296411172569967
+    },
+    {
+      "subject": "matematik",
+      "question": 13,
+      "option": "C",
+      "x": 1129.5,
+      "y": 950.0,
+      "contour_refined": true,
+      "seed_shift": 2.0545246806449238
+    },
+    {
+      "subject": "matematik",
+      "question": 13,
+      "option": "D",
+      "x": 1157.5,
+      "y": 949.5,
+      "contour_refined": true,
+      "seed_shift": 2.37930204850107
+    },
+    {
+      "subject": "matematik",
+      "question": 13,
+      "option": "E",
+      "x": 1186.0,
+      "y": 949.0,
+      "contour_refined": true,
+      "seed_shift": 2.6741758179039525
+    },
+    {
+      "subject": "matematik",
+      "question": 14,
+      "option": "A",
+      "x": 1073.0,
+      "y": 978.0,
+      "contour_refined": true,
+      "seed_shift": 3.0570703315994914
+    },
+    {
+      "subject": "matematik",
+      "question": 14,
+      "option": "B",
+      "x": 1101.0,
+      "y": 978.0,
+      "contour_refined": true,
+      "seed_shift": 2.687419249432916
+    },
+    {
+      "subject": "matematik",
+      "question": 14,
+      "option": "C",
+      "x": 1129.0,
+      "y": 978.0,
+      "contour_refined": true,
+      "seed_shift": 2.4670670345749794
+    },
+    {
+      "subject": "matematik",
+      "question": 14,
+      "option": "D",
+      "x": 1157.5,
+      "y": 977.5,
+      "contour_refined": true,
+      "seed_shift": 2.767759712684762
+    },
+    {
+      "subject": "matematik",
+      "question": 14,
+      "option": "E",
+      "x": 1186.0,
+      "y": 977.0,
+      "contour_refined": true,
+      "seed_shift": 3.0731814857643123
+    },
+    {
+      "subject": "matematik",
+      "question": 15,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1006.5,
+      "contour_refined": true,
+      "seed_shift": 2.8298537373403265
+    },
+    {
+      "subject": "matematik",
+      "question": 15,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1006.0,
+      "contour_refined": true,
+      "seed_shift": 3.078738780512572
+    },
+    {
+      "subject": "matematik",
+      "question": 15,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1006.0,
+      "contour_refined": true,
+      "seed_shift": 2.851589993414149
+    },
+    {
+      "subject": "matematik",
+      "question": 15,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1005.5,
+      "contour_refined": true,
+      "seed_shift": 3.1597413228862568
+    },
+    {
+      "subject": "matematik",
+      "question": 15,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1005.0,
+      "contour_refined": true,
+      "seed_shift": 3.4748083728658736
+    },
+    {
+      "subject": "matematik",
+      "question": 16,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1034.5,
+      "contour_refined": true,
+      "seed_shift": 3.219199879356548
+    },
+    {
+      "subject": "matematik",
+      "question": 16,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1034.0,
+      "contour_refined": true,
+      "seed_shift": 3.4702644053061955
+    },
+    {
+      "subject": "matematik",
+      "question": 16,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1034.0,
+      "contour_refined": true,
+      "seed_shift": 3.2390005032965634
+    },
+    {
+      "subject": "matematik",
+      "question": 16,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1034.0,
+      "contour_refined": true,
+      "seed_shift": 3.0587336290602805
+    },
+    {
+      "subject": "matematik",
+      "question": 16,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1033.5,
+      "contour_refined": true,
+      "seed_shift": 3.386775728570699
+    },
+    {
+      "subject": "matematik",
+      "question": 17,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1063.0,
+      "contour_refined": true,
+      "seed_shift": 3.123335264087066
+    },
+    {
+      "subject": "matematik",
+      "question": 17,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1062.5,
+      "contour_refined": true,
+      "seed_shift": 3.368088047248215
+    },
+    {
+      "subject": "matematik",
+      "question": 17,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1062.0,
+      "contour_refined": true,
+      "seed_shift": 3.6283737490137526
+    },
+    {
+      "subject": "matematik",
+      "question": 17,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1062.0,
+      "contour_refined": true,
+      "seed_shift": 3.4533643066868622
+    },
+    {
+      "subject": "matematik",
+      "question": 17,
+      "option": "E",
+      "x": 1185.5,
+      "y": 1062.0,
+      "contour_refined": true,
+      "seed_shift": 3.434964473411164
+    },
+    {
+      "subject": "matematik",
+      "question": 18,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1091.0,
+      "contour_refined": true,
+      "seed_shift": 3.5131350328138637
+    },
+    {
+      "subject": "matematik",
+      "question": 18,
+      "option": "B",
+      "x": 1100.5,
+      "y": 1090.5,
+      "contour_refined": true,
+      "seed_shift": 3.7078111127541313
+    },
+    {
+      "subject": "matematik",
+      "question": 18,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1090.0,
+      "contour_refined": true,
+      "seed_shift": 4.019139322923561
+    },
+    {
+      "subject": "matematik",
+      "question": 18,
+      "option": "D",
+      "x": 1157.0,
+      "y": 1090.0,
+      "contour_refined": true,
+      "seed_shift": 3.9328221882670946
+    },
+    {
+      "subject": "matematik",
+      "question": 18,
+      "option": "E",
+      "x": 1185.5,
+      "y": 1090.0,
+      "contour_refined": true,
+      "seed_shift": 3.823372703480191
+    },
+    {
+      "subject": "matematik",
+      "question": 19,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1119.0,
+      "contour_refined": true,
+      "seed_shift": 3.9029355596662603
+    },
+    {
+      "subject": "matematik",
+      "question": 19,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1119.0,
+      "contour_refined": true,
+      "seed_shift": 3.6608345225794947
+    },
+    {
+      "subject": "matematik",
+      "question": 19,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1118.5,
+      "contour_refined": true,
+      "seed_shift": 3.9110129574976105
+    },
+    {
+      "subject": "matematik",
+      "question": 19,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1118.0,
+      "contour_refined": true,
+      "seed_shift": 4.247074253026089
+    },
+    {
+      "subject": "matematik",
+      "question": 19,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1118.0,
+      "contour_refined": true,
+      "seed_shift": 4.105767979743148
+    },
+    {
+      "subject": "matematik",
+      "question": 20,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1147.0,
+      "contour_refined": true,
+      "seed_shift": 4.292736638119588
+    },
+    {
+      "subject": "matematik",
+      "question": 20,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1147.0,
+      "contour_refined": true,
+      "seed_shift": 4.053066792855729
+    },
+    {
+      "subject": "matematik",
+      "question": 20,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1147.0,
+      "contour_refined": true,
+      "seed_shift": 3.8035052328602004
+    },
+    {
+      "subject": "matematik",
+      "question": 20,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1146.5,
+      "contour_refined": true,
+      "seed_shift": 4.146950944139398
+    },
+    {
+      "subject": "matematik",
+      "question": 20,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1146.5,
+      "contour_refined": true,
+      "seed_shift": 4.017241768513826
+    },
+    {
+      "subject": "matematik",
+      "question": 21,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1175.0,
+      "contour_refined": true,
+      "seed_shift": 4.6825381304193705
+    },
+    {
+      "subject": "matematik",
+      "question": 21,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1175.0,
+      "contour_refined": true,
+      "seed_shift": 4.445299063132142
+    },
+    {
+      "subject": "matematik",
+      "question": 21,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1175.0,
+      "contour_refined": true,
+      "seed_shift": 4.196659528922222
+    },
+    {
+      "subject": "matematik",
+      "question": 21,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1175.0,
+      "contour_refined": true,
+      "seed_shift": 4.04690024133269
+    },
+    {
+      "subject": "matematik",
+      "question": 21,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1175.0,
+      "contour_refined": true,
+      "seed_shift": 3.9287707967889873
+    },
+    {
+      "subject": "matematik",
+      "question": 22,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1203.5,
+      "contour_refined": true,
+      "seed_shift": 4.591426421189607
+    },
+    {
+      "subject": "matematik",
+      "question": 22,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1203.5,
+      "contour_refined": true,
+      "seed_shift": 4.348346772983974
+    },
+    {
+      "subject": "matematik",
+      "question": 22,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1203.5,
+      "contour_refined": true,
+      "seed_shift": 4.090466940290874
+    },
+    {
+      "subject": "matematik",
+      "question": 22,
+      "option": "D",
+      "x": 1157.5,
+      "y": 1203.5,
+      "contour_refined": true,
+      "seed_shift": 3.9469276660859887
+    },
+    {
+      "subject": "matematik",
+      "question": 22,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1203.5,
+      "contour_refined": true,
+      "seed_shift": 3.8403588822543924
+    },
+    {
+      "subject": "matematik",
+      "question": 23,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 4.504218767406207
+    },
+    {
+      "subject": "matematik",
+      "question": 23,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 4.253706277355832
+    },
+    {
+      "subject": "matematik",
+      "question": 23,
+      "option": "C",
+      "x": 1129.0,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 3.9849688359592634
+    },
+    {
+      "subject": "matematik",
+      "question": 23,
+      "option": "D",
+      "x": 1158.0,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 3.8445390722318438
+    },
+    {
+      "subject": "matematik",
+      "question": 23,
+      "option": "E",
+      "x": 1186.0,
+      "y": 1232.0,
+      "contour_refined": true,
+      "seed_shift": 3.7520101997620667
+    },
+    {
+      "subject": "matematik",
+      "question": 24,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 4.893475897843391
+    },
+    {
+      "subject": "matematik",
+      "question": 24,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1260.5,
+      "contour_refined": true,
+      "seed_shift": 4.161535301829857
+    },
+    {
+      "subject": "matematik",
+      "question": 24,
+      "option": "C",
+      "x": 1129.5,
+      "y": 1260.5,
+      "contour_refined": true,
+      "seed_shift": 3.935175838897737
+    },
+    {
+      "subject": "matematik",
+      "question": 24,
+      "option": "D",
+      "x": 1158.0,
+      "y": 1260.5,
+      "contour_refined": true,
+      "seed_shift": 3.7480971381766017
+    },
+    {
+      "subject": "matematik",
+      "question": 24,
+      "option": "E",
+      "x": 1186.5,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 4.105948123567347
+    },
+    {
+      "subject": "matematik",
+      "question": 25,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 4.8096235437381125
+    },
+    {
+      "subject": "matematik",
+      "question": 25,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 4.552870795292938
+    },
+    {
+      "subject": "matematik",
+      "question": 25,
+      "option": "C",
+      "x": 1129.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 4.331322549705278
+    },
+    {
+      "subject": "matematik",
+      "question": 25,
+      "option": "D",
+      "x": 1158.0,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 4.1506199880666665
+    },
+    {
+      "subject": "matematik",
+      "question": 25,
+      "option": "E",
+      "x": 1186.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 4.016280150324578
+    },
+    {
+      "subject": "matematik",
+      "question": 26,
+      "option": "A",
+      "x": 1072.5,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 4.729757688008469
+    },
+    {
+      "subject": "matematik",
+      "question": 26,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 4.46256987783156
+    },
+    {
+      "subject": "matematik",
+      "question": 26,
+      "option": "C",
+      "x": 1129.5,
+      "y": 1317.5,
+      "contour_refined": true,
+      "seed_shift": 3.744960331392475
+    },
+    {
+      "subject": "matematik",
+      "question": 26,
+      "option": "D",
+      "x": 1158.0,
+      "y": 1317.5,
+      "contour_refined": true,
+      "seed_shift": 3.5560717286405166
+    },
+    {
+      "subject": "matematik",
+      "question": 26,
+      "option": "E",
+      "x": 1187.0,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 3.937212675928417
+    },
+    {
+      "subject": "matematik",
+      "question": 27,
+      "option": "A",
+      "x": 1073.0,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 4.872763811277432
+    },
+    {
+      "subject": "matematik",
+      "question": 27,
+      "option": "B",
+      "x": 1101.0,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 4.374801582802278
+    },
+    {
+      "subject": "matematik",
+      "question": 27,
+      "option": "C",
+      "x": 1130.0,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 4.269110989652989
+    },
+    {
+      "subject": "matematik",
+      "question": 27,
+      "option": "D",
+      "x": 1158.5,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 3.5438174297372833
+    },
+    {
+      "subject": "matematik",
+      "question": 27,
+      "option": "E",
+      "x": 1187.0,
+      "y": 1346.0,
+      "contour_refined": true,
+      "seed_shift": 3.3499585403737733
+    },
+    {
+      "subject": "matematik",
+      "question": 28,
+      "option": "A",
+      "x": 1073.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 4.815395538066898
+    },
+    {
+      "subject": "matematik",
+      "question": 28,
+      "option": "B",
+      "x": 1101.5,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 4.03245381383136
+    },
+    {
+      "subject": "matematik",
+      "question": 28,
+      "option": "C",
+      "x": 1130.0,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 3.716290523239731
+    },
+    {
+      "subject": "matematik",
+      "question": 28,
+      "option": "D",
+      "x": 1158.5,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 3.4546465103546216
+    },
+    {
+      "subject": "matematik",
+      "question": 28,
+      "option": "E",
+      "x": 1187.0,
+      "y": 1374.5,
+      "contour_refined": true,
+      "seed_shift": 3.260672558818314
+    },
+    {
+      "subject": "matematik",
+      "question": 29,
+      "option": "A",
+      "x": 1073.0,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 4.762772102532767
+    },
+    {
+      "subject": "matematik",
+      "question": 29,
+      "option": "B",
+      "x": 1101.5,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 4.409100921976153
+    },
+    {
+      "subject": "matematik",
+      "question": 29,
+      "option": "C",
+      "x": 1130.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 3.6373019761718095
+    },
+    {
+      "subject": "matematik",
+      "question": 29,
+      "option": "D",
+      "x": 1158.5,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 3.3661788507920054
+    },
+    {
+      "subject": "matematik",
+      "question": 29,
+      "option": "E",
+      "x": 1187.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 3.1714124098327954
+    },
+    {
+      "subject": "matematik",
+      "question": 30,
+      "option": "A",
+      "x": 1073.0,
+      "y": 1431.0,
+      "contour_refined": true,
+      "seed_shift": 4.715052374935698
+    },
+    {
+      "subject": "matematik",
+      "question": 30,
+      "option": "B",
+      "x": 1102.0,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 4.195286325201947
+    },
+    {
+      "subject": "matematik",
+      "question": 30,
+      "option": "C",
+      "x": 1130.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 3.796627952778555
+    },
+    {
+      "subject": "matematik",
+      "question": 30,
+      "option": "D",
+      "x": 1158.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 3.2784713827254746
+    },
+    {
+      "subject": "matematik",
+      "question": 30,
+      "option": "E",
+      "x": 1187.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 3.175400599575443
+    },
+    {
+      "subject": "matematik",
+      "question": 31,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 4.614405166729192
+    },
+    {
+      "subject": "matematik",
+      "question": 31,
+      "option": "B",
+      "x": 1102.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 4.153054688763981
+    },
+    {
+      "subject": "matematik",
+      "question": 31,
+      "option": "C",
+      "x": 1130.5,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 3.7337638875425085
+    },
+    {
+      "subject": "matematik",
+      "question": 31,
+      "option": "D",
+      "x": 1159.0,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 3.372257938369172
+    },
+    {
+      "subject": "matematik",
+      "question": 31,
+      "option": "E",
+      "x": 1187.5,
+      "y": 1460.0,
+      "contour_refined": true,
+      "seed_shift": 3.0888923180964007
+    },
+    {
+      "subject": "matematik",
+      "question": 32,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 4.60113739602862
+    },
+    {
+      "subject": "matematik",
+      "question": 32,
+      "option": "B",
+      "x": 1102.0,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 4.115065088642111
+    },
+    {
+      "subject": "matematik",
+      "question": 32,
+      "option": "C",
+      "x": 1130.5,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 3.6736480465676156
+    },
+    {
+      "subject": "matematik",
+      "question": 32,
+      "option": "D",
+      "x": 1159.0,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 3.294882880467393
+    },
+    {
+      "subject": "matematik",
+      "question": 32,
+      "option": "E",
+      "x": 1188.0,
+      "y": 1489.0,
+      "contour_refined": true,
+      "seed_shift": 2.7320630136075508
+    },
+    {
+      "subject": "matematik",
+      "question": 33,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 4.593468462569366
+    },
+    {
+      "subject": "matematik",
+      "question": 33,
+      "option": "B",
+      "x": 1102.0,
+      "y": 1517.0,
+      "contour_refined": true,
+      "seed_shift": 4.081435979911891
+    },
+    {
+      "subject": "matematik",
+      "question": 33,
+      "option": "C",
+      "x": 1130.5,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 3.2270645335487926
+    },
+    {
+      "subject": "matematik",
+      "question": 33,
+      "option": "D",
+      "x": 1159.5,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 3.081152126947974
+    },
+    {
+      "subject": "matematik",
+      "question": 33,
+      "option": "E",
+      "x": 1188.0,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 2.6540938816620265
+    },
+    {
+      "subject": "matematik",
+      "question": 34,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1545.5,
+      "contour_refined": true,
+      "seed_shift": 4.591426421189686
+    },
+    {
+      "subject": "matematik",
+      "question": 34,
+      "option": "B",
+      "x": 1102.5,
+      "y": 1546.0,
+      "contour_refined": true,
+      "seed_shift": 4.115065088642046
+    },
+    {
+      "subject": "matematik",
+      "question": 34,
+      "option": "C",
+      "x": 1131.0,
+      "y": 1546.0,
+      "contour_refined": true,
+      "seed_shift": 3.5459786374203337
+    },
+    {
+      "subject": "matematik",
+      "question": 34,
+      "option": "D",
+      "x": 1159.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 2.6714085059486523
+    },
+    {
+      "subject": "matematik",
+      "question": 34,
+      "option": "E",
+      "x": 1188.0,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 2.1645415158185313
+    },
+    {
+      "subject": "matematik",
+      "question": 35,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.310205649912696
+    },
+    {
+      "subject": "matematik",
+      "question": 35,
+      "option": "B",
+      "x": 1102.5,
+      "y": 1574.5,
+      "contour_refined": true,
+      "seed_shift": 4.114286138244364
+    },
+    {
+      "subject": "matematik",
+      "question": 35,
+      "option": "C",
+      "x": 1131.0,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 3.2280321241510275
+    },
+    {
+      "subject": "matematik",
+      "question": 35,
+      "option": "D",
+      "x": 1159.5,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 2.6276769672907365
+    },
+    {
+      "subject": "matematik",
+      "question": 35,
+      "option": "E",
+      "x": 1188.0,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 2.094575191631785
+    },
+    {
+      "subject": "matematik",
+      "question": 36,
+      "option": "A",
+      "x": 1073.5,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 4.107818038915207
+    },
+    {
+      "subject": "matematik",
+      "question": 36,
+      "option": "B",
+      "x": 1102.5,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 3.883451632400762
+    },
+    {
+      "subject": "matematik",
+      "question": 36,
+      "option": "C",
+      "x": 1131.0,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 3.217483309325701
+    },
+    {
+      "subject": "matematik",
+      "question": 36,
+      "option": "D",
+      "x": 1159.5,
+      "y": 1604.0,
+      "contour_refined": true,
+      "seed_shift": 2.320292445187532
+    },
+    {
+      "subject": "matematik",
+      "question": 36,
+      "option": "E",
+      "x": 1188.5,
+      "y": 1604.5,
+      "contour_refined": true,
+      "seed_shift": 1.9071994124757559
+    },
+    {
+      "subject": "matematik",
+      "question": 37,
+      "option": "A",
+      "x": 1074.0,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 4.6225016352102895
+    },
+    {
+      "subject": "matematik",
+      "question": 37,
+      "option": "B",
+      "x": 1102.5,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 3.742228414230305
+    },
+    {
+      "subject": "matematik",
+      "question": 37,
+      "option": "C",
+      "x": 1131.5,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 3.4887345703045134
+    },
+    {
+      "subject": "matematik",
+      "question": 37,
+      "option": "D",
+      "x": 1159.5,
+      "y": 1632.5,
+      "contour_refined": true,
+      "seed_shift": 2.3003444272309794
+    },
+    {
+      "subject": "matematik",
+      "question": 37,
+      "option": "E",
+      "x": 1188.5,
+      "y": 1633.0,
+      "contour_refined": true,
+      "seed_shift": 1.8844409477966702
+    },
+    {
+      "subject": "matematik",
+      "question": 38,
+      "option": "A",
+      "x": 1074.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 4.9788250577186135
+    },
+    {
+      "subject": "matematik",
+      "question": 38,
+      "option": "B",
+      "x": 1103.0,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 4.198341145746443
+    },
+    {
+      "subject": "matematik",
+      "question": 38,
+      "option": "C",
+      "x": 1131.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 3.41865918499161
+    },
+    {
+      "subject": "matematik",
+      "question": 38,
+      "option": "D",
+      "x": 1160.0,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 2.640489669842577
+    },
+    {
+      "subject": "matematik",
+      "question": 38,
+      "option": "E",
+      "x": 1188.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 1.8657260239161348
+    },
+    {
+      "subject": "matematik",
+      "question": 39,
+      "option": "A",
+      "x": 1074.5,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 5.068430117467601
+    },
+    {
+      "subject": "matematik",
+      "question": 39,
+      "option": "B",
+      "x": 1103.0,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 4.261986615949084
+    },
+    {
+      "subject": "matematik",
+      "question": 39,
+      "option": "C",
+      "x": 1131.5,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 3.456147537928706
+    },
+    {
+      "subject": "matematik",
+      "question": 39,
+      "option": "D",
+      "x": 1160.0,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 2.6514640340482147
+    },
+    {
+      "subject": "matematik",
+      "question": 39,
+      "option": "E",
+      "x": 1188.5,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 1.8494450719859175
+    },
+    {
+      "subject": "matematik",
+      "question": 40,
+      "option": "A",
+      "x": 1074.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 5.177408189003093
+    },
+    {
+      "subject": "matematik",
+      "question": 40,
+      "option": "B",
+      "x": 1103.0,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 4.346134936801684
+    },
+    {
+      "subject": "matematik",
+      "question": 40,
+      "option": "C",
+      "x": 1131.5,
+      "y": 1719.5,
+      "contour_refined": true,
+      "seed_shift": 3.597838857487133
+    },
+    {
+      "subject": "matematik",
+      "question": 40,
+      "option": "D",
+      "x": 1160.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 3.184162195757201
+    },
+    {
+      "subject": "matematik",
+      "question": 40,
+      "option": "E",
+      "x": 1189.0,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 2.357022603955073
+    },
+    {
+      "subject": "fen",
+      "question": 1,
+      "option": "A",
+      "x": 1245.0,
+      "y": 610.0,
+      "contour_refined": true,
+      "seed_shift": 1.201850425154642
+    },
+    {
+      "subject": "fen",
+      "question": 1,
+      "option": "B",
+      "x": 1274.0,
+      "y": 609.0,
+      "contour_refined": true,
+      "seed_shift": 1.6666666666667425
+    },
+    {
+      "subject": "fen",
+      "question": 1,
+      "option": "C",
+      "x": 1302.0,
+      "y": 609.0,
+      "contour_refined": true,
+      "seed_shift": 1.374368541872682
+    },
+    {
+      "subject": "fen",
+      "question": 1,
+      "option": "D",
+      "x": 1331.0,
+      "y": 608.0,
+      "contour_refined": true,
+      "seed_shift": 2.027587510099413
+    },
+    {
+      "subject": "fen",
+      "question": 1,
+      "option": "E",
+      "x": 1359.5,
+      "y": 608.0,
+      "contour_refined": true,
+      "seed_shift": 2.1666666666667425
+    },
+    {
+      "subject": "fen",
+      "question": 2,
+      "option": "A",
+      "x": 1245.0,
+      "y": 638.0,
+      "contour_refined": true,
+      "seed_shift": 1.0655004034023057
+    },
+    {
+      "subject": "fen",
+      "question": 2,
+      "option": "B",
+      "x": 1273.5,
+      "y": 637.5,
+      "contour_refined": true,
+      "seed_shift": 1.1780153085625322
+    },
+    {
+      "subject": "fen",
+      "question": 2,
+      "option": "C",
+      "x": 1302.5,
+      "y": 637.0,
+      "contour_refined": true,
+      "seed_shift": 1.8186710719152888
+    },
+    {
+      "subject": "fen",
+      "question": 2,
+      "option": "D",
+      "x": 1331.0,
+      "y": 636.0,
+      "contour_refined": true,
+      "seed_shift": 2.1029983569343176
+    },
+    {
+      "subject": "fen",
+      "question": 2,
+      "option": "E",
+      "x": 1359.5,
+      "y": 636.0,
+      "contour_refined": true,
+      "seed_shift": 2.144843653759601
+    },
+    {
+      "subject": "fen",
+      "question": 3,
+      "option": "A",
+      "x": 1244.5,
+      "y": 666.0,
+      "contour_refined": true,
+      "seed_shift": 0.5888293421321709
+    },
+    {
+      "subject": "fen",
+      "question": 3,
+      "option": "B",
+      "x": 1273.5,
+      "y": 665.5,
+      "contour_refined": true,
+      "seed_shift": 1.2309621168892906
+    },
+    {
+      "subject": "fen",
+      "question": 3,
+      "option": "C",
+      "x": 1302.0,
+      "y": 665.0,
+      "contour_refined": true,
+      "seed_shift": 1.3998580644582428
+    },
+    {
+      "subject": "fen",
+      "question": 3,
+      "option": "D",
+      "x": 1330.5,
+      "y": 665.0,
+      "contour_refined": true,
+      "seed_shift": 1.4293258759427339
+    },
+    {
+      "subject": "fen",
+      "question": 3,
+      "option": "E",
+      "x": 1359.5,
+      "y": 664.0,
+      "contour_refined": true,
+      "seed_shift": 2.2160046154167583
+    },
+    {
+      "subject": "fen",
+      "question": 4,
+      "option": "A",
+      "x": 1244.5,
+      "y": 694.5,
+      "contour_refined": true,
+      "seed_shift": 0.6059642204150858
+    },
+    {
+      "subject": "fen",
+      "question": 4,
+      "option": "B",
+      "x": 1273.0,
+      "y": 694.0,
+      "contour_refined": true,
+      "seed_shift": 0.7382656435326578
+    },
+    {
+      "subject": "fen",
+      "question": 4,
+      "option": "C",
+      "x": 1302.0,
+      "y": 693.0,
+      "contour_refined": true,
+      "seed_shift": 1.5949047733419761
+    },
+    {
+      "subject": "fen",
+      "question": 4,
+      "option": "D",
+      "x": 1330.5,
+      "y": 693.0,
+      "contour_refined": true,
+      "seed_shift": 1.5141780089324652
+    },
+    {
+      "subject": "fen",
+      "question": 4,
+      "option": "E",
+      "x": 1359.0,
+      "y": 692.5,
+      "contour_refined": true,
+      "seed_shift": 1.6824206129862496
+    },
+    {
+      "subject": "fen",
+      "question": 5,
+      "option": "A",
+      "x": 1244.0,
+      "y": 723.0,
+      "contour_refined": true,
+      "seed_shift": 0.1391352187701115
+    },
+    {
+      "subject": "fen",
+      "question": 5,
+      "option": "B",
+      "x": 1273.0,
+      "y": 722.0,
+      "contour_refined": true,
+      "seed_shift": 0.9731961872644128
+    },
+    {
+      "subject": "fen",
+      "question": 5,
+      "option": "C",
+      "x": 1301.5,
+      "y": 722.0,
+      "contour_refined": true,
+      "seed_shift": 0.8524007512253893
+    },
+    {
+      "subject": "fen",
+      "question": 5,
+      "option": "D",
+      "x": 1330.0,
+      "y": 721.5,
+      "contour_refined": true,
+      "seed_shift": 1.0100398194363929
+    },
+    {
+      "subject": "fen",
+      "question": 5,
+      "option": "E",
+      "x": 1359.0,
+      "y": 721.0,
+      "contour_refined": true,
+      "seed_shift": 1.5955687779995196
+    },
+    {
+      "subject": "fen",
+      "question": 6,
+      "option": "A",
+      "x": 1243.5,
+      "y": 751.5,
+      "contour_refined": true,
+      "seed_shift": 0.3487032844243232
+    },
+    {
+      "subject": "fen",
+      "question": 6,
+      "option": "B",
+      "x": 1272.5,
+      "y": 750.5,
+      "contour_refined": true,
+      "seed_shift": 0.6298455238270122
+    },
+    {
+      "subject": "fen",
+      "question": 6,
+      "option": "C",
+      "x": 1301.0,
+      "y": 750.0,
+      "contour_refined": true,
+      "seed_shift": 0.8407841359876193
+    },
+    {
+      "subject": "fen",
+      "question": 6,
+      "option": "D",
+      "x": 1329.5,
+      "y": 750.0,
+      "contour_refined": true,
+      "seed_shift": 0.5873387111655063
+    },
+    {
+      "subject": "fen",
+      "question": 6,
+      "option": "E",
+      "x": 1358.5,
+      "y": 749.5,
+      "contour_refined": true,
+      "seed_shift": 1.0963017010960738
+    },
+    {
+      "subject": "fen",
+      "question": 7,
+      "option": "A",
+      "x": 1243.5,
+      "y": 779.0,
+      "contour_refined": true,
+      "seed_shift": 0.8478033649931369
+    },
+    {
+      "subject": "fen",
+      "question": 7,
+      "option": "B",
+      "x": 1272.0,
+      "y": 779.0,
+      "contour_refined": true,
+      "seed_shift": 0.5852672928467578
+    },
+    {
+      "subject": "fen",
+      "question": 7,
+      "option": "C",
+      "x": 1301.0,
+      "y": 778.5,
+      "contour_refined": true,
+      "seed_shift": 0.7663407248144142
+    },
+    {
+      "subject": "fen",
+      "question": 7,
+      "option": "D",
+      "x": 1329.5,
+      "y": 778.5,
+      "contour_refined": true,
+      "seed_shift": 0.5105719936344567
+    },
+    {
+      "subject": "fen",
+      "question": 7,
+      "option": "E",
+      "x": 1358.0,
+      "y": 778.0,
+      "contour_refined": true,
+      "seed_shift": 0.7142763219069969
+    },
+    {
+      "subject": "fen",
+      "question": 8,
+      "option": "A",
+      "x": 1243.5,
+      "y": 807.5,
+      "contour_refined": true,
+      "seed_shift": 0.7517724447940006
+    },
+    {
+      "subject": "fen",
+      "question": 8,
+      "option": "B",
+      "x": 1271.5,
+      "y": 807.0,
+      "contour_refined": true,
+      "seed_shift": 1.2108806758320887
+    },
+    {
+      "subject": "fen",
+      "question": 8,
+      "option": "C",
+      "x": 1300.5,
+      "y": 807.0,
+      "contour_refined": true,
+      "seed_shift": 0.7177070207733739
+    },
+    {
+      "subject": "fen",
+      "question": 8,
+      "option": "D",
+      "x": 1329.0,
+      "y": 806.5,
+      "contour_refined": true,
+      "seed_shift": 0.9338266909330066
+    },
+    {
+      "subject": "fen",
+      "question": 8,
+      "option": "E",
+      "x": 1358.5,
+      "y": 806.0,
+      "contour_refined": true,
+      "seed_shift": 1.3068890332152785
+    },
+    {
+      "subject": "fen",
+      "question": 9,
+      "option": "A",
+      "x": 1243.0,
+      "y": 836.0,
+      "contour_refined": true,
+      "seed_shift": 0.9520999240988118
+    },
+    {
+      "subject": "fen",
+      "question": 9,
+      "option": "B",
+      "x": 1271.5,
+      "y": 835.5,
+      "contour_refined": true,
+      "seed_shift": 1.1438471469413323
+    },
+    {
+      "subject": "fen",
+      "question": 9,
+      "option": "C",
+      "x": 1300.5,
+      "y": 835.0,
+      "contour_refined": true,
+      "seed_shift": 1.127079534335859
+    },
+    {
+      "subject": "fen",
+      "question": 9,
+      "option": "D",
+      "x": 1329.0,
+      "y": 835.0,
+      "contour_refined": true,
+      "seed_shift": 0.8888888888890016
+    },
+    {
+      "subject": "fen",
+      "question": 9,
+      "option": "E",
+      "x": 1358.0,
+      "y": 834.0,
+      "contour_refined": true,
+      "seed_shift": 1.5601510029545869
+    },
+    {
+      "subject": "fen",
+      "question": 10,
+      "option": "A",
+      "x": 1243.5,
+      "y": 864.0,
+      "contour_refined": true,
+      "seed_shift": 1.0435141407756896
+    },
+    {
+      "subject": "fen",
+      "question": 10,
+      "option": "B",
+      "x": 1271.5,
+      "y": 863.5,
+      "contour_refined": true,
+      "seed_shift": 1.477532815731849
+    },
+    {
+      "subject": "fen",
+      "question": 10,
+      "option": "C",
+      "x": 1300.5,
+      "y": 863.0,
+      "contour_refined": true,
+      "seed_shift": 1.546400456584145
+    },
+    {
+      "subject": "fen",
+      "question": 10,
+      "option": "D",
+      "x": 1329.0,
+      "y": 863.0,
+      "contour_refined": true,
+      "seed_shift": 1.3139618436224356
+    },
+    {
+      "subject": "fen",
+      "question": 10,
+      "option": "E",
+      "x": 1358.0,
+      "y": 862.5,
+      "contour_refined": true,
+      "seed_shift": 1.5008763602588027
+    },
+    {
+      "subject": "fen",
+      "question": 11,
+      "option": "A",
+      "x": 1243.0,
+      "y": 892.0,
+      "contour_refined": true,
+      "seed_shift": 1.5795325038822081
+    },
+    {
+      "subject": "fen",
+      "question": 11,
+      "option": "B",
+      "x": 1271.5,
+      "y": 892.0,
+      "contour_refined": true,
+      "seed_shift": 1.4038250138256714
+    },
+    {
+      "subject": "fen",
+      "question": 11,
+      "option": "C",
+      "x": 1300.5,
+      "y": 891.0,
+      "contour_refined": true,
+      "seed_shift": 1.9693251772834357
+    },
+    {
+      "subject": "fen",
+      "question": 11,
+      "option": "D",
+      "x": 1329.0,
+      "y": 891.0,
+      "contour_refined": true,
+      "seed_shift": 1.7454322425119426
+    },
+    {
+      "subject": "fen",
+      "question": 11,
+      "option": "E",
+      "x": 1358.0,
+      "y": 891.0,
+      "contour_refined": true,
+      "seed_shift": 1.4445455889332597
+    },
+    {
+      "subject": "fen",
+      "question": 12,
+      "option": "A",
+      "x": 1243.0,
+      "y": 920.0,
+      "contour_refined": true,
+      "seed_shift": 1.948736692067577
+    },
+    {
+      "subject": "fen",
+      "question": 12,
+      "option": "B",
+      "x": 1271.5,
+      "y": 920.0,
+      "contour_refined": true,
+      "seed_shift": 1.768761034301787
+    },
+    {
+      "subject": "fen",
+      "question": 12,
+      "option": "C",
+      "x": 1300.5,
+      "y": 919.5,
+      "contour_refined": true,
+      "seed_shift": 1.9009073503131837
+    },
+    {
+      "subject": "fen",
+      "question": 12,
+      "option": "D",
+      "x": 1329.0,
+      "y": 919.0,
+      "contour_refined": true,
+      "seed_shift": 2.1795039382629864
+    },
+    {
+      "subject": "fen",
+      "question": 12,
+      "option": "E",
+      "x": 1357.5,
+      "y": 919.0,
+      "contour_refined": true,
+      "seed_shift": 1.9775430350685723
+    },
+    {
+      "subject": "fen",
+      "question": 13,
+      "option": "A",
+      "x": 1243.0,
+      "y": 948.5,
+      "contour_refined": true,
+      "seed_shift": 1.8527748083529574
+    },
+    {
+      "subject": "fen",
+      "question": 13,
+      "option": "B",
+      "x": 1271.5,
+      "y": 948.0,
+      "contour_refined": true,
+      "seed_shift": 2.1534263937733016
+    },
+    {
+      "subject": "fen",
+      "question": 13,
+      "option": "C",
+      "x": 1300.5,
+      "y": 948.0,
+      "contour_refined": true,
+      "seed_shift": 1.8329746825091182
+    },
+    {
+      "subject": "fen",
+      "question": 13,
+      "option": "D",
+      "x": 1329.0,
+      "y": 948.0,
+      "contour_refined": true,
+      "seed_shift": 1.6460260354569225
+    },
+    {
+      "subject": "fen",
+      "question": 13,
+      "option": "E",
+      "x": 1357.5,
+      "y": 947.5,
+      "contour_refined": true,
+      "seed_shift": 1.9464392885499162
+    },
+    {
+      "subject": "fen",
+      "question": 14,
+      "option": "A",
+      "x": 1243.0,
+      "y": 976.5,
+      "contour_refined": true,
+      "seed_shift": 2.2367580154663655
+    },
+    {
+      "subject": "fen",
+      "question": 14,
+      "option": "B",
+      "x": 1271.5,
+      "y": 976.5,
+      "contour_refined": true,
+      "seed_shift": 2.0742394113992733
+    },
+    {
+      "subject": "fen",
+      "question": 14,
+      "option": "C",
+      "x": 1300.5,
+      "y": 976.0,
+      "contour_refined": true,
+      "seed_shift": 2.255993389360727
+    },
+    {
+      "subject": "fen",
+      "question": 14,
+      "option": "D",
+      "x": 1328.5,
+      "y": 976.0,
+      "contour_refined": true,
+      "seed_shift": 2.261459159672005
+    },
+    {
+      "subject": "fen",
+      "question": 14,
+      "option": "E",
+      "x": 1357.5,
+      "y": 976.0,
+      "contour_refined": true,
+      "seed_shift": 1.9188795599077606
+    },
+    {
+      "subject": "fen",
+      "question": 15,
+      "option": "A",
+      "x": 1242.5,
+      "y": 1005.0,
+      "contour_refined": true,
+      "seed_shift": 2.3144764162030165
+    },
+    {
+      "subject": "fen",
+      "question": 15,
+      "option": "B",
+      "x": 1271.0,
+      "y": 1005.0,
+      "contour_refined": true,
+      "seed_shift": 2.223668168632018
+    },
+    {
+      "subject": "fen",
+      "question": 15,
+      "option": "C",
+      "x": 1299.5,
+      "y": 1004.5,
+      "contour_refined": true,
+      "seed_shift": 2.568550273540866
+    },
+    {
+      "subject": "fen",
+      "question": 15,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1004.0,
+      "contour_refined": true,
+      "seed_shift": 2.6720476336519887
+    },
+    {
+      "subject": "fen",
+      "question": 15,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1004.0,
+      "contour_refined": true,
+      "seed_shift": 2.358668535855509
+    },
+    {
+      "subject": "fen",
+      "question": 16,
+      "option": "A",
+      "x": 1242.5,
+      "y": 1033.0,
+      "contour_refined": true,
+      "seed_shift": 2.6759269686139917
+    },
+    {
+      "subject": "fen",
+      "question": 16,
+      "option": "B",
+      "x": 1271.0,
+      "y": 1033.0,
+      "contour_refined": true,
+      "seed_shift": 2.5807154133510837
+    },
+    {
+      "subject": "fen",
+      "question": 16,
+      "option": "C",
+      "x": 1299.5,
+      "y": 1032.5,
+      "contour_refined": true,
+      "seed_shift": 2.943752787408276
+    },
+    {
+      "subject": "fen",
+      "question": 16,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1032.5,
+      "contour_refined": true,
+      "seed_shift": 2.6319860233958603
+    },
+    {
+      "subject": "fen",
+      "question": 16,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1032.0,
+      "contour_refined": true,
+      "seed_shift": 2.8015974122787406
+    },
+    {
+      "subject": "fen",
+      "question": 17,
+      "option": "A",
+      "x": 1242.5,
+      "y": 1061.5,
+      "contour_refined": true,
+      "seed_shift": 2.579901469395614
+    },
+    {
+      "subject": "fen",
+      "question": 17,
+      "option": "B",
+      "x": 1271.0,
+      "y": 1061.0,
+      "contour_refined": true,
+      "seed_shift": 2.954051907996961
+    },
+    {
+      "subject": "fen",
+      "question": 17,
+      "option": "C",
+      "x": 1299.5,
+      "y": 1061.0,
+      "contour_refined": true,
+      "seed_shift": 2.8888541190442143
+    },
+    {
+      "subject": "fen",
+      "question": 17,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1061.0,
+      "contour_refined": true,
+      "seed_shift": 2.593594637448239
+    },
+    {
+      "subject": "fen",
+      "question": 17,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1060.5,
+      "contour_refined": true,
+      "seed_shift": 2.7708987801207465
+    },
+    {
+      "subject": "fen",
+      "question": 18,
+      "option": "A",
+      "x": 1242.5,
+      "y": 1089.5,
+      "contour_refined": true,
+      "seed_shift": 2.9542064614850263
+    },
+    {
+      "subject": "fen",
+      "question": 18,
+      "option": "B",
+      "x": 1271.0,
+      "y": 1089.5,
+      "contour_refined": true,
+      "seed_shift": 2.876462044913709
+    },
+    {
+      "subject": "fen",
+      "question": 18,
+      "option": "C",
+      "x": 1299.5,
+      "y": 1089.0,
+      "contour_refined": true,
+      "seed_shift": 3.2738417848367267
+    },
+    {
+      "subject": "fen",
+      "question": 18,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1089.0,
+      "contour_refined": true,
+      "seed_shift": 3.005258133379545
+    },
+    {
+      "subject": "fen",
+      "question": 18,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1089.0,
+      "contour_refined": true,
+      "seed_shift": 2.742687632929078
+    },
+    {
+      "subject": "fen",
+      "question": 19,
+      "option": "A",
+      "x": 1242.5,
+      "y": 1118.0,
+      "contour_refined": true,
+      "seed_shift": 2.8582843826494106
+    },
+    {
+      "subject": "fen",
+      "question": 19,
+      "option": "B",
+      "x": 1271.5,
+      "y": 1117.5,
+      "contour_refined": true,
+      "seed_shift": 3.113511096462756
+    },
+    {
+      "subject": "fen",
+      "question": 19,
+      "option": "C",
+      "x": 1300.0,
+      "y": 1117.5,
+      "contour_refined": true,
+      "seed_shift": 3.020448608433289
+    },
+    {
+      "subject": "fen",
+      "question": 19,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1117.5,
+      "contour_refined": true,
+      "seed_shift": 2.964894313563096
+    },
+    {
+      "subject": "fen",
+      "question": 19,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1117.5,
+      "contour_refined": true,
+      "seed_shift": 2.7170414547683297
+    },
+    {
+      "subject": "fen",
+      "question": 20,
+      "option": "A",
+      "x": 1243.0,
+      "y": 1146.0,
+      "contour_refined": true,
+      "seed_shift": 3.147771696304552
+    },
+    {
+      "subject": "fen",
+      "question": 20,
+      "option": "B",
+      "x": 1271.5,
+      "y": 1146.0,
+      "contour_refined": true,
+      "seed_shift": 3.03242093721302
+    },
+    {
+      "subject": "fen",
+      "question": 20,
+      "option": "C",
+      "x": 1300.0,
+      "y": 1146.0,
+      "contour_refined": true,
+      "seed_shift": 2.9574625693571064
+    },
+    {
+      "subject": "fen",
+      "question": 20,
+      "option": "D",
+      "x": 1329.0,
+      "y": 1146.0,
+      "contour_refined": true,
+      "seed_shift": 2.7385260937576237
+    },
+    {
+      "subject": "fen",
+      "question": 20,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1145.5,
+      "contour_refined": true,
+      "seed_shift": 3.154720421755244
+    },
+    {
+      "subject": "fen",
+      "question": 21,
+      "option": "A",
+      "x": 1243.0,
+      "y": 1174.5,
+      "contour_refined": true,
+      "seed_shift": 3.054874109655731
+    },
+    {
+      "subject": "fen",
+      "question": 21,
+      "option": "B",
+      "x": 1271.5,
+      "y": 1174.5,
+      "contour_refined": true,
+      "seed_shift": 2.951361381702619
+    },
+    {
+      "subject": "fen",
+      "question": 21,
+      "option": "C",
+      "x": 1300.5,
+      "y": 1174.5,
+      "contour_refined": true,
+      "seed_shift": 2.76091528758424
+    },
+    {
+      "subject": "fen",
+      "question": 21,
+      "option": "D",
+      "x": 1328.5,
+      "y": 1174.5,
+      "contour_refined": true,
+      "seed_shift": 2.8886423300438278
+    },
+    {
+      "subject": "fen",
+      "question": 21,
+      "option": "E",
+      "x": 1357.5,
+      "y": 1174.5,
+      "contour_refined": true,
+      "seed_shift": 2.6737318743696403
+    },
+    {
+      "subject": "fen",
+      "question": 22,
+      "option": "A",
+      "x": 1243.5,
+      "y": 1203.0,
+      "contour_refined": true,
+      "seed_shift": 2.9567616043140714
+    },
+    {
+      "subject": "fen",
+      "question": 22,
+      "option": "B",
+      "x": 1271.5,
+      "y": 1203.0,
+      "contour_refined": true,
+      "seed_shift": 2.87033502272265
+    },
+    {
+      "subject": "fen",
+      "question": 22,
+      "option": "C",
+      "x": 1300.5,
+      "y": 1203.0,
+      "contour_refined": true,
+      "seed_shift": 2.692826567826436
+    },
+    {
+      "subject": "fen",
+      "question": 22,
+      "option": "D",
+      "x": 1329.5,
+      "y": 1203.0,
+      "contour_refined": true,
+      "seed_shift": 2.5187332320071123
+    },
+    {
+      "subject": "fen",
+      "question": 22,
+      "option": "E",
+      "x": 1358.0,
+      "y": 1203.0,
+      "contour_refined": true,
+      "seed_shift": 2.456859869991647
+    },
+    {
+      "subject": "fen",
+      "question": 23,
+      "option": "A",
+      "x": 1243.5,
+      "y": 1231.5,
+      "contour_refined": true,
+      "seed_shift": 2.8700709620235756
+    },
+    {
+      "subject": "fen",
+      "question": 23,
+      "option": "B",
+      "x": 1272.0,
+      "y": 1231.5,
+      "contour_refined": true,
+      "seed_shift": 2.717562328069084
+    },
+    {
+      "subject": "fen",
+      "question": 23,
+      "option": "C",
+      "x": 1300.5,
+      "y": 1231.5,
+      "contour_refined": true,
+      "seed_shift": 2.62509370408356
+    },
+    {
+      "subject": "fen",
+      "question": 23,
+      "option": "D",
+      "x": 1329.5,
+      "y": 1231.5,
+      "contour_refined": true,
+      "seed_shift": 2.462732675650928
+    },
+    {
+      "subject": "fen",
+      "question": 23,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1231.5,
+      "contour_refined": true,
+      "seed_shift": 2.30266149959942
+    },
+    {
+      "subject": "fen",
+      "question": 24,
+      "option": "A",
+      "x": 1243.5,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 2.7839937026721233
+    },
+    {
+      "subject": "fen",
+      "question": 24,
+      "option": "B",
+      "x": 1272.5,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 2.657422202174555
+    },
+    {
+      "subject": "fen",
+      "question": 24,
+      "option": "C",
+      "x": 1301.0,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 2.496443521866978
+    },
+    {
+      "subject": "fen",
+      "question": 24,
+      "option": "D",
+      "x": 1329.5,
+      "y": 1259.5,
+      "contour_refined": true,
+      "seed_shift": 2.899471085146271
+    },
+    {
+      "subject": "fen",
+      "question": 24,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1260.0,
+      "contour_refined": true,
+      "seed_shift": 2.2590028164852685
+    },
+    {
+      "subject": "fen",
+      "question": 25,
+      "option": "A",
+      "x": 1243.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 2.6985885223853217
+    },
+    {
+      "subject": "fen",
+      "question": 25,
+      "option": "B",
+      "x": 1272.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 2.578230310094074
+    },
+    {
+      "subject": "fen",
+      "question": 25,
+      "option": "C",
+      "x": 1301.0,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 2.4242976168185835
+    },
+    {
+      "subject": "fen",
+      "question": 25,
+      "option": "D",
+      "x": 1330.0,
+      "y": 1288.0,
+      "contour_refined": true,
+      "seed_shift": 2.7949894117806564
+    },
+    {
+      "subject": "fen",
+      "question": 25,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1288.5,
+      "contour_refined": true,
+      "seed_shift": 2.2179857711445297
+    },
+    {
+      "subject": "fen",
+      "question": 26,
+      "option": "A",
+      "x": 1244.0,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 2.727138685810607
+    },
+    {
+      "subject": "fen",
+      "question": 26,
+      "option": "B",
+      "x": 1272.5,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 2.4991963059090017
+    },
+    {
+      "subject": "fen",
+      "question": 26,
+      "option": "C",
+      "x": 1301.0,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 2.3523069407721784
+    },
+    {
+      "subject": "fen",
+      "question": 26,
+      "option": "D",
+      "x": 1329.5,
+      "y": 1317.0,
+      "contour_refined": true,
+      "seed_shift": 2.3020388172334365
+    },
+    {
+      "subject": "fen",
+      "question": 26,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1316.5,
+      "contour_refined": true,
+      "seed_shift": 2.666920051516392
+    },
+    {
+      "subject": "fen",
+      "question": 27,
+      "option": "A",
+      "x": 1244.0,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 2.6533230969463615
+    },
+    {
+      "subject": "fen",
+      "question": 27,
+      "option": "B",
+      "x": 1272.5,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 2.4203356567544674
+    },
+    {
+      "subject": "fen",
+      "question": 27,
+      "option": "C",
+      "x": 1301.5,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 2.3107371492315054
+    },
+    {
+      "subject": "fen",
+      "question": 27,
+      "option": "D",
+      "x": 1329.5,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 2.251199954372604
+    },
+    {
+      "subject": "fen",
+      "question": 27,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1345.5,
+      "contour_refined": true,
+      "seed_shift": 2.14447322951307
+    },
+    {
+      "subject": "fen",
+      "question": 28,
+      "option": "A",
+      "x": 1244.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 2.5809701604433486
+    },
+    {
+      "subject": "fen",
+      "question": 28,
+      "option": "B",
+      "x": 1273.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 2.4760522969010506
+    },
+    {
+      "subject": "fen",
+      "question": 28,
+      "option": "C",
+      "x": 1301.5,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 2.2362517362195184
+    },
+    {
+      "subject": "fen",
+      "question": 28,
+      "option": "D",
+      "x": 1330.0,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 2.108185106779021
+    },
+    {
+      "subject": "fen",
+      "question": 28,
+      "option": "E",
+      "x": 1358.5,
+      "y": 1374.0,
+      "contour_refined": true,
+      "seed_shift": 2.1122743257180403
+    },
+    {
+      "subject": "fen",
+      "question": 29,
+      "option": "A",
+      "x": 1244.5,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 2.7401461468024086
+    },
+    {
+      "subject": "fen",
+      "question": 29,
+      "option": "B",
+      "x": 1273.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 1.949767298818209
+    },
+    {
+      "subject": "fen",
+      "question": 29,
+      "option": "C",
+      "x": 1302.0,
+      "y": 1403.0,
+      "contour_refined": true,
+      "seed_shift": 1.8426882635229025
+    },
+    {
+      "subject": "fen",
+      "question": 29,
+      "option": "D",
+      "x": 1330.5,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 2.0609193128442933
+    },
+    {
+      "subject": "fen",
+      "question": 29,
+      "option": "E",
+      "x": 1359.5,
+      "y": 1402.5,
+      "contour_refined": true,
+      "seed_shift": 1.960723626447268
+    },
+    {
+      "subject": "fen",
+      "question": 30,
+      "option": "A",
+      "x": 1244.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 2.2847306528102345
+    },
+    {
+      "subject": "fen",
+      "question": 30,
+      "option": "B",
+      "x": 1273.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 2.169770530867617
+    },
+    {
+      "subject": "fen",
+      "question": 30,
+      "option": "C",
+      "x": 1302.0,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 1.770494820747154
+    },
+    {
+      "subject": "fen",
+      "question": 30,
+      "option": "D",
+      "x": 1330.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 1.497227574003616
+    },
+    {
+      "subject": "fen",
+      "question": 30,
+      "option": "E",
+      "x": 1359.5,
+      "y": 1431.5,
+      "contour_refined": true,
+      "seed_shift": 1.4009926247395683
+    },
+    {
+      "subject": "fen",
+      "question": 31,
+      "option": "A",
+      "x": 1245.0,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 2.3249002297383425
+    },
+    {
+      "subject": "fen",
+      "question": 31,
+      "option": "B",
+      "x": 1273.5,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 1.7769249269239358
+    },
+    {
+      "subject": "fen",
+      "question": 31,
+      "option": "C",
+      "x": 1302.5,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 1.648719942575676
+    },
+    {
+      "subject": "fen",
+      "question": 31,
+      "option": "D",
+      "x": 1331.0,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 1.1593175121669665
+    },
+    {
+      "subject": "fen",
+      "question": 31,
+      "option": "E",
+      "x": 1359.5,
+      "y": 1460.5,
+      "contour_refined": true,
+      "seed_shift": 0.8412835752064728
+    },
+    {
+      "subject": "fen",
+      "question": 32,
+      "option": "A",
+      "x": 1245.0,
+      "y": 1488.5,
+      "contour_refined": true,
+      "seed_shift": 2.578637577936473
+    },
+    {
+      "subject": "fen",
+      "question": 32,
+      "option": "B",
+      "x": 1273.5,
+      "y": 1489.0,
+      "contour_refined": true,
+      "seed_shift": 1.7365630575451556
+    },
+    {
+      "subject": "fen",
+      "question": 32,
+      "option": "C",
+      "x": 1302.5,
+      "y": 1489.0,
+      "contour_refined": true,
+      "seed_shift": 1.5922517205755886
+    },
+    {
+      "subject": "fen",
+      "question": 32,
+      "option": "D",
+      "x": 1331.5,
+      "y": 1489.5,
+      "contour_refined": true,
+      "seed_shift": 1.225132510227443
+    },
+    {
+      "subject": "fen",
+      "question": 32,
+      "option": "E",
+      "x": 1360.0,
+      "y": 1489.0,
+      "contour_refined": true,
+      "seed_shift": 0.9508715066218525
+    },
+    {
+      "subject": "fen",
+      "question": 33,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 2.7664925261187356
+    },
+    {
+      "subject": "fen",
+      "question": 33,
+      "option": "B",
+      "x": 1274.0,
+      "y": 1518.0,
+      "contour_refined": true,
+      "seed_shift": 1.9813212057880514
+    },
+    {
+      "subject": "fen",
+      "question": 33,
+      "option": "C",
+      "x": 1302.5,
+      "y": 1517.5,
+      "contour_refined": true,
+      "seed_shift": 1.5373333945367624
+    },
+    {
+      "subject": "fen",
+      "question": 33,
+      "option": "D",
+      "x": 1331.5,
+      "y": 1518.0,
+      "contour_refined": true,
+      "seed_shift": 1.1670735961057437
+    },
+    {
+      "subject": "fen",
+      "question": 33,
+      "option": "E",
+      "x": 1360.2877197265625,
+      "y": 1517.59326171875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 34,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 2.654372547819256
+    },
+    {
+      "subject": "fen",
+      "question": 34,
+      "option": "B",
+      "x": 1274.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 2.4696048389338823
+    },
+    {
+      "subject": "fen",
+      "question": 34,
+      "option": "C",
+      "x": 1302.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 1.2974713687253308
+    },
+    {
+      "subject": "fen",
+      "question": 34,
+      "option": "D",
+      "x": 1331.0,
+      "y": 1546.0,
+      "contour_refined": true,
+      "seed_shift": 0.9291113298457191
+    },
+    {
+      "subject": "fen",
+      "question": 34,
+      "option": "E",
+      "x": 1359.5,
+      "y": 1546.5,
+      "contour_refined": true,
+      "seed_shift": 0.18929260333621983
+    },
+    {
+      "subject": "fen",
+      "question": 35,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1575.5,
+      "contour_refined": true,
+      "seed_shift": 2.6712991211792216
+    },
+    {
+      "subject": "fen",
+      "question": 35,
+      "option": "B",
+      "x": 1274.0,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 1.9718413666769652
+    },
+    {
+      "subject": "fen",
+      "question": 35,
+      "option": "C",
+      "x": 1302.5,
+      "y": 1575.0,
+      "contour_refined": true,
+      "seed_shift": 1.2674741073886833
+    },
+    {
+      "subject": "fen",
+      "question": 35,
+      "option": "D",
+      "x": 1331.431396484375,
+      "y": 1574.6845703125,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 35,
+      "option": "E",
+      "x": 1360.1280517578125,
+      "y": 1574.5025634765625,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 36,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1604.0,
+      "contour_refined": true,
+      "seed_shift": 2.7140789793164615
+    },
+    {
+      "subject": "fen",
+      "question": 36,
+      "option": "B",
+      "x": 1274.0,
+      "y": 1604.0,
+      "contour_refined": true,
+      "seed_shift": 1.9953192358853036
+    },
+    {
+      "subject": "fen",
+      "question": 36,
+      "option": "C",
+      "x": 1302.847412109375,
+      "y": 1603.469970703125,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 36,
+      "option": "D",
+      "x": 1331.5933837890625,
+      "y": 1603.3831787109375,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 36,
+      "option": "E",
+      "x": 1360.5,
+      "y": 1603.5,
+      "contour_refined": true,
+      "seed_shift": 0.7754967961781957
+    },
+    {
+      "subject": "fen",
+      "question": 37,
+      "option": "A",
+      "x": 1245.8277587890625,
+      "y": 1632.4969482421875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 37,
+      "option": "B",
+      "x": 1274.5,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 2.4755543810940024
+    },
+    {
+      "subject": "fen",
+      "question": 37,
+      "option": "C",
+      "x": 1303.0,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 1.7187139512683869
+    },
+    {
+      "subject": "fen",
+      "question": 37,
+      "option": "D",
+      "x": 1331.8193359375,
+      "y": 1632.1668701171875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 37,
+      "option": "E",
+      "x": 1360.5,
+      "y": 1632.0,
+      "contour_refined": true,
+      "seed_shift": 0.705128205128176
+    },
+    {
+      "subject": "fen",
+      "question": 38,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 2.9359005461609793
+    },
+    {
+      "subject": "fen",
+      "question": 38,
+      "option": "B",
+      "x": 1274.5,
+      "y": 1661.0,
+      "contour_refined": true,
+      "seed_shift": 2.53359702538957
+    },
+    {
+      "subject": "fen",
+      "question": 38,
+      "option": "C",
+      "x": 1303.5,
+      "y": 1660.5,
+      "contour_refined": true,
+      "seed_shift": 2.200958424242216
+    },
+    {
+      "subject": "fen",
+      "question": 38,
+      "option": "D",
+      "x": 1331.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 1.3865792762294886
+    },
+    {
+      "subject": "fen",
+      "question": 38,
+      "option": "E",
+      "x": 1360.5,
+      "y": 1661.5,
+      "contour_refined": true,
+      "seed_shift": 1.2327411790489091
+    },
+    {
+      "subject": "fen",
+      "question": 39,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1689.5,
+      "contour_refined": true,
+      "seed_shift": 2.8579808680976466
+    },
+    {
+      "subject": "fen",
+      "question": 39,
+      "option": "B",
+      "x": 1274.503173828125,
+      "y": 1689.7371826171875,
+      "contour_refined": false,
+      "seed_shift": null,
+      "refinement": "multithreshold_ellipse"
+    },
+    {
+      "subject": "fen",
+      "question": 39,
+      "option": "C",
+      "x": 1303.0,
+      "y": 1690.0,
+      "contour_refined": true,
+      "seed_shift": 2.007965000237619
+    },
+    {
+      "subject": "fen",
+      "question": 39,
+      "option": "D",
+      "x": 1332.0,
+      "y": 1689.5,
+      "contour_refined": true,
+      "seed_shift": 1.502214256793756
+    },
+    {
+      "subject": "fen",
+      "question": 39,
+      "option": "E",
+      "x": 1360.5,
+      "y": 1690.5,
+      "contour_refined": true,
+      "seed_shift": 1.708429210546383
+    },
+    {
+      "subject": "fen",
+      "question": 40,
+      "option": "A",
+      "x": 1245.5,
+      "y": 1718.5,
+      "contour_refined": true,
+      "seed_shift": 3.0641293851416647
+    },
+    {
+      "subject": "fen",
+      "question": 40,
+      "option": "B",
+      "x": 1274.5,
+      "y": 1718.5,
+      "contour_refined": true,
+      "seed_shift": 2.75882422620784
+    },
+    {
+      "subject": "fen",
+      "question": 40,
+      "option": "C",
+      "x": 1303.5,
+      "y": 1718.5,
+      "contour_refined": true,
+      "seed_shift": 2.460803843372136
+    },
+    {
+      "subject": "fen",
+      "question": 40,
+      "option": "D",
+      "x": 1332.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 2.477678124553079
+    },
+    {
+      "subject": "fen",
+      "question": 40,
+      "option": "E",
+      "x": 1361.5,
+      "y": 1719.0,
+      "contour_refined": true,
+      "seed_shift": 2.2422706745123415
+    }
+  ],
+  "markers": [
+    [
+      1051.5,
+      99.0
+    ],
+    [
+      114.0,
+      109.5
+    ],
+    [
+      342.5,
+      193.5
+    ],
+    [
+      1048.5,
+      415.0
+    ],
+    [
+      344.5,
+      451.5
+    ],
+    [
+      652.5,
+      1010.5
+    ],
+    [
+      117.5,
+      1016.5
+    ],
+    [
+      680.5,
+      1094.5
+    ],
+    [
+      1362.5,
+      1891.5
+    ],
+    [
+      705.0,
+      1893.5
+    ]
+  ],
+  "repairs": [
+    {
+      "index": 0,
+      "subject": "turkce",
+      "question": 1,
+      "option": "A",
+      "old": [
+        736.0,
+        616.0
+      ],
+      "new": [
+        737.5029907226562,
+        617.1571044921875
+      ]
+    },
+    {
+      "index": 414,
+      "subject": "sosyal",
+      "question": 43,
+      "option": "E",
+      "old": [
+        1016.0888888888888,
+        1805.5111111111112
+      ],
+      "new": [
+        1017.7811279296875,
+        1805.8145751953125
+      ]
+    },
+    {
+      "index": 419,
+      "subject": "sosyal",
+      "question": 44,
+      "option": "E",
+      "old": [
+        1016.0592592592593,
+        1833.8962962962962
+      ],
+      "new": null
+    },
+    {
+      "index": 423,
+      "subject": "sosyal",
+      "question": 45,
+      "option": "D",
+      "old": [
+        987.0444444444444,
+        1862.288888888889
+      ],
+      "new": [
+        989.3096313476562,
+        1863.7850341796875
+      ]
+    },
+    {
+      "index": 424,
+      "subject": "sosyal",
+      "question": 45,
+      "option": "E",
+      "old": [
+        1016.0296296296297,
+        1862.2814814814815
+      ],
+      "new": [
+        1017.7008666992188,
+        1863.881103515625
+      ]
+    },
+    {
+      "index": 426,
+      "subject": "sosyal",
+      "question": 46,
+      "option": "B",
+      "old": [
+        929.0,
+        1890.6666666666667
+      ],
+      "new": [
+        932.405517578125,
+        1893.054443359375
+      ]
+    },
+    {
+      "index": 427,
+      "subject": "sosyal",
+      "question": 46,
+      "option": "C",
+      "old": [
+        958.0,
+        1890.6666666666667
+      ],
+      "new": [
+        960.88134765625,
+        1892.83154296875
+      ]
+    },
+    {
+      "index": 428,
+      "subject": "sosyal",
+      "question": 46,
+      "option": "D",
+      "old": [
+        987.0,
+        1890.6666666666667
+      ],
+      "new": [
+        989.3126831054688,
+        1892.73486328125
+      ]
+    },
+    {
+      "index": 794,
+      "subject": "fen",
+      "question": 33,
+      "option": "E",
+      "old": [
+        1359.5213675213674,
+        1518.2222222222222
+      ],
+      "new": [
+        1360.2877197265625,
+        1517.59326171875
+      ]
+    },
+    {
+      "index": 803,
+      "subject": "fen",
+      "question": 35,
+      "option": "D",
+      "old": [
+        1330.4529914529917,
+        1575.153846153846
+      ],
+      "new": [
+        1331.431396484375,
+        1574.6845703125
+      ]
+    },
+    {
+      "index": 804,
+      "subject": "fen",
+      "question": 35,
+      "option": "E",
+      "old": [
+        1359.6581196581196,
+        1575.111111111111
+      ],
+      "new": [
+        1360.1280517578125,
+        1574.5025634765625
+      ]
+    },
+    {
+      "index": 807,
+      "subject": "fen",
+      "question": 36,
+      "option": "C",
+      "old": [
+        1301.2649572649575,
+        1603.6239316239316
+      ],
+      "new": [
+        1302.847412109375,
+        1603.469970703125
+      ]
+    },
+    {
+      "index": 808,
+      "subject": "fen",
+      "question": 36,
+      "option": "D",
+      "old": [
+        1330.4957264957266,
+        1603.5897435897436
+      ],
+      "new": [
+        1331.5933837890625,
+        1603.3831787109375
+      ]
+    },
+    {
+      "index": 810,
+      "subject": "fen",
+      "question": 37,
+      "option": "A",
+      "old": [
+        1242.769230769231,
+        1632.1025641025642
+      ],
+      "new": [
+        1245.8277587890625,
+        1632.4969482421875
+      ]
+    },
+    {
+      "index": 813,
+      "subject": "fen",
+      "question": 37,
+      "option": "D",
+      "old": [
+        1330.5384615384614,
+        1632.025641025641
+      ],
+      "new": [
+        1331.8193359375,
+        1632.1668701171875
+      ]
+    },
+    {
+      "index": 821,
+      "subject": "fen",
+      "question": 39,
+      "option": "B",
+      "old": [
+        1272.008547008547,
+        1688.9145299145298
+      ],
+      "new": [
+        1274.503173828125,
+        1689.7371826171875
+      ]
+    }
+  ]
+}
