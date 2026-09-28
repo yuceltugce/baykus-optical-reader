@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baykuş Optik</title>
+<style>
+  :root { --bg:#f4f5f7; --card:#fff; --ink:#172331; --muted:#5b6673; --accent:#176ca4; --bad:#b3261e; --warn:#8a5a00; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.5 -apple-system, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:720px; margin:0 auto; padding:16px; }
+  h1 { font-size:22px; margin:8px 0 4px; }
+  .card { background:var(--card); border-radius:14px; padding:16px; margin:14px 0; }
+  .muted { color:var(--muted); font-size:14px; }
+  label.btn { display:block; text-align:center; background:var(--accent); color:#fff; padding:16px; border-radius:12px; font-weight:600; font-size:18px; }
+  input[type=file] { display:none; }
+  ol { padding-left:20px; margin:8px 0; }
+  #status { font-weight:600; }
+  .err { color:var(--bad); }
+  .warn { color:var(--warn); font-size:14px; }
+  img { width:100%; border-radius:8px; margin-top:10px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:6px 4px; border-bottom:1px solid #e3e6ea; }
+  .grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:4px; font-size:13px; }
+  .q { background:#f0f2f5; border-radius:6px; padding:3px 5px; }
+  .q.amb { background:#fdecc8; } .q.blank { color:#9aa3ad; }
+  details summary { cursor:pointer; font-weight:600; margin-top:8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Baykuş Optik — uçtan uca deneme</h1>
+  <p class="muted">Telefon → bu ağdaki bilgisayar → cevaplar. Hizalama: E2 (global homography + ders başına balon konturu düzeltmesi).</p>
+
+  <div class="card">
+    <label class="btn" for="file">Formu tara / dosya seç</label>
+    <input id="file" type="file" accept="image/*,application/pdf">
+    <details>
+      <summary>iPhone belge tarayıcısıyla nasıl gönderilir?</summary>
+      <ol class="muted">
+        <li>Yukarıdaki düğmeye bas → <b>Dosya Seç</b>.</li>
+        <li>Açılan Dosyalar ekranında sağ üstteki <b>•••</b> → <b>Belgeleri Tara</b>. Formu tara, <b>Kaydet</b>.</li>
+        <li>Kaydedilen PDF'i seç. Yalnızca ilk sayfa okunur.</li>
+      </ol>
+      <p class="muted">Bu menü yoksa: Notlar'da tara → Paylaş → Dosyalar'a Kaydet → sonra burada <b>Dosya Seç</b>.
+      <b>Fotoğraf Çek</b> seçeneği ham kamera fotoğrafı gönderir; deneyler tarayıcı çıktısıyla yapıldı.</p>
+    </details>
+  </div>
+
+  <div class="card" id="out" hidden>
+    <div id="status"></div>
+    <div id="warnings"></div>
+    <div id="summary"></div>
+    <img id="overlay" alt="Hizalama sonucu" hidden>
+    <p class="muted" id="legend" hidden>Yeşil halka: balonun olduğunu düşündüğümüz yer. Kırmızı kalın halka: işaretli okundu.
+      Halkalar balonların üstünde değilse hizalama hatalı.</p>
+    <div id="answers"></div>
+  </div>
+</main>
+<script>
+const SUBJ = { turkce: "Türkçe", sosyal: "Sosyal", matematik: "Matematik", fen: "Fen" };
+const $ = (id) => document.getElementById(id);
+
+$("file").addEventListener("change", async (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  $("out").hidden = false;
+  $("status").className = ""; $("status").textContent = `Gönderiliyor: ${f.name} (${(f.size / 1e6).toFixed(1)} MB)…`;
+  for (const id of ["warnings", "summary", "answers"]) $(id).innerHTML = "";
+  $("overlay").hidden = true; $("legend").hidden = true;
+  try {
+    const res = await fetch("/api/process", { method: "POST", body: f,
+      headers: { "X-Filename": encodeURIComponent(f.name), "Content-Type": f.type || "application/octet-stream" } });
+    const r = await res.json();
+    if (!res.ok) throw new Error(r.error || res.statusText);
+    render(r);
+  } catch (err) {
+    $("status").className = "err"; $("status").textContent = "Hata: " + err.message;
+  }
+  e.target.value = "";
+});
+
+function render(r) {
+  const d = r.diagnostics;
+  $("status").textContent = `Okundu (${r.seconds} sn) · ${d.markers_matched} köşe işareti eşleşti · kayıt: ${r.saved_to}`;
+  $("warnings").innerHTML = r.warnings.map(w => `<p class="warn">⚠ ${w}</p>`).join("");
+  let t = "<table><tr><th>Ders</th><th>İşaretli</th><th>Boş</th><th>Belirsiz</th><th>Doğrulanan balon</th></tr>";
+  for (const [s, v] of Object.entries(r.summary))
+    t += `<tr><td>${SUBJ[s]}</td><td>${v.marked}</td><td>${v.blank}</td><td>${v.ambiguous}</td><td>%${Math.round(100 * d.coverage[s])}</td></tr>`;
+  $("summary").innerHTML = t + "</table>";
+  $("overlay").src = r.overlay; $("overlay").hidden = false; $("legend").hidden = false;
+  let a = "";
+  for (const [s, rows] of Object.entries(r.answers)) {
+    a += `<details><summary>${SUBJ[s]} cevapları</summary><div class="grid">`;
+    for (const q of rows) {
+      const cls = q.status === "ambiguous" ? "q amb" : q.status === "blank" ? "q blank" : "q";
+      a += `<div class="${cls}">${q.question}: ${q.answer ?? "–"}</div>`;
+    }
+    a += "</div></details>";
+  }
+  $("answers").innerHTML = a;
+}
+</script>
+</body>
+</html>
