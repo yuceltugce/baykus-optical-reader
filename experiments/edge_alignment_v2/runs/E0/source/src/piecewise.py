@@ -13,7 +13,7 @@ anchors and as a fallback).
 import cv2
 import numpy as np
 
-from .common import warp_points
+from common import warp_points
 
 
 def fit_block(ref_pts, obs_pts, ransac_px=2.0, seed=42):

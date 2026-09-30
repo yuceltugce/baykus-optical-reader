@@ -59,8 +59,16 @@ class Handler(BaseHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", 0))
         if not 0 < length <= MAX_BYTES:
             return self._send(413, json.dumps({"error": "Dosya boş ya da çok büyük."}).encode(), "application/json")
-        data = self.rfile.read(length)
         name = urllib.parse.unquote(self.headers.get("X-Filename", "upload")) or "upload"
+        try:
+            data = self.rfile.read(length)
+        except OSError as err:            # phone dropped the connection mid-upload; nobody left to answer
+            print(f"[fail] {name}: connection lost during upload ({err})", flush=True)
+            return
+        if len(data) != length:
+            print(f"[fail] {name}: incomplete upload {len(data)}/{length} bytes", flush=True)
+            return self._send(400, json.dumps({"error": "Dosya tam gelmedi (bağlantı kesildi). Tekrar gönderin."},
+                                              ensure_ascii=False).encode(), "application/json")
         run = UPLOADS / datetime.now().strftime("%Y%m%d-%H%M%S-%f")
         run.mkdir(parents=True)
         (run / ("input" + (Path(name).suffix.lower() or ".bin"))).write_bytes(data)
@@ -80,6 +88,11 @@ class Handler(BaseHTTPRequestHandler):
             (run / "error.txt").write_text(traceback.format_exc())
             print(f"[fail] {name}: {err}", flush=True)
             self._send(422, json.dumps({"error": str(err)}, ensure_ascii=False).encode(), "application/json")
+        except Exception as err:   # never leave the phone waiting without an answer
+            (run / "error.txt").write_text(traceback.format_exc())
+            print(f"[fail] {name}: unexpected {type(err).__name__}: {err}", flush=True)
+            self._send(500, json.dumps({"error": f"Beklenmeyen hata ({type(err).__name__}). Kayıt: {run.name}"},
+                                       ensure_ascii=False).encode(), "application/json")
 
     def log_message(self, fmt, *args):
         pass

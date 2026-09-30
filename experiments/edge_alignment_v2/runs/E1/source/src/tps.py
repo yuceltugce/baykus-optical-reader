@@ -13,7 +13,7 @@ Variants:
 import numpy as np
 from scipy.interpolate import RBFInterpolator
 
-from .common import warp_points
+from common import warp_points
 
 
 def residual_tps(src, values, query, smoothing=.001):

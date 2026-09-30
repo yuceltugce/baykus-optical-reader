@@ -83,7 +83,7 @@ def process_image(path, ref, methods):
     if len(ri) < 6:
         raise ValueError(f"only {len(ri)} matched markers (need 6)")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
-    H_all, H_ransac, inliers = homography.fit(src, dst)
+    H_all, H_ransac, inliers, homography_info = homography.fit_checked(src, dst)
     base = common.warp_points(H_ransac, ref["points"])
 
     # Pseudo-labels are frozen from `base` BEFORE any method runs.
@@ -110,7 +110,7 @@ def process_image(path, ref, methods):
     expected = {s: int((~train_rows & ref["ref_valid"] & (ref["subjects"] == s)).sum()) for s in common.SUBJECTS}
     coverage = {s: metrics[methods[0]]["by_subject"][s]["n"] / expected[s] for s in common.SUBJECTS}
     record = dict(status="ok", matched_markers=int(len(ri)), marker_inliers=int(inliers.sum()),
-                  coverage=coverage, fits=ctx["fits"], metrics=metrics)
+                  homography=homography_info, coverage=coverage, fits=ctx["fits"], metrics=metrics)
     return record, dict(im=im, H=H_ransac, obs=obs, evaluation=evaluation, predictions=predictions)
 
 
@@ -213,6 +213,10 @@ def write_report(out, cfg, records, agg, flags, n_images):
              f"({sum(r['status'] == 'ok' for r in records.values())} başarıyla işlendi). "
              f"Tüm ölçüler yüksekliği {common.WORKING_HEIGHT} px'e indirilmiş görüntüde, piksel cinsinden. "
              f"Bir balon çapı ≈ {BUBBLE_DIAMETER_PX} px.\n",
+             "**Başlangıç hizalaması:** korumalı RANSAC. RANSAC'ın kurduğu dönüşüm kararsızsa (koşul sayısı > "
+             f"{homography.MAX_CONDITION}), bütün markerlarla kurulan dönüşüm kullanılır. Bu çalıştırmada "
+             f"{sum(r.get('homography', {}).get('used') == 'all_markers' for r in records.values())} görüntüde "
+             "bütün markerlara dönüldü.\n",
              f"**Referans:** `{REFERENCE}` + `reference/template.json` (830 balon merkezi, E1'de onarılmış geçici şablon). "
              "Bu tarama fiziksel ground truth değildir. Ölçümler otomatik kontur eşleşmelerine göre yapılır "
              "(soru % 5 == 1 satırları eğitim, diğerleri ölçüm).\n",
@@ -313,6 +317,8 @@ def run(exp_id, quick, overwrite):
         scipy=scipy.__version__, numpy=np.__version__, working_height=common.WORKING_HEIGHT,
         train_rows="question % 5 == 1", pseudo_label_gate_px=10, ambiguity_margin_px=3,
         ransac_threshold_px=3.0, seed=42, ground_truth=False,
+        ransac_guard=dict(max_condition=homography.MAX_CONDITION,
+                          fallback="least-squares homography over all matched markers"),
         dataset_sha256={str(p.relative_to(ROOT)): common.sha256(p) for p in [ROOT / REFERENCE] + paths}))
     (out / "config.json").write_text(json.dumps(run_config, ensure_ascii=False, indent=2))
     (out / "metrics.json").write_text(json.dumps(dict(

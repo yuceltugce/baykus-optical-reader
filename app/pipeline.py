@@ -23,6 +23,8 @@ INK_BRIGHTNESS = 170       # darker than this = pencil (reader.py)
 FILL_THRESHOLD = 50.0      # % dark pixels to count as marked (reader.py, calibrated bimodal gap)
 CLEAR_WINNER_MARGIN = 20.0
 COVERAGE_WARNING = .8
+COVERAGE_RESCAN = .5        # below this in any subject the alignment itself is not trusted
+AMBIGUOUS_RESCAN = .10      # >10% multi-marked questions: reading threshold does not fit this photo
 
 _REF = None
 
@@ -62,7 +64,7 @@ def align(im, ref):
         raise ValueError(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
                          "Formun tamamı görünüyor mu, doğru yönde mi?")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
-    H_all, H, inliers = homography.fit(src, dst)
+    H_all, H, inliers, homography_info = homography.fit_checked(src, dst)
     base = common.warp_points(H, ref["points"])
     obs, ok = common.associate(base, common.detect_bubble_contours(im))
     ok &= ref["ref_valid"]
@@ -71,7 +73,7 @@ def align(im, ref):
                obs=obs, ok=ok, train_rows=ref["questions"] % 5 == 1, fits={})
     centres = local_contour.predict(ctx)["H_local_contours"]
     coverage = {s: float(ok[ref["subjects"] == s].mean()) for s in common.SUBJECTS}
-    return centres, dict(markers_matched=int(len(ri)), marker_inliers=int(inliers.sum()),
+    return centres, dict(markers_matched=int(len(ri)), marker_inliers=int(inliers.sum()), homography=homography_info,
                          coverage=coverage, local_fit=ctx["fits"]["H_local_contours"])
 
 
@@ -132,7 +134,21 @@ def process(data: bytes, filename: str):
                 if c < COVERAGE_WARNING]
     warnings += [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
                  for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
-    result = dict(input_size=list(original.shape[1::-1]), diagnostics=diag, warnings=warnings, answers=answers,
+    notes = []
+    h = diag["homography"]
+    if h["used"] == "all_markers":
+        notes.append(f"RANSAC {h['markers']} köşe işaretinden yalnızca {h['ransac_inliers']} tanesine güvendi ve "
+                     f"kurduğu dönüşüm kararsızdı (koşul sayısı {h['ransac_condition']}). Bunun yerine bütün köşe "
+                     "işaretleriyle hizalandı.")
+    rescan = [f"{s}: balonların yalnızca %{100 * c:.0f}'i bulunabildi, hizalama güvenilir değil"
+              for s, c in diag["coverage"].items() if c < COVERAGE_RESCAN]
+    n_questions = sum(len(rows) for rows in answers.values())
+    n_ambiguous = sum(r["status"] == "ambiguous" for rows in answers.values() for r in rows)
+    if n_ambiguous > AMBIGUOUS_RESCAN * n_questions:
+        rescan.append(f"{n_ambiguous} soruda birden fazla şık işaretli okundu; fotoğrafın ışığı okuma eşiğine uymuyor "
+                      "olabilir (ör. çok karanlık)")
+    result = dict(input_size=list(original.shape[1::-1]), diagnostics=diag, warnings=warnings, notes=notes,
+                  reliable=not rescan, rescan_reasons=rescan, answers=answers,
                   summary={s: dict(marked=sum(r["status"] == "single" for r in rows),
                                    blank=sum(r["status"] == "blank" for r in rows),
                                    ambiguous=sum(r["status"] == "ambiguous" for r in rows))

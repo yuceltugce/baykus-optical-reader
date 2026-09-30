@@ -7,7 +7,7 @@ separately per subject. Rows used for fitting are excluded from evaluation.
 """
 import numpy as np
 
-from .tps import residual_tps
+from tps import residual_tps
 
 
 def predict(ctx, min_anchors=10, outlier_px=6, max_correction_px=12, smoothing=.01):

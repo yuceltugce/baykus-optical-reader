@@ -6,6 +6,8 @@
 
 **Kullanılan girdi:** `dataset/*/*.png` — referans hariç 40 tarama (40 başarıyla işlendi). Tüm ölçüler yüksekliği 2000 px'e indirilmiş görüntüde, piksel cinsinden. Bir balon çapı ≈ 22 px.
 
+**Başlangıç hizalaması:** korumalı RANSAC. RANSAC'ın kurduğu dönüşüm kararsızsa (koşul sayısı > 5000), bütün markerlarla kurulan dönüşüm kullanılır. Bu çalıştırmada 0 görüntüde bütün markerlara dönüldü.
+
 **Referans:** `dataset/flat_front/004.png` + `reference/template.json` (830 balon merkezi, E1'de onarılmış geçici şablon). Bu tarama fiziksel ground truth değildir. Ölçümler otomatik kontur eşleşmelerine göre yapılır (soru % 5 == 1 satırları eğitim, diğerleri ölçüm).
 
 **Değiştirilen şey:** Homography yerine (veya üstüne) markerlardan TPS. Kontrol noktaları hâlâ yalnız kenardaki markerlar.

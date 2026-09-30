@@ -154,6 +154,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 158,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9664804469273743,
@@ -340,6 +346,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 1298,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9888268156424581,
@@ -526,6 +538,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 1853,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9888268156424581,
@@ -712,6 +730,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 1492,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.8770949720670391,
@@ -898,6 +922,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 106,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 1.0,
@@ -1084,6 +1114,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 337,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.9375,
         "sosyal": 0.9217877094972067,
@@ -1267,6 +1303,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 555,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 1.0,
@@ -1453,6 +1495,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 6,
+      "homography": {
+        "ransac_inliers": 6,
+        "markers": 10,
+        "ransac_condition": 111,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.875,
         "sosyal": 0.7821229050279329,
@@ -1639,6 +1687,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 698,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -1825,6 +1879,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 1025,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9273743016759777,
@@ -2011,6 +2071,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 438,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.8603351955307262,
@@ -2197,6 +2263,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 175,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9888268156424581,
@@ -2383,6 +2455,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 379,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9888268156424581,
@@ -2569,6 +2647,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 230,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -2755,6 +2839,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 625,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9720670391061452,
@@ -2941,6 +3031,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 639,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9497206703910615,
@@ -3127,6 +3223,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 761,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.60625,
         "sosyal": 0.0782122905027933,
@@ -3304,6 +3406,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 259,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -3490,6 +3598,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 279,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -3676,6 +3790,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 55,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9385474860335196,
@@ -3862,6 +3982,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 10,
+        "ransac_condition": 171,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.9625,
         "sosyal": 0.8603351955307262,
@@ -4048,6 +4174,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 540,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -4234,6 +4366,12 @@
       "status": "ok",
       "matched_markers": 9,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 9,
+        "ransac_condition": 860,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -4420,6 +4558,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 237,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9832402234636871,
@@ -4606,6 +4750,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 153,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9553072625698324,
@@ -4792,6 +4942,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 903,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9832402234636871,
@@ -4978,6 +5134,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 58,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9553072625698324,
@@ -5164,6 +5326,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 88,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9497206703910615,
@@ -5350,6 +5518,12 @@
       "status": "ok",
       "matched_markers": 9,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 9,
+        "ransac_condition": 1183,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -5536,6 +5710,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 349,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.9875,
         "sosyal": 0.8100558659217877,
@@ -5722,6 +5902,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 34,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9832402234636871,
@@ -5908,6 +6094,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 363,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -6094,6 +6286,12 @@
       "status": "ok",
       "matched_markers": 9,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 9,
+        "ransac_condition": 238,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -6280,6 +6478,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 378,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -6466,6 +6670,12 @@
       "status": "ok",
       "matched_markers": 9,
       "marker_inliers": 8,
+      "homography": {
+        "ransac_inliers": 8,
+        "markers": 9,
+        "ransac_condition": 624,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -6652,6 +6862,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 9,
+      "homography": {
+        "ransac_inliers": 9,
+        "markers": 10,
+        "ransac_condition": 124,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -6838,6 +7054,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 140,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.9888268156424581,
@@ -7024,6 +7246,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 205,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,
@@ -7210,6 +7438,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 377,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 0.9125,
         "sosyal": 0.39106145251396646,
@@ -7393,6 +7627,12 @@
       "status": "ok",
       "matched_markers": 10,
       "marker_inliers": 10,
+      "homography": {
+        "ransac_inliers": 10,
+        "markers": 10,
+        "ransac_condition": 103,
+        "used": "ransac"
+      },
       "coverage": {
         "turkce": 1.0,
         "sosyal": 0.994413407821229,

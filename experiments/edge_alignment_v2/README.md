@@ -60,7 +60,10 @@ Proje kökünden (`baykus-optical-reader/`):
 Bütün deneyler aynı noktalarda, aynı şekilde ölçülür; bu yüzden E0–E3 rakamları doğrudan karşılaştırılabilir.
 
 1. **Başlangıç tahmini.** Köşe markerları tespit edilir, referansla eşleştirilir (Hungarian), 3 px RANSAC
-   homography `H_ransac` hesaplanır. Referans balon merkezleri bu H ile fotoğrafa taşınır.
+   homography `H_ransac` hesaplanır. Referans balon merkezleri bu H ile fotoğrafa taşınır. *Korumalı RANSAC:*
+   RANSAC'ın dönüşümü kararsızsa (koşul sayısı > 5000) bütün markerlarla kurulan dönüşüm kullanılır. Bu kural
+   telefondan gelen gölgeli bir fotoğraftan sonra eklendi (`app/SAHA_DENEMELERI.md`); 40 taramanın hiçbirinde
+   devreye girmez, deney sonuçları değişmedi.
 2. **Otomatik etiket (pseudo-label).** Fotoğraftaki basılı balon halkaları çoklu eşik + elips uydurma ile bulunur.
    Başlangıç tahminine ≤10 px uzaklıkta ve belirsiz olmayan (ikinci aday ≥3 px daha uzak) halka, o balonun
    "gözlenen merkezi" sayılır. Bu etiketler **bir kere, hiçbir yöntem çalışmadan önce** dondurulur.

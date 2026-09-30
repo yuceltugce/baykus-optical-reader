@@ -9,7 +9,13 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from src import common, piecewise, tps  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from src import common, homography, piecewise, tps  # noqa: E402
+
+# Marker layout of the real reference form (2000 px working height).
+MARKERS = np.array([[1051.5, 99.], [114., 109.5], [342.5, 193.5], [1048.5, 415.], [344.5, 451.5],
+                    [652.5, 1010.5], [117.5, 1016.5], [680.5, 1094.5], [1362.5, 1891.5], [705., 1893.5]])
+H_TRUE = np.array([[.9, .01, -8.], [-.005, .92, 15.], [2e-6, -1e-6, 1.]])
 
 
 def grid(x0, y0, rows=40, cols=5, step=(21, 21)):
@@ -39,6 +45,35 @@ class Methods(unittest.TestCase):
         cand = np.array([[-1., 0.], [1., 0.], [101., 100.], [230., 200.]])
         _, valid = common.associate(pred, cand)
         self.assertEqual(valid.tolist(), [False, True, False])
+
+    def test_guard_keeps_ransac_when_one_marker_is_grossly_wrong(self):
+        dst = common.warp_points(H_TRUE, MARKERS)
+        dst[3] += [80., -60.]                      # e.g. a stain detected as a marker
+        _, H, inl, info = homography.fit_checked(MARKERS, dst)
+        self.assertEqual(info["used"], "ransac")
+        self.assertFalse(inl[3])
+        np.testing.assert_allclose(common.warp_points(H, MARKERS[[0, 8]]),
+                                   common.warp_points(H_TRUE, MARKERS[[0, 8]]), atol=.5)
+
+    def test_guard_falls_back_on_the_real_shadowed_phone_photo(self):
+        # Markers detected in app/uploads/20260928-170100-603280 (reference marker 6 not found).
+        ids = [0, 1, 2, 3, 4, 5, 7, 8, 9]
+        dst = np.array([[947., 125.], [95.5, 107.], [303.5, 206.], [946., 438.5], [307., 471.5],
+                        [587., 1041.], [610.5, 1123.], [1230., 1916.], [636.5, 1916.5]])
+        H_all, H, inl, info = homography.fit_checked(MARKERS[ids], dst)
+        self.assertEqual(info["used"], "all_markers")
+        np.testing.assert_allclose(H, H_all)
+        self.assertTrue(inl.all())
+        residual = np.linalg.norm(common.warp_points(H, MARKERS[ids]) - dst, axis=1)
+        self.assertLess(residual.max(), 10)         # RANSAC's own H was off by up to 119 px here
+
+    def test_guard_keeps_a_well_spread_ransac_subset(self):
+        # Curved paper: markers genuinely disagree, but RANSAC's subset is spread over the page.
+        dst = common.warp_points(H_TRUE, MARKERS)
+        dst[[1, 2, 4, 6]] += [[9., -7.], [-8., 6.], [7., 8.], [-9., -6.]]
+        _, _, inl, info = homography.fit_checked(MARKERS, dst)
+        self.assertEqual(info["used"], "ransac")
+        self.assertLessEqual(int(inl[[1, 2, 4, 6]].sum()), 1)   # most shifted markers dropped, H still trusted
 
     def test_piecewise_recovers_separate_block_homographies(self):
         # Two blocks, each moved by its own perspective; global H is identity.

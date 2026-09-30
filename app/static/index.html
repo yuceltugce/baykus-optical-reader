@@ -25,6 +25,10 @@
   .q { background:#f0f2f5; border-radius:6px; padding:3px 5px; }
   .q.amb { background:#fdecc8; } .q.blank { color:#9aa3ad; }
   details summary { cursor:pointer; font-weight:600; margin-top:8px; }
+  .rescan { background:#fdecea; border:1px solid #f1b8b3; color:var(--bad); border-radius:10px; padding:10px 12px; margin:10px 0; }
+  .rescan b { display:block; font-size:17px; }
+  .rescan ul { margin:6px 0 0; padding-left:18px; font-size:14px; }
+  .note { color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
@@ -83,7 +87,14 @@ $("file").addEventListener("change", async (e) => {
 function render(r) {
   const d = r.diagnostics;
   $("status").textContent = `Okundu (${r.seconds} sn) · ${d.markers_matched} köşe işareti eşleşti · kayıt: ${r.saved_to}`;
-  $("warnings").innerHTML = r.warnings.map(w => `<p class="warn">⚠ ${w}</p>`).join("");
+  const esc = (s) => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  let w = "";
+  if (!r.reliable)
+    w += `<div class="rescan"><b>Bu sonuca güvenmeyin — formu tekrar tarayın.</b><ul>` +
+         r.rescan_reasons.map(x => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+  w += r.warnings.map(x => `<p class="warn">⚠ ${esc(x)}</p>`).join("");
+  w += (r.notes || []).map(x => `<p class="note">ℹ︎ ${esc(x)}</p>`).join("");
+  $("warnings").innerHTML = w;
   let t = "<table><tr><th>Ders</th><th>İşaretli</th><th>Boş</th><th>Belirsiz</th><th>Doğrulanan balon</th></tr>";
   for (const [s, v] of Object.entries(r.summary))
     t += `<tr><td>${SUBJ[s]}</td><td>${v.marked}</td><td>${v.blank}</td><td>${v.ambiguous}</td><td>%${Math.round(100 * d.coverage[s])}</td></tr>`;
