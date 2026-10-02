@@ -40,6 +40,26 @@ class Methods(unittest.TestCase):
         with self.assertRaises(ValueError):
             tps.residual_tps(a, np.zeros_like(a), a)
 
+    def test_ring_search_follows_the_answer_region_not_fixed_page_fractions(self):
+        # Rings in the upper-left part of the page (left of 48% width, above 29% height): the old fixed
+        # rule skipped them. With the answer region given, they are found; rings outside it are not.
+        import cv2
+        im = np.full((2000, 1400, 3), 240, np.uint8)
+        inside = [(300 + 28 * k, 400) for k in range(5)]          # x < 672 (48%), y < 580 (29%)
+        outside = [(1100, 1700)]
+        for x, y in inside + outside:
+            cv2.circle(im, (x, y), 11, (150, 110, 200), 2)
+        region = common.answer_region(np.array(inside, float), pad=30)
+        found = common.detect_bubble_contours(im, region)
+        self.assertEqual(len(found), len(inside))
+        np.testing.assert_allclose(sorted(found.tolist()), sorted(inside), atol=1)
+
+    def test_answer_region_is_carried_by_the_homography(self):
+        pts = np.array([[100., 100.], [300., 100.], [300., 500.], [100., 500.]])
+        H = np.array([[1.02, .01, -20.], [.02, 1.03, 4.], [1e-5, 1e-5, 1.]])
+        region = common.answer_region(pts, H, pad=0)
+        np.testing.assert_allclose(sorted(region.tolist()), sorted(common.warp_points(H, pts).tolist()), atol=1e-6)
+
     def test_associate_missing_ring_does_not_steal_neighbours(self):
         # A column of 5 bubbles 28 px apart; bubble 0 (top) is pencil-filled so its ring was not detected.
         # A spare candidate lies 300 px below the column, i.e. closer to the bottom bubble than to the top

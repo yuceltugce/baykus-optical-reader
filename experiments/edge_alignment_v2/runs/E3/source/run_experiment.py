@@ -65,7 +65,7 @@ def prepare_reference():
     ref = common.load_image(ROOT / REFERENCE)
     bubbles, points, subjects, questions = common.load_template(TEMPLATE)
     # Only bubbles whose reference centre is itself confirmed by a contour are ever evaluated.
-    _, ref_valid = common.associate(points, common.detect_bubble_contours(ref))
+    _, ref_valid = common.associate(points, common.detect_bubble_contours(ref, common.answer_region(points)))
     rows_per_subject = {s: int(questions[subjects == s].max()) for s in common.SUBJECTS}
     rel = np.array([(q - 1) / (rows_per_subject[s] - 1) for q, s in zip(questions, subjects)])
     band = np.where(rel < 1 / 3, "üst", np.where(rel < 2 / 3, "orta", "alt"))
@@ -87,7 +87,8 @@ def process_image(path, ref, methods):
     base = common.warp_points(H_ransac, ref["points"])
 
     # Pseudo-labels are frozen from `base` BEFORE any method runs.
-    obs, ok = common.associate(base, common.detect_bubble_contours(im))
+    region = common.answer_region(ref["points"], H_ransac)
+    obs, ok = common.associate(base, common.detect_bubble_contours(im, region))
     ok &= ref["ref_valid"]
     train_rows = ref["questions"] % 5 == 1
     evaluation = ok & ~train_rows

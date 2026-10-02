@@ -95,9 +95,27 @@ def match_markers(ref_markers, ref_shape, markers, shape, gate=0.06):
 # --------------------------------------------------------------------------
 # Printed bubble contours (used as automatic pseudo-labels and local anchors)
 # --------------------------------------------------------------------------
-def detect_bubble_contours(im):
-    """Multi-threshold ellipse fit of printed bubble outlines on the answer area."""
+def answer_region(ref_points, H=None, pad=30):
+    """Quadrilateral around the answer bubbles, in the photo's coordinates.
+
+    The bounding box of the reference bubble centres, padded by `pad` px (bubble radius ~11 plus room for the
+    few-pixel errors of the global H), is carried into the photo by the homography H. Unlike fixed page
+    fractions, this follows each photo's own crop and tilt.
+    """
+    (x0, y0), (x1, y1) = ref_points.min(0) - pad, ref_points.max(0) + pad
+    corners = np.array([[x0, y0], [x1, y0], [x1, y1], [x0, y1]], dtype=np.float64)
+    return corners if H is None else warp_points(H, corners)
+
+
+def detect_bubble_contours(im, region=None):
+    """Multi-threshold ellipse fit of printed bubble outlines on the answer area.
+
+    region: quadrilateral from answer_region(); only contours whose box centre lies inside are used.
+    Without it the old fixed rule applies (right of 48% of the width, below 29% of the height), which drops
+    the top answer row when the scanner crops a tilted sheet differently (flat_angled/006).
+    """
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    poly = None if region is None else np.asarray(region, np.float32).reshape(-1, 1, 2)
     candidates = []
     for threshold in [140, 165, 185, 205]:
         mask = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY_INV)[1]
@@ -105,7 +123,10 @@ def detect_bubble_contours(im):
             if len(c) < 5:
                 continue
             x, y, w, h = cv2.boundingRect(c)
-            if x < im.shape[1] * .48 or y < im.shape[0] * .29:
+            if poly is None:
+                if x < im.shape[1] * .48 or y < im.shape[0] * .29:
+                    continue
+            elif cv2.pointPolygonTest(poly, (x + w / 2, y + h / 2), False) < 0:
                 continue
             if not (16 <= w <= 31 and 16 <= h <= 31 and .72 < w / h < 1.38):
                 continue

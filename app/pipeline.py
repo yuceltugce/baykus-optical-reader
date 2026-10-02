@@ -64,7 +64,7 @@ def align(im, ref):
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
     H_all, H, inliers, homography_info = homography.fit_checked(src, dst)
     base = common.warp_points(H, ref["points"])
-    obs, ok = common.associate(base, common.detect_bubble_contours(im))
+    obs, ok = common.associate(base, common.detect_bubble_contours(im, common.answer_region(ref["points"], H)))
     ok &= ref["ref_valid"]
     ctx = dict(ref_points=ref["points"], subjects=ref["subjects"], subject_names=common.SUBJECTS,
                src=src, dst=dst, H_all=H_all, H_ransac=H, inliers=inliers, base=base,

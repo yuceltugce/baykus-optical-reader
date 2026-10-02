@@ -122,9 +122,30 @@ daha ucuz olamaz. Hatayı yeniden üreten bir birim testi var (düzeltmeden önc
 - Veri seti (40 tarama): yalnız `curved_angled/001` Fen'de 3 balon daha ölçülüyor. E0–E3 tablolarında tek değişen
   sayı H_TPS_inliers Fen 1.85 → 1.83; E2 sonuçları ve inceleme listesi aynı.
 
-**Hâlâ açık:** halka arama alanı sabit yüzdelerle (genişliğin %48'i, yüksekliğin %29'u) sınırlanıyor. Açılı
-çekilmiş `flat_angled/006`'da en üst soru sırası bu sınırın üstüne taşıyor ve Sosyal/Matematik/Fen'in 1. sorusunun
-halkaları atlanıyor (20 balonun 4'ü eşleşiyor). Daha iyisi, arama alanını homography ile fotoğrafa taşımak.
+## 4. Açılı çekimde en üst soru sırası atlanıyordu (sabit arama alanı)
+
+**Örnek:** `flat_angled/006` (telefondan gönderilen `006.png` ile aynı) — 1. soru sırasının 20 balonundan 4'ü eşleşiyordu.
+
+**Neden:** Halka bulucu yalnız sayfanın sağ altına bakıyordu: genişliğin %48'inden sağı, yüksekliğin %29'undan aşağısı.
+Bu sabit yüzdeler iPhone tarayıcısının kırpmasına bağlı. 62 görüntüde ölçüldü: tipik payı ~30 px, ama bu açılı
+çekimde tarayıcı farklı kırptığı için en üst sıra çizginin 10 px üstüne taştı ve Sosyal/Matematik/Fen'in 1. sorusunun
+halkaları atlandı. 1. soru yerel düzeltmenin kontrol noktası satırı olduğu için düzeltme o derslerin üst kenarında
+kontrol noktası bulamıyordu.
+
+**Çözüm** (`common.answer_region`): referanstaki balonların kapladığı dikdörtgen 30 px pay ile homography üzerinden
+fotoğrafa taşınıyor; halkalar yalnız bu dörtgenin içinde aranıyor. Arama alanı artık her fotoğrafın kendi kırpma ve
+açısını izliyor. İki birim testi eklendi.
+
+**Sonuç:**
+- `flat_angled/006`: 1. sırada eşleşen balon 4 → 15, toplam 785 → 796; E2 Matematik hatası 0.39 → 0.36 px.
+  (E3'ün piecewise_H yönteminde Sosyal 0.52 → 0.44 iyileşti, Fen 0.73 → 0.76 biraz kötüleşti; bu yöntem
+  uygulamada kullanılmıyor.)
+- Diğer 39 tarama ve diğer telefon denemeleri birebir aynı; hiçbir yerde eşleşme kaybı yok, okunan cevaplar aynı.
+- E0 ve E1 değişmedi: 1. sıra bir kontrol noktası satırı, ölçüm o satırlarda yapılmıyor.
+
+**Hâlâ açık:** aynı görüntüde 1. sıranın kalan 5 balonundan biri kalemle doldurulmuş (Türkçe 1-A), dördü (Fen 1-A, C,
+D, E) ise çok soluk basılmış boş halkalar. En açık eşik (205) bile bunları yakalayamıyor; bu bir halka tespit
+hassasiyeti sorunu.
 
 ## Not: Python'un eski önbellek kopyası
 

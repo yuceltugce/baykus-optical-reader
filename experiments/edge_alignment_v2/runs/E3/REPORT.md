@@ -24,7 +24,7 @@ Görüntü başına held-out medyan hatanın, görüntüler üzerinden medyanı 
 |---|---:|---:|---:|---:|
 | H_ransac | 1.16 | 1.37 | 1.58 | 1.63 |
 | H_local_contours | 0.30 | 0.29 | 0.30 | 0.36 |
-| piecewise_H | 0.39 | 0.51 | 0.45 | 0.53 |
+| piecewise_H | 0.39 | 0.49 | 0.45 | 0.53 |
 
 
 ## Sonuç — dikey bant (üst / orta / alt satırlar)
