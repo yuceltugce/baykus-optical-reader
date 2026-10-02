@@ -131,13 +131,22 @@ def associate(pred, candidates, gate=10, margin=3):
 
     A match is kept only if it is within `gate` px, is the nearest candidate,
     and the runner-up is at least `margin` px further away (unambiguous).
+
+    Costs beyond the gate are clipped to one constant before the assignment.
+    Without that, Hungarian (which must give every bubble some candidate and
+    minimises the total) can let a bubble whose ring was not found (e.g.
+    pencil-filled) take its neighbour's ring, that neighbour take the next
+    one, and so on down the column, because the chain ends near a spare
+    candidate. Every bubble in the chain then loses its own ring. With
+    clipped costs any out-of-gate assignment costs the same, so a chain can
+    never be cheaper.
     """
     measured = np.full((len(pred), 2), np.nan)
     valid = np.zeros(len(pred), bool)
     if len(candidates) == 0:
         return measured, valid
     costs = np.linalg.norm(pred[:, None] - candidates[None, :], axis=2)
-    ri, ci = linear_sum_assignment(costs)
+    ri, ci = linear_sum_assignment(np.minimum(costs, gate + 1))
     for r, c in zip(ri, ci):
         ordered = np.sort(costs[r])
         gap = ordered[1] - ordered[0] if len(ordered) > 1 else 100

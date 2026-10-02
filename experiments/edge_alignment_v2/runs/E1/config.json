@@ -21,7 +21,7 @@
     "reference": "dataset/flat_front/004.png",
     "template": "experiments/edge_alignment_v2/reference/template.json",
     "template_sha256": "5d05ed43100e2331203d879d0d97b7f969ad5ab0c47f1a80402b1dc8fd4b6378",
-    "git_commit": "a903dd9b04b0c4c283b13890d6c557fd09f12dae",
+    "git_commit": "ccf9d87a1c7a63e60f32625c0d11be7c62c14028",
     "opencv": "5.0.0",
     "scipy": "1.18.1",
     "numpy": "2.5.3",

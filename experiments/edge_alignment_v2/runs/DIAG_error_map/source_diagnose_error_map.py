@@ -113,11 +113,16 @@ def main():
     p.add_argument("--overwrite", action="store_true")
     args = p.parse_args()
     out = HERE / "runs" / "DIAG_error_map"
+    report = None
     if out.exists():
         if not args.overwrite:
             sys.exit(f"{out} already exists. Use --overwrite to replace it.")
+        if (out / "REPORT.md").exists():       # hand-written interpretation; keep it across re-runs
+            report = (out / "REPORT.md").read_text()
         shutil.rmtree(out)
     (out / "per_image").mkdir(parents=True)
+    if report is not None:
+        (out / "REPORT.md").write_text(report)
 
     ref = prepare_reference()
     paths = [p for p in sorted((ROOT / "dataset").glob("*/*.png")) if p != ROOT / REFERENCE]

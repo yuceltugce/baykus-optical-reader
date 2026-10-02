@@ -27,7 +27,7 @@ yüksekliği 2000 px'e ölçeklenmiş görüntüde (bir balon ≈ 22 px, yani 0.
 | H_ransac | E0 (her deneyde baseline) | 1.16 | 1.37 | 1.58 | 1.63 |
 | TPS_markers | E1 | 1.10 | 1.52 | 2.19 | 3.46 |
 | H_TPS_all | E1 | 1.09 | 1.52 | 1.67 | 1.75 |
-| H_TPS_inliers | E1 | 1.08 | 1.46 | 1.92 | 1.85 |
+| H_TPS_inliers | E1 | 1.08 | 1.46 | 1.92 | 1.83 |
 | **H_local_contours** | **E2** | **0.30** | **0.29** | **0.30** | **0.36** |
 | piecewise_H | E3 | 0.39 | 0.51 | 0.45 | 0.53 |
 

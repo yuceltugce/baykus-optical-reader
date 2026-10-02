@@ -101,6 +101,38 @@ kırmızı bir **"Bu sonuca güvenmeyin — formu tekrar tarayın"** bandı çı
 
 14 denemede bu band tam olarak üç sorunlu formda çıkıyor: açık kalemli "Zor deneme", karanlık form ve gölgeli form.
 
+## 3. Halkası bulunan balonlar eşleşmiyordu (Hungarian zincirleme kayması)
+
+**Örnek:** `6532c35e…` — 830 balonun 15'i eşleşmedi; bunların 9'unda kendi halkası 0.5–2.4 px yakında bulunmuştu.
+
+**Neden:** Tahmin edilen balon merkezleri ile bulunan halkalar Hungarian algoritmasıyla bire-bir eşleştiriliyor.
+Algoritma her balona bir halka vermek ve toplam mesafeyi en küçük yapmak zorunda. Kalemle doldurulduğu için halkası
+bulunamayan bir balon (ör. 260) komşusunun halkasını (27.7 px) alıyor, komşusu da bir sonrakinin halkasını alıyor;
+zincir sütun boyunca ilerleyip uzaktaki boş bir aday halkada bitiyor. Toplam mesafe daha küçük çıktığı için algoritma
+bunu seçiyor. Sonraki "en yakın halka mı?" kontrolü bu yanlış atamaları reddettiği için hiçbir balon yanlış halkayla
+eşleşmiyordu, ama zincirdeki bütün balonlar doğru halkasını kaybediyordu.
+
+**Çözüm** (`experiments/edge_alignment_v2/src/common.py`, `associate`): Hungarian'a vermeden önce 10 px'ten uzak bütün
+mesafeler aynı sabit değere (11) indiriliyor. Kapı dışındaki her atama aynı maliyette olunca zincir hiçbir zaman
+daha ucuz olamaz. Hatayı yeniden üreten bir birim testi var (düzeltmeden önce başarısız, sonra başarılı).
+
+**Sonuç:**
+- Telefon denemeleri: eşleşen balon toplamı 9015 → 9054; en büyük kazanç "Optikler" (+29) ve `6532` (+9).
+  Hiçbir fotoğrafta tek bir eşleşme kaybedilmedi; okunan cevaplar değişmedi.
+- Veri seti (40 tarama): yalnız `curved_angled/001` Fen'de 3 balon daha ölçülüyor. E0–E3 tablolarında tek değişen
+  sayı H_TPS_inliers Fen 1.85 → 1.83; E2 sonuçları ve inceleme listesi aynı.
+
+**Hâlâ açık:** halka arama alanı sabit yüzdelerle (genişliğin %48'i, yüksekliğin %29'u) sınırlanıyor. Açılı
+çekilmiş `flat_angled/006`'da en üst soru sırası bu sınırın üstüne taşıyor ve Sosyal/Matematik/Fen'in 1. sorusunun
+halkaları atlanıyor (20 balonun 4'ü eşleşiyor). Daha iyisi, arama alanını homography ile fotoğrafa taşımak.
+
+## Not: Python'un eski önbellek kopyası
+
+Okuma ayarı (kağıt tahminindeki bulanıklaştırma, 2 px) test sırasında aynı saniye içinde 2 → 15 → 2 yapılıp geri
+alındığında Python'un derlenmiş önbellek kopyası (`__pycache__`) güncellenmedi ve program bir süre 15 ile çalıştı.
+Commit'teki kod doğruydu. Önbellek temizlenip 53 gerçek görüntüde (8798 soru) 2 ile 15 karşılaştırıldı: tek bir
+sorunun okuması bile değişmiyor, yani raporlanan sonuçlar geçerli. Sunucu artık önbelleksiz (`python -B`) başlatılıyor.
+
 ## Ek düzeltme: yarım kalan yüklemeler
 
 Bağlantı yükleme sırasında kesilirse sunucu artık yarım dosyayı işlemeye çalışmıyor; telefona "dosya tam gelmedi"

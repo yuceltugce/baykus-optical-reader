@@ -40,6 +40,16 @@ class Methods(unittest.TestCase):
         with self.assertRaises(ValueError):
             tps.residual_tps(a, np.zeros_like(a), a)
 
+    def test_associate_missing_ring_does_not_steal_neighbours(self):
+        # A column of 5 bubbles 28 px apart; bubble 0 (top) is pencil-filled so its ring was not detected.
+        # A spare candidate lies 300 px below the column, i.e. closer to the bottom bubble than to the top
+        # one. Plain Hungarian then prefers the chain 0<-1<-2<-3<-4<-spare (total ~408 px) over giving
+        # the spare to bubble 0 (~419 px), and bubbles 1-4 all lose their own ring.
+        pred = np.array([[100., 100. + 28 * k] for k in range(5)])
+        candidates = np.vstack([pred[1:] + [1.5, -1.], [[100., pred[-1, 1] + 300.]]])
+        _, valid = common.associate(pred, candidates)
+        self.assertEqual(valid.tolist(), [False, True, True, True, True])
+
     def test_associate_rejects_ambiguous_and_far(self):
         pred = np.array([[0., 0.], [100., 100.], [200., 200.]])
         cand = np.array([[-1., 0.], [1., 0.], [101., 100.], [230., 200.]])

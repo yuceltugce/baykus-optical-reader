@@ -25,7 +25,7 @@ Görüntü başına held-out medyan hatanın, görüntüler üzerinden medyanı 
 | H_ransac | 1.16 | 1.37 | 1.58 | 1.63 |
 | TPS_markers | 1.10 | 1.52 | 2.19 | 3.46 |
 | H_TPS_all | 1.09 | 1.52 | 1.67 | 1.75 |
-| H_TPS_inliers | 1.08 | 1.46 | 1.92 | 1.85 |
+| H_TPS_inliers | 1.08 | 1.46 | 1.92 | 1.83 |
 
 
 ## Sonuç — dikey bant (üst / orta / alt satırlar)
