@@ -11,14 +11,42 @@ fotoğraf karanlık çekilmiş; kağıdın kendi parlaklığı 170 civarında (i
 baskı da gri tona çevrilince koyu görünüyor. Sonuç: boş balonlar da %30–65 "dolu" ölçülüyor, %50'yi geçenler
 işaretli sayılıyor.
 
-**Deneyeceğimiz çözüm:**
-- **Kırmızı kanalı kullanmak.** Optik formlar pembe basılır; kırmızı kanalda pembe baskı neredeyse beyazdır,
-  kurşun kalem ise koyu kalır.
-- **Eşiği kağıda göre belirlemek.** Her bölgede kağıdın kendi parlaklığını tahmin edip ondan belirgin koyu
-  pikselleri kalem saymak.
-- **Eşiği her kağıdın kendi skor dağılımından hesaplamak (Otsu).** Tek bir sabit ayar her durumda çalışmıyor:
-  kağıda göre eşik bu fotoğrafı düzeltti (84 → 2 belirsiz soru), ama açık kalemli bir formu bozdu (19 → 2 okunan
-  cevap). OMRChecker'daki yaklaşım da bu.
+**Uygulanan çözüm** (`app/reading.py`):
+1. **Kırmızı kanal.** Optik formlar pembe basılır; kırmızı kanalda pembe baskı neredeyse beyazdır, kurşun kalem
+   ise koyu kalır. Balonun içindeki harfler ve halka okumayı artık etkilemiyor.
+2. **Kağıda göre koyuluk.** Büyük bir morfolojik kapama ile her noktadaki kağıt parlaklığı tahmin ediliyor
+   (işaretler ve baskı silinir, kağıt ve gölge kalır). Her piksel "buradaki kağıttan ne kadar koyu" diye ölçülüyor.
+   Gölge kağıdı ve kalemi aynı oranda kararttığı için oran değişmiyor.
+3. **Eşik bu kağıdın boş balonlarından.** Her soruda en fazla bir şık işaretli, yani balonların en az %80'i boş.
+   Bütün skorların ortancası "tipik boş balon"u verir; eşik bunun belirgin üstüdür (6 sağlam standart sapma, en az
+   0.08).
+4. **Zayıf işaret.** Eşiğin hemen üstündeki işaretler (çok açık kalem, yarım doldurma, X) ayrıca "zayıf" diye
+   gösteriliyor; resimde turuncu.
+
+**Yolda denenip bırakılanlar:**
+- Kağıda göre koyuluk + sabit %60 eşik: karanlık fotoğrafı düzeltti ama açık kalemli formu bozdu (19 → 2 cevap).
+- Eşik = boş ve dolu kümelerinin ortası (Otsu + isodata): aynı kağıtta hem koyu hem açık işaret olunca açık
+  işaretleri kaçırdı (Fen 18/38'deki açık C'ler boş okundu). Eşiği boş balonlardan belirlemek bunu çözdü.
+- Kağıt tahmininde büyük bulanıklaştırma (sigma 15): keskin kenarlı bir gölgede, kenara yakın boş balonları
+  koyu gösterdi (sentetik testte yakalandı). Sigma 2'ye indirildi.
+
+**Sonuç:**
+| Fotoğraf | Eski okuma (tek / boş / çoklu) | Yeni okuma (tek / boş / çoklu) |
+|---|---|---|
+| Karanlık (`a60f`) | 68 / 14 / **84** | 70 / 94 / 2 |
+| Gölgeli (`2d6e`) | 58 / 35 / **73** | 70 / 94 / 2 |
+| Temiz (`6532`), muhtemelen aynı kağıt | 73 / 91 / 2 | 70 / 94 / 2 |
+| Açık kalem ("Zor deneme") | **19** / 147 / 0 | 80 / 85 / 1 (9 zayıf) |
+
+- Karanlık, gölgeli ve temiz çekim artık birebir aynı sonucu veriyor.
+- Veri setinin 41 görüntüsünde 6806 sorunun 70'inde eski ve yeni okuma farklı. Büyütülüp tek tek bakıldı: hepsi
+  eski yöntemin kaçırdığı açık tarama, yarım doldurma veya X işaretleri; biri iki yöntemin de "çoklu" dediği,
+  taramadaki siyah kenar şeridinin üstüne düşen soru.
+- 5 sentetik birim testi: karanlık fotoğrafta pembe baskı, keskin gölge, açık kalem, boş kağıt, çift işaret.
+- Cevap anahtarı olmadığı için doğruluk yüzdesi ölçülmedi.
+
+**Bilinen sınır:** "Zor deneme"de basılı halkalar çok soluk olduğu için hizalama kontrolü (kapsama %4–19) yine
+"tekrar tarayın" diyor; okuma değil hizalama doğrulaması yetersiz. Resimde halkalar balonların üstünde duruyor.
 
 ## 2. Gölge düşen formda balonlar kaydı
 
@@ -62,8 +90,7 @@ Denenen seçenekler:
 - Testler: gerçek gölgeli fotoğrafın marker koordinatlarıyla, kıvrık kağıtta iyi RANSAC seçiminin korunmasıyla ve
   gerçekten yanlış bir markerın atılmasıyla ayrı birim testleri var.
 
-**Hâlâ açık:** Gölgeli fotoğrafın *okuması* sorun 1'deki sebeple bozuk (73 belirsiz soru); uygulama şimdi bunu
-"tekrar tarayın" diye gösteriyor.
+Gölgeli fotoğrafın okuması da sorun 1'in çözümüyle düzeldi (73 → 2 çoklu soru).
 
 ## Ortak ders
 

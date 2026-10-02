@@ -23,7 +23,7 @@
   th, td { text-align:left; padding:6px 4px; border-bottom:1px solid #e3e6ea; }
   .grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:4px; font-size:13px; }
   .q { background:#f0f2f5; border-radius:6px; padding:3px 5px; }
-  .q.amb { background:#fdecc8; } .q.blank { color:#9aa3ad; }
+  .q.amb { background:#fdecc8; } .q.blank { color:#9aa3ad; } .q.weak { background:#ffe3cc; color:#8a3c00; }
   details summary { cursor:pointer; font-weight:600; margin-top:8px; }
   .rescan { background:#fdecea; border:1px solid #f1b8b3; color:var(--bad); border-radius:10px; padding:10px 12px; margin:10px 0; }
   .rescan b { display:block; font-size:17px; }
@@ -56,7 +56,8 @@
     <div id="warnings"></div>
     <div id="summary"></div>
     <img id="overlay" alt="Hizalama sonucu" hidden>
-    <p class="muted" id="legend" hidden>Yeşil halka: balonun olduğunu düşündüğümüz yer. Kırmızı kalın halka: işaretli okundu.
+    <p class="muted" id="legend" hidden>Yeşil ince halka: balonun olduğunu düşündüğümüz yer. Kırmızı kalın halka: işaretli.
+      Turuncu kalın halka: zayıf işaret (çok açık, yarım ya da X) — kontrol edin.
       Halkalar balonların üstünde değilse hizalama hatalı.</p>
     <div id="answers"></div>
   </div>
@@ -95,16 +96,16 @@ function render(r) {
   w += r.warnings.map(x => `<p class="warn">⚠ ${esc(x)}</p>`).join("");
   w += (r.notes || []).map(x => `<p class="note">ℹ︎ ${esc(x)}</p>`).join("");
   $("warnings").innerHTML = w;
-  let t = "<table><tr><th>Ders</th><th>İşaretli</th><th>Boş</th><th>Belirsiz</th><th>Doğrulanan balon</th></tr>";
+  let t = "<table><tr><th>Ders</th><th>İşaretli</th><th>Zayıf</th><th>Boş</th><th>Çoklu</th><th>Bulunan balon</th></tr>";
   for (const [s, v] of Object.entries(r.summary))
-    t += `<tr><td>${SUBJ[s]}</td><td>${v.marked}</td><td>${v.blank}</td><td>${v.ambiguous}</td><td>%${Math.round(100 * d.coverage[s])}</td></tr>`;
+    t += `<tr><td>${SUBJ[s]}</td><td>${v.marked}</td><td>${v.weak}</td><td>${v.blank}</td><td>${v.ambiguous}</td><td>%${Math.round(100 * d.coverage[s])}</td></tr>`;
   $("summary").innerHTML = t + "</table>";
   $("overlay").src = r.overlay; $("overlay").hidden = false; $("legend").hidden = false;
   let a = "";
   for (const [s, rows] of Object.entries(r.answers)) {
     a += `<details><summary>${SUBJ[s]} cevapları</summary><div class="grid">`;
     for (const q of rows) {
-      const cls = q.status === "ambiguous" ? "q amb" : q.status === "blank" ? "q blank" : "q";
+      const cls = q.status === "ambiguous" ? "q amb" : q.status === "blank" ? "q blank" : q.weak ? "q weak" : "q";
       a += `<div class="${cls}">${q.question}: ${q.answer ?? "–"}</div>`;
     }
     a += "</div></details>";

@@ -34,9 +34,11 @@ PDF'in yalnızca ilk sayfası okunur. JPEG ve PNG de kabul edilir.
 
 - Ders başına işaretli / boş / belirsiz soru sayısı ve otomatik doğrulanabilen balon yüzdesi.
 - Uyarılar: bir derste balonların %80'inden azı doğrulanabildiyse veya yerel düzeltme kurulamadıysa.
-- Cevap alanının resmi: yeşil ince halka = balonun olduğunu düşündüğümüz yer, kırmızı kalın halka = işaretli
-  okundu. **Halkalar balonların üstüne oturmuyorsa hizalama hatalıdır.**
-- Ders ders cevap listesi (sarı = birden fazla işaret / belirsiz).
+- Cevap alanının resmi: yeşil ince halka = balonun olduğunu düşündüğümüz yer, kırmızı kalın halka = işaretli,
+  turuncu kalın halka = zayıf işaret (çok açık, yarım, X). **Halkalar balonların üstüne oturmuyorsa hizalama
+  hatalıdır.**
+- Ders ders cevap listesi (sarı = birden fazla işaret, turuncu = zayıf işaret).
+- Güvenilmeyen sonuçta üstte kırmızı "tekrar tarayın" bandı.
 
 ## Kayıt
 
@@ -46,7 +48,8 @@ Hata olursa `error.txt`.
 
 ## Sınırlar
 
-- Doluluk kararı `src/baykus_optik/reader.py`'deki eşiklerle verilir (disk içinde koyu piksel oranı ≥ %50).
+- Doluluk kararı `app/reading.py`: kırmızı kanal, kağıda göre koyuluk, eşik her kağıdın kendi boş balonlarından.
+  Ayrıntı ve doğrulama: `SAHA_DENEMELERI.md`. Testler: `.venv/bin/python -m unittest discover -s app/tests`.
   Cevap doğruluğu henüz bir cevap anahtarıyla ölçülmedi.
 - Referans ve şablon: `dataset/flat_front/004.png` + `experiments/edge_alignment_v2/reference/template.json`.
   Form düz yönde (üstü yukarıda) taranmalı.

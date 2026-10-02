@@ -2,8 +2,8 @@
 
 Alignment is exactly the E2 method from experiments/edge_alignment_v2
 (global RANSAC homography from corner markers + per-subject TPS correction
-from the printed bubble rings). Reading re-uses the idea and thresholds of
-src/baykus_optik/reader.py: share of dark pixels inside a small disc.
+from the printed bubble rings). Reading: see reading.py (red channel, darkness
+relative to the local paper, threshold from this sheet's own empty bubbles).
 """
 from pathlib import Path
 import sys
@@ -18,10 +18,8 @@ sys.path[:0] = [str(V2), str(V2 / "src")]
 from run_experiment import prepare_reference  # noqa: E402
 from src import common, homography, local_contour  # noqa: E402
 
-SAMPLE_RADIUS = 8          # px at 2000 px height; bubble radius ~11, printed ring stays outside
-INK_BRIGHTNESS = 170       # darker than this = pencil (reader.py)
-FILL_THRESHOLD = 50.0      # % dark pixels to count as marked (reader.py, calibrated bimodal gap)
-CLEAR_WINNER_MARGIN = 20.0
+import reading  # noqa: E402
+
 COVERAGE_WARNING = .8
 COVERAGE_RESCAN = .5        # below this in any subject the alignment itself is not trusted
 AMBIGUOUS_RESCAN = .10      # >10% multi-marked questions: reading threshold does not fit this photo
@@ -77,44 +75,28 @@ def align(im, ref):
                          coverage=coverage, local_fit=ctx["fits"]["H_local_contours"])
 
 
-def darkness(gray, centres):
-    """% of pixels darker than INK_BRIGHTNESS inside a disc around each centre."""
-    yy, xx = np.mgrid[-SAMPLE_RADIUS:SAMPLE_RADIUS + 1, -SAMPLE_RADIUS:SAMPLE_RADIUS + 1]
-    disc = xx ** 2 + yy ** 2 <= SAMPLE_RADIUS ** 2
-    out = np.zeros(len(centres))
-    for i, (x, y) in enumerate(np.round(centres).astype(int)):
-        patch = gray[y - SAMPLE_RADIUS:y + SAMPLE_RADIUS + 1, x - SAMPLE_RADIUS:x + SAMPLE_RADIUS + 1]
-        if patch.shape == disc.shape:
-            out[i] = 100.0 * (patch[disc] < INK_BRIGHTNESS).mean()
-    return out
-
-
-def read_answers(scores, ref):
+def read_answers(scores, t, weak_below, ref):
+    """Per-question decision with the sheet's own threshold (see reading.py)."""
     answers = {}
     for s in common.SUBJECTS:
         rows = []
         for q in range(1, int(ref["questions"][ref["subjects"] == s].max()) + 1):
-            idx = np.where((ref["subjects"] == s) & (ref["questions"] == q))[0]
-            sc = scores[idx]
-            order = np.argsort(-sc)
-            marked = sc >= FILL_THRESHOLD
-            if not marked.any():
-                status, answer = "blank", None
-            elif marked.sum() == 1 or sc[order[0]] - sc[order[1]] >= CLEAR_WINNER_MARGIN:
-                status, answer = "single", "ABCDE"[order[0]]
-            else:
-                status, answer = "ambiguous", "".join("ABCDE"[k] for k in np.where(marked)[0])
-            rows.append(dict(question=q, answer=answer, status=status, scores=[round(float(v), 1) for v in sc]))
+            sc = scores[(ref["subjects"] == s) & (ref["questions"] == q)]
+            status, answer, weak = reading.decide(sc, t, weak_below)
+            rows.append(dict(question=q, answer=answer, status=status, weak=weak,
+                             scores=[round(100 * float(v), 1) for v in sc]))
         answers[s] = rows
     return answers
 
 
-def draw(im, centres, scores, ref):
-    """Photo crop of the answer area: ring = where we think each bubble is, filled = read as marked."""
+def draw(im, centres, scores, t, weak_below):
+    """Answer-area crop. Thin green = bubble position, thick red = marked, thick orange = weak mark."""
     out = im.copy()
     for (x, y), sc in zip(np.round(centres).astype(int), scores):
-        if sc >= FILL_THRESHOLD:
+        if sc >= weak_below:
             cv2.circle(out, (x, y), 10, (0, 0, 230), 3, cv2.LINE_AA)
+        elif sc >= t:
+            cv2.circle(out, (x, y), 10, (0, 140, 255), 3, cv2.LINE_AA)
         else:
             cv2.circle(out, (x, y), 10, (40, 170, 40), 1, cv2.LINE_AA)
     x0, y0 = np.floor(centres.min(0)).astype(int) - 40
@@ -128,8 +110,10 @@ def process(data: bytes, filename: str):
     original = decode(data, filename)
     im = to_working(original)
     centres, diag = align(im, ref)
-    scores = darkness(cv2.cvtColor(im, cv2.COLOR_BGR2GRAY), centres)
-    answers = read_answers(scores, ref)
+    scores = reading.bubble_scores(im, centres)
+    t, weak_below, reading_info = reading.sheet_threshold(scores)
+    diag["reading"] = reading_info
+    answers = read_answers(scores, t, weak_below, ref)
     warnings = [f"{s}: balonların sadece %{100 * c:.0f}'i otomatik doğrulanabildi" for s, c in diag["coverage"].items()
                 if c < COVERAGE_WARNING]
     warnings += [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
@@ -144,13 +128,22 @@ def process(data: bytes, filename: str):
               for s, c in diag["coverage"].items() if c < COVERAGE_RESCAN]
     n_questions = sum(len(rows) for rows in answers.values())
     n_ambiguous = sum(r["status"] == "ambiguous" for rows in answers.values() for r in rows)
+    n_weak = sum(r["weak"] for rows in answers.values() for r in rows)
     if n_ambiguous > AMBIGUOUS_RESCAN * n_questions:
-        rescan.append(f"{n_ambiguous} soruda birden fazla şık işaretli okundu; fotoğrafın ışığı okuma eşiğine uymuyor "
-                      "olabilir (ör. çok karanlık)")
+        rescan.append(f"{n_ambiguous} soruda birden fazla şık işaretli okundu")
+    for problem in reading_info["problems"]:
+        if problem.startswith("işaretli ve boş"):
+            rescan.append("Okuma: " + problem)
+        else:
+            warnings.append("Okuma: " + problem + "; zayıf işaretleri kontrol edin")
+    if n_weak:
+        notes.append(f"{n_weak} soruda zayıf işaret var (çok açık, yarım ya da X ile işaretlenmiş olabilir); "
+                     "resimde turuncu halkayla gösterildi.")
     result = dict(input_size=list(original.shape[1::-1]), diagnostics=diag, warnings=warnings, notes=notes,
                   reliable=not rescan, rescan_reasons=rescan, answers=answers,
                   summary={s: dict(marked=sum(r["status"] == "single" for r in rows),
+                                   weak=sum(r["weak"] for r in rows),
                                    blank=sum(r["status"] == "blank" for r in rows),
                                    ambiguous=sum(r["status"] == "ambiguous" for r in rows))
                            for s, rows in answers.items()})
-    return result, draw(im, centres, scores, ref), im
+    return result, draw(im, centres, scores, t, weak_below), im
