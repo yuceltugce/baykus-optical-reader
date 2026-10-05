@@ -62,13 +62,12 @@ def align(im, ref):
         raise ValueError(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
                          "Formun tamamı görünüyor mu, doğru yönde mi?")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
-    H_all, H, inliers, homography_info = homography.fit_checked(src, dst)
+    H_all, H, inliers, homography_info, obs, ok = homography.fit_verified(
+        src, dst, im, ref["points"], ref["ref_valid"])
     base = common.warp_points(H, ref["points"])
-    obs, ok = common.associate(base, common.detect_bubble_contours(im, common.answer_region(ref["points"], H)))
-    ok &= ref["ref_valid"]
     ctx = dict(ref_points=ref["points"], subjects=ref["subjects"], subject_names=common.SUBJECTS,
                src=src, dst=dst, H_all=H_all, H_ransac=H, inliers=inliers, base=base,
-               obs=obs, ok=ok, train_rows=ref["questions"] % 5 == 1, fits={})
+               obs=obs, ok=ok, train_rows=common.anchor_rows(ref["subjects"], ref["questions"]), fits={})
     centres = local_contour.predict(ctx)["H_local_contours"]
     coverage = {s: float(ok[ref["subjects"] == s].mean()) for s in common.SUBJECTS}
     return centres, dict(markers_matched=int(len(ri)), marker_inliers=int(inliers.sum()), homography=homography_info,
@@ -106,8 +105,12 @@ def draw(im, centres, scores, t, weak_below):
 
 
 def process(data: bytes, filename: str):
+    return process_image(decode(data, filename))
+
+
+def process_image(original):
+    """Full pipeline on an already decoded BGR image (used by the server and by batch_process.py)."""
     ref = reference()
-    original = decode(data, filename)
     im = to_working(original)
     centres, diag = align(im, ref)
     scores = reading.bubble_scores(im, centres)
@@ -120,7 +123,11 @@ def process(data: bytes, filename: str):
                  for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
     notes = []
     h = diag["homography"]
-    if h["used"] == "all_markers":
+    if h["used"] == "all_markers" and "rings_ransac" in h:
+        notes.append(f"RANSAC'ın seçtiği {h['ransac_inliers']} köşe işaretiyle kurulan hizalama {h['rings_ransac']} "
+                     f"balonu basılı halkasına oturttu, bütün köşe işaretleriyle kurulan {h['rings_all_markers']} "
+                     "balonu. Daha iyi oturan ikincisi kullanıldı.")
+    elif h["used"] == "all_markers":
         notes.append(f"RANSAC {h['markers']} köşe işaretinden yalnızca {h['ransac_inliers']} tanesine güvendi ve "
                      f"kurduğu dönüşüm kararsızdı (koşul sayısı {h['ransac_condition']}). Bunun yerine bütün köşe "
                      "işaretleriyle hizalandı.")

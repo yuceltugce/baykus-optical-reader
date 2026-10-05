@@ -16,11 +16,24 @@ The number of discarded markers alone is NOT a good signal: on the curved
 scan dataset/curved_angled/008 RANSAC keeps 6/10 well-spread markers
 (condition 111) and that H is clearly better than the all-marker one
 (Fen 3.7 vs 8.0 px), because there the markers genuinely disagree.
+
+Neither is the condition number alone: after the detectors became lighting-
+adaptive, the same shadowed photo gave a RANSAC subset of 6/10 markers with
+condition 342 that still put only 387 of 830 bubbles on a printed ring
+(all markers: 820). So fit_verified() lets the 830 printed bubble rings
+decide: both candidate homographies (RANSAC's, unless ill-conditioned, and
+the all-marker one) are checked against the rings detected in the photo, and
+the one that lands more bubbles within 10 px of a ring wins (ties: RANSAC).
+It is RANSAC's own idea - keep the model most points agree with - applied
+with ~800 bubbles instead of ~10 markers.
 """
 import cv2
 import numpy as np
 
-from common import warp_points
+try:            # as part of the src package: share the one src.common module (and its ADAPTIVE flag)
+    from .common import answer_region, associate, detect_bubble_contours, warp_points
+except ImportError:  # imported as a top-level module
+    from common import answer_region, associate, detect_bubble_contours, warp_points
 
 MAX_CONDITION = 5000        # well-spread marker sets give ~50-1500 on this form (40 scans + 14 phone tries)
 
@@ -41,6 +54,31 @@ def fit_checked(src, dst, seed=42, ransac_px=3.0):
         return H_all, H_all, np.ones(len(src), bool), info
     info.update(used="ransac")
     return H_all, H_ransac, inliers, info
+
+
+def fit_verified(src, dst, im, ref_points, ref_valid, seed=42, ransac_px=3.0):
+    """Pick between RANSAC's and the all-marker homography by agreement with the printed bubble rings.
+
+    Returns (H_all, H, inlier_mask, info, observed_centres, observed_ok) where observed_* are the ring
+    matches for the chosen H (exactly what the caller would otherwise compute with associate()).
+    """
+    H_all, H_guarded, inliers, info = fit_checked(src, dst, seed, ransac_px)
+    options = [("ransac", H_guarded, inliers)] if info["used"] == "ransac" else []
+    options.append(("all_markers", H_all, np.ones(len(src), bool)))
+    best = None
+    for name, H, inl in options:
+        base = warp_points(H, ref_points)
+        obs, ok = associate(base, detect_bubble_contours(im, answer_region(ref_points, H)))
+        ok &= ref_valid
+        info[f"rings_{name}"] = int(ok.sum())
+        if best is None or ok.sum() > best[4].sum():
+            best = (name, H, inl, obs, ok)
+    name, H, inl, obs, ok = best
+    if name == "all_markers" and info["used"] == "ransac":
+        info["reason"] = (f"RANSAC's homography put {info['rings_ransac']} bubbles on a printed ring, "
+                          f"all markers {info['rings_all_markers']}")
+    info["used"] = name
+    return H_all, H, inl, info, obs, ok
 
 
 def fit(src, dst, seed=42, ransac_px=3.0):

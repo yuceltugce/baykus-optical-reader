@@ -15,7 +15,7 @@ Evaluation protocol (identical for every experiment, so numbers compare):
   1. Global RANSAC homography from corner markers -> initial guess `base`.
   2. Printed bubble contours near `base` (<=10 px, unambiguous) become
      automatic pseudo-labels. They are NOT human ground truth.
-  3. Rows 1, 6, 11, ... (question % 5 == 1) may be used for fitting;
+  3. Rows 1, 6, 11, ... (question % 5 == 1) and each subject's last row may be used for fitting;
      all other rows are held out and are the only rows measured.
 """
 from pathlib import Path
@@ -83,14 +83,11 @@ def process_image(path, ref, methods):
     if len(ri) < 6:
         raise ValueError(f"only {len(ri)} matched markers (need 6)")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
-    H_all, H_ransac, inliers, homography_info = homography.fit_checked(src, dst)
+    # Pseudo-labels (obs, ok) are frozen from the chosen global H BEFORE any method runs.
+    H_all, H_ransac, inliers, homography_info, obs, ok = homography.fit_verified(
+        src, dst, im, ref["points"], ref["ref_valid"])
     base = common.warp_points(H_ransac, ref["points"])
-
-    # Pseudo-labels are frozen from `base` BEFORE any method runs.
-    region = common.answer_region(ref["points"], H_ransac)
-    obs, ok = common.associate(base, common.detect_bubble_contours(im, region))
-    ok &= ref["ref_valid"]
-    train_rows = ref["questions"] % 5 == 1
+    train_rows = common.anchor_rows(ref["subjects"], ref["questions"])
     evaluation = ok & ~train_rows
 
     ctx = dict(ref_points=ref["points"], subjects=ref["subjects"], subject_names=common.SUBJECTS,
@@ -220,7 +217,7 @@ def write_report(out, cfg, records, agg, flags, n_images):
              "bütün markerlara dönüldü.\n",
              f"**Referans:** `{REFERENCE}` + `reference/template.json` (830 balon merkezi, E1'de onarılmış geçici şablon). "
              "Bu tarama fiziksel ground truth değildir. Ölçümler otomatik kontur eşleşmelerine göre yapılır "
-             "(soru % 5 == 1 satırları eğitim, diğerleri ölçüm).\n",
+             "(soru % 5 == 1 satırları ve her dersin son satırı eğitim, diğerleri ölçüm).\n",
              f"**Değiştirilen şey:** {cfg['changed']}\n",
              f"**Kullanılmayan şey:** {cfg['not_used']}\n",
              "**Çıktı:** `comparison.jpg` (yeşil halka = tespit edilen balon, kırmızı artı = yöntemin tahmini), "
@@ -316,7 +313,7 @@ def run(exp_id, quick, overwrite):
         images=len(paths), quick=quick, reference=REFERENCE, template=str(TEMPLATE.relative_to(ROOT)),
         template_sha256=common.sha256(TEMPLATE), git_commit=git_commit(), opencv=cv2.__version__,
         scipy=scipy.__version__, numpy=np.__version__, working_height=common.WORKING_HEIGHT,
-        train_rows="question % 5 == 1", pseudo_label_gate_px=10, ambiguity_margin_px=3,
+        train_rows="question % 5 == 1 or last row" if common.ANCHOR_LAST_ROW else "question % 5 == 1", adaptive_detectors=common.ADAPTIVE, pseudo_label_gate_px=10, ambiguity_margin_px=3,
         ransac_threshold_px=3.0, seed=42, ground_truth=False,
         ransac_guard=dict(max_condition=homography.MAX_CONDITION,
                           fallback="least-squares homography over all matched markers"),

@@ -56,10 +56,59 @@ def load_template(path):
 # --------------------------------------------------------------------------
 # Corner markers (black squares)
 # --------------------------------------------------------------------------
+# --------------------------------------------------------------------------
+# Lighting-independent input for the detectors
+# --------------------------------------------------------------------------
+# The iPhone document scanner brightens white-background pages so much that black markers come out light
+# grey (darkest pixels 140-166 instead of 85-118) and pink rings very faint. Fixed grey thresholds then
+# find nothing. With ADAPTIVE the detectors work on a "paper-flattened" channel instead: each pixel divided
+# by the local paper brightness (large morphological closing), so paper is 255 everywhere and a mark keeps
+# its contrast to the paper around it, whatever the exposure or shadow. Set ADAPTIVE = False for the old,
+# fixed-threshold behaviour (used for before/after comparisons).
+ADAPTIVE = True
+PAPER_KERNEL = 61                 # px; larger than a marker (~22 px) and a bubble, so both are closed away
+MARKER_DARKNESS_SHARE = .5        # marker threshold = this share of the page's darkest relative darkness
+MARKER_DARKNESS_LIMITS = (.18, .35)
+RING_THRESHOLDS = [140, 165, 185, 205, 225]   # on the paper-flattened green channel (pink absorbs green)
+
+
+# Rows whose bubbles may be used as control points of the local (E2) correction. Every 5th row (1, 6, 11,
+# ...) as before; with ANCHOR_LAST_ROW also the last row of each subject. Türkçe/Matematik/Fen have 40
+# questions, so their last control row used to be 36 and the TPS had to extrapolate over 37-40: on 149 phone
+# scans the error there was about twice the mid-block error (Fen 0.66 vs 0.32 px, worst page 6.7 px), while
+# Sosyal - whose rows 41 and 46 are control rows - showed no increase (0.26 vs 0.29 px).
+ANCHOR_LAST_ROW = True
+
+
+def anchor_rows(subjects, questions):
+    rows = questions % 5 == 1
+    if ANCHOR_LAST_ROW:
+        for s in np.unique(subjects):
+            sel = subjects == s
+            rows |= sel & (questions == questions[sel].max())
+    return rows
+
+
+def paper_flattened(channel):
+    """uint8 image with the local paper brightness divided out (paper -> 255)."""
+    ch = channel.astype(np.float32)
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (PAPER_KERNEL, PAPER_KERNEL))
+    paper = cv2.GaussianBlur(cv2.morphologyEx(ch, cv2.MORPH_CLOSE, kernel), (0, 0), 2)
+    return np.clip(ch / np.maximum(paper, 1) * 255, 0, 255).astype(np.uint8)
+
+
 def detect_markers(im):
     """Threshold -> opening -> square-ish, solid, isolated blobs."""
-    gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    mask = cv2.threshold(cv2.GaussianBlur(gray, (3, 3), 0), 140, 255, cv2.THRESH_BINARY_INV)[1]
+    if ADAPTIVE:
+        # Black markers stay dark in the red channel, where the pink print is weakest.
+        flat = cv2.GaussianBlur(paper_flattened(im[:, :, 2]), (3, 3), 0)
+        darkest = 1 - np.percentile(flat, .1) / 255            # relative darkness of the darkest 0.1 %
+        lo, hi = MARKER_DARKNESS_LIMITS
+        t = 255 * (1 - np.clip(MARKER_DARKNESS_SHARE * darkest, lo, hi))
+        mask = cv2.threshold(flat, t, 255, cv2.THRESH_BINARY_INV)[1]
+    else:
+        gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        mask = cv2.threshold(cv2.GaussianBlur(gray, (3, 3), 0), 140, 255, cv2.THRESH_BINARY_INV)[1]
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
     candidates = []
     for c in cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)[0]:
@@ -114,10 +163,13 @@ def detect_bubble_contours(im, region=None):
     Without it the old fixed rule applies (right of 48% of the width, below 29% of the height), which drops
     the top answer row when the scanner crops a tilted sheet differently (flat_angled/006).
     """
-    gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    if ADAPTIVE:
+        gray, thresholds = paper_flattened(im[:, :, 1]), RING_THRESHOLDS
+    else:
+        gray, thresholds = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY), [140, 165, 185, 205]
     poly = None if region is None else np.asarray(region, np.float32).reshape(-1, 1, 2)
     candidates = []
-    for threshold in [140, 165, 185, 205]:
+    for threshold in thresholds:
         mask = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY_INV)[1]
         for c in cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)[0]:
             if len(c) < 5:

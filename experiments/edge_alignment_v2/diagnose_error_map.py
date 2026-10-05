@@ -52,10 +52,8 @@ def residuals(path, ref):
     if len(ri) < 6:
         raise ValueError(f"only {len(ri)} matched markers")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
-    _, H, _ = homography.fit(src, dst)
+    _, H, _, _, obs, ok = homography.fit_verified(src, dst, im, ref["points"], ref["ref_valid"])
     base = common.warp_points(H, ref["points"])
-    obs, ok = common.associate(base, common.detect_bubble_contours(im, common.answer_region(ref["points"], H)))
-    ok &= ref["ref_valid"]
     # Same arrow expressed in the reference frame, so every photo is drawn on one layout.
     obs_ref = np.full_like(obs, np.nan)
     obs_ref[ok] = common.warp_points(np.linalg.inv(H), obs[ok])

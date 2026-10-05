@@ -118,7 +118,11 @@ def self_signed_cert(ip):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--http", action="store_true", help="plain HTTP (no certificate), e.g. for a desktop browser")
+    parser.add_argument("--reference", help="reference scan if dataset/flat_front/004.png is not on disk")
     args = parser.parse_args()
+    if args.reference:
+        import run_experiment
+        run_experiment.REFERENCE = str(Path(args.reference).resolve())
     pipeline.reference()                       # load reference + template once, before the first photo
     ip = local_ip()
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)

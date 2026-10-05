@@ -10,7 +10,12 @@ import numpy as np
 from tps import residual_tps
 
 
-def predict(ctx, min_anchors=10, outlier_px=6, max_correction_px=12, smoothing=.01):
+# outlier_px: a control point whose shift differs from the block's median shift by more than this is treated
+# as a wrong ring match and dropped. 6 px was too strict for sheets whose lower part shifts differently from
+# the upper part: it dropped exactly the bottom control rows that carry that deformation (Batch5 s21, Fen rows
+# 37-39 stayed 5.2 px off). 10 px (the ring matching gate) fixes that page (1.3 px) on 149 phone scans with
+# unchanged medians; ring matches are already gated and unambiguous, so gross wrong matches are rare.
+def predict(ctx, min_anchors=10, outlier_px=10, max_correction_px=12, smoothing=.01):
     base, obs = ctx["base"], ctx["obs"]
     subjects, train = ctx["subjects"], ctx["train_rows"] & ctx["ok"]
     local = base.copy()

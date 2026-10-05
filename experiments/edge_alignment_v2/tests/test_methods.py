@@ -60,6 +60,23 @@ class Methods(unittest.TestCase):
         region = common.answer_region(pts, H, pad=0)
         np.testing.assert_allclose(sorted(region.tolist()), sorted(common.warp_points(H, pts).tolist()), atol=1e-6)
 
+    def test_anchor_rows_include_every_fifth_and_the_last_row(self):
+        subjects = np.array(["a"] * 40 + ["b"] * 46)
+        questions = np.concatenate([np.arange(1, 41), np.arange(1, 47)])
+        rows = common.anchor_rows(subjects, questions)
+        self.assertEqual(questions[rows & (subjects == "a")].tolist(), [1, 6, 11, 16, 21, 26, 31, 36, 40])
+        self.assertEqual(questions[rows & (subjects == "b")].tolist(), [1, 6, 11, 16, 21, 26, 31, 36, 41, 46])
+
+    def test_flattened_channel_removes_lighting(self):
+        import cv2
+        im = np.full((400, 400), 240, np.uint8)
+        cv2.rectangle(im, (180, 180), (210, 210), 100, -1)                 # a dark square on paper
+        shaded = (im * np.linspace(.55, 1., 400)[None, :]).astype(np.uint8)  # brightness falls to the left
+        flat = common.paper_flattened(shaded)
+        self.assertGreater(flat[20, 20], 245)                              # dark-side paper -> ~255
+        self.assertGreater(flat[20, 380], 245)
+        self.assertLess(abs(int(flat[195, 195]) - int(255 * 100 / 240)), 8)  # square keeps its contrast
+
     def test_associate_missing_ring_does_not_steal_neighbours(self):
         # A column of 5 bubbles 28 px apart; bubble 0 (top) is pencil-filled so its ring was not detected.
         # A spare candidate lies 300 px below the column, i.e. closer to the bottom bubble than to the top
