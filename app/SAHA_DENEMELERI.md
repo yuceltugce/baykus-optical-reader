@@ -101,6 +101,8 @@ kırmızı bir **"Bu sonuca güvenmeyin — formu tekrar tarayın"** bandı çı
 
 14 denemede bu band tam olarak üç sorunlu formda çıkıyor: açık kalemli "Zor deneme", karanlık form ve gölgeli form.
 
+(Hizalama kuralı daha sonra bölgesel kontrolle değiştirildi, bkz. bölüm 5.)
+
 ## 3. Halkası bulunan balonlar eşleşmiyordu (Hungarian zincirleme kayması)
 
 **Örnek:** `6532c35e…` — 830 balonun 15'i eşleşmedi; bunların 9'unda kendi halkası 0.5–2.4 px yakında bulunmuştu.
@@ -146,6 +148,42 @@ açısını izliyor. İki birim testi eklendi.
 **Hâlâ açık:** aynı görüntüde 1. sıranın kalan 5 balonundan biri kalemle doldurulmuş (Türkçe 1-A), dördü (Fen 1-A, C,
 D, E) ise çok soluk basılmış boş halkalar. En açık eşik (205) bile bunları yakalayamıyor; bu bir halka tespit
 hassasiyeti sorunu.
+
+## 5. Sessiz hatalar: kayan bölgeler ve fotoğrafın dışında kalan sorular
+
+**Örnek:** 149 sayfalık toplu denemede (Batch1–7) gözle kötü bulunan 5 sayfadan biri (Batch6_s11) "güvenilir"
+çıkıyordu. Ayrıca Batch6_s11'de Sosyal 45–46, Batch7_s09'da birkaç soru fotoğrafın kenarından taşıyor (tarayıcı
+sayfayı kırpmış). Program bu sorulara yine de bir cevap ("boş") yazıyordu.
+
+**Neden:**
+- Eski kontrol hizalamadan *önce*, ders başına bakıyordu: "bu dersin balonlarının yarısından fazlasında halka
+  bulundu mu?" Yerel düzeltmeden sonra küçük bir bölgenin (ör. 10 soru) kayması ders ortalamasında kayboluyordu.
+- Resmin dışına düşen balonun koyuluğu ölçülemez; kenar boşluğu "boş balon" gibi okunuyordu.
+
+**Çözüm** (`app/pipeline.py`):
+- `final_position_check`: son hizalamadan sonra her balonun en yakın basılı halkaya uzaklığı ölçülüyor:
+  ≤ 5 px "halkasında", 5–14 px "kaymış", > 14 px "görülmedi" (kalemle dolu ya da soluk halka). Ders × 10 soruluk her
+  bölgede kaymış balon payı **%12 veya fazlaysa** → "tekrar tarayın". "Görülmedi" payı yalnız %50'yi geçerse uyarı
+  veriliyor; dolu balonun halkası zaten görünmediği için tek başına hata sayılmıyor.
+- `visible_bubbles`: merkezi resim kenarına 13 px'ten yakın balonlar "görünmüyor". O soru cevapsız bırakılıyor,
+  ekranda gri/kırmızı "görünmüyor" yazıyor ve sayfa "tekrar tarayın" oluyor. Okuma eşiği yalnız görünen balonlardan
+  hesaplanıyor.
+
+**Eşik nasıl seçildi:** 149 sayfada en kötü bölgenin kaymış payı ölçüldü: iyi sayfalarda en çok %6.7, kötü
+sayfalarda en az %16. %12 ikisinin arasında.
+
+**Sonuç** (`optic-data/sonuclar_v3`, önceki sürüm `sonuclar_2026-10-05_v2` ile):
+
+| | v2 | v3 |
+|---|---|---|
+| Gözle kötü 5 sayfadan yakalanan | 4 | **5** |
+| Diğer 144 sayfada "güvenilmez" denen | 8 | **4** (hepsi okuma uyarısı: işaretli/boş koyuluğu yakın) |
+| "Görünmüyor" sorusu | – | Batch6_s11: 3, Batch7_s09: 5 |
+
+Telefon denemelerinin en güncel 5'inde tek bir cevap değişmedi, hepsi güvenilir kaldı.
+
+**Bilinen sınır:** Eşik payı küçük (%6.7 ile %16 arası) ve yalnız 5 kötü sayfayla ayarlandı. Yeni kötü örnek
+geldikçe yeniden ölçülmeli.
 
 ## Not: Python'un eski önbellek kopyası
 

@@ -20,9 +20,20 @@ from src import common, homography, local_contour  # noqa: E402
 
 import reading  # noqa: E402
 
-COVERAGE_WARNING = .8
-COVERAGE_RESCAN = .5        # below this in any subject the alignment itself is not trusted
 AMBIGUOUS_RESCAN = .10      # >10% multi-marked questions: reading threshold does not fit this photo
+
+# Final-position check. After alignment every bubble should sit on its printed ring. Per region (subject x 10
+# questions) we count bubbles whose nearest detected ring is 5-14 px away ("offset": real misalignment) and
+# bubbles with no ring within 14 px ("unseen": faint print, nothing to verify against). On 149 phone scans the
+# worst region of the 144 pages judged well aligned by eye had at most 6.7 % offset bubbles, the 5 pages with
+# visible shifts had 16-66 %; 12 % sits between (small margin, re-check on new data). An earlier, subject-wide
+# check before the local correction missed a shifted Fen bottom (Batch6 s11) and raised false alarms.
+ON_RING_PX = 5              # reading disc radius is 8 px; beyond ~5 px the disc starts to leave the bubble
+OFFSET_MAX_PX = 14          # half the bubble spacing: farther rings belong to a neighbour
+REGION_ROWS = 10
+OFFSET_RESCAN = .12         # >= this share of offset bubbles in any region: alignment not trusted
+UNSEEN_WARNING = .5         # >= this share of unseen bubbles in a region: alignment could not be verified
+EDGE_MARGIN_PX = 13         # bubble radius (~11) + 2: a bubble closer to the image border is not fully visible
 
 _REF = None
 
@@ -74,13 +85,50 @@ def align(im, ref):
                          coverage=coverage, local_fit=ctx["fits"]["H_local_contours"])
 
 
-def read_answers(scores, t, weak_below, ref):
+def visible_bubbles(centres, shape):
+    """False for bubbles not fully inside the photo (e.g. the scanner app cut off the bottom of the sheet)."""
+    h, w = shape[:2]
+    m = EDGE_MARGIN_PX
+    return (centres[:, 0] >= m) & (centres[:, 1] >= m) & (centres[:, 0] < w - m) & (centres[:, 1] < h - m)
+
+
+def final_position_check(im, centres, ref, visible):
+    """Per (subject, 10-question region): share of bubbles on / offset from / without a printed ring."""
+    lo, hi = centres.min(0) - 30, centres.max(0) + 30
+    rings = common.detect_bubble_contours(im, np.array([lo, [hi[0], lo[1]], hi, [lo[0], hi[1]]]))
+    if len(rings):
+        nearest = np.linalg.norm(centres[:, None] - rings[None], axis=2).min(1)
+    else:
+        nearest = np.full(len(centres), np.inf)
+    on, offset = nearest <= ON_RING_PX, (nearest > ON_RING_PX) & (nearest <= OFFSET_MAX_PX)
+    usable = visible & ref["ref_valid"]
+    region = (ref["questions"] - 1) // REGION_ROWS
+    regions, per_subject = [], {}
+    for s in common.SUBJECTS:
+        sel_s = (ref["subjects"] == s) & usable
+        per_subject[s] = round(float(on[sel_s].mean()), 3) if sel_s.any() else None
+        for r in np.unique(region[ref["subjects"] == s]):
+            sel = sel_s & (region == r)
+            if sel.any():
+                q = ref["questions"][(ref["subjects"] == s) & (region == r)]
+                regions.append(dict(subject=s, first=int(q.min()), last=int(q.max()), n=int(sel.sum()),
+                                    on=round(float(on[sel].mean()), 3), offset=round(float(offset[sel].mean()), 3),
+                                    unseen=round(float((~on[sel] & ~offset[sel]).mean()), 3)))
+    return per_subject, regions
+
+
+def read_answers(scores, t, weak_below, ref, visible):
     """Per-question decision with the sheet's own threshold (see reading.py)."""
     answers = {}
     for s in common.SUBJECTS:
         rows = []
         for q in range(1, int(ref["questions"][ref["subjects"] == s].max()) + 1):
-            sc = scores[(ref["subjects"] == s) & (ref["questions"] == q)]
+            sel = (ref["subjects"] == s) & (ref["questions"] == q)
+            sc = scores[sel]
+            if not visible[sel].all():
+                rows.append(dict(question=q, answer=None, status="invisible", weak=False,
+                                 scores=[round(100 * float(v), 1) for v in sc]))
+                continue
             status, answer, weak = reading.decide(sc, t, weak_below)
             rows.append(dict(question=q, answer=answer, status=status, weak=weak,
                              scores=[round(100 * float(v), 1) for v in sc]))
@@ -113,14 +161,27 @@ def process_image(original):
     ref = reference()
     im = to_working(original)
     centres, diag = align(im, ref)
+    visible = visible_bubbles(centres, im.shape)
     scores = reading.bubble_scores(im, centres)
-    t, weak_below, reading_info = reading.sheet_threshold(scores)
+    t, weak_below, reading_info = reading.sheet_threshold(scores[visible])
     diag["reading"] = reading_info
-    answers = read_answers(scores, t, weak_below, ref)
-    warnings = [f"{s}: balonların sadece %{100 * c:.0f}'i otomatik doğrulanabildi" for s, c in diag["coverage"].items()
-                if c < COVERAGE_WARNING]
-    warnings += [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
-                 for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
+    answers = read_answers(scores, t, weak_below, ref, visible)
+    diag["verified"], diag["regions"] = final_position_check(im, centres, ref, visible)
+    warnings = [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
+                for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
+    rescan = []
+    for r in diag["regions"]:
+        where = f"{r['subject']} {r['first']}-{r['last']}. sorular"
+        if r["offset"] >= OFFSET_RESCAN:
+            rescan.append(f"{where}: balonların %{100 * r['offset']:.0f}'i basılı halkasından {ON_RING_PX}-"
+                          f"{OFFSET_MAX_PX} px kaymış, hizalama güvenilir değil")
+        elif r["unseen"] >= UNSEEN_WARNING:
+            warnings.append(f"{where}: balonların %{100 * r['unseen']:.0f}'inde basılı halka görülemedi "
+                            "(soluk baskı?), hizalama doğrulanamadı")
+    n_invisible = sum(r["status"] == "invisible" for rows in answers.values() for r in rows)
+    if n_invisible:
+        rescan.append(f"{n_invisible} soru fotoğrafın dışında kalıyor (sayfa kırpılmış olabilir); bu sorular "
+                      "\"görünmüyor\" olarak işaretlendi")
     notes = []
     h = diag["homography"]
     if h["used"] == "all_markers" and "rings_ransac" in h:
@@ -131,8 +192,6 @@ def process_image(original):
         notes.append(f"RANSAC {h['markers']} köşe işaretinden yalnızca {h['ransac_inliers']} tanesine güvendi ve "
                      f"kurduğu dönüşüm kararsızdı (koşul sayısı {h['ransac_condition']}). Bunun yerine bütün köşe "
                      "işaretleriyle hizalandı.")
-    rescan = [f"{s}: balonların yalnızca %{100 * c:.0f}'i bulunabildi, hizalama güvenilir değil"
-              for s, c in diag["coverage"].items() if c < COVERAGE_RESCAN]
     n_questions = sum(len(rows) for rows in answers.values())
     n_ambiguous = sum(r["status"] == "ambiguous" for rows in answers.values() for r in rows)
     n_weak = sum(r["weak"] for rows in answers.values() for r in rows)
@@ -151,6 +210,7 @@ def process_image(original):
                   summary={s: dict(marked=sum(r["status"] == "single" for r in rows),
                                    weak=sum(r["weak"] for r in rows),
                                    blank=sum(r["status"] == "blank" for r in rows),
-                                   ambiguous=sum(r["status"] == "ambiguous" for r in rows))
+                                   ambiguous=sum(r["status"] == "ambiguous" for r in rows),
+                                   invisible=sum(r["status"] == "invisible" for r in rows))
                            for s, rows in answers.items()})
-    return result, draw(im, centres, scores, t, weak_below), im
+    return result, draw(im, centres[visible], scores[visible], t, weak_below), im
