@@ -2,116 +2,385 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f6f8">
 <title>Baykuş Optik</title>
 <style>
-  :root { --bg:#f4f5f7; --card:#fff; --ink:#172331; --muted:#5b6673; --accent:#176ca4; --bad:#b3261e; --warn:#8a5a00; }
-  * { box-sizing:border-box; }
-  body { margin:0; font:16px/1.5 -apple-system, system-ui, sans-serif; background:var(--bg); color:var(--ink); }
-  main { max-width:720px; margin:0 auto; padding:16px; }
-  h1 { font-size:22px; margin:8px 0 4px; }
-  .card { background:var(--card); border-radius:14px; padding:16px; margin:14px 0; }
-  .muted { color:var(--muted); font-size:14px; }
-  label.btn { display:block; text-align:center; background:var(--accent); color:#fff; padding:16px; border-radius:12px; font-weight:600; font-size:18px; }
-  input[type=file] { display:none; }
-  ol { padding-left:20px; margin:8px 0; }
-  #status { font-weight:600; }
-  .err { color:var(--bad); }
-  .warn { color:var(--warn); font-size:14px; }
-  img { width:100%; border-radius:8px; margin-top:10px; }
-  table { width:100%; border-collapse:collapse; font-size:14px; }
-  th, td { text-align:left; padding:6px 4px; border-bottom:1px solid #e3e6ea; }
-  .grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:4px; font-size:13px; }
-  .q { background:#f0f2f5; border-radius:6px; padding:3px 5px; }
-  .q.amb { background:#fdecc8; } .q.blank { color:#9aa3ad; } .q.weak { background:#ffe3cc; color:#8a3c00; } .q.inv { background:#e3e6ea; color:#b3261e; }
-  details summary { cursor:pointer; font-weight:600; margin-top:8px; }
-  .rescan { background:#fdecea; border:1px solid #f1b8b3; color:var(--bad); border-radius:10px; padding:10px 12px; margin:10px 0; }
-  .rescan b { display:block; font-size:17px; }
-  .rescan ul { margin:6px 0 0; padding-left:18px; font-size:14px; }
-  .note { color:var(--muted); font-size:14px; }
+  :root {
+    --bg: #f5f6f8; --card: #ffffff; --ink: #14202c; --muted: #5f6b78; --line: #e4e7ec;
+    --accent: #1a6fb0; --accent-ink: #ffffff; --accent-soft: #e6f0f8;
+    --ok: #1f7a4d; --ok-soft: #e5f4ec;
+    --warn: #8a5300; --warn-soft: #fff3df; --warn-line: #f2cf95;
+    --bad: #b3261e; --bad-soft: #fdecea; --bad-line: #f1b8b3;
+    --radius: 16px; --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1419; --card: #182029; --ink: #e8edf2; --muted: #9aa6b2; --line: #2a3541;
+      --accent: #5aa7e0; --accent-ink: #0b1620; --accent-soft: #1b3346;
+      --ok: #5cc28c; --ok-soft: #173326;
+      --warn: #f0b860; --warn-soft: #33270f; --warn-line: #6b5120;
+      --bad: #f08a80; --bad-soft: #3a1c1a; --bad-line: #6e2f2a;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         -webkit-text-size-adjust: 100%; }
+  main { max-width: 680px; margin: 0 auto; padding: 16px 16px calc(120px + env(safe-area-inset-bottom)); }
+  header { display: flex; align-items: center; gap: 12px; margin: 8px 0 16px; }
+  .logo { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: var(--accent-ink);
+          display: grid; place-items: center; font-weight: 800; font-size: 20px; flex: none; }
+  h1 { font-size: 20px; margin: 0; line-height: 1.2; }
+  h2 { font-size: 17px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0; }
+  .card { background: var(--card); border-radius: var(--radius); padding: 16px; margin: 0 0 14px;
+          box-shadow: var(--shadow); border: 1px solid var(--line); }
+  .hidden { display: none !important; }
+  button, .btn { font: inherit; border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 52px;
+         border-radius: 14px; font-weight: 650; font-size: 17px; padding: 12px 16px; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-secondary { background: var(--accent-soft); color: var(--accent); }
+  .btn:disabled { opacity: .45; cursor: default; }
+  input[type=file] { display: none; }
+  details summary { cursor: pointer; font-weight: 600; color: var(--accent); margin-top: 12px; }
+  details ol { padding-left: 20px; margin: 8px 0; color: var(--muted); font-size: 14px; }
+  .note { font-size: 14px; color: var(--muted); }
+
+  /* status */
+  .status { display: flex; gap: 12px; align-items: flex-start; }
+  .status .icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex: none;
+                  font-weight: 800; }
+  .status.ok .icon { background: var(--ok-soft); color: var(--ok); }
+  .status.bad .icon { background: var(--bad-soft); color: var(--bad); }
+  .retake { border-color: var(--bad-line); }
+  .retake ul { margin: 10px 0 14px; padding-left: 20px; }
+  .retake li { margin: 6px 0; }
+  .issue { background: var(--warn-soft); border: 1px solid var(--warn-line); color: var(--ink); border-radius: 12px;
+           padding: 10px 12px; font-size: 14px; margin: 10px 0 0; }
+  .issue b { color: var(--warn); }
+  .spinner { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--accent-soft);
+             border-top-color: var(--accent); animation: spin .8s linear infinite; flex: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading { display: flex; gap: 12px; align-items: center; }
+
+  /* subject chips */
+  .chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+  .chip { background: var(--bg); border-radius: 12px; padding: 8px 6px; text-align: center; }
+  .chip b { display: block; font-size: 18px; }
+  .chip span { font-size: 12px; color: var(--muted); }
+
+  /* confirm */
+  .q-card { border: 1px solid var(--warn-line); border-radius: 14px; padding: 12px; margin-top: 12px; }
+  .q-card.done { border-color: var(--line); }
+  .q-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .q-head b { font-size: 16px; }
+  .q-state { font-size: 13px; color: var(--warn); font-weight: 600; white-space: nowrap; }
+  .q-card.done .q-state { color: var(--ok); }
+  .q-card p { margin: 4px 0 8px; font-size: 14px; color: var(--muted); }
+  .q-card img { width: 100%; border-radius: 10px; display: block; background: #fff; }
+  .opts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-top: 10px; }
+  .opt { min-height: 46px; border-radius: 12px; background: var(--bg); color: var(--ink); font-weight: 700;
+         font-size: 17px; border: 2px solid transparent; }
+  .opt.sel { background: var(--accent); color: var(--accent-ink); }
+  .opt.hint:not(.sel) { border-color: var(--accent); }
+  .opt.blank { font-size: 14px; font-weight: 600; }
+
+  /* answers */
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--bg); border-radius: 12px;
+          padding: 4px; margin: 12px 0; }
+  .tab { min-height: 40px; border-radius: 9px; background: transparent; color: var(--muted); font-weight: 600;
+         font-size: 14px; }
+  .tab.on { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 6px; }
+  .a { border-radius: 10px; background: var(--bg); padding: 7px 4px; text-align: center; font-variant-numeric: tabular-nums;
+       font-size: 15px; }
+  .a .n { color: var(--muted); font-size: 13px; }
+  .a .v { font-weight: 750; }
+  .a.blank .v { color: var(--muted); font-weight: 500; }
+  .a.pending { background: var(--warn-soft); outline: 1px solid var(--warn-line); }
+  .a.confirmed { background: var(--ok-soft); }
+  .a.inv { background: var(--bad-soft); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; }
+
+  /* photo */
+  .photo { width: 100%; border-radius: 10px; display: block; margin-top: 10px; cursor: zoom-in; background: #fff; }
+  .viewer { position: fixed; inset: 0; background: rgba(0, 0, 0, .92); z-index: 10; overflow: auto;
+            -webkit-overflow-scrolling: touch; }
+  .viewer img { display: block; width: 200%; max-width: none; }
+  .viewer button { position: fixed; top: calc(12px + env(safe-area-inset-top)); right: 12px; width: 44px; height: 44px;
+                   border-radius: 50%; background: rgba(255, 255, 255, .9); color: #000; font-size: 22px; z-index: 11; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  td, th { text-align: left; padding: 5px 4px; border-bottom: 1px solid var(--line); }
+
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+         background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px);
+         -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--line); z-index: 5; }
+  .bar .inner { max-width: 680px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 8px; }
+  .bar .note { grid-column: 1 / -1; text-align: center; margin: 0; }
+  .bar .btn { min-height: 48px; font-size: 16px; }
+  .bar .btn-secondary { width: auto; padding: 0 16px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Baykuş Optik — uçtan uca deneme</h1>
-  <p class="muted">Telefon → bu ağdaki bilgisayar → cevaplar. Hizalama: E2 (global homography + ders başına balon konturu düzeltmesi).</p>
+  <header>
+    <div class="logo" aria-hidden="true">B</div>
+    <div>
+      <h1>Baykuş Optik</h1>
+      <p class="sub">Optik formunu tara, cevaplarını gör.</p>
+    </div>
+  </header>
 
-  <div class="card">
-    <label class="btn" for="file">Formu tara / dosya seç</label>
+  <!-- 1. Upload -->
+  <section class="card" id="upload">
+    <label class="btn btn-primary" for="file">Formu tara</label>
     <input id="file" type="file" accept="image/*,application/pdf">
     <details>
-      <summary>iPhone belge tarayıcısıyla nasıl gönderilir?</summary>
-      <ol class="muted">
-        <li>Yukarıdaki düğmeye bas → <b>Dosya Seç</b>.</li>
-        <li>Açılan Dosyalar ekranında sağ üstteki <b>•••</b> → <b>Belgeleri Tara</b>. Formu tara, <b>Kaydet</b>.</li>
-        <li>Kaydedilen PDF'i seç. Yalnızca ilk sayfa okunur.</li>
+      <summary>iPhone'da nasıl taranır?</summary>
+      <ol>
+        <li><b>Formu tara</b> → <b>Dosya Seç</b>.</li>
+        <li>Açılan ekranda sağ üstteki <b>•••</b> → <b>Belgeleri Tara</b>.</li>
+        <li>Formu düz bir masaya koy, dört köşesi görünsün, gölge düşmesin. Tara → <b>Kaydet</b>.</li>
+        <li>Kaydedilen PDF'i seç.</li>
       </ol>
-      <p class="muted">Bu menü yoksa: Notlar'da tara → Paylaş → Dosyalar'a Kaydet → sonra burada <b>Dosya Seç</b>.
-      <b>Fotoğraf Çek</b> seçeneği ham kamera fotoğrafı gönderir; deneyler tarayıcı çıktısıyla yapıldı.</p>
+      <p class="note"><b>Fotoğraf Çek</b> seçeneğini kullanma: kırpılmamış fotoğraf okunamaz.</p>
+    </details>
+  </section>
+
+  <!-- 2. Loading -->
+  <section class="card hidden" id="loading">
+    <div class="loading"><div class="spinner"></div><div id="loadingText">Form okunuyor…</div></div>
+  </section>
+
+  <!-- 3. Retake -->
+  <section class="card retake hidden" id="retake">
+    <div class="status bad">
+      <div class="icon">!</div>
+      <div>
+        <h2>Formu tekrar tara</h2>
+        <p class="sub">Bu fotoğraftan cevaplar güvenilir şekilde okunamadı.</p>
+      </div>
+    </div>
+    <ul id="retakeList"></ul>
+    <label class="btn btn-primary" for="file">Tekrar tara</label>
+  </section>
+
+  <!-- 4. Error -->
+  <section class="card retake hidden" id="error">
+    <div class="status bad">
+      <div class="icon">!</div>
+      <div><h2>Bir sorun oldu</h2><p class="sub" id="errorText"></p></div>
+    </div>
+    <label class="btn btn-secondary" for="file" style="margin-top:14px">Tekrar dene</label>
+  </section>
+
+  <!-- 5. Result -->
+  <div id="result" class="hidden">
+    <section class="card">
+      <div class="status ok">
+        <div class="icon">✓</div>
+        <div>
+          <h2>Form okundu</h2>
+          <p class="sub" id="resultSub"></p>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div id="issues"></div>
+    </section>
+
+    <section class="card hidden" id="confirmCard">
+      <h2>Emin olamadığımız sorular</h2>
+      <p class="sub">Fotoğraftaki işareti kontrol edip hangi şıkkı işaretlediğini seç.</p>
+      <div id="confirmList"></div>
+    </section>
+
+    <section class="card">
+      <h2>Cevapların</h2>
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="grid" id="answers"></div>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--warn-soft);outline:1px solid var(--warn-line)"></span>Onay bekliyor</span>
+        <span><span class="dot" style="background:var(--ok-soft)"></span>Senin seçimin</span>
+        <span>— boş</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>İşaretli fotoğraf</h2>
+      <p class="sub">Okumanın doğru olduğunu gözle kontrol et. Büyütmek için dokun.</p>
+      <img class="photo" id="overlay" alt="Okunan cevaplar formun üzerinde işaretli">
+      <div class="legend">
+        <span><span class="dot" style="border:3px solid #e60000"></span>İşaretli</span>
+        <span><span class="dot" style="border:3px solid #ff8c00"></span>Belirsiz</span>
+        <span><span class="dot" style="border:1px solid #28aa28"></span>Boş</span>
+      </div>
+      <p class="note">Yeşil halkalar balonların tam üstünde durmuyorsa okuma hatalıdır, formu tekrar tara.</p>
+    </section>
+
+    <details class="card">
+      <summary>Teknik ayrıntılar</summary>
+      <div id="tech"></div>
     </details>
   </div>
-
-  <div class="card" id="out" hidden>
-    <div id="status"></div>
-    <div id="warnings"></div>
-    <div id="summary"></div>
-    <img id="overlay" alt="Hizalama sonucu" hidden>
-    <p class="muted" id="legend" hidden>Yeşil ince halka: balonun olduğunu düşündüğümüz yer. Kırmızı kalın halka: işaretli.
-      Turuncu kalın halka: zayıf işaret (çok açık, yarım ya da X) — kontrol edin.
-      Halkalar balonların üstünde değilse hizalama hatalı.</p>
-    <div id="answers"></div>
-  </div>
 </main>
+
+<div class="bar hidden" id="bar">
+  <div class="inner">
+    <p class="note" id="barNote"></p>
+    <label class="btn btn-secondary" for="file">Yeni form</label>
+    <button class="btn btn-primary" id="save">Cevapları kaydet</button>
+  </div>
+</div>
+
+<div class="viewer hidden" id="viewer"><button aria-label="Kapat" id="viewerClose">×</button><img id="viewerImg" alt=""></div>
+
 <script>
-const SUBJ = { turkce: "Türkçe", sosyal: "Sosyal", matematik: "Matematik", fen: "Fen" };
+const SUBJECTS = { turkce: "Türkçe", sosyal: "Sosyal", matematik: "Matematik", fen: "Fen" };
 const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let R = null, choices = {}, tab = "turkce", saved = false;
+
+function show(...ids) {
+  for (const id of ["upload", "loading", "retake", "error", "result", "bar"]) $(id).classList.toggle("hidden", !ids.includes(id));
+  window.scrollTo(0, 0);
+}
 
 $("file").addEventListener("change", async (e) => {
   const f = e.target.files[0];
+  e.target.value = "";
   if (!f) return;
-  $("out").hidden = false;
-  $("status").className = ""; $("status").textContent = `Gönderiliyor: ${f.name} (${(f.size / 1e6).toFixed(1)} MB)…`;
-  for (const id of ["warnings", "summary", "answers"]) $(id).innerHTML = "";
-  $("overlay").hidden = true; $("legend").hidden = true;
+  show("loading");
+  $("loadingText").textContent = `Gönderiliyor (${(f.size / 1e6).toFixed(1)} MB)…`;
   try {
     const res = await fetch("/api/process", { method: "POST", body: f,
       headers: { "X-Filename": encodeURIComponent(f.name), "Content-Type": f.type || "application/octet-stream" } });
+    $("loadingText").textContent = "Form okunuyor…";
     const r = await res.json();
     if (!res.ok) throw new Error(r.error || res.statusText);
-    render(r);
+    if (r.retake && r.retake.length) {
+      $("retakeList").innerHTML = r.retake.map((x) => `<li>${esc(x)}</li>`).join("");
+      return show("retake");
+    }
+    R = r; choices = {}; saved = false; tab = "turkce";
+    render();
+    show("result", "bar");
   } catch (err) {
-    $("status").className = "err"; $("status").textContent = "Hata: " + err.message;
+    $("errorText").textContent = err.message === "Failed to fetch" ? "Bilgisayara bağlanılamadı. Aynı Wi-Fi'de misin?" : err.message;
+    show("upload", "error");
   }
-  e.target.value = "";
 });
 
-function render(r) {
-  const d = r.diagnostics;
-  $("status").textContent = `Okundu (${r.seconds} sn) · ${d.markers_matched} köşe işareti eşleşti · kayıt: ${r.saved_to}`;
-  const esc = (s) => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
-  let w = "";
-  if (!r.reliable)
-    w += `<div class="rescan"><b>Bu sonuca güvenmeyin — formu tekrar tarayın.</b><ul>` +
-         r.rescan_reasons.map(x => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
-  w += r.warnings.map(x => `<p class="warn">⚠ ${esc(x)}</p>`).join("");
-  w += (r.notes || []).map(x => `<p class="note">ℹ︎ ${esc(x)}</p>`).join("");
-  $("warnings").innerHTML = w;
-  let t = "<table><tr><th>Ders</th><th>İşaretli</th><th>Zayıf</th><th>Boş</th><th>Çoklu</th><th>Görünmüyor</th><th>Halkasında</th></tr>";
-  for (const [s, v] of Object.entries(r.summary))
-    t += `<tr><td>${SUBJ[s]}</td><td>${v.marked}</td><td>${v.weak}</td><td>${v.blank}</td><td>${v.ambiguous}</td><td>${v.invisible || 0}</td><td>%${d.verified[s] == null ? "-" : Math.round(100 * d.verified[s])}</td></tr>`;
-  $("summary").innerHTML = t + "</table>";
-  $("overlay").src = r.overlay; $("overlay").hidden = false; $("legend").hidden = false;
-  let a = "";
-  for (const [s, rows] of Object.entries(r.answers)) {
-    a += `<details><summary>${SUBJ[s]} cevapları</summary><div class="grid">`;
-    for (const q of rows) {
-      const cls = q.status === "ambiguous" ? "q amb" : q.status === "blank" ? "q blank" : q.status === "invisible" ? "q inv" : q.weak ? "q weak" : "q";
-      a += `<div class="${cls}">${q.question}: ${q.status === "invisible" ? "görünmüyor" : (q.answer ?? "–")}</div>`;
-    }
-    a += "</div></details>";
-  }
-  $("answers").innerHTML = a;
+const key = (s, q) => `${s}-${q}`;
+const pending = () => R.confirm.filter((c) => !(key(c.subject, c.question) in choices));
+
+function render() {
+  const n = Object.values(R.answers).flat().length;
+  $("resultSub").textContent = `${n} soru okundu · ${R.seconds} sn`;
+  $("chips").innerHTML = Object.entries(R.summary).map(([s, v]) =>
+    `<div class="chip"><b>${v.marked + v.ambiguous}</b><span>${SUBJECTS[s]}<br>${v.blank} boş</span></div>`).join("");
+  $("issues").innerHTML = (R.issues || []).map((x) => `<div class="issue"><b>Dikkat:</b> ${esc(x)}</div>`).join("");
+  renderConfirm();
+  renderTabs();
+  renderAnswers();
+  $("overlay").src = R.overlay;
+  renderTech();
+  renderBar();
 }
+
+function renderConfirm() {
+  $("confirmCard").classList.toggle("hidden", !R.confirm.length);
+  $("confirmList").innerHTML = R.confirm.map((c) => {
+    const k = key(c.subject, c.question), sel = choices[k];
+    const text = c.reason === "multiple"
+      ? `Birden fazla şık (${[...c.suggested].join(" ve ")}) işaretli görünüyor. Hangisini işaretlemek istedin?`
+      : `İşaret çok açık ya da yarım görünüyor. Hangi şıkkı işaretledin?`;
+    const opts = [..."ABCDE"].map((o) =>
+      `<button class="opt ${sel === o ? "sel" : ""} ${!sel && c.suggested && c.suggested.includes(o) ? "hint" : ""}"
+               data-k="${k}" data-v="${o}" aria-pressed="${sel === o}">${o}</button>`).join("") +
+      `<button class="opt blank ${sel === "-" ? "sel" : ""}" data-k="${k}" data-v="-" aria-pressed="${sel === "-"}">Boş</button>`;
+    return `<div class="q-card ${sel ? "done" : ""}">
+      <div class="q-head"><b>${SUBJECTS[c.subject]} · Soru ${c.question}</b>
+        <span class="q-state">${sel ? "✓ " + (sel === "-" ? "Boş" : sel) : "Seçim bekliyor"}</span></div>
+      <p>${text}</p>
+      <img src="${c.image}" alt="${SUBJECTS[c.subject]} ${c.question}. soru">
+      <div class="opts">${opts}</div></div>`;
+  }).join("");
+}
+
+$("confirmList").addEventListener("click", (e) => {
+  const b = e.target.closest(".opt");
+  if (!b) return;
+  choices[b.dataset.k] = b.dataset.v;
+  saved = false;
+  renderConfirm(); renderAnswers(); renderBar();
+});
+
+function renderTabs() {
+  $("tabs").innerHTML = Object.keys(R.answers).map((s) =>
+    `<button class="tab ${s === tab ? "on" : ""}" role="tab" aria-selected="${s === tab}" data-s="${s}">${SUBJECTS[s]}</button>`).join("");
+}
+$("tabs").addEventListener("click", (e) => {
+  const b = e.target.closest(".tab");
+  if (!b) return;
+  tab = b.dataset.s; renderTabs(); renderAnswers();
+});
+
+function renderAnswers() {
+  const asked = new Set(R.confirm.map((c) => key(c.subject, c.question)));
+  $("answers").innerHTML = R.answers[tab].map((q) => {
+    const k = key(tab, q.question);
+    let v = q.answer || "—", cls = q.answer ? "" : "blank";
+    if (q.status === "invisible") { v = "?"; cls = "inv"; }
+    if (asked.has(k)) {
+      if (k in choices) { v = choices[k] === "-" ? "—" : choices[k]; cls = "confirmed"; }
+      else { v = "?"; cls = "pending"; }
+    }
+    return `<div class="a ${cls}"><span class="n">${q.question})</span> <span class="v">${v}</span></div>`;
+  }).join("");
+}
+
+function renderBar() {
+  const left = pending().length;
+  $("save").disabled = left > 0 || saved;
+  $("save").textContent = saved ? "Kaydedildi ✓" : "Cevapları kaydet";
+  $("barNote").textContent = left ? `${left} soru için seçim bekleniyor` : "";
+  $("barNote").classList.toggle("hidden", !left);
+}
+
+$("save").addEventListener("click", async () => {
+  $("save").disabled = true;
+  try {
+    const res = await fetch("/api/confirm", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ run: R.run, choices }) });
+    const r = await res.json();
+    if (!res.ok) throw new Error(r.error || res.statusText);
+    saved = true;
+  } catch (err) {
+    alert("Kaydedilemedi: " + err.message);
+  }
+  renderBar();
+});
+
+function renderTech() {
+  const d = R.diagnostics;
+  const rows = Object.keys(R.summary).map((s) => {
+    const v = R.summary[s];
+    return `<tr><td>${SUBJECTS[s]}</td><td>${v.marked}</td><td>${v.weak}</td><td>${v.blank}</td><td>${v.ambiguous}</td>
+      <td>%${d.verified[s] == null ? "-" : Math.round(100 * d.verified[s])}</td></tr>`;
+  }).join("");
+  const lines = [...(R.warnings || []), ...(R.notes || [])].map((x) => `<li>${esc(x)}</li>`).join("");
+  $("tech").innerHTML = `<p class="note">Kayıt: app/uploads/${esc(R.run)} · ${d.markers_matched} köşe işareti ·
+      hizalama: ${esc(d.homography.used)} · eşik ${d.reading.threshold} · tipik işaret ${d.reading.typical_mark}</p>
+    <table><tr><th>Ders</th><th>İşaretli</th><th>Zayıf</th><th>Boş</th><th>Çoklu</th><th>Halkasında</th></tr>${rows}</table>
+    ${lines ? `<ul class="note">${lines}</ul>` : ""}`;
+}
+
+$("overlay").addEventListener("click", () => { $("viewerImg").src = R.overlay; $("viewer").classList.remove("hidden"); });
+$("viewerClose").addEventListener("click", () => $("viewer").classList.add("hidden"));
 </script>
 </body>
 </html>

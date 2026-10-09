@@ -31,21 +31,27 @@ PDF'in yalnızca ilk sayfası okunur. JPEG ve PNG de kabul edilir.
 
 ## Ekranda ne görülür
 
-- Ders başına işaretli / zayıf / boş / çoklu / görünmeyen soru sayısı ve balonların basılı halkasına oturma yüzdesi.
-- "Tekrar tarayın": bir bölgede (ders × 10 soru) balonların %12'si halkasından kaymışsa, sorular fotoğrafın
-  dışında kalıyorsa, bir soruda 3+ şık işaretliyse. Uyarı: halkalar görülemiyorsa, yerel düzeltme kurulamadıysa,
-  kalem çok açıksa ya da çok soru dolu/boş sınırındaysa.
-- Cevap alanının resmi: yeşil ince halka = balonun olduğunu düşündüğümüz yer, kırmızı kalın halka = işaretli,
-  turuncu kalın halka = zayıf işaret (çok açık, yarım, X). **Halkalar balonların üstüne oturmuyorsa hizalama
-  hatalıdır.**
-- Ders ders cevap listesi (sarı = birden fazla işaret, turuncu = zayıf işaret).
-- Güvenilmeyen sonuçta üstte kırmızı "tekrar tarayın" bandı.
+- **Tekrar tara** (hiç sonuç gösterilmez) — yeni bir taramanın düzelteceği sorunlarda: köşe işaretleri bulunamadı
+  (kesik ya da ters çekim), bir bölgede (ders × 10 soru) balonların %12'si halkasından kaymış, sorular fotoğrafın
+  dışında, bir soruda 3+ şık işaretli ya da soruların %10'undan fazlası çoklu (gölge/parlama). Mesajlar
+  `pipeline.RETAKE_TEXT`.
+- **Form okundu** — ders başına cevaplı/boş sayısı ve yeni taramanın düzeltmeyeceği sorunlar ("Dikkat"): kalem
+  çok açık, basılı halkalar soluk olduğu için yerleşim doğrulanamayan bölgeler.
+- **Emin olamadığımız sorular** — zayıf (çok açık, yarım, silinmiş) ya da birden fazla işaretli her soru için
+  fotoğraftan o sorunun satırı (üzerine çizim yapılmadan) ve A–E / Boş düğmeleri. Tahminimiz mavi çerçeveyle
+  gösterilir ama seçilmez; hepsi seçilince **Cevapları kaydet** açılır → `app/uploads/<zaman>/confirmed.json`.
+- **Cevapların** — ders sekmeleri, "1) A" listesi; onay bekleyenler sarı "?", öğrencinin seçtikleri yeşil.
+- **İşaretli fotoğraf** — kırmızı = işaretli, turuncu = belirsiz, yeşil ince = boş. Dokununca büyür.
+  **Halkalar balonların üstüne oturmuyorsa hizalama hatalıdır.**
+- **Teknik ayrıntılar** (kapalı) — köşe işareti sayısı, eşik, ders başına sayılar, teknik uyarılar.
 
 ## Kayıt
 
 Her gönderim `app/uploads/<zaman>/` altına kaydedilir (git'e girmez): gelen dosya, `working.jpg`
-(2000 px'e ölçeklenmiş girdi), `overlay.jpg`, `result.json` (tüm skorlar, uyarılar, hizalama teşhisi).
-Hata olursa `error.txt`.
+(2000 px'e ölçeklenmiş girdi), `overlay.jpg`, `result.json` (tüm skorlar, uyarılar, hizalama teşhisi),
+öğrenci onayladıysa `confirmed.json` (seçimleri ve son cevaplar). Hata olursa `error.txt`.
+
+Bilgisayardaki tarayıcıda denemek için: `.venv/bin/python -B app/server.py --http` → `http://127.0.0.1:8000`.
 
 ## Sınırlar
 

@@ -3,7 +3,7 @@
 Alignment is exactly the E2 method from experiments/edge_alignment_v2
 (global RANSAC homography from corner markers + per-subject TPS correction
 from the printed bubble rings). Reading: see reading.py (red channel, darkness
-relative to the local paper, threshold from this sheet's own empty bubbles).
+relative to the local paper, each option compared with the other options of its question).
 """
 from pathlib import Path
 import sys
@@ -20,6 +20,7 @@ from src import common, homography, local_contour  # noqa: E402
 
 import reading  # noqa: E402
 
+SUBJECT_NAMES = {"turkce": "Türkçe", "sosyal": "Sosyal", "matematik": "Matematik", "fen": "Fen"}
 AMBIGUOUS_RESCAN = .10      # >10% multi-marked questions: reading threshold does not fit this photo
 
 # Final-position check. After alignment every bubble should sit on its printed ring. Per region (subject x 10
@@ -36,6 +37,10 @@ UNSEEN_WARNING = .5         # >= this share of unseen bubbles in a region: align
 EDGE_MARGIN_PX = 13         # bubble radius (~11) + 2: a bubble closer to the image border is not fully visible
 
 _REF = None
+
+
+class MarkersNotFound(ValueError):
+    """Too few corner markers: the photo cannot be aligned (cut off, upside down, too dark)."""
 
 
 def reference():
@@ -70,8 +75,8 @@ def align(im, ref):
     markers = common.detect_markers(im)
     ri, ci = common.match_markers(ref["markers"], ref["image"].shape, markers, im.shape)
     if len(ri) < 6:
-        raise ValueError(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
-                         "Formun tamamı görünüyor mu, doğru yönde mi?")
+        raise MarkersNotFound(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
+                              "Formun tamamı görünüyor mu, doğru yönde mi?")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
     H_all, H, inliers, homography_info, obs, ok = homography.fit_verified(
         src, dst, im, ref["points"], ref["ref_valid"])
@@ -152,7 +157,8 @@ def read_answers(scores, t, weak_below, ref, visible):
 
 
 def draw(im, centres, contrast, t, weak_below):
-    """Answer-area crop. Thin green = bubble position, thick red = marked, thick orange = weak mark."""
+    """Answer-area crop and its top-left corner in the photo.
+    Thin green = bubble position, thick red = marked, thick orange = weak mark."""
     out = im.copy()
     for (x, y), sc in zip(np.round(centres).astype(int), contrast):
         if sc >= weak_below:
@@ -161,10 +167,39 @@ def draw(im, centres, contrast, t, weak_below):
             cv2.circle(out, (x, y), 10, (0, 140, 255), 3, cv2.LINE_AA)
         else:
             cv2.circle(out, (x, y), 10, (40, 170, 40), 1, cv2.LINE_AA)
-    x0, y0 = np.floor(centres.min(0)).astype(int) - 40
-    x1, y1 = np.ceil(centres.max(0)).astype(int) + 40
     h, w = out.shape[:2]
-    return out[max(y0, 0):min(y1, h), max(x0, 0):min(x1, w)]
+    x0, y0 = np.maximum(np.floor(centres.min(0)).astype(int) - 40, 0)
+    x1, y1 = np.ceil(centres.max(0)).astype(int) + 40
+    return out[y0:min(y1, h), x0:min(x1, w)], (int(x0), int(y0))
+
+
+# Messages for the student. Technical reasons stay in rescan_reasons / warnings (batch reports, saved results).
+RETAKE_TEXT = {
+    "alignment": "Formun bir bölgesi düzgün hizalanamadı. Kağıt bükülmüş ya da bir köşesi kalkık olabilir. "
+                 "Kağıdı düz bir masaya koyup tekrar tara.",
+    "cut": "Formun bir kısmı fotoğrafın dışında kalmış. Formun dört köşesi de görünecek şekilde tekrar tara.",
+    "shadow": "Fotoğrafta gölge ya da parlama var gibi görünüyor. Formu gölgesiz, eşit ışıkta tekrar tara.",
+    "markers": "Formun köşe işaretleri bulunamadı. Formun tamamı görünsün ve form düz (ters değil) dursun; "
+               "sonra tekrar tara.",
+}
+
+
+def confirm_list(answers, centres, ref, shape):
+    """Questions the student should confirm: weak single marks and multiple marks.
+    box = the question's row (number + 5 bubbles) in working-photo coordinates; the crop is taken from the
+    photo without our circles so the student sees the pencil mark itself."""
+    out = []
+    h, w = shape[:2]
+    for s, rows in answers.items():
+        for r in rows:
+            if not (r["weak"] or r["status"] == "ambiguous"):
+                continue
+            c = centres[(ref["subjects"] == s) & (ref["questions"] == r["question"])]
+            x0, y0 = np.floor(c.min(0) - [45, 18]).astype(int)
+            x1, y1 = np.ceil(c.max(0) + [18, 18]).astype(int)
+            out.append(dict(subject=s, question=r["question"], reason="multiple" if r["status"] == "ambiguous" else "weak",
+                            suggested=r["answer"], box=[max(int(x0), 0), max(int(y0), 0), min(int(x1), w), min(int(y1), h)]))
+    return out
 
 
 def process(data: bytes, filename: str):
@@ -185,19 +220,23 @@ def process_image(original):
     diag["verified"], diag["regions"] = final_position_check(im, centres, ref, visible)
     warnings = [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
                 for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
-    rescan = []
+    unverified = [SUBJECT_NAMES[s] for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
+    rescan, retake = [], []          # technical reasons / student-facing reason codes (see RETAKE_TEXT)
     for r in diag["regions"]:
         where = f"{r['subject']} {r['first']}-{r['last']}. sorular"
         if r["offset"] >= OFFSET_RESCAN:
             rescan.append(f"{where}: balonların %{100 * r['offset']:.0f}'i basılı halkasından {ON_RING_PX}-"
                           f"{OFFSET_MAX_PX} px kaymış, hizalama güvenilir değil")
+            retake.append("alignment")
         elif r["unseen"] >= UNSEEN_WARNING:
             warnings.append(f"{where}: balonların %{100 * r['unseen']:.0f}'inde basılı halka görülemedi "
                             "(soluk baskı?), hizalama doğrulanamadı")
+            unverified.append(f"{SUBJECT_NAMES[r['subject']]} {r['first']}-{r['last']}")
     n_invisible = sum(r["status"] == "invisible" for rows in answers.values() for r in rows)
     if n_invisible:
         rescan.append(f"{n_invisible} soru fotoğrafın dışında kalıyor (sayfa kırpılmış olabilir); bu sorular "
                       "\"görünmüyor\" olarak işaretlendi")
+        retake.append("cut")
     notes = []
     h = diag["homography"]
     if h["used"] == "all_markers" and "rings_ransac" in h:
@@ -214,15 +253,27 @@ def process_image(original):
     n_three = sum(r["status"] == "ambiguous" and len(r["answer"]) >= 3 for rows in answers.values() for r in rows)
     if n_ambiguous > AMBIGUOUS_RESCAN * n_questions:
         rescan.append(f"{n_ambiguous} soruda birden fazla şık işaretli okundu")
+        retake.append("shadow")
     elif n_three:
         rescan.append(f"{n_three} soruda 3 ya da daha fazla şık işaretli okundu (gölge ya da leke olabilir)")
+        retake.append("shadow")
     for problem in reading_info["problems"]:     # light pencil stays light on a new photo: warn, do not ask to rescan
         warnings.append("Okuma: " + problem + "; turuncu (zayıf) işaretleri kontrol edin")
     if n_weak:
         notes.append(f"{n_weak} soruda zayıf işaret var (çok açık, yarım ya da X ile işaretlenmiş olabilir); "
                      "resimde turuncu halkayla gösterildi.")
+    # Problems a new photo would not fix: shown with the result, in the student's words.
+    issues = []
+    if reading_info["typical_mark"] < reading.LIGHT_MARKS:
+        issues.append("Kalem işaretleri çok açık. Okuma yapıldı ama bazı işaretler belirsiz kalmış olabilir; "
+                      "bir dahaki sefere kalemle daha koyu doldur.")
+    if unverified:
+        issues.append("Formun şu bölgelerinde basılı halkalar soluk olduğu için yerleşim doğrulanamadı: "
+                      + ", ".join(unverified) + ". İşaretli fotoğrafta yeşil halkaların balonların üstünde "
+                      "durduğunu kontrol et.")
     result = dict(input_size=list(original.shape[1::-1]), diagnostics=diag, warnings=warnings, notes=notes,
                   reliable=not rescan, rescan_reasons=rescan, answers=answers,
+                  retake=[RETAKE_TEXT[c] for c in dict.fromkeys(retake)], issues=issues,
                   summary={s: dict(marked=sum(r["status"] == "single" for r in rows),
                                    weak=sum(r["weak"] for r in rows),
                                    blank=sum(r["status"] == "blank" for r in rows),
@@ -230,4 +281,6 @@ def process_image(original):
                                    invisible=sum(r["status"] == "invisible" for r in rows))
                            for s, rows in answers.items()})
     contrast = contrasts(scores, groups)
-    return result, draw(im, centres[visible], contrast[visible], t, weak_below), im
+    overlay, _ = draw(im, centres[visible], contrast[visible], t, weak_below)
+    result["confirm"] = confirm_list(answers, centres, ref, im.shape)
+    return result, overlay, im

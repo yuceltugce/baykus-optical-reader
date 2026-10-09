@@ -25,7 +25,7 @@ sys.path.insert(0, str(HERE))
 import pipeline  # noqa: E402
 import run_experiment  # noqa: E402  (importable after pipeline set the path)
 
-SUBJECT_NAMES = {"turkce": "Türkçe", "sosyal": "Sosyal", "matematik": "Matematik", "fen": "Fen"}
+SUBJECT_NAMES = pipeline.SUBJECT_NAMES
 
 
 def pages(path):

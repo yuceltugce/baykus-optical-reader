@@ -11,6 +11,7 @@ from pathlib import Path
 import argparse
 import base64
 import json
+import re
 import socket
 import ssl
 import subprocess
@@ -53,7 +54,12 @@ class Handler(BaseHTTPRequestHandler):
         else:
             self._send(404, b"not found", "text/plain")
 
+    def _json(self, code, obj):
+        self._send(code, json.dumps(obj, ensure_ascii=False).encode(), "application/json")
+
     def do_POST(self):
+        if self.path == "/api/confirm":
+            return self.confirm()
         if self.path != "/api/process":
             return self._send(404, b"not found", "text/plain")
         length = int(self.headers.get("Content-Length", 0))
@@ -79,11 +85,21 @@ class Handler(BaseHTTPRequestHandler):
             cv2.imwrite(str(run / "overlay.jpg"), overlay, [cv2.IMWRITE_JPEG_QUALITY, 85])
             cv2.imwrite(str(run / "working.jpg"), working, [cv2.IMWRITE_JPEG_QUALITY, 85])
             (run / "result.json").write_text(json.dumps(dict(result, filename=name), ensure_ascii=False, indent=2))
-            ok, jpg = cv2.imencode(".jpg", overlay, [cv2.IMWRITE_JPEG_QUALITY, 80])
-            result["overlay"] = "data:image/jpeg;base64," + base64.b64encode(jpg.tobytes()).decode()
-            result["saved_to"] = str(run.relative_to(HERE.parent))
+            result["run"] = run.name
+            if result["retake"]:              # nothing to show: only say why and ask for a new scan
+                print(f"[retake] {name} -> {run.name}: {result['rescan_reasons']}", flush=True)
+                return self._json(200, dict(run=run.name, retake=result["retake"], seconds=result["seconds"]))
+            result["overlay"] = data_url(overlay, 80)
+            for c in result["confirm"]:       # the question's row from the plain photo, enlarged
+                x0, y0, x1, y1 = c["box"]
+                c["image"] = data_url(cv2.resize(working[y0:y1, x0:x1], None, fx=2, fy=2,
+                                                 interpolation=cv2.INTER_CUBIC), 85)
             print(f"[ok] {name} -> {run.name} ({result['seconds']} s) {result['summary']}", flush=True)
-            self._send(200, json.dumps(result, ensure_ascii=False).encode(), "application/json")
+            self._json(200, result)
+        except pipeline.MarkersNotFound as err:
+            (run / "error.txt").write_text(traceback.format_exc())
+            print(f"[retake] {name}: {err}", flush=True)
+            self._json(200, dict(run=run.name, retake=[pipeline.RETAKE_TEXT["markers"]]))
         except (ValueError, cv2.error, RuntimeError) as err:
             (run / "error.txt").write_text(traceback.format_exc())
             print(f"[fail] {name}: {err}", flush=True)
@@ -94,8 +110,40 @@ class Handler(BaseHTTPRequestHandler):
             self._send(500, json.dumps({"error": f"Beklenmeyen hata ({type(err).__name__}). Kayıt: {run.name}"},
                                        ensure_ascii=False).encode(), "application/json")
 
+    def confirm(self):
+        """Save the student's choices for the questions the reader was unsure about (confirmed.json)."""
+        try:
+            body = json.loads(self.rfile.read(min(int(self.headers.get("Content-Length", 0)), 1_000_000)))
+            run = UPLOADS / str(body["run"])
+            if not RUN_NAME.fullmatch(str(body["run"])) or not (run / "result.json").exists():
+                return self._json(404, {"error": "Kayıt bulunamadı."})
+            choices = {str(k): str(v) for k, v in dict(body["choices"]).items()}
+            if not all(v in VALID_CHOICES for v in choices.values()):
+                return self._json(400, {"error": "Geçersiz seçim."})
+        except (ValueError, KeyError, TypeError):
+            return self._json(400, {"error": "İstek okunamadı."})
+        result = json.loads((run / "result.json").read_text())
+        final = {s: {str(r["question"]): r["answer"] or "-" for r in rows} for s, rows in result["answers"].items()}
+        for key, value in choices.items():            # "fen-12": "B"
+            subject, _, q = key.partition("-")
+            if subject in final and q in final[subject]:
+                final[subject][q] = value
+        (run / "confirmed.json").write_text(json.dumps(dict(choices=choices, answers=final, saved=datetime.now().isoformat(
+            timespec="seconds")), ensure_ascii=False, indent=2))
+        print(f"[confirm] {run.name}: {choices}", flush=True)
+        self._json(200, {"ok": True})
+
     def log_message(self, fmt, *args):
         pass
+
+
+RUN_NAME = re.compile(r"\d{8}-\d{6}-\d{6}")
+VALID_CHOICES = {"A", "B", "C", "D", "E", "-"}
+
+
+def data_url(image, quality):
+    ok, jpg = cv2.imencode(".jpg", image, [cv2.IMWRITE_JPEG_QUALITY, quality])
+    return "data:image/jpeg;base64," + base64.b64encode(jpg.tobytes()).decode()
 
 
 def self_signed_cert(ip):
