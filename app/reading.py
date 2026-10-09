@@ -14,18 +14,25 @@ Three classical ideas fix this:
    shadow), then measure each pixel as "how much darker than the paper here":
    (paper - pixel) / paper. A shadow darkens paper and pencil alike, so the
    ratio stays the same.
-3. Per-sheet threshold from the EMPTY bubbles. At most one option per question
-   is marked, so >= 80% of the 830 bubbles are empty and the median score is a
-   reliable "typical empty bubble"; the robust spread (MAD) tells how much
-   empty bubbles vary on this photo. A bubble is marked when it is clearly
-   darker than that: threshold = median + max(6 * spread, 0.08).
-   (A first version put the threshold midway between the empty and marked
-   cluster means. That failed when one sheet has both very dark and light
-   marks: the dark ones pull the marked mean up and light marks at ~0.30
-   fell below a 0.36 threshold.)
-   Marks only slightly above the threshold (below the midpoint between the
-   threshold and a typical mark) are reported as "weak": half-filled, very
-   light or partly erased bubbles that a person should look at.
+3. Compare each option with the other options OF THE SAME QUESTION (row contrast).
+   The five options of a question sit within ~110 px, so a shadow, a glare spot
+   or a camera that darkens empty bubbles shifts all five together; the median
+   option of the question is its own "empty" level. contrast = score - median.
+   The contrast of a normal mark on THIS sheet (typical_mark) is the median
+   top-contrast of the answered questions (answered vs blank split by Otsu).
+   An option is marked when its contrast >= ROW_ALPHA * typical_mark, so light
+   pencil on a light sheet and dark pencil on a dark sheet are judged alike.
+   Measured on 4 sheets photographed 141 times (iPhone) + 18 Redmi photos against
+   the per-sheet majority answers (Gemini-checked): wrong answers 273 -> 58 (iPhone)
+   and 159 -> 6 (Redmi). ROW_ALPHA was chosen on the iPhone set; on the Redmi set
+   0.30-0.35 was also best. Estimating the paper from the gaps between bubbles
+   instead of the large closing did not help once the row contrast was used.
+   (Replaced: one per-sheet threshold = median + max(6 * MAD spread, 0.08). It
+   missed light pencil, lost every mark outside a hard shadow and read shadowed
+   empty bubbles as marked.)
+   Marks below the midpoint between the threshold and a typical mark are
+   reported as "weak": half-filled, very light or partly erased bubbles that a
+   person should look at.
 """
 import cv2
 import numpy as np
@@ -34,11 +41,13 @@ SAMPLE_RADIUS = 8            # px at 2000 px height; bubble radius ~11 so the pr
 PAPER_KERNEL = 61            # px; much larger than a bubble (22 px) so marks are closed away
 PAPER_BLUR = 2               # px sigma; only smooths the blocky closing. A large blur (tried 15) smears a
                              # sharp shadow edge and makes empty bubbles next to it look dark.
-EMPTY_SPREADS = 6            # threshold this many robust standard deviations above the typical empty bubble
-MIN_GAP = .08                # ... but at least this far above it (very clean scans have a tiny spread)
-TYPICAL_MARK = .55           # darkness of a normal pencil mark when the sheet has too few marks to measure
-MIN_SEPARATION = .15         # typical mark must be this much darker than a typical empty bubble
-MAX_NEAR_THRESHOLD = .03     # >3% of bubbles within +-0.03 of the threshold: reading not trusted
+ROW_ALPHA = .30              # marked: contrast >= this share of the sheet's typical mark contrast
+MIN_CONTRAST = .04           # ... and never below this (a sheet with almost no marks)
+SECOND_MARK = .5             # a 2nd mark counts if it is past the threshold by half of the top mark's margin
+TYPICAL_MARK = .30           # typical mark contrast when the sheet has too few answered questions to measure
+LIGHT_MARKS = .15            # typical mark contrast below this: very light pencil, warn
+NEAR_BAND = .10              # top contrast within +-0.10 * typical_mark of the threshold counts as "near"
+MAX_NEAR = .08               # more than 8% of the questions near the threshold: warn
 
 _YY, _XX = np.mgrid[-SAMPLE_RADIUS:SAMPLE_RADIUS + 1, -SAMPLE_RADIUS:SAMPLE_RADIUS + 1]
 _DISC = _XX ** 2 + _YY ** 2 <= SAMPLE_RADIUS ** 2
@@ -63,35 +72,52 @@ def bubble_scores(im, centres):
     return out
 
 
-def sheet_threshold(scores):
-    """Threshold from the empty-bubble statistics of this sheet. Returns (t, weak_below, info)."""
-    empty = float(np.median(scores))
-    spread = 1.4826 * float(np.median(np.abs(scores - empty)))        # robust standard deviation (MAD)
-    t = empty + max(EMPTY_SPREADS * spread, MIN_GAP)
-    marks = scores[scores >= t]
-    typical_mark = float(np.median(marks)) if len(marks) >= 10 else TYPICAL_MARK
+def row_contrast(question_scores):
+    """Darkness of every option above the median option of the same question."""
+    return question_scores - np.median(question_scores)
+
+
+def otsu_split(values):
+    """Value that best separates a 1-D sample into two groups (max between-class variance)."""
+    x = np.sort(values)
+    n = np.arange(1, len(x))
+    left = np.cumsum(x)[:-1] / n
+    right = (x.sum() - np.cumsum(x)[:-1]) / (len(x) - n)
+    i = int(np.argmax(n * (len(x) - n) * (left - right) ** 2))
+    return (x[i] + x[i + 1]) / 2
+
+
+def sheet_threshold(questions):
+    """Row-contrast threshold of this sheet from a list of per-question score arrays.
+    Returns (t, weak_below, info); t and weak_below are contrasts (see row_contrast)."""
+    tops = np.array([row_contrast(s).max() for s in questions])
+    answered = tops[tops > otsu_split(tops)] if len(tops) > 1 else tops
+    typical_mark = float(np.median(answered)) if len(answered) >= 10 else TYPICAL_MARK
+    t = max(ROW_ALPHA * typical_mark, MIN_CONTRAST)
     weak_below = (t + typical_mark) / 2
-    near = int((np.abs(scores - t) < .03).sum())
-    info = dict(threshold=round(t, 3), typical_empty=round(empty, 3), empty_spread=round(spread, 3),
+    near = int((np.abs(tops - t) < NEAR_BAND * typical_mark).sum())
+    info = dict(threshold=round(t, 3), typical_empty=round(float(np.median([np.median(s) for s in questions])), 3),
                 typical_mark=round(typical_mark, 3), weak_below=round(weak_below, 3),
-                marked_bubbles=int(len(marks)), near_threshold=near)
+                answered_questions=int((tops >= t).sum()), near_threshold=near)
     problems = []
-    if typical_mark - empty < MIN_SEPARATION:
-        problems.append("işaretli ve boş balonların koyuluğu birbirine çok yakın")
-    if near > MAX_NEAR_THRESHOLD * len(scores):
-        problems.append(f"{near} balon dolu/boş sınırına çok yakın")
+    if typical_mark < LIGHT_MARKS:
+        problems.append("işaretler çok açık (kalem çok hafif bastırılmış)")
+    if near > MAX_NEAR * len(questions):
+        problems.append(f"{near} soru dolu/boş sınırına çok yakın")
     info["problems"] = problems
     return t, weak_below, info
 
 
 def decide(question_scores, t, weak_below):
-    """(status, answer, weak). A second mark only counts if it is closer to the top mark than to t."""
-    order = np.argsort(-question_scores)
-    marked = question_scores >= t
+    """(status, answer, weak) from row contrast. A second mark counts only if it is past t by at least
+    SECOND_MARK of the top mark's margin (a faint smudge next to a real mark does not)."""
+    d = row_contrast(question_scores)
+    order = np.argsort(-d)
+    marked = d >= t
     if not marked.any():
         return "blank", None, False
-    top, second = question_scores[order[0]], question_scores[order[1]]
-    if marked.sum() == 1 or second < (t + top) / 2:
+    top, second = d[order[0]], d[order[1]]
+    if marked.sum() == 1 or second < t + SECOND_MARK * (top - t):
         return "single", "ABCDE"[order[0]], bool(top < weak_below)
     return "ambiguous", "".join("ABCDE"[k] for k in np.where(marked)[0]), False
 

@@ -34,9 +34,12 @@ def sheet(paper=235, shadow=False, marks=(), mark_gray=60, n=200):
 
 class Reading(unittest.TestCase):
     def read(self, im, centres):
+        """Every 5 consecutive bubbles are one question (A..E). Returns per-bubble marked flag and contrast."""
         scores = reading.bubble_scores(im, centres)
-        t, weak_below, info = reading.sheet_threshold(scores)
-        return scores >= t, scores, t, weak_below, info
+        questions = [scores[i:i + 5] for i in range(0, len(scores), 5)]
+        t, weak_below, info = reading.sheet_threshold(questions)
+        contrast = np.concatenate([reading.row_contrast(q) for q in questions])
+        return contrast >= t, contrast, t, weak_below, info
 
     def test_printed_pink_letters_are_not_marks_even_on_a_dark_photo(self):
         marks = set(range(0, 200, 7))
@@ -61,6 +64,17 @@ class Reading(unittest.TestCase):
         self.assertEqual(set(np.where(marked)[0]), dark | light)
         self.assertTrue(all(scores[i] < weak_below for i in light))
         self.assertTrue(all(scores[i] >= weak_below for i in dark))
+
+    def test_camera_that_darkens_empty_bubbles_does_not_hide_gray_pencil(self):
+        """Redmi photos: empty bubbles look darker (and unevenly so), pencil stays gray. The old per-sheet
+        threshold (median + 6 MAD) missed these gray marks; the row contrast finds them."""
+        marks = set(range(1, 200, 5))
+        im, c = sheet(marks=marks, mark_gray=150)
+        for i in set(range(200)) - marks:                # gray haze in every empty bubble, darker down the sheet
+            x, y = c[i].astype(int)
+            cv2.circle(im, (x, y), 9, (int(185 + 45 * y / 900),) * 3, -1)
+        marked, *_ = self.read(im, c)
+        self.assertEqual(set(np.where(marked)[0]), marks)
 
     def test_blank_sheet_reads_nothing(self):
         im, c = sheet(marks=())

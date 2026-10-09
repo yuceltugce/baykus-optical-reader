@@ -185,6 +185,45 @@ Telefon denemelerinin en güncel 5'inde tek bir cevap değişmedi, hepsi güveni
 **Bilinen sınır:** Eşik payı küçük (%6.7 ile %16 arası) ve yalnız 5 kötü sayfayla ayarlandı. Yeni kötü örnek
 geldikçe yeniden ölçülmeli.
 
+## 6. Okuma: satır içi karşılaştırma (gölge, parlama, açık/gri kalem)
+
+**Örnek:** iPhone setinde gölgeli sayfalar (Batch4_s10, Batch5_s11, Batch3_s17) gölgedeki boş balonları işaretli,
+gölge kenarını ABCDE okuyordu; açık kalemli sayfalarda (Batch1_s11) Fen'in yarısı boş çıkıyordu. Redmi setinde
+gri kalem (090006, 090400, 090405), keskin güneş gölgesi (090202: 86 soru yanlış) ve parlama (090210). Çoğu
+"güvenilir" deniyordu.
+
+**Neden:** Bütün sayfa için tek eşik vardı (boş balonların ortancası + max(6 × yayılım, 0.08)). Gölge, parlama ya da
+boş balonları koyulaştıran bir kamera sayfanın bir bölümünü kaydırınca tek eşik ya o bölgedeki boşları işaretli
+sayıyor ya da başka bölgedeki işaretleri kaçırıyordu.
+
+**Çözüm** (`app/reading.py`): Her şık **aynı sorunun ortanca şıkkıyla** karşılaştırılıyor (satır kontrastı). Bir
+sorunun 5 şıkkı ~110 px içinde olduğu için gölge/parlama hepsini birlikte etkiler. Eşik, bu sayfadaki **tipik işaretin
+kontrastının %30'u** (cevaplı ve boş sorular Otsu ile ayrılıyor). Fikir Kandilli grafik sayısallaştırma çalışmasındaki
+"sütunun koyuluğu ÷ sayfanın tipik mürekkebi" güven skorundan geldi.
+- Açık kalem artık "tekrar tarayın" değil **uyarı**: yeni fotoğraf kalemi koyulaştırmaz.
+- Yeni güvenlik kuralı: bir soruda 3+ şık işaretliyse "tekrar tarayın" (bu sette hiç tetiklenmiyor).
+
+**Nasıl ölçüldü (ilk doğru-cevap seti):** 149 iPhone sayfası aslında 4 kağıdın tekrar tekrar çekilmiş fotoğrafları
+(49, 39, 30, 28). Her kağıdın cevabı = güvenilir fotoğrafların çoğunluk oyu. Kağıt 1 ve 3'te çoğunluk, gözle
+doğrulanmış Gemini cevaplarıyla birebir aynı. Çoğunluk ile Gemini'nin ayrıldığı 20 soru (silinmiş / yarım
+işaretler, kuralı mentörle konuşulacak) "tartışmalı" sayılıp ölçümden çıkarıldı. Redmi fotoğrafları aynı kağıtlara
+eşlendi.
+
+| | Eski okuma | Yeni okuma |
+|---|---|---|
+| iPhone, hizalaması sağlam 141 sayfa: yanlış soru | 273 (%1.17) | **58 (%0.25)** |
+| iPhone: hatasız sayfa | 97 | **124** |
+| Redmi, 18 fotoğraf: yanlış soru | 159 | **6** |
+| Tüm 166 sayfa: 3+ hatalı ve "güvenilir" denen (sessiz) | 22 | **6** (4'ünde okuma uyarısı var) |
+
+Denenip **alınmayanlar:**
+- Kağıt parlaklığını balonlar arasındaki çapraz boşluklardan tahmin etmek: tek eşikle iyileştirdi (273 → 219),
+  ama satır kontrastıyla birlikte bir şey eklemedi (58 → 77).
+- %30'un altında ikinci bir "kontrol edin" bandı: 0.2–0.3 aralığı 186 soruyu işaretliyor, yalnız 25'i gerçek.
+
+**Kalan hatalar:** çoğu Kağıt 1'deki gözle zor görülen soluk karalamalar (Batch1_s04: 19, Batch1_s01: 8) ve çift
+işaretin ikincisi (BE → B). %30 değeri iPhone setinde seçildi; bağımsız Redmi setinde de en iyi aralık %30–35 çıktı.
+
 ## Not: Python'un eski önbellek kopyası
 
 Okuma ayarı (kağıt tahminindeki bulanıklaştırma, 2 px) test sırasında aynı saniye içinde 2 → 15 → 2 yapılıp geri

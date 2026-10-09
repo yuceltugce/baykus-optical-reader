@@ -117,8 +117,23 @@ def final_position_check(im, centres, ref, visible):
     return per_subject, regions
 
 
+def question_groups(ref, visible):
+    """[(subject, question, bubble indices A..E)] for every question, and the subset fully inside the photo."""
+    groups = [(s, q, np.where((ref["subjects"] == s) & (ref["questions"] == q))[0])
+              for s in common.SUBJECTS for q in range(1, int(ref["questions"][ref["subjects"] == s].max()) + 1)]
+    return groups, [g for g in groups if visible[g[2]].all()]
+
+
+def contrasts(scores, groups):
+    """Per-bubble row contrast (darkness above the median option of its own question)."""
+    out = np.zeros_like(scores)
+    for _, _, idx in groups:
+        out[idx] = reading.row_contrast(scores[idx])
+    return out
+
+
 def read_answers(scores, t, weak_below, ref, visible):
-    """Per-question decision with the sheet's own threshold (see reading.py)."""
+    """Per-question decision with the sheet's own row-contrast threshold (see reading.py)."""
     answers = {}
     for s in common.SUBJECTS:
         rows = []
@@ -136,10 +151,10 @@ def read_answers(scores, t, weak_below, ref, visible):
     return answers
 
 
-def draw(im, centres, scores, t, weak_below):
+def draw(im, centres, contrast, t, weak_below):
     """Answer-area crop. Thin green = bubble position, thick red = marked, thick orange = weak mark."""
     out = im.copy()
-    for (x, y), sc in zip(np.round(centres).astype(int), scores):
+    for (x, y), sc in zip(np.round(centres).astype(int), contrast):
         if sc >= weak_below:
             cv2.circle(out, (x, y), 10, (0, 0, 230), 3, cv2.LINE_AA)
         elif sc >= t:
@@ -163,7 +178,8 @@ def process_image(original):
     centres, diag = align(im, ref)
     visible = visible_bubbles(centres, im.shape)
     scores = reading.bubble_scores(im, centres)
-    t, weak_below, reading_info = reading.sheet_threshold(scores[visible])
+    groups, readable = question_groups(ref, visible)
+    t, weak_below, reading_info = reading.sheet_threshold([scores[idx] for _, _, idx in readable])
     diag["reading"] = reading_info
     answers = read_answers(scores, t, weak_below, ref, visible)
     diag["verified"], diag["regions"] = final_position_check(im, centres, ref, visible)
@@ -195,13 +211,13 @@ def process_image(original):
     n_questions = sum(len(rows) for rows in answers.values())
     n_ambiguous = sum(r["status"] == "ambiguous" for rows in answers.values() for r in rows)
     n_weak = sum(r["weak"] for rows in answers.values() for r in rows)
+    n_three = sum(r["status"] == "ambiguous" and len(r["answer"]) >= 3 for rows in answers.values() for r in rows)
     if n_ambiguous > AMBIGUOUS_RESCAN * n_questions:
         rescan.append(f"{n_ambiguous} soruda birden fazla şık işaretli okundu")
-    for problem in reading_info["problems"]:
-        if problem.startswith("işaretli ve boş"):
-            rescan.append("Okuma: " + problem)
-        else:
-            warnings.append("Okuma: " + problem + "; zayıf işaretleri kontrol edin")
+    elif n_three:
+        rescan.append(f"{n_three} soruda 3 ya da daha fazla şık işaretli okundu (gölge ya da leke olabilir)")
+    for problem in reading_info["problems"]:     # light pencil stays light on a new photo: warn, do not ask to rescan
+        warnings.append("Okuma: " + problem + "; turuncu (zayıf) işaretleri kontrol edin")
     if n_weak:
         notes.append(f"{n_weak} soruda zayıf işaret var (çok açık, yarım ya da X ile işaretlenmiş olabilir); "
                      "resimde turuncu halkayla gösterildi.")
@@ -213,4 +229,5 @@ def process_image(original):
                                    ambiguous=sum(r["status"] == "ambiguous" for r in rows),
                                    invisible=sum(r["status"] == "invisible" for r in rows))
                            for s, rows in answers.items()})
-    return result, draw(im, centres[visible], scores[visible], t, weak_below), im
+    contrast = contrasts(scores, groups)
+    return result, draw(im, centres[visible], contrast[visible], t, weak_below), im
