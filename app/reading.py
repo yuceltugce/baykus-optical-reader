@@ -120,24 +120,3 @@ def decide(question_scores, t, weak_below):
     if marked.sum() == 1 or second < t + SECOND_MARK * (top - t):
         return "single", "ABCDE"[order[0]], bool(top < weak_below)
     return "ambiguous", "".join("ABCDE"[k] for k in np.where(marked)[0]), False
-
-
-def legacy_scores(im, centres, ink_brightness=170):
-    """Old rule, kept only for comparison: % of gray pixels darker than 170 (0..1)."""
-    gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    out = np.zeros(len(centres))
-    for i, (x, y) in enumerate(np.round(centres).astype(int)):
-        patch = gray[y - SAMPLE_RADIUS:y + SAMPLE_RADIUS + 1, x - SAMPLE_RADIUS:x + SAMPLE_RADIUS + 1]
-        if patch.shape == _DISC.shape:
-            out[i] = float((patch[_DISC] < ink_brightness).mean())
-    return out
-
-
-def legacy_decide(question_scores, fill=.5, margin=.2):
-    order = np.argsort(-question_scores)
-    marked = question_scores >= fill
-    if not marked.any():
-        return "blank", None
-    if marked.sum() == 1 or question_scores[order[0]] - question_scores[order[1]] >= margin:
-        return "single", "ABCDE"[order[0]]
-    return "ambiguous", "".join("ABCDE"[k] for k in np.where(marked)[0])

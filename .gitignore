@@ -1,8 +1,11 @@
 .venv/
+venv/
 __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
+.claude/
 outputs/
 app/uploads/
 app/certs/
+dataset/

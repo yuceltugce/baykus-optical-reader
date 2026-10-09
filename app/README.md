@@ -25,15 +25,16 @@ Ek kütüphane gerekmez (yalnız `.venv`'deki OpenCV, NumPy, SciPy, PyMuPDF).
 
 1. **Formu tara / dosya seç** → **Dosya Seç** → sağ üstte **•••** → **Belgeleri Tara** → tara → **Kaydet** → PDF'i seç.
 2. Menü yoksa: Notlar'da tara → Paylaş → Dosyalar'a Kaydet → sonra **Dosya Seç**.
-3. **Fotoğraf Çek** ham kamera fotoğrafı gönderir. Deneyler iPhone tarayıcı çıktısıyla yapıldı; ham fotoğrafta
-   hizalama denenmedi.
+3. **Fotoğraf Çek** kullanmayın: ham kamera fotoğrafı kırpılmamış olduğu için hizalanamaz.
 
 PDF'in yalnızca ilk sayfası okunur. JPEG ve PNG de kabul edilir.
 
 ## Ekranda ne görülür
 
-- Ders başına işaretli / boş / belirsiz soru sayısı ve otomatik doğrulanabilen balon yüzdesi.
-- Uyarılar: bir derste balonların %80'inden azı doğrulanabildiyse veya yerel düzeltme kurulamadıysa.
+- Ders başına işaretli / zayıf / boş / çoklu / görünmeyen soru sayısı ve balonların basılı halkasına oturma yüzdesi.
+- "Tekrar tarayın": bir bölgede (ders × 10 soru) balonların %12'si halkasından kaymışsa, sorular fotoğrafın
+  dışında kalıyorsa, bir soruda 3+ şık işaretliyse. Uyarı: halkalar görülemiyorsa, yerel düzeltme kurulamadıysa,
+  kalem çok açıksa ya da çok soru dolu/boş sınırındaysa.
 - Cevap alanının resmi: yeşil ince halka = balonun olduğunu düşündüğümüz yer, kırmızı kalın halka = işaretli,
   turuncu kalın halka = zayıf işaret (çok açık, yarım, X). **Halkalar balonların üstüne oturmuyorsa hizalama
   hatalıdır.**
@@ -48,10 +49,16 @@ Hata olursa `error.txt`.
 
 ## Sınırlar
 
-- Doluluk kararı `app/reading.py`: kırmızı kanal, kağıda göre koyuluk, eşik her kağıdın kendi boş balonlarından.
-  Ayrıntı ve doğrulama: `SAHA_DENEMELERI.md`. Testler: `.venv/bin/python -m unittest discover -s app/tests`.
-  Cevap doğruluğu henüz bir cevap anahtarıyla ölçülmedi.
+- Doluluk kararı `app/reading.py`: kırmızı kanal, kağıda göre koyuluk, her şık aynı sorunun diğer şıklarıyla
+  karşılaştırılır. Ölçüm (4 kağıdın 159 fotoğrafı, çoğunluk cevabına göre): iPhone %0.25, Redmi 18 fotoğrafta 6
+  yanlış soru. Ayrıntı: `SAHA_DENEMELERI.md`. Testler: `.venv/bin/python -B -m unittest discover -s app/tests`.
 - Referans ve şablon: `dataset/flat_front/004.png` + `experiments/edge_alignment_v2/reference/template.json`.
-  Form düz yönde (üstü yukarıda) taranmalı.
-- Test: veri setinden bir PNG (`flat_front/001`), en kötü E0 görüntüsü (`flat_angled/006`, E0'da 5.8 px hata)
-  ve orijinal iPhone PDF sayfaları aynı cevap sayılarını verdi. Gerçek bir iPhone'dan canlı gönderim henüz denenmedi.
+  Form düz yönde (üstü yukarıda) taranmalı; ters çekim okunmaz.
+- Telefon tarayıcısının kırpılmış çıktısı beklenir (iPhone "Belgeleri Tara", Redmi tarayıcı). Ham kamera
+  fotoğrafında köşe işareti eşleştirmesi çalışmaz.
+
+## Diğer araçlar
+
+- `batch_process.py` — bir klasördeki bütün PDF/resimleri okur; `ozet.csv`, `cevaplar.csv`, `rapor.html` yazar.
+- `model_dene.py`, `model_kirp.py`, `model_sayfa.py` — OpenRouter üzerinden görüntü modelleriyle (Gemini, GPT)
+  karşılaştırma denemeleri. Anahtar yalnız `OPENROUTER_API_KEY` ortam değişkeninden okunur.

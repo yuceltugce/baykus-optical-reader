@@ -101,5 +101,5 @@ Ayrıntı: [`runs/DIAG_error_map/REPORT.md`](runs/DIAG_error_map/REPORT.md), ana
 
 Her deneyin ayrıntılı raporu: [`runs/E0/REPORT.md`](runs/E0/REPORT.md), [`runs/E1/REPORT.md`](runs/E1/REPORT.md),
 [`runs/E2/REPORT.md`](runs/E2/REPORT.md), [`runs/E3/REPORT.md`](runs/E3/REPORT.md). Protokol ayrıntısı:
-[`README.md`](README.md). Eski (arşiv) deneyler: `experiments/edge_alignment/`, git etiketi
-`archive/old-notebook-experiments`. v2 kodu eski E0/E1 sonuçlarını 40 görüntüde birebir yeniden üretir.
+[`README.md`](README.md). Eski (arşiv) deneyler: git etiketi
+`archive/old-notebook-experiments` (ana daldan kaldırıldı). v2 kodu eski E0/E1 sonuçlarını 40 görüntüde birebir yeniden üretir.

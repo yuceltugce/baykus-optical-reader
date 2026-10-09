@@ -85,8 +85,9 @@ Bütün deneyler aynı noktalarda, aynı şekilde ölçülür; bu yüzden E0–E
 
 ## Eski deneylerle ilişki
 
-Eski E0/E1 kodu ve çıktıları silinmedi: `scripts/edge_baseline.py`, `scripts/edge_refinement.py`,
-`experiments/edge_alignment/`. Git'te `archive/old-notebook-experiments` etiketiyle işaretlendi.
+Eski E0/E1 kodu ve çıktıları (`scripts/edge_baseline.py`, `scripts/edge_refinement.py`,
+`experiments/edge_alignment/`) ana daldan kaldırıldı; git'te `archive/old-notebook-experiments` etiketinde duruyor
+(`git checkout archive/old-notebook-experiments`).
 
 | Eski | Yeni |
 |---|---|
