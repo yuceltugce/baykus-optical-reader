@@ -75,6 +75,11 @@ class Handler(BaseHTTPRequestHandler):
             print(f"[fail] {name}: incomplete upload {len(data)}/{length} bytes", flush=True)
             return self._send(400, json.dumps({"error": "Dosya tam gelmedi (bağlantı kesildi). Tekrar gönderin."},
                                               ensure_ascii=False).encode(), "application/json")
+        if self.headers.get("X-Encoding") == "base64":   # mobile app: the scanner returns the JPEG as base64 text
+            try:
+                data = base64.b64decode(data, validate=True)
+            except ValueError:
+                return self._json(400, {"error": "Görüntü çözülemedi (base64)."})
         run = UPLOADS / datetime.now().strftime("%Y%m%d-%H%M%S-%f")
         run.mkdir(parents=True)
         (run / ("input" + (Path(name).suffix.lower() or ".bin"))).write_bytes(data)

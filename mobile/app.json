@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Baykuş Optik",
+    "slug": "baykus-optik",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.baykus.optikdeneme",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Taranan formu okumak için aynı Wi-Fi'deki bilgisayara gönderir.",
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "com.baykus.optikdeneme",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "react-native-document-scanner-plugin",
+        {
+          "cameraPermission": "Optik formunu taramak için kamera kullanılır."
+        }
+      ]
+    ]
+  }
+}
