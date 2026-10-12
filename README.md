@@ -68,13 +68,16 @@ python3 -m venv .venv
 10. Marker detection (`common.detect_markers()`):
     - The red channel is divided by the local paper brightness (`common.paper_flattened()`), which removes
       differences in exposure and shadow.
-    - After a light Gaussian blur, a black-and-white mask is made with a threshold derived from the darkest pixels
-      of the page.
+    - After a light Gaussian blur, a black-and-white mask keeps every pixel that is at least 20% darker than the
+      paper around it. (Earlier the required darkness followed the darkest pixels of the page; a black table in the
+      photo then made it so strict that a faintly printed marker was lost.)
 11. A 5×5 morphological opening (erosion followed by dilation) is applied to the mask. Lines thinner than 5 px and
     small specks disappear; solid squares survive.
 12. The remaining candidates must pass four checks in order: is the size right for a marker, is it close to a square,
-    is it filled, does it have few corners. Duplicates of the same marker are removed, and so are shapes that have
-    another candidate within 60 px. On the reference image this leaves 11 markers.
+    is it filled, does it have few corners. All markers are printed the same size, so candidates whose side differs
+    by more than 30% from the reference sheet's marker side are dropped (only the size of the reference markers is
+    used, not their position). Duplicates of the same marker are removed, and so are shapes that have another
+    candidate within 60 px. On the reference image this leaves 10 markers.
 13. The markers in the photo are matched to the reference markers (`common.match_markers()`):
     - The two images can differ in width, so coordinates are divided by the image size to bring them into the 0–1
       range.

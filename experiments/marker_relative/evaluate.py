@@ -1,12 +1,13 @@
-"""Compare marker detection / matching variants on every photo we have.
+"""Compare marker detection variants on every photo we have.
 
     .venv/bin/python -B experiments/marker_relative/evaluate.py [--limit N]
 
-Variants (common.MARKER_METHOD / common.MATCH_METHOD):
-    base             current main: darkness threshold tied to the page's darkest pixels, image-normalised matching
-    relative         marker only has to be 20 % darker than the local paper; odd-sized candidates dropped
-    relative_ref     as relative, but the marker size comes from the reference sheet, not a vote
-    (matching in marker-size units was tried too and dropped: 9 iPhone pages lost their markers)
+Variants (common.MARKER_METHOD, see the comment there):
+    base       darkness threshold tied to the page's darkest pixels (the method before 2026-10-12)
+    relative   marker only has to be 20 % darker than the local paper; candidates far from the reference
+               marker size are dropped (the default since 2026-10-12)
+results.csv is the run that chose "relative" (its "relative" rows are the dropped size-vote variant, its
+"relative_ref" rows are today's "relative"); matching in marker-size units was also tried and dropped.
 
 Per photo and variant: matched markers, false markers (matched but > FALSE_PX from the final homography),
 retake decision, share of bubbles on a printed ring, worst shifted region, wrong answers against truth.json
@@ -33,7 +34,7 @@ import pipeline  # noqa: E402
 common, homography = pipeline.common, pipeline.homography
 DATA = Path.home() / "Desktop" / "optic-data"
 REDMI = Path.home() / "Downloads" / "optics-redmi"
-VARIANTS = {"base": ("base", "image"), "relative": ("relative", "image"), "relative_ref": ("relative_ref", "image")}
+VARIANTS = {"base": "base", "relative": "relative"}
 FALSE_PX = 8.0
 
 
@@ -76,7 +77,7 @@ def best_sheet(result, sheets):
 
 
 def run_variant(name, im, refs):
-    common.MARKER_METHOD, common.MATCH_METHOD = VARIANTS[name]
+    common.MARKER_METHOD = VARIANTS[name]
     pipeline._REF = refs[name]
     ref = refs[name]
     common.EXPECTED_MARKER_SIDE = ref["expected_side"]
@@ -86,9 +87,8 @@ def run_variant(name, im, refs):
     except pipeline.MarkersNotFound:
         return dict(rec, status="markers_not_found", markers=None), None
     # false markers: matched, but far from where the final homography puts them
-    markers, sides = common.detect_markers_sized(work)
-    ri, ci = common.match_markers(ref["markers"], ref["image"].shape, markers, work.shape,
-                                  ref_sides=ref["marker_sides"], sides=sides)
+    markers = common.detect_markers(work)
+    ri, ci = common.match_markers(ref["markers"], ref["image"].shape, markers, work.shape)
     _, H, *_ = homography.fit_verified(ref["markers"][ri].astype(float), markers[ci].astype(float), work,
                                        ref["points"], ref["ref_valid"])
     resid = np.linalg.norm(common.warp_points(H, ref["markers"][ri].astype(float)) - markers[ci], axis=1)
@@ -107,7 +107,7 @@ def main():
     sheets, page_sheet = load_truth()
     refs = {}
     for name in VARIANTS:
-        common.MARKER_METHOD, common.MATCH_METHOD = VARIANTS[name]
+        common.MARKER_METHOD = VARIANTS[name]
         pipeline._REF = None
         refs[name] = pipeline.reference()
         refs[name]["expected_side"] = common.EXPECTED_MARKER_SIDE

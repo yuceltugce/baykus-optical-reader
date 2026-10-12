@@ -224,6 +224,40 @@ Denenip **alınmayanlar:**
 **Kalan hatalar:** çoğu Kağıt 1'deki gözle zor görülen soluk karalamalar (Batch1_s04: 19, Batch1_s01: 8) ve çift
 işaretin ikincisi (BE → B). %30 değeri iPhone setinde seçildi; bağımsız Redmi setinde de en iyi aralık %30–35 çıktı.
 
+## 7. Siyah masada soluk köşe işareti (marker)
+
+**Örnek:** Mobil uygulamayla siyah masada çekilen 4 tarama "tekrar tara" dedi (Fen 31–40 kaymış). Kenarları kırpınca
+okunuyordu.
+
+**Neden:** Bazı kağıtlarda sağ alt köşe işareti açık gri basılmış: içi kağıttan ~%40 koyu (diğerleri ~%65). Kod
+"çevresindeki kağıttan en az %X koyu" arıyordu ve X'i sayfanın en koyu piksellerine göre seçiyordu (%18–35). Siyah
+masa görününce en koyu şey masa oluyor, X %35'e çıkıyor; soluk işaretin kenarları bu sınırın altında kalıp kare
+yarım çıkıyor ve "içi dolu" testinden eleniyordu. Fen'e en yakın işaret bulunamayınca hizalama orada kayıyordu.
+Kırpınca en koyu şey işaretlerin kendisi oluyor ve X birkaç puan düşüyordu — şans değil, bu yüzden çalışıyordu.
+
+**Çözüm** (`common.detect_markers()`, `MARKER_METHOD = "relative"`, dal `experiment/marker-relative-size`):
+eşik sabit ve gevşek, "kağıttan en az %20 koyu". Bunun getirdiği fazladan şekiller boyutla eleniyor: bütün işaretler
+aynı boyutta basıldığı için referans formdaki işaret boyutundan (~25 px) %30'dan fazla farklı adaylar atılıyor.
+Beklenen konum kullanılmıyor (mentör önerisi): gerçekten eksik bir işaret (kesik, kıvrık, gölgeli sayfa) yine
+"tekrar tara" ettiriyor.
+
+**Ölçüm** (`experiments/marker_relative/evaluate.py`, 220 fotoğraf, `truth.json` ile):
+
+| | Eski | Yeni |
+|---|---|---|
+| Okunan sayfa: iPhone / mobil uygulama / Redmi / tarama | 144 / 5 / 19 / 40 | 145 / **9** / 17 / 40 |
+| Öğrenciye gösterilen sayfalarda yanlış cevap | 72 / 17 / 10 / 23 | 72 / 17 / 8 / 23 |
+| Sessiz hatalı sayfa (3+ yanlış, "okundu") | 8 / 2 / 1 / 6 | aynı sayfalar |
+
+Kazanılan 5 sayfa: siyah masadaki 4 mobil tarama ve Batch2_s05 (27 yanlış → 0). Kaybedilen 2 Redmi fotoğrafı
+kıvrık kağıt: yeni yöntem eskiden görmediği alt işaretleri buluyor ve onlar düz kağıt varsayımına uymuyor
+(090346 eskiden "okundu" ama Fen E sütunu kaymıştı; 090349 eskiden hatasızdı, RANSAC'ın daha iyi seçimi koşul
+sayısı 5341 > 5000 olduğu için atılıyor).
+
+Denenip **bırakılanlar:** işaret boyutunu adaylar arasında oylamayla bulmak (~14 px'lik küçük kutular sayıca
+fazla olunca gerçek işaretleri attı: Batch1_s07'de 10'dan 1 kaldı) ve eşleştirmeyi işaret boyutu biriminde yapmak
+(9 iPhone sayfası işaretlerini kaybetti).
+
 ## Not: Python'un eski önbellek kopyası
 
 Okuma ayarı (kağıt tahminindeki bulanıklaştırma, 2 px) test sırasında aynı saniye içinde 2 → 15 → 2 yapılıp geri

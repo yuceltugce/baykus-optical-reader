@@ -72,9 +72,8 @@ def to_working(im):
 
 def align(im, ref):
     """E2: returns bubble centres in photo coordinates + diagnostics."""
-    markers, sides = common.detect_markers_sized(im)
-    ri, ci = common.match_markers(ref["markers"], ref["image"].shape, markers, im.shape,
-                                  ref_sides=ref.get("marker_sides"), sides=sides)
+    markers = common.detect_markers(im)
+    ri, ci = common.match_markers(ref["markers"], ref["image"].shape, markers, im.shape)
     if len(ri) < 6:
         raise MarkersNotFound(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
                               "Formun tamamı görünüyor mu, doğru yönde mi?")

@@ -72,7 +72,7 @@ def prepare_reference():
     common.EXPECTED_MARKER_SIDE = None                    # the reference itself is measured without a prior
     markers, marker_sides = common.detect_markers_sized(ref)
     common.EXPECTED_MARKER_SIDE = float(np.median(marker_sides)) if len(marker_sides) else None
-    return dict(image=ref, markers=markers, marker_sides=marker_sides, points=points, subjects=subjects,
+    return dict(image=ref, markers=markers, points=points, subjects=subjects,
                 questions=questions, ref_valid=ref_valid, band=band, n_bubbles=len(bubbles))
 
 
