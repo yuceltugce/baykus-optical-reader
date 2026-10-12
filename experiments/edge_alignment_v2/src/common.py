@@ -97,20 +97,31 @@ def paper_flattened(channel):
     return np.clip(ch / np.maximum(paper, 1) * 255, 0, 255).astype(np.uint8)
 
 
-def detect_markers(im):
-    """Threshold -> opening -> square-ish, solid, isolated blobs."""
-    if ADAPTIVE:
-        # Black markers stay dark in the red channel, where the pink print is weakest.
-        flat = cv2.GaussianBlur(paper_flattened(im[:, :, 2]), (3, 3), 0)
-        darkest = 1 - np.percentile(flat, .1) / 255            # relative darkness of the darkest 0.1 %
-        lo, hi = MARKER_DARKNESS_LIMITS
-        t = 255 * (1 - np.clip(MARKER_DARKNESS_SHARE * darkest, lo, hi))
-        mask = cv2.threshold(flat, t, 255, cv2.THRESH_BINARY_INV)[1]
-    else:
-        gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-        mask = cv2.threshold(cv2.GaussianBlur(gray, (3, 3), 0), 140, 255, cv2.THRESH_BINARY_INV)[1]
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
-    candidates = []
+# Marker detection / matching method (experiment/marker-relative-size).
+#   "base":     darkness threshold tied to the page's darkest pixels; matching on image-size-normalised
+#               coordinates. A black table in the photo becomes the "darkest thing", tightens the threshold, and
+#               a faintly printed marker (bottom-right on some sheets, ~40 % darker than paper instead of ~65 %)
+#               loses its edges and fails the fill test.
+#   "relative": a marker only has to be RELATIVE_DARKNESS darker than the paper around it; false candidates are
+#               removed by size instead: all markers are printed the same size, so candidates far from the common
+#               marker size are dropped.
+#   "relative_ref": as "relative", but the marker size is taken from the reference sheet (EXPECTED_MARKER_SIDE,
+#               set once when the reference is prepared) instead of "the size most candidates share": with the
+#               loose threshold, small square blobs (~14 px: form boxes, pencil) can outnumber the ~10 real
+#               markers (~24 px) and win that vote (Batch1 s07: 1 of 10 markers left). Only the size is used,
+#               never an expected position.
+MARKER_METHOD = "base"
+EXPECTED_MARKER_SIDE = None
+#   "image":  match on coordinates divided by the image size (crop-dependent).
+#   "marker": match in units of the mean marker size, after finding the offset by voting (crop-independent).
+MATCH_METHOD = "image"
+RELATIVE_DARKNESS = .20           # "relative": candidate must be >= 20 % darker than the local paper
+SIZE_TOLERANCE = .30              # "relative": keep candidates whose side is within +-30 % of the common side
+
+
+def _marker_candidates(im, mask):
+    """Square-ish, solid blobs of the mask: [(centre, side, extent)]."""
+    out = []
     for c in cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)[0]:
         area = cv2.contourArea(c)
         x, y, w, h = cv2.boundingRect(c)
@@ -121,24 +132,99 @@ def detect_markers(im):
             continue
         if len(cv2.approxPolyDP(c, 0.03 * cv2.arcLength(c, True), True)) > 6:
             continue
-        candidates.append((np.array([x + w / 2, y + h / 2]), extent))
+        out.append((np.array([x + w / 2, y + h / 2]), float(np.sqrt(area)), extent))
+    return out
+
+
+def _common_side(sides):
+    """The side length most candidates agree on (+-SIZE_TOLERANCE); robust to a few odd-sized blobs."""
+    sides = np.asarray(sides)
+    support = [((sides >= s * (1 - SIZE_TOLERANCE)) & (sides <= s * (1 + SIZE_TOLERANCE))).sum() for s in sides]
+    best = sides[np.asarray(support) == max(support)]
+    return float(np.median(best))
+
+
+def detect_markers_sized(im):
+    """Corner markers: (centres N x 2, side lengths N). Threshold -> opening -> square-ish, solid, isolated."""
+    flat = cv2.GaussianBlur(paper_flattened(im[:, :, 2]), (3, 3), 0) if ADAPTIVE else None
+    if ADAPTIVE and MARKER_METHOD in ("relative", "relative_ref"):
+        t = 255 * (1 - RELATIVE_DARKNESS)
+        mask = cv2.threshold(flat, t, 255, cv2.THRESH_BINARY_INV)[1]
+    elif ADAPTIVE:
+        # Black markers stay dark in the red channel, where the pink print is weakest.
+        darkest = 1 - np.percentile(flat, .1) / 255            # relative darkness of the darkest 0.1 %
+        lo, hi = MARKER_DARKNESS_LIMITS
+        t = 255 * (1 - np.clip(MARKER_DARKNESS_SHARE * darkest, lo, hi))
+        mask = cv2.threshold(flat, t, 255, cv2.THRESH_BINARY_INV)[1]
+    else:
+        gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        mask = cv2.threshold(cv2.GaussianBlur(gray, (3, 3), 0), 140, 255, cv2.THRESH_BINARY_INV)[1]
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    candidates = _marker_candidates(im, mask)
+    if MARKER_METHOD in ("relative", "relative_ref") and candidates:
+        sides = np.array([s for _, s, _ in candidates])
+        if MARKER_METHOD == "relative_ref" and EXPECTED_MARKER_SIDE:
+            near = sides[(sides >= .6 * EXPECTED_MARKER_SIDE) & (sides <= 1.5 * EXPECTED_MARKER_SIDE)]
+            side = float(np.median(near)) if len(near) else EXPECTED_MARKER_SIDE
+        else:
+            side = _common_side(sides)
+        candidates = [c for c in candidates if abs(c[1] - side) <= SIZE_TOLERANCE * side]
     dedup = []
-    for p, _ in sorted(candidates, key=lambda z: -z[1]):
-        if all(np.linalg.norm(p - q) > 15 for q in dedup):
-            dedup.append(p)
-    isolated = [p for i, p in enumerate(dedup)
-                if all(i == j or np.linalg.norm(p - q) >= 60 for j, q in enumerate(dedup))]
-    return np.array(sorted(isolated, key=lambda p: (p[1], p[0])), dtype=np.float32).reshape(-1, 2)
+    for p, s, e in sorted(candidates, key=lambda z: -z[2]):
+        if all(np.linalg.norm(p - q) > 15 for q, _ in dedup):
+            dedup.append((p, s))
+    isolated = [(p, s) for i, (p, s) in enumerate(dedup)
+                if all(i == j or np.linalg.norm(p - q) >= 60 for j, (q, _) in enumerate(dedup))]
+    isolated.sort(key=lambda z: (z[0][1], z[0][0]))
+    centres = np.array([p for p, _ in isolated], dtype=np.float32).reshape(-1, 2)
+    return centres, np.array([s for _, s in isolated], dtype=np.float32)
 
 
-def match_markers(ref_markers, ref_shape, markers, shape, gate=0.06):
-    """Hungarian matching on normalised coordinates. Returns (ref_idx, sample_idx)."""
+def detect_markers(im):
+    return detect_markers_sized(im)[0]
+
+
+def match_markers(ref_markers, ref_shape, markers, shape, gate=0.06, ref_sides=None, sides=None):
+    """Hungarian matching of photo markers to reference markers. Returns (ref_idx, sample_idx)."""
+    if MATCH_METHOD == "marker" and ref_sides is not None and sides is not None and len(markers) >= 3:
+        return _match_in_marker_units(ref_markers, ref_sides, markers, sides)
     a = ref_markers / np.array(ref_shape[1::-1])
     b = markers / np.array(shape[1::-1])
     cost = np.linalg.norm(a[:, None] - b[None], axis=2)
     ri, ci = linear_sum_assignment(cost)
     keep = cost[ri, ci] < gate
     return ri[keep], ci[keep]
+
+
+def _match_in_marker_units(ref_markers, ref_sides, markers, sides, vote_gate=4.0, gate=1.5):
+    """Crop-independent matching. Scale = photo marker size / reference marker size; offset by voting (every
+    reference/photo pair proposes an offset, the one most other markers agree with wins); then an affine fit on
+    the agreed pairs absorbs small rotation/perspective, and the final Hungarian gate is `gate` marker sides."""
+    unit = float(np.median(ref_sides))
+    scale = float(np.median(sides)) / unit
+    p = markers / scale                                         # photo markers in reference pixels
+    best = None
+    for i in range(len(ref_markers)):
+        for j in range(len(p)):
+            off = p[j] - ref_markers[i]
+            d = np.linalg.norm((p - off)[None] - ref_markers[:, None], axis=2).min(1) / unit
+            score = ((d < vote_gate).sum(), -np.minimum(d, vote_gate).sum())
+            if best is None or score > best[0]:
+                best = (score, off)
+    moved = ref_markers + best[1]
+    cost = np.linalg.norm(moved[:, None] - p[None], axis=2) / unit
+    ri, ci = linear_sum_assignment(np.minimum(cost, vote_gate + 1))
+    keep = cost[ri, ci] < vote_gate
+    ri, ci = ri[keep], ci[keep]
+    if len(ri) >= 3:                                            # refine with an affine fit, then match tightly
+        A, _ = cv2.estimateAffine2D(ref_markers[ri].astype(np.float32), p[ci].astype(np.float32))
+        if A is not None:
+            moved = ref_markers @ A[:, :2].T + A[:, 2]
+            cost = np.linalg.norm(moved[:, None] - p[None], axis=2) / unit
+            ri, ci = linear_sum_assignment(np.minimum(cost, gate + 1))
+            keep = cost[ri, ci] < gate
+            ri, ci = ri[keep], ci[keep]
+    return ri, ci
 
 
 # --------------------------------------------------------------------------

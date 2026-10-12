@@ -69,7 +69,10 @@ def prepare_reference():
     rows_per_subject = {s: int(questions[subjects == s].max()) for s in common.SUBJECTS}
     rel = np.array([(q - 1) / (rows_per_subject[s] - 1) for q, s in zip(questions, subjects)])
     band = np.where(rel < 1 / 3, "üst", np.where(rel < 2 / 3, "orta", "alt"))
-    return dict(image=ref, markers=common.detect_markers(ref), points=points, subjects=subjects,
+    common.EXPECTED_MARKER_SIDE = None                    # the reference itself is measured without a prior
+    markers, marker_sides = common.detect_markers_sized(ref)
+    common.EXPECTED_MARKER_SIDE = float(np.median(marker_sides)) if len(marker_sides) else None
+    return dict(image=ref, markers=markers, marker_sides=marker_sides, points=points, subjects=subjects,
                 questions=questions, ref_valid=ref_valid, band=band, n_bubbles=len(bubbles))
 
 
