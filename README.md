@@ -101,6 +101,10 @@ python3 -m venv .venv
     - Five thresholds are tried: 140, 165, 185, 205, 225.
     - The answer area is the reference answer area, padded by 30 px and carried into the photo by H
       (`common.answer_region()`).
+    - This is the slowest part of the pipeline, so it is done once per photo: inside `homography.fit_verified()`, on
+      an area covering both candidate homographies (padded 45 px). Both candidates and the final position check
+      (step 19) use these rings. Results are identical to detecting three times; the median time per photo went
+      from 461 to 227 ms (`experiments/speed/compare_ring_once.py`).
 17. The 830 predicted bubbles are matched to the detected rings (`common.associate()`). A match is accepted only when:
     - it is closer than 10 px,
     - the ring is that bubble's nearest candidate,
