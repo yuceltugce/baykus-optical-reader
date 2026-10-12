@@ -78,8 +78,9 @@ def align(im, ref):
         raise MarkersNotFound(f"Sadece {len(ri)} köşe işareti eşleşti (en az 6 gerekli). "
                               "Formun tamamı görünüyor mu, doğru yönde mi?")
     src, dst = ref["markers"][ri].astype(float), markers[ci].astype(float)
+    rings = []                       # printed rings, detected once and reused by final_position_check()
     H_all, H, inliers, homography_info, obs, ok = homography.fit_verified(
-        src, dst, im, ref["points"], ref["ref_valid"])
+        src, dst, im, ref["points"], ref["ref_valid"], rings_out=rings)
     base = common.warp_points(H, ref["points"])
     ctx = dict(ref_points=ref["points"], subjects=ref["subjects"], subject_names=common.SUBJECTS,
                src=src, dst=dst, H_all=H_all, H_ransac=H, inliers=inliers, base=base,
@@ -87,7 +88,7 @@ def align(im, ref):
     centres = local_contour.predict(ctx)["H_local_contours"]
     coverage = {s: float(ok[ref["subjects"] == s].mean()) for s in common.SUBJECTS}
     return centres, dict(markers_matched=int(len(ri)), marker_inliers=int(inliers.sum()), homography=homography_info,
-                         coverage=coverage, local_fit=ctx["fits"]["H_local_contours"])
+                         coverage=coverage, local_fit=ctx["fits"]["H_local_contours"]), (rings[0] if rings else None)
 
 
 def visible_bubbles(centres, shape):
@@ -97,10 +98,14 @@ def visible_bubbles(centres, shape):
     return (centres[:, 0] >= m) & (centres[:, 1] >= m) & (centres[:, 0] < w - m) & (centres[:, 1] < h - m)
 
 
-def final_position_check(im, centres, ref, visible):
-    """Per (subject, 10-question region): share of bubbles on / offset from / without a printed ring."""
+def final_position_check(im, centres, ref, visible, rings=None):
+    """Per (subject, 10-question region): share of bubbles on / offset from / without a printed ring.
+    rings: the rings already detected during alignment (homography.RING_DETECT_ONCE); detected here otherwise."""
     lo, hi = centres.min(0) - 30, centres.max(0) + 30
-    rings = common.detect_bubble_contours(im, np.array([lo, [hi[0], lo[1]], hi, [lo[0], hi[1]]]))
+    if rings is None:
+        rings = common.detect_bubble_contours(im, np.array([lo, [hi[0], lo[1]], hi, [lo[0], hi[1]]]))
+    else:
+        rings = rings[np.all((rings >= lo) & (rings <= hi), axis=1)] if len(rings) else rings
     if len(rings):
         nearest = np.linalg.norm(centres[:, None] - rings[None], axis=2).min(1)
     else:
@@ -210,14 +215,14 @@ def process_image(original):
     """Full pipeline on an already decoded BGR image (used by the server and by batch_process.py)."""
     ref = reference()
     im = to_working(original)
-    centres, diag = align(im, ref)
+    centres, diag, rings = align(im, ref)
     visible = visible_bubbles(centres, im.shape)
     scores = reading.bubble_scores(im, centres)
     groups, readable = question_groups(ref, visible)
     t, weak_below, reading_info = reading.sheet_threshold([scores[idx] for _, _, idx in readable])
     diag["reading"] = reading_info
     answers = read_answers(scores, t, weak_below, ref, visible)
-    diag["verified"], diag["regions"] = final_position_check(im, centres, ref, visible)
+    diag["verified"], diag["regions"] = final_position_check(im, centres, ref, visible, rings)
     warnings = [f"{s}: yerel düzeltme kurulamadı, sadece global hizalama kullanıldı ({f.get('reason', '')})"
                 for s, f in diag["local_fit"].items() if f["status"] != "fitted"]
     unverified = [SUBJECT_NAMES[s] for s, f in diag["local_fit"].items() if f["status"] != "fitted"]

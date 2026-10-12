@@ -56,19 +56,41 @@ def fit_checked(src, dst, seed=42, ransac_px=3.0):
     return H_all, H_ransac, inliers, info
 
 
-def fit_verified(src, dst, im, ref_points, ref_valid, seed=42, ransac_px=3.0):
+# The printed rings are the slow part of the whole pipeline (~110-165 ms per detection, ~80 % of the time).
+# With RING_DETECT_ONCE they are detected once, on a region covering every candidate homography's answer area
+# (padded by RING_REGION_PAD so the final position check, whose bubbles move <= 12 px after the TPS, is covered
+# too), and each candidate keeps the rings inside its own answer area. rings_out receives that array.
+RING_DETECT_ONCE = True
+RING_REGION_PAD = 45
+
+
+def _inside(points, polygon):
+    poly = np.asarray(polygon, np.float32).reshape(-1, 1, 2)
+    return np.array([cv2.pointPolygonTest(poly, (float(x), float(y)), False) >= 0 for x, y in points], bool)
+
+
+def fit_verified(src, dst, im, ref_points, ref_valid, seed=42, ransac_px=3.0, rings_out=None):
     """Pick between RANSAC's and the all-marker homography by agreement with the printed bubble rings.
 
     Returns (H_all, H, inlier_mask, info, observed_centres, observed_ok) where observed_* are the ring
     matches for the chosen H (exactly what the caller would otherwise compute with associate()).
+    If rings_out is a list, the detected rings (N x 2) are appended to it for reuse by the caller.
     """
     H_all, H_guarded, inliers, info = fit_checked(src, dst, seed, ransac_px)
     options = [("ransac", H_guarded, inliers)] if info["used"] == "ransac" else []
     options.append(("all_markers", H_all, np.ones(len(src), bool)))
+    shared = None
+    if RING_DETECT_ONCE:
+        corners = np.vstack([answer_region(ref_points, H, pad=RING_REGION_PAD) for _, H, _ in options])
+        shared = detect_bubble_contours(im, cv2.convexHull(corners.astype(np.float32)).reshape(-1, 2))
+        if rings_out is not None:
+            rings_out.append(shared)
     best = None
     for name, H, inl in options:
         base = warp_points(H, ref_points)
-        obs, ok = associate(base, detect_bubble_contours(im, answer_region(ref_points, H)))
+        region = answer_region(ref_points, H)
+        rings = shared[_inside(shared, region)] if shared is not None else detect_bubble_contours(im, region)
+        obs, ok = associate(base, rings)
         ok &= ref_valid
         info[f"rings_{name}"] = int(ok.sum())
         if best is None or ok.sum() > best[4].sum():
