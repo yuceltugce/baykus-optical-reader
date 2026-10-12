@@ -8,7 +8,8 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.baykus.optikdeneme",
+      "bundleIdentifier": "com.tugceyucel.baykusoptik",
+      "appleTeamId": "N7NPF7N459",
       "infoPlist": {
         "NSLocalNetworkUsageDescription": "Taranan formu okumak için aynı Wi-Fi'deki bilgisayara gönderir.",
         "NSAppTransportSecurity": {
@@ -17,7 +18,7 @@
       }
     },
     "android": {
-      "package": "com.baykus.optikdeneme",
+      "package": "com.tugceyucel.baykusoptik",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",

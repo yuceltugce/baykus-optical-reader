@@ -14,7 +14,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import DocumentScanner, { ResponseType, ScanDocumentResponseStatus } from 'react-native-document-scanner-plugin';
 
-const DEFAULT_SERVER = 'http://192.168.1.185:8000';
+const DEFAULT_SERVER = 'http://192.168.1.197:8000';
 const SUBJECTS: Record<string, string> = { turkce: 'Türkçe', sosyal: 'Sosyal', matematik: 'Matematik', fen: 'Fen' };
 const OPTIONS = ['A', 'B', 'C', 'D', 'E'];
 
