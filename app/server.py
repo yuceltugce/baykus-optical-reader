@@ -62,24 +62,21 @@ class Handler(BaseHTTPRequestHandler):
             return self.confirm()
         if self.path != "/api/process":
             return self._send(404, b"not found", "text/plain")
-        length = int(self.headers.get("Content-Length", 0))
-        if not 0 < length <= MAX_BYTES:
-            return self._send(413, json.dumps({"error": "Dosya boş ya da çok büyük."}).encode(), "application/json")
         name = urllib.parse.unquote(self.headers.get("X-Filename", "upload")) or "upload"
+        chunked = "chunked" in self.headers.get("Transfer-Encoding", "").lower()
+        length = int(self.headers.get("Content-Length", 0))
+        if not chunked and not 0 < length <= MAX_BYTES:
+            return self._json(413, {"error": "Dosya boş ya da çok büyük."})
         try:
-            data = self.rfile.read(length)
+            data = self.read_chunked() if chunked else self.rfile.read(length)
         except OSError as err:            # phone dropped the connection mid-upload; nobody left to answer
             print(f"[fail] {name}: connection lost during upload ({err})", flush=True)
             return
-        if len(data) != length:
+        except ValueError as err:         # malformed or oversized chunked body
+            return self._json(400 if "chunk" in str(err) else 413, {"error": str(err)})
+        if not data or (not chunked and len(data) != length):
             print(f"[fail] {name}: incomplete upload {len(data)}/{length} bytes", flush=True)
-            return self._send(400, json.dumps({"error": "Dosya tam gelmedi (bağlantı kesildi). Tekrar gönderin."},
-                                              ensure_ascii=False).encode(), "application/json")
-        if self.headers.get("X-Encoding") == "base64":   # mobile app: the scanner returns the JPEG as base64 text
-            try:
-                data = base64.b64decode(data, validate=True)
-            except ValueError:
-                return self._json(400, {"error": "Görüntü çözülemedi (base64)."})
+            return self._json(400, {"error": "Dosya tam gelmedi (bağlantı kesildi). Tekrar gönderin."})
         run = UPLOADS / datetime.now().strftime("%Y%m%d-%H%M%S-%f")
         run.mkdir(parents=True)
         (run / ("input" + (Path(name).suffix.lower() or ".bin"))).write_bytes(data)
@@ -114,6 +111,24 @@ class Handler(BaseHTTPRequestHandler):
             print(f"[fail] {name}: unexpected {type(err).__name__}: {err}", flush=True)
             self._send(500, json.dumps({"error": f"Beklenmeyen hata ({type(err).__name__}). Kayıt: {run.name}"},
                                        ensure_ascii=False).encode(), "application/json")
+
+    def read_chunked(self):
+        """Body sent with Transfer-Encoding: chunked (a streamed file upload has no Content-Length)."""
+        parts, total = [], 0
+        while True:
+            line = self.rfile.readline(64).strip()
+            try:
+                size = int(line.split(b";")[0], 16)
+            except ValueError:
+                raise ValueError("Bozuk yükleme (chunk boyutu okunamadı).")
+            if size == 0:
+                self.rfile.readline(64)                       # trailing CRLF after the last chunk
+                return b"".join(parts)
+            total += size
+            if total > MAX_BYTES:
+                raise ValueError("Dosya çok büyük.")
+            parts.append(self.rfile.read(size))
+            self.rfile.readline(64)                           # CRLF after each chunk
 
     def confirm(self):
         """Save the student's choices for the questions the reader was unsure about (confirmed.json)."""

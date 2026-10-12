@@ -13,6 +13,8 @@ import {
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import DocumentScanner, { ResponseType, ScanDocumentResponseStatus } from 'react-native-document-scanner-plugin';
+import { fetch as expoFetch } from 'expo/fetch';
+import { File } from 'expo-file-system';
 
 const DEFAULT_SERVER = 'http://192.168.1.197:8000';
 const SUBJECTS: Record<string, string> = { turkce: 'Türkçe', sosyal: 'Sosyal', matematik: 'Matematik', fen: 'Fen' };
@@ -55,13 +57,13 @@ function Main() {
   const [zoom, setZoom] = useState(false);
 
   async function scan() {
-    let jpegBase64: string;
+    let jpegUri: string;
     try {
       const { scannedImages, status } = await DocumentScanner.scanDocument({
-        croppedImageQuality: 92, maxNumDocuments: 1, responseType: ResponseType.Base64,
+        croppedImageQuality: 92, maxNumDocuments: 1, responseType: ResponseType.ImageFilePath,
       });
       if (status === ScanDocumentResponseStatus.Cancel || !scannedImages?.length) return;
-      jpegBase64 = scannedImages[0];
+      jpegUri = scannedImages[0];
     } catch (err) {
       setMessage(`Tarayıcı açılamadı: ${String(err)}`);
       return setPhase('error');
@@ -69,10 +71,10 @@ function Main() {
     setPhase('loading');
     setMessage('Form okunuyor…');
     try {
-      // Sent as base64 text (a string body is the most reliable upload in React Native); the server decodes it.
-      const res = await withTimeout(fetch(`${server}/api/process`, {
-        method: 'POST', body: jpegBase64,
-        headers: { 'Content-Type': 'text/plain', 'X-Encoding': 'base64', 'X-Filename': 'tarama.jpg' },
+      // The JPEG file itself is the request body (expo/fetch + expo-file-system File). Base64 text was 33 % larger.
+      const res = await withTimeout(expoFetch(`${server}/api/process`, {
+        method: 'POST', body: new File(jpegUri),
+        headers: { 'Content-Type': 'image/jpeg', 'X-Filename': 'tarama.jpg' },
       }), 90_000);
       const r = await res.json();
       if (!res.ok) throw new Error(r.error || `HTTP ${res.status}`);
@@ -84,7 +86,7 @@ function Main() {
       setPhase('result');
     } catch (err) {
       const text = String(err);
-      setMessage(text.includes('Network request failed') || text.includes('zaman aşımı')
+      setMessage(/network|zaman aşımı/i.test(text)
         ? `Sunucuya bağlanılamadı (${server}). Bilgisayarda sunucu --http ile açık mı, telefon aynı Wi-Fi'de mi?`
         : text);
       setPhase('error');
